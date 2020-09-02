@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-services-search</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="0.0-Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="D-0.0-Home" transform="translate(-720.000000, -1376.000000)">
+            <g id="Section-03" transform="translate(240.000000, 1230.000000)">
+                <g id="Candidatos" transform="translate(360.000000, 96.000000)">
+                    <g id="Pesquisa-de-vagas" transform="translate(120.000000, 50.000000)">
+                        <g id="icon-services-search">
+                            <circle id="Oval-32-Copy-3" fill="#7EEEAB" cx="40" cy="40" r="40"></circle>
+                            <circle id="Oval-32-Copy-3" fill="#9AF1C3" cx="33.5" cy="33.5" r="23.5"></circle>
+                            <path d="M79.6905312,35 C79.8947833,36.6379712 80,38.3066983 80,40 C80,61.0822253 63.6901978,78.3550921 43,79.8891941 L43,57 L54,50 L58.5,36.5 L58.2857143,35 L79.6905312,35 Z" id="Combined-Shape" fill="#2ADD72"></path>
+                            <rect id="Rectangle-20-Copy" fill="#02D557" x="40" y="56" width="3" height="24"></rect>
+                            <rect id="Rectangle-20-Copy-2" fill="#00AD46" x="37" y="56" width="3" height="24"></rect>
+                            <rect id="Rectangle-20-Copy-3" fill="#02D557" x="19" y="25" width="4" height="27"></rect>
+                            <polygon id="Rectangle-20-Copy-4" fill="#00AD46" points="15 31 19 31 19 52 15 49"></polygon>
+                            <polygon id="Rectangle-21" fill="#2ADD72" points="23 48 23 18 54 18 58.5 25 58.5 41 52 52 40.75 58 28 56.5 23 53.5"></polygon>
+                            <path d="M54.7448506,50.9164235 L65.0710678,61.2426407 C65.8521164,62.0236893 65.8521164,63.2900192 65.0710678,64.0710678 C64.2900192,64.8521164 63.0236893,64.8521164 62.2426407,64.0710678 L51.9164235,53.7448506 C47.3693539,57.644195 41.4597908,60 35,60 C20.6405965,60 9,48.3594035 9,34 C9,19.6405965 20.6405965,8 35,8 C49.3594035,8 61,19.6405965 61,34 C61,40.4597908 58.644195,46.3693539 54.7448506,50.9164235 Z M35,56 C47.1502645,56 57,46.1502645 57,34 C57,21.8497355 47.1502645,12 35,12 C22.8497355,12 13,21.8497355 13,34 C13,46.1502645 22.8497355,56 35,56 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                            <path d="M46,43 C46,39.2129046 42.9299526,36.1428571 39.1428571,36.1428571 L36.8571429,36.1428571 C33.0700474,36.1428571 30,39.2129046 30,43 L46,43 Z M38,33.8571429 C36.1064523,33.8571429 34.5714286,32.3221191 34.5714286,30.4285714 C34.5714286,28.5350237 36.1064523,27 38,27 C39.8935477,27 41.4285714,28.5350237 41.4285714,30.4285714 C41.4285714,32.3221191 39.8935477,33.8571429 38,33.8571429 Z" id="Combined-Shape" fill="#00AD46"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

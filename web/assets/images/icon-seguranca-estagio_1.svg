@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-seguranca-estagio</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M36,57.802499 C15.7867092,55.7956013 -7.10542736e-15,38.7413924 -7.10542736e-15,18 C-7.10542736e-15,11.5255527 1.53822971,5.4103782 4.26916562,-3.15303339e-14 L36,0 L36,57.802499 Z" id="path-1"></path>
+    </defs>
+    <g id="2.1-Plataforma" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-600.000000, -712.000000)">
+        <g id="Section-02-Copy" transform="translate(600.000000, 712.000000)">
+            <g id="icon-seguranca-estagio" transform="translate(40.000000, 40.000000) scale(-1, 1) translate(-40.000000, -40.000000) ">
+                <circle id="Oval-32-Copy" fill="#7EEEAB" cx="40" cy="40" r="40"></circle>
+                <polygon id="Rectangle-18" fill="#02D557" transform="translate(37.500000, 53.500000) scale(-1, 1) translate(-37.500000, -53.500000) " points="36 80 36 79 36 27 39 27 39 80"></polygon>
+                <polygon id="Rectangle-18-Copy" fill="#00AD46" transform="translate(40.500000, 56.000000) scale(-1, 1) translate(-40.500000, -56.000000) " points="39 79 39 32 42 32 42 80 39 80"></polygon>
+                <g id="Line-2-+-Line-2-Copy-+-Line-2-Copy-2-+-Line-2-Copy-3-+-Line-2-Copy-4-+-Line-2-Copy-5-Mask" transform="translate(0.000000, 22.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" fill="#2ADD72" xlink:href="#path-1"></use>
+                    <polygon id="Line-2" fill="#7EEEAB" fill-rule="nonzero" mask="url(#mask-2)" points="0 11 0 9 27 9 27 11"></polygon>
+                    <polygon id="Line-2-Copy" fill="#7EEEAB" fill-rule="nonzero" mask="url(#mask-2)" points="-1 19 -1 17 27 17 27 19"></polygon>
+                    <polygon id="Line-2-Copy-2" fill="#7EEEAB" fill-rule="nonzero" mask="url(#mask-2)" points="0 27 0 25 27 25 27 27"></polygon>
+                    <polygon id="Line-2-Copy-3" fill="#7EEEAB" fill-rule="nonzero" mask="url(#mask-2)" points="2 35 2 33 27 33 27 35"></polygon>
+                    <polygon id="Line-2-Copy-4" fill="#7EEEAB" fill-rule="nonzero" mask="url(#mask-2)" points="7 43 7 41 27 41 27 43"></polygon>
+                    <polygon id="Line-2-Copy-5" fill="#7EEEAB" fill-rule="nonzero" mask="url(#mask-2)" points="14 51 14 49 27 49 27 51"></polygon>
+                </g>
+                <path d="M46.9497307,30.0698663 C46.9174909,30.5770735 46.9011253,31.0885945 46.9011253,31.6039379 C46.9011253,40.9984479 52.3397189,49.1227063 60.2401929,53 C68.1406669,49.1227063 73.5792605,40.9984479 73.5792605,31.6039379 C73.5792605,31.1258182 73.5651737,30.6509887 73.5373926,30.1798417 C68.4213259,29.3640263 63.7563112,27.1759215 59.9225961,24 C56.2498269,27.0425908 51.814092,29.1785644 46.9497307,30.0698663 Z" id="Combined-Shape" fill="#00AD46"></path>
+                <path d="M63.9993402,32.9393398 C64.5851267,32.3535534 65.5348742,32.3535534 66.1206606,32.9393398 C66.706447,33.5251263 66.706447,34.4748737 66.1206606,35.0606602 L58.9553686,42.2259522 C58.3695821,42.8117386 57.4198347,42.8117386 56.8340482,42.2259522 L53.9393398,39.3312438 C53.3535534,38.7454574 53.3535534,37.7957099 53.9393398,37.2099235 C54.5251263,36.624137 55.4748737,36.624137 56.0606602,37.2099235 L57.8947084,39.0439717 L63.9993402,32.9393398 Z" id="Path-3" fill="#FFFFFF" fill-rule="nonzero" transform="translate(60.030000, 37.582646) scale(-1, 1) translate(-60.030000, -37.582646) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

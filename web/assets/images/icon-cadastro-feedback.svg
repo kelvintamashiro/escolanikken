@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="50" cy="50" r="50"></circle>
+    </defs>
+    <g id="7.1-Cadastro---Feedback" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-670.000000, -176.000000)">
+        <g id="Group-3" transform="translate(360.000000, 176.000000)">
+            <g id="Group-2" transform="translate(310.000000, 0.000000)">
+                <g>
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Oval" fill="#7EEEAB" xlink:href="#path-1"></use>
+                    <rect id="Rectangle" fill="#9AF1C3" mask="url(#mask-2)" x="74" y="29" width="27" height="43" rx="4"></rect>
+                    <rect id="Rectangle-Copy" fill="#00AD46" mask="url(#mask-2)" x="-3" y="29" width="27" height="43" rx="4"></rect>
+                    <circle id="Oval-2" fill="#00AD46" mask="url(#mask-2)" cx="86.5" cy="62.5" r="4.5"></circle>
+                    <circle id="Oval-2-Copy" fill="#9AF1C3" mask="url(#mask-2)" cx="11.5" cy="62.5" r="4.5"></circle>
+                    <path d="M48,44.7320508 L55.3267092,40.5019733 L69.6967727,65.3916532 C71.0774846,67.7831163 70.2581088,70.8410684 67.8666457,72.2217802 C65.4751825,73.6024921 62.4172305,72.7831163 61.0365186,70.3916532 L60.7644601,69.920434 C60.6113307,71.6450434 59.648438,73.2704122 58.0351269,74.2018578 C55.5804064,75.6190914 52.4873092,74.9290362 50.8506092,72.6929853 C50.8029412,74.1975692 50.0016452,75.6438382 48.6021142,76.4518578 C46.7546066,77.5185168 44.4651263,77.1262186 43.0677782,75.6324354 C42.8277457,76.6773327 42.1708155,77.623518 41.1691015,78.2018578 C39.255931,79.3064273 36.8095694,78.6509267 35.7049999,76.7377562 L26.6188022,61 L24,61 L24,33 L44,33 C46.209139,33 48,34.790861 48,37 L48,44.7320508 Z" id="Combined-Shape" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                    <path d="M55.4120679,30 L65,30 C69.9705627,30 74,34.0294373 74,39 L74,44 L74,67 L70.5,67 L57,44 L52.0680883,44 L43.6433983,52.42469 C41.3158129,54.7522753 37.5420514,54.7522753 35.2144661,52.42469 C32.8868807,50.0971046 32.8868807,46.3233431 35.2144661,43.9957578 L46.8462629,32.363961 C49.1682097,30.0420141 52.4432371,29.2540271 55.4120679,30 Z" id="Combined-Shape" fill="#02D557" mask="url(#mask-2)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

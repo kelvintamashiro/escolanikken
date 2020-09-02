@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/web/comunicados_por_alunos.jsp</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/src/java/br/com/Form/AlunoForm.java</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/src/java/br/com/Dao/RelatoriosDao.java</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/web/planejamento_aulas.jsp</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/web/WEB-INF/struts-config.xml</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/src/java/br/com/Form/PlanejamentoAulasForm.java</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/src/java/br/com/Action/ComunicadosAction.java</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/src/java/br/com/Action/IDRAction.java</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/src/java/br/com/Action/IndexAction.java</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/web/relatorio.jsp</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/web/tela_interativa.jsp</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/web/planejamento_aulas_editar.jsp</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/web/comunicados.jsp</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/web/rel_geral_ativo_inativo_turma.jsp</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/src/java/br/com/Action/RelatoriosAction.java</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/web/comunicados_direcao.jsp</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/web/comunicado_lista.jsp</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/src/java/br/com/Action/PlanejamentoAulasAction.java</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/web/rel_lista_endereco.jsp</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/web/comunicado_visualizar.jsp</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/web/comunicado_visualizar_alunos.jsp</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/src/java/br/com/Form/PessoaFisicaForm.java</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/src/java/br/com/Action/AlunoAction.java</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/web/planejamento_aulas_pesquisar.jsp</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/src/java/br/com/Form/RelatoriosForm.java</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/web/comunicados_pesquisar.jsp</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/src/java/br/com/Util/VerificaSessaoUsuario.java</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/web/rel_lista_aniversario.jsp</file>
+            <file>file:/Users/macuser/Documents/SVN_NIKKEN/nikken/src/java/br/com/Form/ComunicadosForm.java</file>
+        </group>
+    </open-files>
+</project-private>

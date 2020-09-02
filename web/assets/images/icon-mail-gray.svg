@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="11px" viewBox="0 0 14 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="14" height="11" rx="2"></rect>
+    </defs>
+    <g id="@Icons/Mail-Gray" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(0.000000, -1.000000)">
+        <g id="Group" transform="translate(0.000000, 1.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Rectangle-3" fill="#75909C" xlink:href="#path-1"></use>
+            <path d="M12.7500152,-0.250003874 L1.25000149,-0.250003874 C0.414062994,-0.250003874 0,0.406246908 0,1.17187282 C0,1.88281117 0.789063441,2.76562472 1.3437516,3.14062517 C2.55469055,3.98437617 3.78125451,4.82812718 4.99219345,5.67969069 C5.50000656,6.03125361 6.35938258,6.75000447 6.99219584,6.75000447 C7.64063411,6.75000447 8.50001013,6.03125361 9.00782324,5.67969069 C10.2187622,4.82812718 11.4453261,3.98437617 12.6640776,3.14062517 C13.3515784,2.6640621 14.0000167,1.87499866 14.0000167,0.999997616 C14.0000167,0.312496796 13.4297035,-0.250003874 12.7500152,-0.250003874 Z" id="Path" fill="#CED9DA" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

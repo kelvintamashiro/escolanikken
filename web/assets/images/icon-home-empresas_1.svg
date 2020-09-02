@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="110px" height="96px" viewBox="0 0 110 96" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-empresas-home</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="96" height="96" rx="20"></rect>
+        <linearGradient x1="50%" y1="73.1146365%" x2="50%" y2="2.77555756e-15%" id="linearGradient-3">
+            <stop stop-color="#E9E9E9" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <path d="M103.5,12 L92.5,12 C90.5670034,12 89,13.5670034 89,15.5 C89,17.4329966 90.5670034,19 92.5,19 L103.5,19 C105.432997,19 107,17.4329966 107,15.5 C107,13.5670034 105.432997,12 103.5,12 Z" id="path-4"></path>
+        <filter x="-5.6%" y="-14.3%" width="122.2%" height="157.1%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="2" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 1 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+        <path d="M14.5,39 L3.5,39 C1.56700338,39 0,40.5670034 0,42.5 C0,44.4329966 1.56700338,46 3.5,46 L14.5,46 C16.4329966,46 18,44.4329966 18,42.5 C18,40.5670034 16.4329966,39 14.5,39 Z" id="path-6"></path>
+        <filter x="-11.1%" y="-14.3%" width="116.7%" height="157.1%" filterUnits="objectBoundingBox" id="filter-7">
+            <feOffset dx="-1" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 1 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="0.0-Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="D-0.0-Home" transform="translate(-235.000000, -832.000000)">
+            <g id="Section-02" transform="translate(236.000000, 726.000000)">
+                <g id="Title-of-this-column-+-Nunc-quis-massa-vita-Copy-3-+-Rectangle-15-+-Line-+-Line-3-Copy-45" transform="translate(0.000000, 106.000000)">
+                    <g id="icon-empresas-home">
+                        <g id="Group-17" transform="translate(5.000000, 0.000000)">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <use id="Mask" fill="#7EEEAB" xlink:href="#path-1"></use>
+                            <g mask="url(#mask-2)">
+                                <g transform="translate(4.000000, 29.000000)">
+                                    <polygon id="Rectangle-8-Copy-2" fill="#00AD46" points="15 30.6572438 49 12 49 67 15 67"></polygon>
+                                    <polygon id="Rectangle-8-Copy" fill="#2ADD72" points="31 30.6572438 65 12 65 67 31 67"></polygon>
+                                    <polygon id="Rectangle-8" fill="#02D557" points="0 30.6572438 34 12 34 67 0 67"></polygon>
+                                    <rect id="Rectangle-11" fill="url(#linearGradient-3)" x="69" y="0" width="6" height="26"></rect>
+                                    <rect id="Rectangle-11-Copy" fill="url(#linearGradient-3)" x="78" y="0" width="6" height="26"></rect>
+                                    <rect id="Rectangle-10" fill="#F8F8F9" x="65" y="26" width="23" height="41"></rect>
+                                    <path d="M5,40 L16,40 L16,43 L5,43 L5,40 Z M19,40 L30,40 L30,43 L19,43 L19,40 Z M5,46 L16,46 L16,49 L5,49 L5,46 Z M19,46 L30,46 L30,49 L19,49 L19,46 Z M5,52 L16,52 L16,55 L5,55 L5,52 Z M19,52 L30,52 L30,55 L19,55 L19,52 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                                    <path d="M37,40 L48,40 L48,43 L37,43 L37,40 Z M51,40 L62,40 L62,43 L51,43 L51,40 Z M37,46 L48,46 L48,49 L37,49 L37,46 Z M51,46 L62,46 L62,49 L51,49 L51,46 Z M37,52 L48,52 L48,55 L37,55 L37,52 Z M51,52 L62,52 L62,55 L51,55 L51,52 Z" id="Combined-Shape-Copy-2" fill="#FFFFFF"></path>
+                                </g>
+                            </g>
+                        </g>
+                        <path d="M37.5,10 C39.4329966,10 41,11.5670034 41,13.5 C41,15.4329966 39.4329966,17 37.5,17 L20.5,17 C18.5670034,17 17,15.4329966 17,13.5 C17,11.5670034 18.5670034,10 20.5,10 L37.5,10 Z M78,9.83333333 C79.9329966,9.83333333 81.5,11.4003367 81.5,13.3333333 C81.5,15.26633 79.9329966,16.8333333 78,16.8333333 L72.5,16.8333333 C70.5670034,16.8333333 69,15.26633 69,13.3333333 C69,11.4003367 70.5670034,9.83333333 72.5,9.83333333 L78,9.83333333 Z M71,22.8333333 C72.9329966,22.8333333 74.5,24.4003367 74.5,26.3333333 C74.5,28.26633 72.9329966,29.8333333 71,29.8333333 L58,29.8333333 C56.0670034,29.8333333 54.5,28.26633 54.5,26.3333333 C54.5,24.4003367 56.0670034,22.8333333 58,22.8333333 L71,22.8333333 Z M34,31 C35.9329966,31 37.5,32.5670034 37.5,34.5 C37.5,36.4329966 35.9329966,38 34,38 L32,38 C30.0670034,38 28.5,36.4329966 28.5,34.5 C28.5,32.5670034 30.0670034,31 32,31 L34,31 Z" id="Combined-Shape" fill="#9AF1C3" fill-rule="nonzero"></path>
+                        <g id="Line-5-Copy" fill-rule="nonzero">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+                            <use fill="#7EEEAB" fill-rule="evenodd" xlink:href="#path-4"></use>
+                        </g>
+                        <g id="Line-5-Copy-5" fill-rule="nonzero">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-7)" xlink:href="#path-6"></use>
+                            <use fill="#7EEEAB" fill-rule="evenodd" xlink:href="#path-6"></use>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>@Icons/icon-website</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="@Icons/icon-website" fill="#2ADD72">
+            <g id="Group" transform="translate(3.000000, 7.000000)">
+                <path d="M5,0 L23,0 C23.5522847,-1.01453063e-16 24,0.44771525 24,1 L24,13 L4,13 L4,1 C4,0.44771525 4.44771525,1.01453063e-16 5,0 Z" id="Rectangle"></path>
+                <path d="M4,14 L24,14 L26.9635332,18.4452998 C27.2698857,18.9048285 27.1457118,19.5256978 26.6861831,19.8320503 C26.5219156,19.941562 26.3289079,20 26.1314829,20 L1.86851709,20 C1.31623234,20 0.868517092,19.5522847 0.868517092,19 C0.868517092,18.802575 0.926955119,18.6095673 1.0364668,18.4452998 L4,14 Z M10.898811,16 L10,18 L18.0892994,18 L17.1904883,16 L10.898811,16 Z" id="Combined-Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

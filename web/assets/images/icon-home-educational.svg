@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="108px" height="96px" viewBox="0 0 108 96" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-home-educational</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M99.5,76.5 L88.5,76.5" id="path-1"></path>
+        <filter x="-37.5%" y="-64.3%" width="183.3%" height="257.1%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="3.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="1" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feMorphology radius="3.5" operator="erode" in="SourceAlpha" result="shadowInner"></feMorphology>
+            <feOffset dx="1" dy="2" in="shadowInner" result="shadowInner"></feOffset>
+            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 1 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+        <path d="M11.5,24.5 L0.5,24.5" id="path-3"></path>
+        <filter x="-45.8%" y="-64.3%" width="183.3%" height="257.1%" filterUnits="objectBoundingBox" id="filter-4">
+            <feMorphology radius="3.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="-1" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feMorphology radius="3.5" operator="erode" in="SourceAlpha" result="shadowInner"></feMorphology>
+            <feOffset dx="-1" dy="2" in="shadowInner" result="shadowInner"></feOffset>
+            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 1 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="50%" y1="-2.77555756e-15%" x2="50%" y2="73.1146365%" id="linearGradient-5">
+            <stop stop-color="#E9E9E9" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="0.0-Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="D-0.0-Home" transform="translate(-954.000000, -832.000000)">
+            <g id="Section-02" transform="translate(236.000000, 726.000000)">
+                <g id="Title-of-this-column-+-Nunc-quis-massa-vita-Copy-2-+-Rectangle-15-+-Line-+-Line-3-Copy-47" transform="translate(722.000000, 106.000000)">
+                    <g id="icon-home-educational">
+                        <rect id="Rectangle-3" fill="#7EEEAB" x="2" y="0" width="96" height="96" rx="20"></rect>
+                        <g id="Line-5-Copy" stroke-linecap="round">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                            <use stroke="#7EEEAB" stroke-width="7" xlink:href="#path-1"></use>
+                        </g>
+                        <g id="Line-5-Copy-5" stroke-linecap="round">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                            <use stroke="#7EEEAB" stroke-width="7" xlink:href="#path-3"></use>
+                        </g>
+                        <path d="M86,17.3333333 L73,17.3333333" id="Line-5-Copy-3" stroke="#9AF1C3" stroke-width="7" stroke-linecap="round"></path>
+                        <path d="M32,12.3333333 L26.5,12.3333333" id="Line-5-Copy-2" stroke="#9AF1C3" stroke-width="7" stroke-linecap="round"></path>
+                        <path d="M65.5,29.5 L58,29.5" id="Line-5-Copy-4" stroke="#9AF1C3" stroke-width="7" stroke-linecap="round"></path>
+                        <g id="Group-18" transform="translate(13.000000, 9.000000)">
+                            <path d="M63.5894429,57.1393202 C63.4041581,57.4421206 63.1477894,57.6961038 62.842145,57.8796646 L38.1957943,72.6815232 C37.4887396,73.1061589 36.6020247,73.1061589 35.89497,72.6815232 L11.2486193,57.8796646 C10.6606528,57.5265496 10.2972363,56.9460364 10.2036441,56.3210741 L10,56.3210741 L10,38 L64,38 L64,56.3210741 C63.8457762,56.6026079 63.7476973,56.8806942 63.5894429,57.1393202 Z" id="Combined-Shape" fill="#00AD46"></path>
+                            <path d="M22.4003312,20.0099838 L59.1881708,11.1578538 L59.1881708,11.1578538 C60.7990455,10.7702346 62.4191449,11.7618791 62.8067641,13.3727538 C62.9198202,13.8425944 62.9177011,14.3327931 62.800587,14.8016387 L53.8083918,50.8003078 L53.8083918,50.8003078 C53.5375284,51.8846618 52.6863242,52.7285381 51.5996688,52.9900162 L14.8118292,61.8421462 L14.8118292,61.8421462 C13.2009545,62.2297654 11.5808551,61.2381209 11.1932359,59.6272462 C11.0801798,59.1574056 11.0822989,58.6672069 11.199413,58.1983613 L20.1916082,22.1996922 L20.1916082,22.1996922 C20.4624716,21.1153382 21.3136758,20.2714619 22.4003312,20.0099838 Z" id="Rectangle-12" fill="#02D557" transform="translate(37.000000, 36.500000) rotate(-315.000000) translate(-37.000000, -36.500000) "></path>
+                            <rect id="Rectangle-14" fill="#00AD46" x="33" y="32" width="9" height="8" rx="4"></rect>
+                            <path d="M38,71 L20.3731593,60.1164038 L20.3731593,60.1164038 C18.8980422,59.2056008 18,57.5956758 18,55.8620286 L18,36" id="Combined-Shape" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" transform="translate(28.000000, 53.500000) scale(1, -1) translate(-28.000000, -53.500000) "></path>
+                            <rect id="Rectangle-13" fill="url(#linearGradient-5)" x="14" y="70" width="8" height="10" rx="4"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

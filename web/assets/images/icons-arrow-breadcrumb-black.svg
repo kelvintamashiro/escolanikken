@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="6px" height="9px" viewBox="0 0 6 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>icons-arrow-breadcrumb-black</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Breadcrumbs-(simple)" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-46.000000, -16.000000)">
+        <path d="M50.8006544,19.8341804 L47.5210963,16.1591305 C47.4298305,16.0568323 47.3030725,16 47.1763145,16 C47.0495565,16 46.9227984,16.0568323 46.8315327,16.1591305 L46.141969,16.9320501 C46.0507032,17.0343483 46,17.1764291 46,17.31851 C46,17.4605908 46.0507032,17.6026716 46.141969,17.7049698 L48.6365669,20.5 L46.141969,23.2950302 C46.0507032,23.3973284 46,23.5394092 46,23.68149 C46,23.8235709 46.0507032,23.9656517 46.141969,24.0679499 L46.8315327,24.8408695 C46.9227984,24.9431677 47.0495565,25 47.1763145,25 C47.3030725,25 47.4298305,24.9431677 47.5210963,24.8408695 L50.8006544,21.1658196 C51.1391707,20.7864806 51.1391707,20.2135194 50.8006544,19.8341804 Z" id="icons-arrow-breadcrumb-black" fill="#253238"></path>
+    </g>
+</svg>

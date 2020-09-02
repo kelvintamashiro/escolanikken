@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="-2.77555756e-15%" x2="50%" y2="73.1146365%" id="linearGradient-1">
+            <stop stop-color="#E9E9E9" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="7.0-Cadastro---Candidato" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-564.000000, -440.000000)">
+        <g id="Group-2" transform="translate(540.000000, 424.000000)">
+            <g id="Group" transform="translate(24.000000, 16.000000)">
+                <circle id="Oval-Copy" fill="#7EEEAB" cx="24" cy="24" r="24"></circle>
+                <g id="Group-18" transform="translate(4.500000, 1.500000)">
+                    <path d="M32.7947215,29.0723944 C32.702079,29.2238378 32.5738947,29.3508657 32.4210725,29.4426723 L20.0978971,36.8457162 C19.7443698,37.0580948 19.3010123,37.0580948 18.947485,36.8457162 L6.62430963,29.4426723 C6.33032638,29.2660643 6.14861815,28.9757248 6.10182206,28.6631544 L6,28.6631544 L6,19.5 L33,19.5 L33,28.6631544 C32.9228881,28.8039615 32.8738487,28.9430444 32.7947215,29.0723944 Z" id="Combined-Shape" fill="#00AD46"></path>
+                    <path d="M11.6078645,10.7919551 L32.2705255,5.81997076 C32.8074838,5.69076437 33.3475169,6.02131255 33.4767233,6.55827079 C33.5144087,6.71488432 33.5137023,6.8782839 33.4746643,7.03456575 L28.4178543,27.2786135 C28.3275665,27.6400649 28.0438318,27.921357 27.6816133,28.0085164 L7.01895224,32.9805007 C6.481994,33.1097071 5.94196086,32.7791589 5.81275447,32.2422007 C5.7750691,32.0855871 5.77577548,31.9221876 5.8148135,31.7659057 L10.8716235,11.5218579 C10.9619113,11.1604066 11.245646,10.8791145 11.6078645,10.7919551 Z" id="Rectangle-12" fill="#02D557" transform="translate(19.644739, 19.400236) rotate(-315.000000) translate(-19.644739, -19.400236) "></path>
+                    <rect id="Rectangle-14" fill="#00AD46" x="18" y="18" width="4.5" height="4.5" rx="2.25"></rect>
+                    <path d="M20.25,37.9459459 L12.3457938,33.61128 C10.7450424,32.7334281 9.75,31.0529001 9.75,29.2272416 L9.75,20.25" id="Combined-Shape" stroke="#FFFFFF" stroke-linecap="round" transform="translate(15.000000, 29.097973) scale(1, -1) translate(-15.000000, -29.097973) "></path>
+                    <rect id="Rectangle-13" fill="url(#linearGradient-1)" x="7.5" y="36" width="4.5" height="4.5" rx="2.25"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

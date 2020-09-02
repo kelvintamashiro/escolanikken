@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48 (47235) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-right-field</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="40" cy="40" r="40"></circle>
+        <linearGradient x1="50%" y1="2.77555756e-15%" x2="50%" y2="73.1146365%" id="linearGradient-3">
+            <stop stop-color="#E9E9E9" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="86.5573182%" y1="36.5573182%" x2="13.4426818%" y2="36.5573182%" id="linearGradient-4">
+            <stop stop-color="#E9E9E9" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <path d="M10.9972152,22 L19.7561856,22 C20.7749376,22 21.6308912,22.7657656 21.7438527,23.7782355 L23.7521172,41.7782355 C23.8745943,42.8759937 23.0839728,43.8651899 21.9862146,43.9876671 C21.9125786,43.9958827 21.838543,44 21.7644501,44 L8.3195292,44 C7.2149597,44 6.3195292,43.1045695 6.3195292,42 C6.3195292,41.9015037 6.32680533,41.8031419 6.34129819,41.7057177 L9.01898414,23.7057177 C9.16478819,22.7255905 10.0063024,22 10.9972152,22 Z" id="path-5"></path>
+        <filter x="-5.7%" y="-4.5%" width="122.9%" height="109.1%" filterUnits="objectBoundingBox" id="filter-6">
+            <feOffset dx="2" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 0.31372549   0 0 0 0 0.898039216   0 0 0 0 0.549019608  0 0 0 1 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="D-1.1.1-Estagio-Internacional-candidato" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-240.000000, -2399.000000)">
+        <g id="Features" transform="translate(240.000000, 1897.000000)">
+            <g id="Itens" transform="translate(0.000000, 502.000000)">
+                <g id="01">
+                    <g id="icon-right-field">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Oval-32-Copy" fill="#7EEEAB" xlink:href="#path-1"></use>
+                        <g id="Group-9" mask="url(#mask-2)">
+                            <g transform="translate(-6.000000, -5.000000)">
+                                <path d="M41,52 L62,52 C68.0751322,52 73,56.9248678 73,63 L73,85 L30,85 L30,63 C30,56.9248678 34.9248678,52 41,52 Z" id="Rectangle" fill="#2ADD72" fill-rule="evenodd"></path>
+                                <polyline id="Combined-Shape" fill="url(#linearGradient-3)" fill-rule="evenodd" points="47 49 47 52.625 47.6428571 53.25 51.5 57 55.3571429 53.25 56 52.625 56 49"></polyline>
+                                <polygon id="Rectangle-17" fill="none" transform="translate(51.598718, 71.250000) rotate(-315.000000) translate(-51.598718, -71.250000) " points="59.8374184 81.7496289 40.5315897 66.7503711 40.5315897 60.7503711 46.5315897 60.7503711 62.6658455 78.9212018"></polygon>
+                                <path d="M38,33 L39,33 L39,39 L38,39 C36.3431458,39 35,37.6568542 35,36 L35,36 C35,34.3431458 36.3431458,33 38,33 Z" id="Rectangle-5" fill="url(#linearGradient-4)" fill-rule="evenodd"></path>
+                                <path d="M68,33 L69,33 L69,39 L68,39 C66.3431458,39 65,37.6568542 65,36 L65,36 C65,34.3431458 66.3431458,33 68,33 Z" id="Rectangle-5-Copy" fill="url(#linearGradient-4)" fill-rule="evenodd" transform="translate(67.000000, 36.000000) scale(-1, 1) translate(-67.000000, -36.000000) "></path>
+                                <path d="M66,28 L66,35.3658537 C66,43.4480695 59.7319865,50 52,50 C44.2680135,50 38,43.4480695 38,35.3658537 L38,28" id="Rectangle-4" fill="#FFFFFF" fill-rule="evenodd"></path>
+                                <path d="M37.0410738,27 C37.5492247,20.8404695 42.7093362,16 49,16 L55,16 C61.2906638,16 66.4507753,20.8404695 66.9589262,27 L67,27 L67,31 C67,32.1045695 66.1045695,33 65,33 C63.8954305,33 63,32.1045695 63,31 L63,28.6933333 C59.3333333,29.2311111 55.6666667,29.5 52,29.5 C48.3333333,29.5 44.6666667,29.2311111 41,28.6933333 L41,31 C41,32.1045695 40.1045695,33 39,33 C37.8954305,33 37,32.1045695 37,31 L37,27 L37.0410738,27 Z" id="Combined-Shape" fill="#2ADD72" fill-rule="evenodd"></path>
+                            </g>
+                        </g>
+                        <g id="note" mask="url(#mask-2)">
+                            <g transform="translate(0.000000, 36.000000)">
+                                <path d="M0,0 L43.1541722,-2.54245116e-15 C44.4914503,7.75119511e-16 44.9763797,0.139238417 45.4652686,0.400699056 C45.9541574,0.662159695 46.3378403,1.04584256 46.5993009,1.53473144 C46.8607616,2.02362033 47,2.50854969 47,3.8458278 L47,35.1541722 C47,36.4914503 46.8607616,36.9763797 46.5993009,37.4652686 C46.3378403,37.9541574 45.9541574,38.3378403 45.4652686,38.5993009 C44.9763797,38.8607616 44.4914503,39 43.1541722,39 L0,39 L0,0 Z" id="Rectangle-28" fill="#00AD46" fill-rule="evenodd"></path>
+                                <g id="Rectangle-28-Copy" fill="none">
+                                    <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+                                    <use fill="#02D557" fill-rule="evenodd" xlink:href="#path-5"></use>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

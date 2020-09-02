@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="80" height="80" rx="40"></rect>
+        <circle id="path-3" cx="45.5" cy="28.5" r="4.5"></circle>
+        <circle id="path-4" cx="28.5" cy="44.5" r="4.5"></circle>
+        <circle id="path-5" cx="57.5" cy="57.5" r="4.5"></circle>
+    </defs>
+    <g id="8.0-Sobre-ABRE" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-241.000000, -1320.000000)">
+        <g id="Section-02" transform="translate(239.000000, 1214.000000)">
+            <g id="Title-of-this-column-+-Nunc-quis-massa-vita-Copy-3-+-Rectangle-15-+-Line-+-Line-3-Copy-45" transform="translate(1.000000, 106.000000)">
+                <g id="Group-3" transform="translate(1.000000, 0.000000)">
+                    <g id="Group-17">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" fill="#7EEEAB" xlink:href="#path-1"></use>
+                        <circle id="Oval-2" stroke="#2ADD72" stroke-width="3" mask="url(#mask-2)" cx="40" cy="40" r="25.5"></circle>
+                        <circle id="Oval-2" stroke="#2ADD72" stroke-width="3" mask="url(#mask-2)" cx="40" cy="40" r="25.5"></circle>
+                        <circle id="Oval-2" stroke="#02D557" stroke-width="3" mask="url(#mask-2)" cx="40" cy="40" r="13.5"></circle>
+                        <g id="Oval" mask="url(#mask-2)">
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                            <circle stroke="#7EEEAB" stroke-width="3" cx="45.5" cy="28.5" r="6"></circle>
+                        </g>
+                        <g id="Oval-Copy" mask="url(#mask-2)">
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-4"></use>
+                            <circle stroke="#7EEEAB" stroke-width="3" cx="28.5" cy="44.5" r="6"></circle>
+                        </g>
+                        <g id="Oval-Copy-2" mask="url(#mask-2)">
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-5"></use>
+                            <circle stroke="#7EEEAB" stroke-width="3" cx="57.5" cy="57.5" r="6"></circle>
+                        </g>
+                        <circle id="Oval-Copy-3" fill="#00AD46" mask="url(#mask-2)" cx="40" cy="40" r="4"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-services-curriculum</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M36,57.802499 L36,6.39488462e-14 L4.26916562,0 C1.53822971,5.4103782 -7.10542736e-15,11.5255527 -7.10542736e-15,18 C-7.10542736e-15,38.7413924 15.7867092,55.7956013 36,57.802499 Z" id="path-1"></path>
+    </defs>
+    <g id="0.0-Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="D-0.0-Home" transform="translate(-361.000000, -1376.000000)">
+            <g id="Section-03" transform="translate(240.000000, 1230.000000)">
+                <g id="Empresas" transform="translate(1.000000, 96.000000)">
+                    <g id="Visualisacao-de-curriculo" transform="translate(120.000000, 50.000000)">
+                        <g id="icon-services-curriculum">
+                            <circle id="Oval-32-Copy" fill="#7EEEAB" cx="40" cy="40" r="40"></circle>
+                            <polygon id="Rectangle-18" fill="#02D557" transform="translate(37.500000, 53.500000) scale(-1, 1) translate(-37.500000, -53.500000) " points="36 80 36 79 36 27 39 27 39 80"></polygon>
+                            <polygon id="Rectangle-18-Copy" fill="#00AD46" transform="translate(40.500000, 56.000000) scale(-1, 1) translate(-40.500000, -56.000000) " points="39 79 39 32 42 32 42 80 39 80"></polygon>
+                            <g id="Line-2-+-Line-2-Copy-+-Line-2-Copy-2-+-Line-2-Copy-3-+-Line-2-Copy-4-+-Line-2-Copy-5-Mask" transform="translate(0.000000, 22.000000)">
+                                <mask id="mask-2" fill="white">
+                                    <use xlink:href="#path-1"></use>
+                                </mask>
+                                <use id="Mask" fill="#2ADD72" xlink:href="#path-1"></use>
+                                <path d="M0,11 L0,9 L27,9 L27,11 L0,11 Z M0,19 L0,17 L27,17 L27,19 L0,19 Z M0,27 L0,25 L27,25 L27,27 L0,27 Z M2,35 L2,33 L27,33 L27,35 L2,35 Z M7,43 L7,41 L27,41 L27,43 L7,43 Z M14.5,51 L14.5,49 L27,49 L27,51 L14.5,51 Z" id="Combined-Shape" fill="#7EEEAB" fill-rule="nonzero" mask="url(#mask-2)"></path>
+                            </g>
+                            <path d="M64.9773772,44.9167877 L68.5273458,48.4667563 C69.2260674,49.1654779 69.2260674,50.2983295 68.5273458,50.9970511 C67.8286242,51.6957727 66.6957727,51.6957727 65.9970511,50.9970511 L62.3666683,47.3666683 C60.6998722,48.4682229 58.7022141,49.1095377 56.5547688,49.1095377 C50.725531,49.1095377 46,44.3840067 46,38.5547688 C46,32.725531 50.725531,28 56.5547688,28 C62.3840067,28 67.1095377,32.725531 67.1095377,38.5547688 C67.1095377,40.9439799 66.315692,43.1477783 64.9773772,44.9167877 Z M56.5547688,46.2428635 C60.8007863,46.2428635 64.2428635,42.8007863 64.2428635,38.5547688 C64.2428635,34.3087514 60.8007863,30.8666741 56.5547688,30.8666741 C52.3087514,30.8666741 48.8666741,34.3087514 48.8666741,38.5547688 C48.8666741,42.8007863 52.3087514,46.2428635 56.5547688,46.2428635 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

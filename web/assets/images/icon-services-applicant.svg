@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-services-applicant</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M73.8682362,61.2922868 C73.0477366,56.0281405 68.4942796,52 63,52 L42,52 C35.9248678,52 31,56.9248678 31,63 L31,78.9834359 C33.8927641,79.648568 36.9053414,80 40,80 C48.1466892,80 55.72455,77.5645563 62.0452268,73.3820247 C68.3659035,69.1994932 70.8400219,66.0989505 73.8682362,61.2922868 Z" id="path-1"></path>
+        <linearGradient x1="50%" y1="2.77555756e-15%" x2="50%" y2="73.1146365%" id="linearGradient-2">
+            <stop stop-color="#E9E9E9" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="86.5573182%" y1="36.5573182%" x2="13.4426818%" y2="36.5573182%" id="linearGradient-3">
+            <stop stop-color="#E9E9E9" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="0.0-Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="D-0.0-Home" transform="translate(-601.000000, -1376.000000)">
+            <g id="Section-03" transform="translate(240.000000, 1230.000000)">
+                <g id="Candidatos" transform="translate(360.000000, 96.000000)">
+                    <g id="Certificado-de-estagio" transform="translate(0.000000, 50.000000)">
+                        <g id="icon-services-applicant" transform="translate(1.000000, 0.000000)">
+                            <circle id="Oval-32-Copy" fill="#7EEEAB" cx="40" cy="40" r="40"></circle>
+                            <g id="Combined-Shape">
+                                <use fill="#2ADD72" fill-rule="evenodd" xlink:href="#path-1"></use>
+                                <path stroke="#2ADD72" stroke-width="2" d="M72.8167866,61.0835746 C71.9156656,56.432742 67.8200733,53 63,53 L42,53 C36.4771525,53 32,57.4771525 32,63 L32,78.1789204 C34.6107412,78.7231354 37.2870347,79 40,79 C47.7534134,79 55.1673589,76.7341473 61.4933846,72.5480762 C66.9878374,68.9122752 69.513954,66.2728408 72.8167866,61.0835746 Z"></path>
+                            </g>
+                            <polyline id="Combined-Shape" fill="url(#linearGradient-2)" points="48 49 48 52.625 48.6428571 53.25 52.5 57 56.3571429 53.25 57 52.625 57 49"></polyline>
+                            <polygon id="Rectangle-17" fill="#7EEEAB" transform="translate(52.264553, 67.915836) rotate(-315.000000) translate(-52.264553, -67.915836) " points="58.8545134 76.2941443 43.7913255 65.5375271 43.7913255 59.5375271 49.7913255 59.5375271 60.7377812 72.5205578"></polygon>
+                            <path d="M39,33 L40,33 L40,39 L39,39 L39,39 C37.3431458,39 36,37.6568542 36,36 L36,36 L36,36 C36,34.3431458 37.3431458,33 39,33 Z" id="Rectangle-5" fill="url(#linearGradient-3)"></path>
+                            <path d="M69,33 L70,33 L70,39 L69,39 L69,39 C67.3431458,39 66,37.6568542 66,36 L66,36 L66,36 C66,34.3431458 67.3431458,33 69,33 Z" id="Rectangle-5-Copy" fill="url(#linearGradient-3)" transform="translate(68.000000, 36.000000) scale(-1, 1) translate(-68.000000, -36.000000) "></path>
+                            <path d="M67,28 L67,35.3658537 C67,43.4480695 60.7319865,50 53,50 C45.2680135,50 39,43.4480695 39,35.3658537 L39,28" id="Rectangle-4" fill="#FFFFFF"></path>
+                            <circle id="Oval-3" fill="#02D557" cx="19" cy="39" r="13"></circle>
+                            <path d="M38.0410738,27 C38.5492247,20.8404695 43.7093362,16 50,16 L50,16 L56,16 L56,16 C62.2906638,16 67.4507753,20.8404695 67.9589262,27 L68,27 L68,31 C68,32.1045695 67.1045695,33 66,33 C64.8954305,33 64,32.1045695 64,31 L64,28.6933333 C60.3333333,29.2311111 56.6666667,29.5 53,29.5 C49.3333333,29.5 45.6666667,29.2311111 42,28.6933333 L42,31 L42,31 C42,32.1045695 41.1045695,33 40,33 L40,33 C38.8954305,33 38,32.1045695 38,31 L38,27 L38.0410738,27 Z" id="Combined-Shape" fill="#2ADD72"></path>
+                            <polyline id="Path-3" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="13 39.6950949 16.1824528 42.8775477 24.0600004 35"></polyline>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

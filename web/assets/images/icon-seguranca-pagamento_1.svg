@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-seguranca-pagamento</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M36,57.802499 C15.7867092,55.7956013 -7.10542736e-15,38.7413924 -7.10542736e-15,18 C-7.10542736e-15,11.5255527 1.53822971,5.4103782 4.26916562,-3.15303339e-14 L36,0 L36,57.802499 Z" id="path-1"></path>
+    </defs>
+    <g id="2.1-Plataforma" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-960.000000, -712.000000)">
+        <g id="Section-02-Copy-2" transform="translate(960.000000, 712.000000)">
+            <g id="icon-seguranca-pagamento">
+                <circle id="Oval-32-Copy" fill="#7EEEAB" cx="40" cy="40" r="40"></circle>
+                <polygon id="Rectangle-18" fill="#02D557" transform="translate(37.500000, 53.500000) scale(-1, 1) translate(-37.500000, -53.500000) " points="36 80 36 79 36 27 39 27 39 80"></polygon>
+                <polygon id="Rectangle-18-Copy" fill="#00AD46" transform="translate(40.500000, 56.000000) scale(-1, 1) translate(-40.500000, -56.000000) " points="39 79 39 32 42 32 42 80 39 80"></polygon>
+                <g id="Line-2-+-Line-2-Copy-+-Line-2-Copy-2-+-Line-2-Copy-3-+-Line-2-Copy-4-+-Line-2-Copy-5-Mask" transform="translate(0.000000, 22.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" fill="#2ADD72" xlink:href="#path-1"></use>
+                    <polygon id="Line-2-Copy-2" fill="#7EEEAB" fill-rule="nonzero" mask="url(#mask-2)" points="1 31 1 29 27 29 27 31"></polygon>
+                    <polygon id="Line-2-Copy-3" fill="#7EEEAB" fill-rule="nonzero" mask="url(#mask-2)" points="4 39 4 37 27 37 27 39"></polygon>
+                    <polygon id="Line-2-Copy-4" fill="#7EEEAB" fill-rule="nonzero" mask="url(#mask-2)" points="10 47 10 45 27 45 27 47"></polygon>
+                    <polygon id="Line-2-Copy-5" fill="#7EEEAB" fill-rule="nonzero" mask="url(#mask-2)" points="20 55 20 53 27 53 27 55"></polygon>
+                </g>
+                <path d="M22,31 L27,31 C27.8284271,31 28.5,31.6715729 28.5,32.5 C28.5,33.3284271 27.8284271,34 27,34 L22,34 L22,37 L24.6052632,37 C26.8399692,37 28.5,39.079599 28.5,41.5 C28.5,43.920401 26.8399692,46 24.6052632,46 L22,46 L22,46.5 C22,47.3284271 21.3284271,48 20.5,48 C19.6715729,48 19,47.3284271 19,46.5 L19,46 L14,46 C13.1715729,46 12.5,45.3284271 12.5,44.5 C12.5,43.6715729 13.1715729,43 14,43 L19,43 L19,40 L16.3947368,40 C14.1600308,40 12.5,37.920401 12.5,35.5 C12.5,33.079599 14.1600308,31 16.3947368,31 L19,31 L19,30.5 C19,29.6715729 19.6715729,29 20.5,29 C21.3284271,29 22,29.6715729 22,30.5 L22,31 Z M22,40 L22,43 L24.6052632,43 C25.0157104,43 25.5,42.3933075 25.5,41.5 C25.5,40.6066925 25.0157104,40 24.6052632,40 L22,40 Z M19,37 L19,34 L16.3947368,34 C15.9842896,34 15.5,34.6066925 15.5,35.5 C15.5,36.3933075 15.9842896,37 16.3947368,37 L19,37 Z" id="Combined-Shape" fill="#7EEEAB"></path>
+                <path d="M46.9497307,30.0698663 C46.9174909,30.5770735 46.9011253,31.0885945 46.9011253,31.6039379 C46.9011253,40.9984479 52.3397189,49.1227063 60.2401929,53 C68.1406669,49.1227063 73.5792605,40.9984479 73.5792605,31.6039379 C73.5792605,31.1258182 73.5651737,30.6509887 73.5373926,30.1798417 C68.4213259,29.3640263 63.7563112,27.1759215 59.9225961,24 C56.2498269,27.0425908 51.814092,29.1785644 46.9497307,30.0698663 Z" id="Combined-Shape" fill="#00AD46"></path>
+                <path d="M63.9993402,32.9393398 C64.5851267,32.3535534 65.5348742,32.3535534 66.1206606,32.9393398 C66.706447,33.5251263 66.706447,34.4748737 66.1206606,35.0606602 L58.9553686,42.2259522 C58.3695821,42.8117386 57.4198347,42.8117386 56.8340482,42.2259522 L53.9393398,39.3312438 C53.3535534,38.7454574 53.3535534,37.7957099 53.9393398,37.2099235 C54.5251263,36.624137 55.4748737,36.624137 56.0606602,37.2099235 L57.8947084,39.0439717 L63.9993402,32.9393398 Z" id="Path-3" fill="#FFFFFF" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

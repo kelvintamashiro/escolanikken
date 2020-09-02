@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Export to excel using sheetjs</title>
+        <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    </head>
+
+    <body>
+        <table id="exportable_table">
+            <tbody>
+                <tr>
+                    <td>Row 1 - Column 1</td>
+                    <td>Row 1 - Column 2</td>
+                    <td>Row 1 - Column 3</td>
+                </tr>
+                <tr>
+                    <td>Row 2 - Column 1</td>
+                    <td>Row 2 - Column 2</td>
+                    <td>Row 2 - Column 3</td>
+                </tr>
+                <tr>
+                    <td>Row 3 - Column 1</td>
+                    <td>Row 3 - Column 2</td>
+                    <td>Row 3 - Column 3</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button onclick="ExportExcel('xlsx')">Export table to excel</button>
+
+        <script type="text/javascript">
+            function ExportExcel(type, fn, dl) {
+                var elt = document.getElementById('exportable_table');
+                var wb = XLSX.utils.table_to_book(elt, {sheet: "Sheet JS"});
+                return dl ?
+                        XLSX.write(wb, {bookType: type, bookSST: true, type: 'base64'}) :
+                        XLSX.writeFile(wb, fn || ('SheetJSTableExport.' + (type || 'xlsx')));
+            }
+        </script>
+    </body>
+</html>

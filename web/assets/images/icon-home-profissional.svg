@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="107px" height="96px" viewBox="0 0 107 96" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-home-educational</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="96" height="96" rx="20"></rect>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="73.1146365%" id="linearGradient-3">
+            <stop stop-color="#E9E9E9" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="13.4426818%" y1="36.5573182%" x2="86.5573182%" y2="36.5573182%" id="linearGradient-4">
+            <stop stop-color="#E9E9E9" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="86.5573182%" y1="36.5573182%" x2="13.4426818%" y2="36.5573182%" id="linearGradient-5">
+            <stop stop-color="#E9E9E9" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <path d="M102.5,62 L91.5,62 C89.5670034,62 88,63.5670034 88,65.5 C88,67.4329966 89.5670034,69 91.5,69 L102.5,69 C104.432997,69 106,67.4329966 106,65.5 C106,63.5670034 104.432997,62 102.5,62 Z" id="path-6"></path>
+        <filter x="-11.1%" y="-14.3%" width="116.7%" height="157.1%" filterUnits="objectBoundingBox" id="filter-7">
+            <feOffset dx="-1" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 1 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+        <path d="M14.5,34 L3.5,34 C1.56700338,34 0,35.5670034 0,37.5 C0,39.4329966 1.56700338,41 3.5,41 L14.5,41 C16.4329966,41 18,39.4329966 18,37.5 C18,35.5670034 16.4329966,34 14.5,34 Z" id="path-8"></path>
+        <filter x="-11.1%" y="-14.3%" width="116.7%" height="157.1%" filterUnits="objectBoundingBox" id="filter-9">
+            <feOffset dx="-1" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 1 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="12.0-Servicos" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-235.000000, -2112.000000)">
+        <g id="Group-29-Copy" transform="translate(236.000000, 2112.000000)">
+            <g id="icon-home-educational">
+                <g id="icon-home-applicant">
+                    <g id="Oval-2-+-Line-4-Mask" transform="translate(5.000000, 0.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" fill="#7EEEAB" xlink:href="#path-1"></use>
+                    </g>
+                    <path d="M50.5,55.5 L33.5,55.5" id="Line-5" stroke="#9AF1C3" stroke-width="7" stroke-linecap="round"></path>
+                    <g id="Group-13" transform="translate(54.500000, 59.500000) scale(-1, 1) translate(-54.500000, -59.500000) translate(26.000000, 23.000000)">
+                        <path d="M57,73 C57,63.6111593 44.2401154,56 28.5,56 C12.7598846,56 0,63.6111593 0,73" id="Oval-2" fill="#00AD46"></path>
+                        <polygon id="Line-4" fill="#02D557" fill-rule="nonzero" points="26.5 62 24 73 32.5 73 30 62"></polygon>
+                        <polygon id="Rectangle-7" fill="#02D557" transform="translate(35.000000, 59.500000) rotate(-45.000000) translate(-35.000000, -59.500000) " points="30 56 38.4254039 56 40 59.3520076 30 63"></polygon>
+                        <polygon id="Rectangle-7-Copy" fill="#02D557" transform="translate(21.000000, 59.500000) scale(-1, 1) rotate(-45.000000) translate(-21.000000, -59.500000) " points="16 56 24.4254039 56 26 59.3520076 16 63"></polygon>
+                        <polyline id="Combined-Shape" fill="url(#linearGradient-3)" points="22 49 22 56.875 22.9285714 57.75 28.5 63 34.0714286 57.75 35 56.875 35 49"></polyline>
+                        <path d="M50,15 L50,29.9268293 C50,41.5652201 40.5979797,51 29,51 C17.4020203,51 8,41.5652201 8,29.9268293 L8,15" id="Rectangle-4" fill="#FFFFFF"></path>
+                        <path d="M25.5,32 L30,32 L30,37 L25.5,37 C24.1192881,37 23,35.8807119 23,34.5 L23,34.5 C23,33.1192881 24.1192881,32 25.5,32 Z" id="Rectangle-5" fill="url(#linearGradient-4)"></path>
+                        <path d="M54,23 L54,32 L54,32 C51.790861,32 50,30.209139 50,28 L50,27 C50,24.790861 51.790861,23 54,23 Z" id="Rectangle-5-Copy" fill="url(#linearGradient-5)" transform="translate(52.000000, 27.500000) scale(-1, 1) translate(-52.000000, -27.500000) "></path>
+                        <path d="M8,23 L8,32 L8,32 C5.790861,32 4,30.209139 4,28 L4,27 C4,24.790861 5.790861,23 8,23 Z" id="Rectangle-5" fill="url(#linearGradient-5)"></path>
+                        <path d="M26.4392461,0.146341463 L31.5243902,0.146341463 C37.5860521,0.146341463 42.5,5.06028933 42.5,11.1219512 C42.5,17.1836131 37.5860521,22.097561 31.5243902,22.097561 L26.4392461,22.097561 C20.3775842,22.097561 15.4636364,17.1836131 15.4636364,11.1219512 C15.4636364,5.06028933 20.3775842,0.146341463 26.4392461,0.146341463 Z M46.9636364,15.1463415 L52.2,15.1463415 L52.2,24.3081594 C52.2,25.7541413 51.0278001,26.9263412 49.5818182,26.9263412 C48.1358363,26.9263412 46.9636364,25.7541413 46.9636364,24.3081594 L46.9636364,15.1463415 Z M5.96363636,15.1463415 L11.2,15.1463415 L11.2,24.3081594 C11.2,25.7541413 10.0278001,26.9263412 8.58181818,26.9263412 C7.13583629,26.9263412 5.96363636,25.7541413 5.96363636,24.3081594 L5.96363636,15.1463415 Z" id="Combined-Shape" fill="#00AD46"></path>
+                    </g>
+                    <g id="Line-5-Copy" fill-rule="nonzero">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-7)" xlink:href="#path-6"></use>
+                        <use fill="#7EEEAB" fill-rule="evenodd" xlink:href="#path-6"></use>
+                    </g>
+                    <g id="Line-5-Copy-5" fill-rule="nonzero">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-9)" xlink:href="#path-8"></use>
+                        <use fill="#7EEEAB" fill-rule="evenodd" xlink:href="#path-8"></use>
+                    </g>
+                    <path d="M28,16.3333333 L22.5,16.3333333" id="Line-5-Copy-2" stroke="#9AF1C3" stroke-width="7" stroke-linecap="round"></path>
+                    <path d="M94.5,32.3333333 L88,32.3333333" id="Line-5-Copy-3" stroke="#9AF1C3" stroke-width="7" stroke-linecap="round"></path>
+                    <path d="M31,70.5 L22,70.5" id="Line-5-Copy-4" stroke="#9AF1C3" stroke-width="7" stroke-linecap="round"></path>
+                </g>
+                <g id="Group-37" transform="translate(25.000000, 13.000000)">
+                    <path d="M6.11864407,23 L51.8983051,23 L56.9122554,27.2361299 C57.3341292,27.5925579 57.3871836,28.2234962 57.0307556,28.64537 C56.8407505,28.8702629 56.5612979,29 56.2668854,29 L1.73809833,29 C1.18581358,29 0.738098334,28.5522847 0.738098334,28 C0.738098334,27.7051767 0.868196184,27.4253775 1.09362628,27.2353721 L6.11864407,23 Z" id="Rectangle-20" fill="#02D557"></path>
+                    <rect id="Rectangle-23" fill="#50E58C" x="1" y="28" width="56" height="1"></rect>
+                    <path d="M25,2 L33,2 C43.4934102,2 52,10.5065898 52,21 L52,23 L6,23 L6,21 C6,10.5065898 14.5065898,2 25,2 Z" id="Rectangle-21" fill="#2ADD72"></path>
+                    <path d="M29,2 C39.4934102,2 48,10.5065898 48,21 L48,22 L29,22 L29,2 Z" id="Rectangle-21" fill="#02D557"></path>
+                    <polygon id="Rectangle-22-Copy" fill="#02D557" points="19.5 3 24 2 24 19"></polygon>
+                    <path d="M27,0 L31,0 C32.6568542,-3.04359188e-16 34,1.34314575 34,3 L34,18 C34,18.5522847 33.5522847,19 33,19 L25,19 C24.4477153,19 24,18.5522847 24,18 L24,3 C24,1.34314575 25.3431458,3.04359188e-16 27,0 Z" id="Rectangle-22" fill="#2ADD72"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

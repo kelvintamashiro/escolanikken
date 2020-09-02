@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="50" cy="50" r="50"></circle>
+        <path d="M25.1269543,1.80592913 L41.1658516,28.4191282 C42.5912277,30.7842421 41.8294197,33.8570414 39.4643058,35.2824176 C38.6852956,35.7519013 37.7929788,36 36.883434,36 L4.80563946,36 C2.04421571,36 -0.19436054,33.7614237 -0.19436054,31 C-0.19436054,30.0904552 0.0537381267,29.1981383 0.523221855,28.4191282 L16.5621191,1.80592913 C17.9874953,-0.559184803 21.0602946,-1.32099279 23.4254085,0.104383367 C24.122652,0.524588999 24.7067487,1.10868568 25.1269543,1.80592913 Z" id="path-3"></path>
+    </defs>
+    <g id="4.3-Sem-Vaga-Feedback" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-670.000000, -176.000000)">
+        <g id="Group-2" transform="translate(670.000000, 176.000000)">
+            <g id="Bitmap">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill="#7EEEAB" xlink:href="#path-1"></use>
+                <g id="Group-3" mask="url(#mask-2)">
+                    <g transform="translate(1.000000, 53.000000)">
+                        <rect id="Rectangle-4" fill="#9AF1C3" x="8" y="29" width="83" height="20"></rect>
+                        <g id="Group" stroke-width="1" fill="none" transform="translate(8.000000, 0.000000)">
+                            <polygon id="Triangle" fill="#50E58C" points="19 0 19 28 0 28"></polygon>
+                            <polygon id="Triangle-Copy" fill="#9AF1C3" transform="translate(28.500000, 14.000000) scale(-1, 1) translate(-28.500000, -14.000000) " points="38 0 38 28 19 28"></polygon>
+                        </g>
+                        <g id="Group-Copy" stroke-width="1" fill="none" transform="translate(38.000000, 11.000000)">
+                            <polygon id="Triangle" fill="#50E58C" points="12 0 12 17 0 17"></polygon>
+                            <polygon id="Triangle-Copy" fill="#9AF1C3" transform="translate(18.000000, 8.500000) scale(-1, 1) translate(-18.000000, -8.500000) " points="24 0 24 17 12 17"></polygon>
+                        </g>
+                        <g id="Group-Copy-2" stroke-width="1" fill="none" transform="translate(0.000000, 15.000000)">
+                            <polygon id="Triangle" fill="#50E58C" points="9 0 9 13 0 13"></polygon>
+                            <polygon id="Triangle-Copy" fill="#9AF1C3" transform="translate(13.500000, 6.500000) scale(-1, 1) translate(-13.500000, -6.500000) " points="18 0 18 13 9 13"></polygon>
+                        </g>
+                        <g id="Group-Copy-3" stroke-width="1" fill="none" transform="translate(56.000000, 2.000000)">
+                            <polygon id="Triangle" fill="#50E58C" points="18 0 18 26 0 26"></polygon>
+                            <polygon id="Triangle-Copy" fill="#9AF1C3" transform="translate(27.000000, 13.000000) scale(-1, 1) translate(-27.000000, -13.000000) " points="36 0 36 26 18 26"></polygon>
+                        </g>
+                        <g id="Group-Copy-4" stroke-width="1" fill="none" transform="translate(81.000000, 13.000000)">
+                            <polygon id="Triangle" fill="#50E58C" points="10 0 10 15 0 15"></polygon>
+                            <polygon id="Triangle-Copy" fill="#9AF1C3" transform="translate(15.000000, 7.500000) scale(-1, 1) translate(-15.000000, -7.500000) " points="20 0 20 15 10 15"></polygon>
+                        </g>
+                    </g>
+                </g>
+                <g id="Group-4" mask="url(#mask-2)">
+                    <g transform="translate(29.000000, 15.000000)">
+                        <g id="Triangle-2" fill="none">
+                            <use fill="#02D557" fill-rule="evenodd" xlink:href="#path-3"></use>
+                            <path stroke-opacity="0.3" stroke="#00AD46" stroke-width="2" d="M24.2704708,2.3221035 C23.9343063,1.76430874 23.4670289,1.29703139 22.9092342,0.960866888 C21.017143,-0.179434038 18.5589035,0.430012352 17.4186026,2.3221035 L1.37970538,28.9353025 C1.00411839,29.5585107 0.80563946,30.2723641 0.80563946,31 C0.80563946,33.209139 2.59650046,35 4.80563946,35 L36.883434,35 C37.6110698,35 38.3249233,34.8015211 38.9481314,34.4259341 C40.8402226,33.2856332 41.449669,30.8273937 40.309368,28.9353025 L24.2704708,2.3221035 Z"></path>
+                        </g>
+                        <path d="M21,10 C22.1045695,10 23,10.8954305 23,12 L23,20.9545455 C23,22.059115 22.1045695,22.9545455 21,22.9545455 C19.8954305,22.9545455 19,22.059115 19,20.9545455 L19,12 C19,10.8954305 19.8954305,10 21,10 Z M20.7272727,25.5454545 L21.2727273,25.5454545 C22.2266737,25.5454545 23,26.3187809 23,27.2727273 C23,28.2266737 22.2266737,29 21.2727273,29 L20.7272727,29 C19.7733263,29 19,28.2266737 19,27.2727273 C19,26.3187809 19.7733263,25.5454545 20.7272727,25.5454545 Z" id="Combined-Shape" fill="#FFFFFF" fill-rule="evenodd"></path>
+                        <polygon id="Rectangle" fill="#2ADD72" fill-rule="evenodd" points="18 36 24 36 24 74 21 75 18 74"></polygon>
+                        <polygon id="Rectangle" fill="#50E58C" fill-rule="evenodd" points="21 36 24 36 24 74 21 75"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

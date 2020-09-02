@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-atleta-avatar</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="80" height="80"></rect>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="73.1146365%" id="linearGradient-3">
+            <stop stop-color="#E9E9E9" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="13.4426818%" y1="36.5573182%" x2="86.5573182%" y2="36.5573182%" id="linearGradient-4">
+            <stop stop-color="#E9E9E9" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="86.5573182%" y1="36.5573182%" x2="13.4426818%" y2="36.5573182%" id="linearGradient-5">
+            <stop stop-color="#E9E9E9" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="15.0-Atletas" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-242.000000, -248.000000)">
+        <g id="icon-atleta-avatar" transform="translate(242.000000, 248.000000)">
+            <g id="Oval-2-+-Line-4-Mask">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill="#7EEEAB" xlink:href="#path-1"></use>
+                <path d="M69,88 C69,78.6111593 56.2401154,71 40.5,71 C24.7598846,71 12,78.6111593 12,88" id="Oval-2" fill="#FFFFFF" mask="url(#mask-2)"></path>
+            </g>
+            <g id="Group-13" transform="translate(40.000000, 42.500000) scale(-1, 1) translate(-40.000000, -42.500000) translate(15.000000, 7.000000)">
+                <polyline id="Combined-Shape" fill="url(#linearGradient-3)" points="18 57 18 64.875 18.9285714 65.75 24.5 71 30.0714286 65.75 31 64.875 31 57"></polyline>
+                <path d="M46,23 L46,37.9268293 C46,49.5652201 36.5979797,59 25,59 C13.4020203,59 4,49.5652201 4,37.9268293 L4,23" id="Rectangle-4" fill="#FFFFFF"></path>
+                <path d="M21.5,40 L26,40 L26,45 L21.5,45 C20.1192881,45 19,43.8807119 19,42.5 L19,42.5 C19,41.1192881 20.1192881,40 21.5,40 Z" id="Rectangle-5" fill="url(#linearGradient-4)"></path>
+                <path d="M50,31 L50,40 L50,40 C47.790861,40 46,38.209139 46,36 L46,35 C46,32.790861 47.790861,31 50,31 Z" id="Rectangle-5-Copy" fill="url(#linearGradient-5)" transform="translate(48.000000, 35.500000) scale(-1, 1) translate(-48.000000, -35.500000) "></path>
+                <path d="M4,31 L4,40 L4,40 C1.790861,40 2.705415e-16,38.209139 0,36 L0,35 C-2.705415e-16,32.790861 1.790861,31 4,31 Z" id="Rectangle-5" fill="url(#linearGradient-5)"></path>
+                <path d="M14,12 L36,12 C39.8659932,12 43,15.1340068 43,19 C43,22.8659932 39.8659932,26 36,26 L14,26 C10.1340068,26 7,22.8659932 7,19 C7,15.1340068 10.1340068,12 14,12 Z M43,23 L48,23 L48,32.5 C48,33.8807119 46.8807119,35 45.5,35 C44.1192881,35 43,33.8807119 43,32.5 L43,23 Z M2,23 L7,23 L7,32.5 C7,33.8807119 5.88071187,35 4.5,35 C3.11928813,35 2,33.8807119 2,32.5 L2,23 Z" id="Combined-Shape" fill="#00AD46"></path>
+                <path d="M21,0 L29,0 C39.4934102,-1.92760819e-15 48,8.50658975 48,19 L48,23 L2,23 L2,19 C2,8.50658975 10.5065898,1.92760819e-15 21,0 Z" id="Rectangle-21" fill="#00AD46"></path>
+                <polygon id="Rectangle" fill="#9AF1C3" points="3 14 47 14 48 17 48 24 2 24 2 17"></polygon>
+                <rect id="Rectangle-2" fill="#2ADD72" x="2" y="19" width="46" height="2"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

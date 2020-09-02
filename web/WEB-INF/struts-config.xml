@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+"http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<!--
+     This is the Struts configuration file for the example application,
+     using the proposed new syntax.
+
+     NOTE:  You would only flesh out the details in the "form-bean"
+     declarations if you had a generator tool that used them to create
+     the corresponding Java classes for you.  Otherw0se, you would
+     need only the "form-bean" element itself, with the corresponding/
+     "name" and "type" attributes.
+-->
+<struts-config>
+    <!--          <plug-in className="br.com.abre.TimerServlet">
+        <set-property property="startOnLoad" value="true"/>
+        <set-property property="startupDelay" value="0"/>
+    </plug-in>-->
+
+
+    <!-- ========== Form Bean Definitions =================================== -->
+    <form-beans>
+        <!-- Pagina Inicial -->
+        <form-bean name="IndexForm"  type="br.com.Form.IndexForm"/>
+        <form-bean name="LoginForm"  type="br.com.Form.LoginForm"/>
+        <form-bean name="AlunoForm"  type="br.com.Form.AlunoForm"/>
+        <form-bean name="PessoaFisicaForm"  type="br.com.Form.PessoaFisicaForm"/>
+        <form-bean name="AlterarSenhaForm"  type="br.com.Form.AlterarSenhaForm"/>
+        <form-bean name="DisciplinasForm"  type="br.com.Form.DisciplinasForm"/>
+        <form-bean name="DisciplinaProfessorForm"  type="br.com.Form.DisciplinaProfessorForm"/>
+        <form-bean name="NotaBimestreForm"  type="br.com.Form.NotaBimestreForm"/>
+        <form-bean name="ComunicadosForm"  type="br.com.Form.ComunicadosForm"/>
+        <form-bean name="RelatoriosForm"  type="br.com.Form.RelatoriosForm"/>
+        <form-bean name="TirarDuvidasForm"  type="br.com.Form.TirarDuvidasForm"/>
+        <form-bean name="PlanejamentoAulasForm"  type="br.com.Form.PlanejamentoAulasForm"/>
+ 
+    </form-beans>
+
+    <!-- ========== Action Mapping Definitions ============================== -->
+    <action-mappings>
+        
+        <action    path="/Login"
+                   type="br.com.Action.LoginAction"
+                   name="LoginForm"
+                   scope="request"
+                   validate="false"
+                   input="/index.jsp">
+            <forward name="page"                        path="/index.jsp"/>
+            <forward name="pageEsqueceuSenha"           path="/esqueceu_senha.jsp"/>
+            <forward name="resetarSenha"                path="/esqueceu_senha.jsp"/>
+            <forward name="frwErroLogin"                path="/index.jsp"/>
+            <forward name="frwProfessor"                path="/Index.do?action=redirecionarAcesso"/>
+            <forward name="frwAluno"                    path="/Index.do?action=redirecionarAcesso"/>
+            <forward name="frwDirecao"                  path="/Index.do?action=redirecionarAcesso"/>
+            <forward name="frwMaisAluno"                path="/index_mais_alunos.jsp"/>
+        </action>
+        
+        <action    path="/Index"
+                   type="br.com.Action.IndexAction"
+                   name="PessoaFisicaForm"
+                   scope="request"
+                   validate="false"
+                   input="/index.jsp">
+            <forward name="page"                        path="/index.jsp"/>
+            <forward name="redirecionarAcesso"          path="/tela_interativa.jsp"/>
+            
+        </action>
+      
+        <action    path="/Aluno"
+                   type="br.com.Action.AlunoAction"
+                   name="AlunoForm"
+                   scope="request"
+                   validate="false"
+                   input="/aluno.jsp">
+            <forward name="pageCadastrar"               path="/aluno.jsp"/>
+            <forward name="cadastrar"                   path="/aluno.jsp"/>
+            <forward name="pageConsultar"               path="/aluno_consultar.jsp"/>
+            <forward name="consultar"                   path="/aluno_consultar.jsp"/>
+            <forward name="pageAtualizar"               path="/aluno_atualizar.jsp"/>
+            <forward name="atualizar"                   path="/aluno_atualizar.jsp"/>
+            <forward name="pageHistoricoAluno"          path="/aluno_historico.jsp"/>
+            <forward name="salvarHistoricoAluno"        path="/aluno_historico.jsp"/>
+            <forward name="excluirHistoricoAluno"       path="/aluno_historico.jsp"/>
+        </action>
+        
+        <action    path="/Professor"
+                   type="br.com.Action.ProfessorAction"
+                   name="PessoaFisicaForm"
+                   scope="request"
+                   validate="false"
+                   input="/professor_cadastrar.jsp">
+            <forward name="pageCadastrar"               path="/professor_cadastrar.jsp"/>
+            <forward name="cadastrar"                   path="/professor_cadastrar.jsp"/>
+            <forward name="pageConsultar"               path="/professor_consultar.jsp"/>
+            <forward name="consultar"                   path="/professor_consultar.jsp"/>
+            <forward name="pageAtualizar"               path="/professor_atualizar.jsp"/>
+            <forward name="atualizar"                   path="/professor_atualizar.jsp"/>
+        </action>
+        
+        <action    path="/AlterarSenha"
+                   type="br.com.Action.AlterarSenhaAction"
+                   name="AlterarSenhaForm"
+                   scope="request"
+                   validate="false"
+                   input="/alterar_senha.jsp">
+            <forward name="page"                        path="/alterar_senha.jsp"/>
+            <forward name="alterar"                     path="/alterar_senha.jsp"/>
+        </action>
+        
+        <action    path="/Disciplinas"
+                   type="br.com.Action.DisciplinasAction"
+                   name="DisciplinasForm"
+                   scope="request"
+                   validate="false"
+                   input="/disciplinas.jsp">
+            <forward name="page"                        path="/disciplinas.jsp"/>
+            <forward name="cadastrar"                   path="/disciplinas.jsp"/>
+            <forward name="editar"                      path="/disciplinas_editar.jsp"/>
+            <forward name="excluir"                     path="/disciplinas_editar.jsp"/>
+            <forward name="atualizar"                   path="/disciplinas_editar.jsp"/>
+        </action>
+        
+        <action    path="/DisciplinaProfessor"
+                   type="br.com.Action.DisciplinaProfessorAction"
+                   name="DisciplinaProfessorForm"
+                   scope="request"
+                   validate="false"
+                   input="/disciplinas_vincular_professor.jsp">
+            <forward name="page"                        path="/disciplinas_vincular_professor.jsp"/>
+            <forward name="salvarProfessorDisciplina"   path="/disciplinas_vincular_professor.jsp"/>
+        </action>
+        
+        <action    path="/NotaBimestre"
+                   type="br.com.Action.NotaBimestreAction"
+                   name="NotaBimestreForm"
+                   scope="request"
+                   validate="false"
+                   input="/nota_bimestre.jsp">
+            <forward name="page"                        path="/nota_bimestre.jsp"/>
+            <forward name="pageLancarNota"              path="/lancar_nota_bimestre.jsp"/>
+            <forward name="salvarNota"                  path="/lancar_nota_bimestre.jsp"/>
+            <forward name="excluirNota"                 path="/lancar_nota_bimestre.jsp"/>
+            <forward name="recuperouNota"               path="/lancar_nota_bimestre.jsp"/>
+            <forward name="pageDisciplinasAluno"        path="/page_disciplinas_alunos.jsp"/>
+            <forward name="pageConsulta"                path="/page_consulta_nota.jsp"/>
+            <forward name="pageConsultaAluno"           path="/page_consulta_nota_aluno.jsp"/>
+            <forward name="consultarAlunosSerie"        path="/page_consulta_nota.jsp"/>
+            <forward name="visualizarNota"              path="/page_visualizar_nota.jsp"/>
+            <forward name="visualizarNotaAluno"         path="/page_visualizar_nota_aluno.jsp"/>
+        </action>
+       
+        <action    path="/Comunicados"
+                   type="br.com.Action.ComunicadosAction"
+                   name="ComunicadosForm"
+                   scope="request"
+                   validate="false"
+                   input="/comunicados.jsp">
+            <forward name="page"                        path="/comunicados.jsp"/>
+            <forward name="pageDirecao"                 path="/comunicados_direcao.jsp"/>
+            <forward name="salvar"                      path="/comunicados.jsp"/>
+            <forward name="salvarDirecao"               path="/comunicados_direcao.jsp"/>
+            <forward name="excluir"                     path="/comunicados_pesquisar.jsp"/>
+            <forward name="pesquisar"                   path="/comunicados_pesquisar.jsp"/>
+            <forward name="visualizar"                  path="/comunicado_visualizar.jsp"/>
+            <forward name="listaComunicados"            path="/comunicado_lista.jsp"/>
+            <forward name="pagePorAluno"                path="/comunicados_por_alunos.jsp"/>
+            <forward name="salvarPorAluno"              path="/comunicados_por_alunos.jsp"/>
+            <forward name="visualizarAlunos"            path="/comunicado_visualizar_alunos.jsp"/>
+        </action>
+        
+        <action    path="/Relatorios"
+                   type="br.com.Action.RelatoriosAction"
+                   name="RelatoriosForm"
+                   scope="request"
+                   validate="false"
+                   input="/relatorio.jsp">
+            <forward name="page"                                path="/relatorio.jsp"/>
+            <forward name="relTelefonePais"                     path="/rel_telefone_pais.jsp"/>
+            <forward name="relListaAniversario"                 path="/rel_lista_aniversario.jsp"/>
+            <forward name="pageRelNotasMensalPorBimestre"       path="/rel_notas_mensal_page.jsp"/>
+            <forward name="pageRelNotasBimestralPorBimestre"    path="/rel_notas_bimestral_page.jsp"/>
+            <forward name="pageRelNotasProducaoPorBimestre"     path="/rel_notas_producao_page.jsp"/>
+            <forward name="pageRelNotasMediaPorBimestre"        path="/rel_notas_media_page.jsp"/>
+            <forward name="relNotasMensalPorBimestre"           path="/rel_notas_mensal.jsp"/>
+            <forward name="relNotasBimestralPorBimestre"        path="/rel_notas_bimestral.jsp"/>
+            <forward name="relNotasProducaoPorBimestre"         path="/rel_notas_producao.jsp"/>
+            <forward name="relNotasMediaPorBimestre"            path="/rel_notas_media.jsp"/>
+            <forward name="pageRelLancamentoNotas"              path="/rel_lancamento_notas_page.jsp"/>
+            <forward name="relLancamentoNotas"                  path="/rel_lancamento_notas.jsp"/>
+            <forward name="pageRelMelhoresNotasPorBimestre"     path="/rel_melhores_notas_page.jsp"/>
+            <forward name="relMelhoresNotasPorBimestre"         path="/rel_melhores_notas.jsp"/>
+            <forward name="relListaEndereco"                    path="/rel_lista_endereco.jsp"/>
+            <forward name="relGeralAtivoInativoTurma"           path="/rel_geral_ativo_inativo_turma.jsp"/>
+        </action>
+        
+        <action    path="/TirarDuvidas"
+                   type="br.com.Action.TirarDuvidasAction"
+                   name="TirarDuvidasForm"
+                   scope="request"
+                   validate="false"
+                   input="/duvidas.jsp">
+            <forward name="page"                        path="/duvidas.jsp"/>
+            <forward name="enviar"                      path="/duvidas.jsp"/>
+        </action>
+        
+        <action    path="/PlanejamentoAulas"
+                   type="br.com.Action.PlanejamentoAulasAction"
+                   name="PlanejamentoAulasForm"
+                   scope="request"
+                   validate="false"
+                   input="/planejamento_aulas.jsp">
+            <forward name="page"                            path="/planejamento_aulas.jsp"/>
+            <forward name="carregarSerie"                   path="/planejamento_aulas.jsp"/>
+            <forward name="salvar"                          path="/planejamento_aulas.jsp"/>
+            <forward name="pesquisar"                       path="/planejamento_aulas_pesquisar.jsp"/>
+            <forward name="pesquisarTodos"                  path="/planejamento_aulas_pesquisar.jsp"/>
+            <forward name="excluir"                         path="/planejamento_aulas_pesquisar.jsp"/>
+            <forward name="editar"                          path="/planejamento_aulas_editar.jsp"/>
+            <forward name="atualizar"                       path="/planejamento_aulas_editar.jsp"/>
+        </action>
+        
+    </action-mappings>
+
+    <!-- ================ Tamanho Maximo para Upload ======================= -->
+    <controller maxFileSize="2M" />
+
+    <!-- ========== Message Resources Definitions =========================== -->
+    <message-resources
+        parameter="br.com.abre.ApplicationResources"/>
+
+    <!-- ========== Plug Ins Configuration ================================== -->
+
+    <!--
+    Add multiple validator resource files by setting the pathnames property
+    with a comma delimitted list of resource files to load.
+    -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" value="/WEB-INF/validator-rules.xml,
+                      /WEB-INF/validation.xml"/>
+    </plug-in>
+</struts-config>

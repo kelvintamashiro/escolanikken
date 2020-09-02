@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="47px" viewBox="0 0 48 47" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="46.5454545" height="46.5454545" rx="23.2727273"></rect>
+        <linearGradient x1="50%" y1="73.1146365%" x2="50%" y2="2.77555756e-15%" id="linearGradient-3">
+            <stop stop-color="#E9E9E9" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="7.0-Cadastro---Candidato" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-564.000000, -336.000000)">
+        <g id="Group-4" transform="translate(540.000000, 320.000000)">
+            <g id="Group-3" transform="translate(24.000000, 16.000000)">
+                <g id="Group-17" transform="translate(0.969697, 0.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" fill="#7EEEAB" xlink:href="#path-1"></use>
+                    <g mask="url(#mask-2)">
+                        <g transform="translate(0.484848, 12.606061)">
+                            <polygon id="Rectangle-8-Copy-2" fill="#00AD46" points="8.72727273 15.1844951 24.7272727 6.3030303 24.7272727 32.4848485 8.72727273 32.4848485"></polygon>
+                            <polygon id="Rectangle-8-Copy" fill="#2ADD72" points="16 16.1541921 32 7.27272727 32 33.4545455 16 33.4545455"></polygon>
+                            <polygon id="Rectangle-8" fill="#02D557" points="0 16.1541921 16 7.27272727 16 33.4545455 0 33.4545455"></polygon>
+                            <rect id="Rectangle-11" fill="url(#linearGradient-3)" x="34.9090909" y="0.484848485" width="2.90909091" height="13.0909091"></rect>
+                            <rect id="Rectangle-11-Copy" fill="url(#linearGradient-3)" x="39.2727273" y="0.484848485" width="2.90909091" height="13.0909091"></rect>
+                            <rect id="Rectangle-10" fill="#F8F8F9" x="32" y="13.5757576" width="13.0909091" height="20.3636364"></rect>
+                            <path d="M2.90909091,20.8484848 L7.27272727,20.8484848 L7.27272727,22.3030303 L2.90909091,22.3030303 L2.90909091,20.8484848 Z M8.72727273,20.8484848 L13.0909091,20.8484848 L13.0909091,22.3030303 L8.72727273,22.3030303 L8.72727273,20.8484848 Z M2.90909091,23.7575758 L7.27272727,23.7575758 L7.27272727,25.2121212 L2.90909091,25.2121212 L2.90909091,23.7575758 Z M8.72727273,23.7575758 L13.0909091,23.7575758 L13.0909091,25.2121212 L8.72727273,25.2121212 L8.72727273,23.7575758 Z M2.90909091,26.6666667 L7.27272727,26.6666667 L7.27272727,28.1212121 L2.90909091,28.1212121 L2.90909091,26.6666667 Z M8.72727273,26.6666667 L13.0909091,26.6666667 L13.0909091,28.1212121 L8.72727273,28.1212121 L8.72727273,26.6666667 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                            <path d="M18.9090909,20.8484848 L23.2727273,20.8484848 L23.2727273,22.3030303 L18.9090909,22.3030303 L18.9090909,20.8484848 Z M24.7272727,20.8484848 L29.0909091,20.8484848 L29.0909091,22.3030303 L24.7272727,22.3030303 L24.7272727,20.8484848 Z M18.9090909,23.7575758 L23.2727273,23.7575758 L23.2727273,25.2121212 L18.9090909,25.2121212 L18.9090909,23.7575758 Z M24.7272727,23.7575758 L29.0909091,23.7575758 L29.0909091,25.2121212 L24.7272727,25.2121212 L24.7272727,23.7575758 Z M18.9090909,26.6666667 L23.2727273,26.6666667 L23.2727273,28.1212121 L18.9090909,28.1212121 L18.9090909,26.6666667 Z M24.7272727,26.6666667 L29.0909091,26.6666667 L29.0909091,28.1212121 L24.7272727,28.1212121 L24.7272727,26.6666667 Z" id="Combined-Shape-Copy-2" fill="#FFFFFF"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

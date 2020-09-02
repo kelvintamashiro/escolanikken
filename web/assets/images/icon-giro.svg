@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 13</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="40" cy="40" r="40"></circle>
+        <linearGradient x1="86.5573182%" y1="36.5573182%" x2="13.4426818%" y2="36.5573182%" id="linearGradient-3">
+            <stop stop-color="#E9E9E9" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="86.5573182%" y1="36.5573182%" x2="13.4426818%" y2="36.5573182%" id="linearGradient-4">
+            <stop stop-color="#E9E9E9" offset="0%"></stop>
+            <stop stop-color="#D8D8D8" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="6.0-Franquias" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-785.000000, -1928.000000)">
+        <g id="Section-04" transform="translate(0.000000, 1560.000000)">
+            <g id="Group-6" transform="translate(336.000000, 368.000000)">
+                <g id="Section-02-Copy-2" transform="translate(432.000000, 0.000000)">
+                    <g id="Title-of-this-column-+-Nunc-quis-massa-vita-Copy-3-+-Rectangle-15-+-Line-+-Line-3-Copy-45">
+                        <g id="Group-13" transform="translate(17.000000, 0.000000)">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <use id="Mask" fill="#7EEEAB" xlink:href="#path-1"></use>
+                            <g mask="url(#mask-2)">
+                                <g transform="translate(38.500000, 45.500000) rotate(-90.000000) translate(-38.500000, -45.500000) translate(2.000000, 28.000000)">
+                                    <polygon id="Rectangle-2-Copy-5" fill="url(#linearGradient-3)" transform="translate(23.053966, 13.484008) scale(1, -1) translate(-23.053966, -13.484008) " points="19 12 27.1079312 12 27.1079312 14.9680153 25.5 14.9680153"></polygon>
+                                    <rect id="Rectangle-2" fill="#02D557" x="0" y="12" width="12" height="20"></rect>
+                                    <rect id="Rectangle-2" fill="#00AD46" x="0" y="21" width="12" height="10"></rect>
+                                    <rect id="Rectangle-2" fill="#00AD46" x="27" y="3" width="41" height="26" rx="2"></rect>
+                                    <g id="Group-8" stroke-width="1" fill="none" transform="translate(24.000000, 0.000000)">
+                                        <rect id="Rectangle-7" fill="#00AD46" x="0" y="0" width="49" height="29" rx="3"></rect>
+                                        <rect id="Rectangle-7" stroke="#9AF1C3" opacity="0.200000018" x="2.5" y="2.5" width="44" height="24" rx="1"></rect>
+                                        <rect id="Rectangle-8" fill="#2ADD72" x="15" y="5" width="20" height="20" rx="10"></rect>
+                                        <path d="M25.5029199,21.2306627 L25.5029199,22.6344896 L24.3771899,22.6344896 L24.3771899,21.267141 C23.096033,21.2279912 21.9418331,20.9375452 21.0389294,20.395803 L21.3309002,18.2936132 C22.1617594,18.8416267 23.3618841,19.1488148 24.3771899,19.2005964 L24.3771899,16.0116541 C22.799737,15.4991255 21,14.8648045 21,12.5904502 C21,10.774976 22.1211823,9.450979 24.3771899,9.17781721 L24.3771899,8 L25.5029199,8 L25.5029199,9.12851614 C26.589798,9.15602731 27.6211109,9.38636669 28.5328467,9.78753045 L28.3187348,11.8507908 C27.4367477,11.4803562 26.3629301,11.2857662 25.5029199,11.2525337 L25.5029199,14.0129334 C27.0955959,14.5080868 29,15.10908 29,17.4760949 C29,19.5355136 27.9494582,20.9741575 25.5029199,21.2306627 Z M25.5029199,19.1190858 C26.3368416,18.9143048 26.703163,18.3769807 26.703163,17.7096716 C26.703163,17.05379 26.2048977,16.692106 25.5029199,16.4034537 L25.5029199,19.1190858 Z M24.3771899,11.3538684 C23.7379167,11.5334481 23.3746959,11.9325716 23.3746959,12.4931266 C23.3746959,13.0482463 23.7818992,13.3708797 24.3771899,13.6251743 L24.3771899,11.3538665 Z" id="Combined-Shape" fill="#9AF1C3"></path>
+                                    </g>
+                                    <path d="M34,22.0354444 C32.3038529,22.2780593 31,23.736764 31,25.5 C31,27.263236 32.3038529,28.7219407 34,28.9645556 L34,29 L12,29 L12,14 L34,14 L34,22.0354444 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                                    <rect id="Rectangle-2-Copy-2" fill="#FFFFFF" x="21" y="14" width="25" height="8" rx="4"></rect>
+                                    <path d="M42.5,15 L41,15 C40.4477153,15 40,15.4477153 40,16 L40,20 C40,20.5522847 40.4477153,21 41,21 L42.5,21 C43.8807119,21 45,19.8807119 45,18.5 L45,17.5 C45,16.1192881 43.8807119,15 42.5,15 Z" id="Rectangle-2-Copy-4" fill="url(#linearGradient-4)"></path>
+                                    <path d="M15,29 L44,29 L44,29 C41.0483297,32.7862806 36.5156672,35 31.7148049,35 L27.2851951,35 C22.4843328,35 17.9516703,32.7862806 15,29 Z" id="Rectangle-2-Copy-3" fill="#FFFFFF"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

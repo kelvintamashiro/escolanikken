@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/nikken">
+    <Resource
+        auth="Container"
+        name="jdbc/criar324_nikken"
+        type="javax.sql.DataSource"
+        driverClassName="com.mysql.jdbc.Driver"
+        password="password"
+        username="usuario"
+        url="jdbc:mysql://br310.hostgator.com.br:3306/criar324_nikken?autoReconnect=true"
+        maxActive="300"
+        initialSize="10"
+        maxIdle="20"
+        minIdle="5"
+        maxWait="10000"
+        removeAbandoned="true"
+        removeAbandonedTimeout="60"
+        logAbandoned = "true"
+        poolPreparedStatements="true"
+        maxOpenPreparedStatements="600" />
+</Context>

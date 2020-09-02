@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="6.0-Franquias" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-1000.000000, -1931.000000)">
+        <g id="Section-04" transform="translate(0.000000, 1560.000000)">
+            <g id="Group-6" transform="translate(336.000000, 368.000000)">
+                <g id="Section-02-Copy-3" transform="translate(632.000000, 3.000000)">
+                    <g id="Title-of-this-column-+-Nunc-quis-massa-vita-Copy-3-+-Rectangle-15-+-Line-+-Line-3-Copy-45">
+                        <g id="Icon" transform="translate(32.000000, 0.000000)">
+                            <circle id="Oval-32" fill="#7EEEAB" cx="40" cy="40" r="40"></circle>
+                            <g id="Group-9" transform="translate(14.000000, 19.000000)">
+                                <g id="Group-8" transform="translate(4.000000, 0.000000)">
+                                    <rect id="Rectangle-7" fill="#00AD46" x="0" y="0" width="49" height="29" rx="3"></rect>
+                                    <rect id="Rectangle-7" stroke="#9AF1C3" opacity="0.200000018" x="2.5" y="2.5" width="44" height="24" rx="1"></rect>
+                                    <rect id="Rectangle-8" fill="#2ADD72" x="15" y="5" width="20" height="20" rx="10"></rect>
+                                    <path d="M25.5029199,21.2306627 L25.5029199,22.6344896 L24.3771899,22.6344896 L24.3771899,21.267141 C23.096033,21.2279912 21.9418331,20.9375452 21.0389294,20.395803 L21.3309002,18.2936132 C22.1617594,18.8416267 23.3618841,19.1488148 24.3771899,19.2005964 L24.3771899,16.0116541 C22.799737,15.4991255 21,14.8648045 21,12.5904502 C21,10.774976 22.1211823,9.450979 24.3771899,9.17781721 L24.3771899,8 L25.5029199,8 L25.5029199,9.12851614 C26.589798,9.15602731 27.6211109,9.38636669 28.5328467,9.78753045 L28.3187348,11.8507908 C27.4367477,11.4803562 26.3629301,11.2857662 25.5029199,11.2525337 L25.5029199,14.0129334 C27.0955959,14.5080868 29,15.10908 29,17.4760949 C29,19.5355136 27.9494582,20.9741575 25.5029199,21.2306627 Z M25.5029199,19.1190858 C26.3368416,18.9143048 26.703163,18.3769807 26.703163,17.7096716 C26.703163,17.05379 26.2048977,16.692106 25.5029199,16.4034537 L25.5029199,19.1190858 Z M24.3771899,11.3538684 C23.7379167,11.5334481 23.3746959,11.9325716 23.3746959,12.4931266 C23.3746959,13.0482463 23.7818992,13.3708797 24.3771899,13.6251743 L24.3771899,11.3538665 Z" id="Combined-Shape" fill="#9AF1C3"></path>
+                                </g>
+                                <g id="coins-copy" transform="translate(0.000000, 12.000000)">
+                                    <g id="Group-10-Copy-5" transform="translate(0.000000, 24.000000)">
+                                        <path d="M7,2 L0,2 C0,2.59695367 0,3.26362033 0,4 C0,5.1045695 3.13400675,6 7,6 L7,2 Z" id="Oval-2-Copy-2" fill="#02D557"></path>
+                                        <path d="M14,2 L7,2 C7,2.59695367 7,3.26362033 7,4 C7,5.1045695 10.1340068,6 14,6 L14,2 Z" id="Oval-2-Copy-3" fill="#50E58C" transform="translate(10.500000, 4.000000) scale(-1, 1) translate(-10.500000, -4.000000) "></path>
+                                        <ellipse id="Oval-2-Copy-4" fill="#9AF1C3" cx="7" cy="2" rx="7" ry="2"></ellipse>
+                                    </g>
+                                    <g id="Group-10-Copy-4" transform="translate(0.000000, 21.000000)">
+                                        <path d="M7,2 L0,2 C0,2.59695367 0,3.26362033 0,4 C0,5.1045695 3.13400675,6 7,6 L7,2 Z" id="Oval-2-Copy-2" fill="#02D557"></path>
+                                        <path d="M14,2 L7,2 C7,2.59695367 7,3.26362033 7,4 C7,5.1045695 10.1340068,6 14,6 L14,2 Z" id="Oval-2-Copy-3" fill="#50E58C" transform="translate(10.500000, 4.000000) scale(-1, 1) translate(-10.500000, -4.000000) "></path>
+                                        <ellipse id="Oval-2-Copy-4" fill="#9AF1C3" cx="7" cy="2" rx="7" ry="2"></ellipse>
+                                    </g>
+                                    <g id="Group-10-Copy-3" transform="translate(0.000000, 18.000000)">
+                                        <path d="M7,2 L0,2 C0,2.59695367 0,3.26362033 0,4 C0,5.1045695 3.13400675,6 7,6 L7,2 Z" id="Oval-2-Copy-2" fill="#02D557"></path>
+                                        <path d="M14,2 L7,2 C7,2.59695367 7,3.26362033 7,4 C7,5.1045695 10.1340068,6 14,6 L14,2 Z" id="Oval-2-Copy-3" fill="#50E58C" transform="translate(10.500000, 4.000000) scale(-1, 1) translate(-10.500000, -4.000000) "></path>
+                                        <ellipse id="Oval-2-Copy-4" fill="#9AF1C3" cx="7" cy="2" rx="7" ry="2"></ellipse>
+                                    </g>
+                                    <g id="Group-10-Copy-2" transform="translate(0.000000, 15.000000)">
+                                        <path d="M7,2 L0,2 C0,2.59695367 0,3.26362033 0,4 C0,5.1045695 3.13400675,6 7,6 L7,2 Z" id="Oval-2-Copy-2" fill="#02D557"></path>
+                                        <path d="M14,2 L7,2 C7,2.59695367 7,3.26362033 7,4 C7,5.1045695 10.1340068,6 14,6 L14,2 Z" id="Oval-2-Copy-3" fill="#50E58C" transform="translate(10.500000, 4.000000) scale(-1, 1) translate(-10.500000, -4.000000) "></path>
+                                        <ellipse id="Oval-2-Copy-4" fill="#9AF1C3" cx="7" cy="2" rx="7" ry="2"></ellipse>
+                                    </g>
+                                    <g id="Group-10-Copy" transform="translate(0.000000, 12.000000)">
+                                        <path d="M7,2 L0,2 C0,2.59695367 0,3.26362033 0,4 C0,5.1045695 3.13400675,6 7,6 L7,2 Z" id="Oval-2-Copy-2" fill="#02D557"></path>
+                                        <path d="M14,2 L7,2 C7,2.59695367 7,3.26362033 7,4 C7,5.1045695 10.1340068,6 14,6 L14,2 Z" id="Oval-2-Copy-3" fill="#50E58C" transform="translate(10.500000, 4.000000) scale(-1, 1) translate(-10.500000, -4.000000) "></path>
+                                        <ellipse id="Oval-2-Copy-4" fill="#9AF1C3" cx="7" cy="2" rx="7" ry="2"></ellipse>
+                                    </g>
+                                    <g id="Group-10" transform="translate(0.000000, 9.000000)">
+                                        <path d="M7,2 L0,2 C0,2.59695367 0,3.26362033 0,4 C0,5.1045695 3.13400675,6 7,6 L7,2 Z" id="Oval-2-Copy-2" fill="#02D557"></path>
+                                        <path d="M14,2 L7,2 C7,2.59695367 7,3.26362033 7,4 C7,5.1045695 10.1340068,6 14,6 L14,2 Z" id="Oval-2-Copy-3" fill="#50E58C" transform="translate(10.500000, 4.000000) scale(-1, 1) translate(-10.500000, -4.000000) "></path>
+                                        <ellipse id="Oval-2-Copy-4" fill="#9AF1C3" cx="7" cy="2" rx="7" ry="2"></ellipse>
+                                    </g>
+                                    <g id="Group-10-Copy-5" transform="translate(0.000000, 6.000000)">
+                                        <path d="M7,2 L0,2 C0,2.59695367 0,3.26362033 0,4 C0,5.1045695 3.13400675,6 7,6 L7,2 Z" id="Oval-2-Copy-2" fill="#02D557"></path>
+                                        <path d="M14,2 L7,2 C7,2.59695367 7,3.26362033 7,4 C7,5.1045695 10.1340068,6 14,6 L14,2 Z" id="Oval-2-Copy-3" fill="#50E58C" transform="translate(10.500000, 4.000000) scale(-1, 1) translate(-10.500000, -4.000000) "></path>
+                                        <ellipse id="Oval-2-Copy-4" fill="#9AF1C3" cx="7" cy="2" rx="7" ry="2"></ellipse>
+                                    </g>
+                                    <g id="Group-10-Copy-4" transform="translate(0.000000, 3.000000)">
+                                        <path d="M7,2 L0,2 C0,2.59695367 0,3.26362033 0,4 C0,5.1045695 3.13400675,6 7,6 L7,2 Z" id="Oval-2-Copy-2" fill="#02D557"></path>
+                                        <path d="M14,2 L7,2 C7,2.59695367 7,3.26362033 7,4 C7,5.1045695 10.1340068,6 14,6 L14,2 Z" id="Oval-2-Copy-3" fill="#50E58C" transform="translate(10.500000, 4.000000) scale(-1, 1) translate(-10.500000, -4.000000) "></path>
+                                        <ellipse id="Oval-2-Copy-4" fill="#9AF1C3" cx="7" cy="2" rx="7" ry="2"></ellipse>
+                                    </g>
+                                    <g id="Group-10-Copy-3">
+                                        <path d="M7,2 L0,2 C0,2.59695367 0,3.26362033 0,4 C0,5.1045695 3.13400675,6 7,6 L7,2 Z" id="Oval-2-Copy-2" fill="#02D557"></path>
+                                        <path d="M14,2 L7,2 C7,2.59695367 7,3.26362033 7,4 C7,5.1045695 10.1340068,6 14,6 L14,2 Z" id="Oval-2-Copy-3" fill="#50E58C" transform="translate(10.500000, 4.000000) scale(-1, 1) translate(-10.500000, -4.000000) "></path>
+                                        <ellipse id="Oval-2-Copy-4" fill="#9AF1C3" cx="7" cy="2" rx="7" ry="2"></ellipse>
+                                    </g>
+                                </g>
+                                <g id="coins-copy-3" transform="translate(36.000000, 23.000000)">
+                                    <g id="Group-10-Copy-5" transform="translate(0.000000, 15.000000)">
+                                        <path d="M7,2 L0,2 C0,2.59695367 0,3.26362033 0,4 C0,5.1045695 3.13400675,6 7,6 L7,2 Z" id="Oval-2-Copy-2" fill="#02D557"></path>
+                                        <path d="M14,2 L7,2 C7,2.59695367 7,3.26362033 7,4 C7,5.1045695 10.1340068,6 14,6 L14,2 Z" id="Oval-2-Copy-3" fill="#50E58C" transform="translate(10.500000, 4.000000) scale(-1, 1) translate(-10.500000, -4.000000) "></path>
+                                        <ellipse id="Oval-2-Copy-4" fill="#9AF1C3" cx="7" cy="2" rx="7" ry="2"></ellipse>
+                                    </g>
+                                    <g id="Group-10-Copy-4" transform="translate(0.000000, 12.000000)">
+                                        <path d="M7,2 L0,2 C0,2.59695367 0,3.26362033 0,4 C0,5.1045695 3.13400675,6 7,6 L7,2 Z" id="Oval-2-Copy-2" fill="#02D557"></path>
+                                        <path d="M14,2 L7,2 C7,2.59695367 7,3.26362033 7,4 C7,5.1045695 10.1340068,6 14,6 L14,2 Z" id="Oval-2-Copy-3" fill="#50E58C" transform="translate(10.500000, 4.000000) scale(-1, 1) translate(-10.500000, -4.000000) "></path>
+                                        <ellipse id="Oval-2-Copy-4" fill="#9AF1C3" cx="7" cy="2" rx="7" ry="2"></ellipse>
+                                    </g>
+                                    <g id="Group-10-Copy-3" transform="translate(0.000000, 9.000000)">
+                                        <path d="M7,2 L0,2 C0,2.59695367 0,3.26362033 0,4 C0,5.1045695 3.13400675,6 7,6 L7,2 Z" id="Oval-2-Copy-2" fill="#02D557"></path>
+                                        <path d="M14,2 L7,2 C7,2.59695367 7,3.26362033 7,4 C7,5.1045695 10.1340068,6 14,6 L14,2 Z" id="Oval-2-Copy-3" fill="#50E58C" transform="translate(10.500000, 4.000000) scale(-1, 1) translate(-10.500000, -4.000000) "></path>
+                                        <ellipse id="Oval-2-Copy-4" fill="#9AF1C3" cx="7" cy="2" rx="7" ry="2"></ellipse>
+                                    </g>
+                                    <g id="Group-10-Copy-2" transform="translate(0.000000, 6.000000)">
+                                        <path d="M7,2 L0,2 C0,2.59695367 0,3.26362033 0,4 C0,5.1045695 3.13400675,6 7,6 L7,2 Z" id="Oval-2-Copy-2" fill="#02D557"></path>
+                                        <path d="M14,2 L7,2 C7,2.59695367 7,3.26362033 7,4 C7,5.1045695 10.1340068,6 14,6 L14,2 Z" id="Oval-2-Copy-3" fill="#50E58C" transform="translate(10.500000, 4.000000) scale(-1, 1) translate(-10.500000, -4.000000) "></path>
+                                        <ellipse id="Oval-2-Copy-4" fill="#9AF1C3" cx="7" cy="2" rx="7" ry="2"></ellipse>
+                                    </g>
+                                    <g id="Group-10-Copy" transform="translate(0.000000, 3.000000)">
+                                        <path d="M7,2 L0,2 C0,2.59695367 0,3.26362033 0,4 C0,5.1045695 3.13400675,6 7,6 L7,2 Z" id="Oval-2-Copy-2" fill="#02D557"></path>
+                                        <path d="M14,2 L7,2 C7,2.59695367 7,3.26362033 7,4 C7,5.1045695 10.1340068,6 14,6 L14,2 Z" id="Oval-2-Copy-3" fill="#50E58C" transform="translate(10.500000, 4.000000) scale(-1, 1) translate(-10.500000, -4.000000) "></path>
+                                        <ellipse id="Oval-2-Copy-4" fill="#9AF1C3" cx="7" cy="2" rx="7" ry="2"></ellipse>
+                                    </g>
+                                    <g id="Group-10">
+                                        <path d="M7,2 L0,2 C0,2.59695367 0,3.26362033 0,4 C0,5.1045695 3.13400675,6 7,6 L7,2 Z" id="Oval-2-Copy-2" fill="#02D557"></path>
+                                        <path d="M14,2 L7,2 C7,2.59695367 7,3.26362033 7,4 C7,5.1045695 10.1340068,6 14,6 L14,2 Z" id="Oval-2-Copy-3" fill="#50E58C" transform="translate(10.500000, 4.000000) scale(-1, 1) translate(-10.500000, -4.000000) "></path>
+                                        <ellipse id="Oval-2-Copy-4" fill="#9AF1C3" cx="7" cy="2" rx="7" ry="2"></ellipse>
+                                    </g>
+                                </g>
+                                <g id="coins-copy-2" transform="translate(16.000000, 28.000000)">
+                                    <g id="Group-10-Copy-5" transform="translate(0.000000, 12.000000)">
+                                        <path d="M7,2 L0,2 C0,2.59695367 0,3.26362033 0,4 C0,5.1045695 3.13400675,6 7,6 L7,2 Z" id="Oval-2-Copy-2" fill="#02D557"></path>
+                                        <path d="M14,2 L7,2 C7,2.59695367 7,3.26362033 7,4 C7,5.1045695 10.1340068,6 14,6 L14,2 Z" id="Oval-2-Copy-3" fill="#50E58C" transform="translate(10.500000, 4.000000) scale(-1, 1) translate(-10.500000, -4.000000) "></path>
+                                        <ellipse id="Oval-2-Copy-4" fill="#9AF1C3" cx="7" cy="2" rx="7" ry="2"></ellipse>
+                                    </g>
+                                    <g id="Group-10-Copy-4" transform="translate(0.000000, 9.000000)">
+                                        <path d="M7,2 L0,2 C0,2.59695367 0,3.26362033 0,4 C0,5.1045695 3.13400675,6 7,6 L7,2 Z" id="Oval-2-Copy-2" fill="#02D557"></path>
+                                        <path d="M14,2 L7,2 C7,2.59695367 7,3.26362033 7,4 C7,5.1045695 10.1340068,6 14,6 L14,2 Z" id="Oval-2-Copy-3" fill="#50E58C" transform="translate(10.500000, 4.000000) scale(-1, 1) translate(-10.500000, -4.000000) "></path>
+                                        <ellipse id="Oval-2-Copy-4" fill="#9AF1C3" cx="7" cy="2" rx="7" ry="2"></ellipse>
+                                    </g>
+                                    <g id="Group-10-Copy-3" transform="translate(0.000000, 6.000000)">
+                                        <path d="M7,2 L0,2 C0,2.59695367 0,3.26362033 0,4 C0,5.1045695 3.13400675,6 7,6 L7,2 Z" id="Oval-2-Copy-2" fill="#02D557"></path>
+                                        <path d="M14,2 L7,2 C7,2.59695367 7,3.26362033 7,4 C7,5.1045695 10.1340068,6 14,6 L14,2 Z" id="Oval-2-Copy-3" fill="#50E58C" transform="translate(10.500000, 4.000000) scale(-1, 1) translate(-10.500000, -4.000000) "></path>
+                                        <ellipse id="Oval-2-Copy-4" fill="#9AF1C3" cx="7" cy="2" rx="7" ry="2"></ellipse>
+                                    </g>
+                                    <g id="Group-10-Copy-2" transform="translate(0.000000, 3.000000)">
+                                        <path d="M7,2 L0,2 C0,2.59695367 0,3.26362033 0,4 C0,5.1045695 3.13400675,6 7,6 L7,2 Z" id="Oval-2-Copy-2" fill="#02D557"></path>
+                                        <path d="M14,2 L7,2 C7,2.59695367 7,3.26362033 7,4 C7,5.1045695 10.1340068,6 14,6 L14,2 Z" id="Oval-2-Copy-3" fill="#50E58C" transform="translate(10.500000, 4.000000) scale(-1, 1) translate(-10.500000, -4.000000) "></path>
+                                        <ellipse id="Oval-2-Copy-4" fill="#9AF1C3" cx="7" cy="2" rx="7" ry="2"></ellipse>
+                                    </g>
+                                    <g id="Group-10-Copy">
+                                        <path d="M7,2 L0,2 C0,2.59695367 0,3.26362033 0,4 C0,5.1045695 3.13400675,6 7,6 L7,2 Z" id="Oval-2-Copy-2" fill="#02D557"></path>
+                                        <path d="M14,2 L7,2 C7,2.59695367 7,3.26362033 7,4 C7,5.1045695 10.1340068,6 14,6 L14,2 Z" id="Oval-2-Copy-3" fill="#50E58C" transform="translate(10.500000, 4.000000) scale(-1, 1) translate(-10.500000, -4.000000) "></path>
+                                        <ellipse id="Oval-2-Copy-4" fill="#9AF1C3" cx="7" cy="2" rx="7" ry="2"></ellipse>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-service-student</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="40" cy="40" r="40"></circle>
+        <path d="M1,61.9834359 C3.89276412,62.648568 6.90534139,63 10,63 C24.2656902,63 36.7871473,55.5320505 43.8682362,44.2922868 C43.0477366,39.0281405 38.4942796,35 33,35 L33,35 L12,35 L12,35 C5.92486775,35 1,39.9248678 1,46 L1,46 L1,61.9834359 Z" id="path-3"></path>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="73.1146365%" id="linearGradient-4">
+            <stop stop-color="#E9E9E9" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="86.5573182%" y1="36.5573182%" x2="13.4426818%" y2="36.5573182%" id="linearGradient-5">
+            <stop stop-color="#E9E9E9" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="0.0-Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="D-0.0-Home" transform="translate(-1080.000000, -1376.000000)">
+            <g id="Section-03" transform="translate(240.000000, 1230.000000)">
+                <g id="IE" transform="translate(720.000000, 96.000000)">
+                    <g id="Avaliacoes-alunos" transform="translate(120.000000, 50.000000)">
+                        <g id="icon-service-student">
+                            <g id="Group-2">
+                                <mask id="mask-2" fill="white">
+                                    <use xlink:href="#path-1"></use>
+                                </mask>
+                                <use id="Mask" fill="#7EEEAB" xlink:href="#path-1"></use>
+                                <g mask="url(#mask-2)">
+                                    <g transform="translate(36.000000, 17.000000)">
+                                        <g id="Combined-Shape" fill="none">
+                                            <use fill="#2ADD72" fill-rule="evenodd" xlink:href="#path-3"></use>
+                                            <path stroke="#2ADD72" stroke-width="2" d="M2,61.1789201 C4.61074121,61.7231354 7.2870347,62 10,62 C23.431703,62 35.6882511,55.1568559 42.8165125,44.0821608 C41.9148356,39.4320463 37.8195849,36 33,36 L12,36 C6.4771525,36 2,40.4771525 2,46 L2,61.1789201 Z"></path>
+                                        </g>
+                                        <polyline id="Combined-Shape" fill="url(#linearGradient-4)" fill-rule="evenodd" points="18 32 18 35.625 18.7142857 36.25 23 40 27.2857143 36.25 28 35.625 28 32"></polyline>
+                                        <polygon id="Rectangle-7" fill="#00AD46" fill-rule="evenodd" transform="translate(28.621795, 38.110658) rotate(-45.000000) translate(-28.621795, -38.110658) " points="24.4118441 35.0930472 31.5059518 35.0930472 32.8317464 37.9830629 24.4118441 41.1282693"></polygon>
+                                        <polygon id="Rectangle-7-Copy" fill="#00AD46" fill-rule="evenodd" transform="translate(17.864054, 37.830471) scale(-1, 1) rotate(-45.000000) translate(-17.864054, -37.830471) " points="13.884909 34.9782979 20.590089 34.9782979 21.8431981 37.7098712 13.884909 40.6826446"></polygon>
+                                        <polygon id="Line-8" fill="#00AD46" fill-rule="nonzero" points="22 39 22 61 24 61 24 39"></polygon>
+                                        <path d="M37,11 L37,18.3658537 C37,26.4480695 30.7319865,33 23,33 C15.2680135,33 9,26.4480695 9,18.3658537 L9,11" id="Rectangle-4" fill="#FFFFFF" fill-rule="evenodd"></path>
+                                        <path d="M40,16 L40,16 L40,22 L40,22 L40,22 C38.3431458,22 37,20.6568542 37,19 L37,19 L37,19 C37,17.3431458 38.3431458,16 40,16 Z" id="Rectangle-5-Copy" fill="url(#linearGradient-5)" fill-rule="evenodd" transform="translate(38.500000, 19.000000) scale(-1, 1) translate(-38.500000, -19.000000) "></path>
+                                        <path d="M9,16 L9,16 L9,22 L9,22 L9,22 C7.34314575,22 6,20.6568542 6,19 L6,19 L6,19 C6,17.3431458 7.34314575,16 9,16 Z" id="Rectangle-5" fill="url(#linearGradient-5)" fill-rule="evenodd"></path>
+                                        <path d="M8,10.2349678 L8,6 L38,6 L38,13.4118871 C33,14.470629 28,15 23,15 C18,15 13,14.470629 8,13.4118871 L8,10.2349678 Z" id="Combined-Shape" fill="#00AD46" fill-rule="evenodd"></path>
+                                        <rect id="Rectangle-25" fill="#02D557" fill-rule="evenodd" x="0" y="2" width="44" height="4"></rect>
+                                        <polygon id="Line-9" fill="#FFFFFF" fill-rule="nonzero" points="2 2 23 2 23 0 0 0 0 21 2 21"></polygon>
+                                    </g>
+                                </g>
+                            </g>
+                            <path d="M27,77.8400756 C11.2902272,72.4441453 0,57.5405596 0,40 C0,33.9213123 1.35592435,28.1593177 3.78181719,22.999972 L27,22.999972 L27,77.8400756 Z" id="Combined-Shape" fill="#2ADD72"></path>
+                            <polygon id="Rectangle-18" fill="#00AD46" transform="translate(28.500000, 55.750000) scale(-1, 1) translate(-28.500000, -55.750000) " points="27 78.5 27 33 30 33 30 77.5"></polygon>
+                            <path d="M1,34 L1,32 L21,32 L21,34 L1,34 Z M0,42 L0,40 L21,40 L21,42 L0,42 Z M1,50 L1,48 L21,48 L21,50 L1,50 Z M4,58 L4,56 L21,56 L21,58 L4,58 Z M9,66 L9,64 L21,64 L21,66 L9,66 Z" id="Combined-Shape" fill="#7EEEAB" fill-rule="nonzero"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-services-adm-estagio</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M61.0816927,74 C55.7589748,77.3073556 49.6025229,79.3996414 43,79.8891941 L43,23 L76.218196,23 C77.5507076,25.8339677 78.5603911,28.8497648 79.1998551,32 L59,32 L59,34 L79.5529984,34 C79.8474007,35.957161 80,37.9607598 80,40 L52,40 L52,42 L79.95087,42 C79.850213,44.0441208 79.5961161,46.0478724 79.1998551,48 L52,48 L52,50 L78.7398251,50 C78.2071561,52.0695643 77.5130214,54.0743075 76.6716505,56 L52,56 L52,58 L75.7308344,58 C74.6627676,60.1159945 73.4122662,62.1241843 72,64.0038996 L72,64 L52,64 L52,66 L70.3983428,66 C68.4924605,68.2261951 66.3462841,70.2405671 64,72.0029295 L64,72 L52,72 L52,74 L61.0816927,74 L61.0816927,74 Z M52,34 L55,34 L55,32 L52,32 L52,34 Z" id="path-1"></path>
+    </defs>
+    <g id="0.0-Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="D-0.0-Home" transform="translate(-260.000000, -1376.000000)">
+            <g id="Section-03" transform="translate(240.000000, 1230.000000)">
+                <g id="Empresas" transform="translate(14.000000, 96.000000)">
+                    <g id="Adm-contrato" transform="translate(0.000000, 50.000000)">
+                        <g id="icon-services-adm-estagio" transform="translate(6.000000, 0.000000)">
+                            <circle id="Oval-32-Copy-2" fill="#7EEEAB" cx="40" cy="40" r="40"></circle>
+                            <g id="Plus" transform="translate(7.000000, 27.000000)">
+                                <circle id="Oval-3" fill="#02D557" cx="13" cy="13" r="13"></circle>
+                                <rect id="Rectangle-19" fill="#FFFFFF" x="12" y="6" width="2" height="14"></rect>
+                                <rect id="Rectangle-19" fill="#FFFFFF" x="6" y="12" width="14" height="2"></rect>
+                            </g>
+                            <polygon id="Rectangle-20-Copy" fill="#00AD46" points="37 79.5 37 36 40 36 40 80"></polygon>
+                            <polygon id="Rectangle-20-Copy" fill="#02D557" points="40 80 40 29 43 29 43 80"></polygon>
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <use id="Combined-Shape" fill="#2ADD72" xlink:href="#path-1"></use>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
