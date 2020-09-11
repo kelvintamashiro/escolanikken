@@ -36,6 +36,7 @@
         <form-bean name="RelatoriosForm"  type="br.com.Form.RelatoriosForm"/>
         <form-bean name="TirarDuvidasForm"  type="br.com.Form.TirarDuvidasForm"/>
         <form-bean name="PlanejamentoAulasForm"  type="br.com.Form.PlanejamentoAulasForm"/>
+        <form-bean name="UploadArquivoForm"  type="br.com.Form.UploadArquivoForm"/>
  
     </form-beans>
 
@@ -212,14 +213,31 @@
                    scope="request"
                    validate="false"
                    input="/planejamento_aulas.jsp">
-            <forward name="page"                            path="/planejamento_aulas.jsp"/>
-            <forward name="carregarSerie"                   path="/planejamento_aulas.jsp"/>
-            <forward name="salvar"                          path="/planejamento_aulas.jsp"/>
-            <forward name="pesquisar"                       path="/planejamento_aulas_pesquisar.jsp"/>
-            <forward name="pesquisarTodos"                  path="/planejamento_aulas_pesquisar.jsp"/>
-            <forward name="excluir"                         path="/planejamento_aulas_pesquisar.jsp"/>
-            <forward name="editar"                          path="/planejamento_aulas_editar.jsp"/>
-            <forward name="atualizar"                       path="/planejamento_aulas_editar.jsp"/>
+            <forward name="page"                                    path="/planejamento_aulas.jsp"/>
+            <forward name="carregarSerie"                           path="/planejamento_aulas.jsp"/>
+            <forward name="salvar"                                  path="/planejamento_aulas.jsp"/>
+            <forward name="pesquisar"                               path="/planejamento_aulas_pesquisar.jsp"/>
+            <forward name="pagePesquisarPorProfessor"               path="/planejamento_aulas_page_pesquisar_professor.jsp"/>
+            <forward name="carregarDisciplinaPorProfessorSerie"     path="/planejamento_aulas_page_pesquisar_professor.jsp"/>
+            <forward name="pesquisarProfessorBimestre"              path="/planejamento_aulas_pesquisar.jsp"/>
+            <forward name="pesquisarTodos"                          path="/planejamento_aulas_pesquisar.jsp"/>
+            <forward name="excluir"                                 path="/planejamento_aulas_pesquisar.jsp"/>
+            <forward name="editar"                                  path="/planejamento_aulas_editar.jsp"/>
+            <forward name="atualizar"                               path="/planejamento_aulas_editar.jsp"/>
+            <forward name="confirmar"                               path="/planejamento_aulas_pesquisar.jsp"/>
+        </action>
+        
+        <action    path="/UploadArquivo"
+                   type="br.com.Action.UploadArquivoAction"
+                   name="UploadArquivoForm"
+                   scope="request"
+                   validate="false"
+                   input="/upload_arquivo_cardapio.jsp">
+            <forward name="pageCardapio"                    path="/upload_arquivo_cardapio.jsp"/>
+            <forward name="enviarCardapio"                  path="/upload_arquivo_cardapio.jsp"/>
+            <forward name="listarImagens"                   path="/upload_arquivo_lista.jsp"/>
+            <forward name="excluir"                         path="/upload_arquivo_lista.jsp"/>
+            <forward name="visualizarCardapio"              path="/visualizar_cardapio.jsp"/>
         </action>
         
     </action-mappings>

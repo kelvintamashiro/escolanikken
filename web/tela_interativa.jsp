@@ -41,17 +41,22 @@
                     <button class="btn-nikken" onclick="window.location.href = 'Aluno.do?action=pageConsultar'">
                         Consulta <br/>de Alunos
                     </button>                    
-                    <button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
-                        Planejamento <br/>de Aulas
+                    <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?action=pageConsulta&idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=professor'">
+                        Consulta <br/>de Notas
                     </button>
                     <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
                         Lançamento <br/>de Notas
                     </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?action=pageConsulta&idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=professor'">
-                        Consulta <br/>de Notas
+                </div>
+                <div class="col-12 col-s-12">
+                    <button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
+                        Planejamento <br/>de Aulas
                     </button>
                     <button class="btn-nikken" onclick="window.location.href = 'Comunicados.do'">
                         Comunicados <br/>Professores
+                    </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=visualizarCardapio'">
+                        Cardápio <br/>Nikken
                     </button>
                 </div>
             </div>
@@ -63,9 +68,11 @@
                     <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?action=pageConsultaAluno&idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=aluno'">
                         Consulta <br/>de Notas
                     </button>
-
                     <button class="btn-nikken" onclick="window.location.href = 'TirarDuvidas.do?idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=aluno'">
                         Contato / <br/>Dúvidas
+                    </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=visualizarCardapio'">
+                        Cardápio <br/>Nikken
                     </button>
                 </div>
                 <div class="col-12 col-s-12">
@@ -82,27 +89,6 @@
                     </button>
 
                 </div>
-                <%--                <div class="col-12 col-s-12">
-                                    <b style="color: #0A246A; font-size: 22px; border-bottom: 1px solid black">Mural de Avisos</b> <span style="font-size: 12px">(Últimos aviso)</span>
-                                    <table width="60%" border="0" style="margin-top: 20px; font-size: 11px" class="table-striped" align="center">
-                                        <tr>
-                                            <td width="15%"><b>Data</b></td>
-                                            <td><b>Título</b></td>
-                                            <td>&nbsp;</td>
-                                        </tr>
-                                        <logic:present name="listaComunicados" scope="session">
-                                            <logic:iterate id="lista" name="listaComunicados" scope="session">
-                                                <tr>
-                                                    <td><bean:write name="lista" property="data"/></td>
-                                                    <td><bean:write name="lista" property="assunto"/></td>
-                                                    <td align="right">
-                                                        <input class="btn btn-green" type="button" value="Visualizar" onClick="fVisualizar(<bean:write name="lista" property="idComunicado"/>);">
-                                                    </td>
-                                                </tr>
-                                            </logic:iterate>
-                                        </logic:present>
-                                    </table>
-                                </div>--%>
             </div>
         </logic:equal>
         <logic:equal name="tipoPerfil" scope="session" value="coordenacao">
@@ -134,6 +120,9 @@
                     <button class="btn-nikken" onclick="window.location.href = 'Comunicados.do'">
                         Comunicados <br/>Professores
                     </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=visualizarCardapio'">
+                        Cardápio <br/>Nikken
+                    </button>
                 </div>
             </div>
         </logic:equal>
@@ -149,11 +138,15 @@
                     <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
                         Lançamento <br/>de Notas
                     </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?action=pesquisarTodos'">
+                    <!--<button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?action=pesquisarTodos'">-->
+                    <button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?action=pagePesquisarPorProfessor'">
                         Planejamento <br/>de Aulas
                     </button>
                     <button class="btn-nikken" onclick="window.location.href = 'Disciplinas.do'">
                         Gerenciador <br/>de Disciplinas
+                    </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=pageCardapio'">
+                        Cardápio <br/>Nikken
                     </button>
                 </div>
                 <div class="col-12 col-s-12">

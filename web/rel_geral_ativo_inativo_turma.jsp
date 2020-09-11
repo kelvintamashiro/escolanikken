@@ -24,9 +24,6 @@
         <link rel="stylesheet" media="all" type="text/css" href="assets/css/style_original.css" />
         <link rel="stylesheet" media="all" type="text/css" href="assets/css/mobile.css" />
 
-        <!-- Link para exportar Excel-->
-        <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
-
         <style>
             body {
                 margin:0;
@@ -49,71 +46,560 @@
                 </td>
             </tr>
         </table>
-        <table class="table" style="font-size: 10px" width="50%" id="exportable_table">
-            <tr>
-                <td><b>Ensino</b></td>
-                <td><b>Série/Ano</b></td>
-                <td><b>Aluno</b></td>
-                <!--<td><b>Sexo</b></td>-->
-                <td><b>Província</b></td>
-                <td><b>Cidade</b></td>
-                <td><b>Endereço</b></td>
-                <td><b>Nome da Mãe</b></td>
-                <td><b>Contato da Mãe</b></td>
-                <td><b>Nome do Pai</b></td>
-                <td><b>Contato do Pai</b></td>
-                <td><b>Nome Emergência</b></td>
-                <td><b>Contato Emergência</b></td>
-                <td><b>Linha Transporte</b></td>
-            </tr>
-            <logic:present name="listaEnderecoTelefone" scope="request">
-                <%int i = 1;%>
-                <logic:iterate id="lista" name="listaEnderecoTelefone" scope="request">
-                    <bean:define id="disciplinaForm" name="lista" property="disciplinasForm"/>
-                    <bean:define id="alunoForm" name="lista" property="alunoForm"/>
-                    <tr>
-                        <td><bean:write name="disciplinaForm" property="categoriaEnsino"/></td>
-                        <td><bean:write name="disciplinaForm" property="dsCategoriaEnsino"/></td>
-                        <td><bean:write name="alunoForm" property="nome"/></td>
-                        <!--<td><bean:write name="alunoForm" property="sexo"/></td>-->
-                        <td><bean:write name="alunoForm" property="provincia"/></td>
-                        <td><bean:write name="alunoForm" property="cidade"/></td>
-                        <td><bean:write name="alunoForm" property="dsEndereco"/></td>
-                        <td><bean:write name="alunoForm" property="nomeMae"/></td>
-                        <td><bean:write name="alunoForm" property="celularMae"/></td>
-                        <td><bean:write name="alunoForm" property="nomePai"/></td>
-                        <td><bean:write name="alunoForm" property="celularPai"/></td>
-                        <td><bean:write name="alunoForm" property="contatoEmergencia"/></td>
-                        <td><bean:write name="alunoForm" property="telefoneContato"/></td>
-                        <td><bean:write name="alunoForm" property="linhaTransporte"/></td>
-                    </tr>
-                </logic:iterate>
-            </logic:present>
-            <!--            <tr>
-                            <td colspan="9" align="center">
-                                <input type="button" class="btn btn-green" value="Imprimir" onclick="javascript:DoPrinting()">
-                            </td>
-                        </tr>-->
+        <div class="row" align="center" style="padding-top: 50px">
+            <table border="1" width="30%" align="center" style="font-size: 24px" class="table-condensed">
+                <tr>
+                    <td width="50%" align="center">
+                        <b>TOTAL:</b>
+                    </td>
+                    <td width="50%" align="center">
+                        <b><bean:write name="qtdTotal" scope="request"/></b>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="row" align="center" style="padding-top: 50px">
+            <table border="1" width="30%" align="center" style="font-size: 18px;" class="table-condensed">
+                <tr>
+                    <td width="50%" align="center" style="color: blue">
+                        <b>Masculino:</b>
+                    </td>
+                    <td width="50%" align="center" style="color: blue">
+                        <b><bean:write name="qtdMasculino" scope="request"/></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="50%" align="center" style="color: red">
+                        <b>Feminino:</b>
+                    </td>
+                    <td width="50%" align="center" style="color: red">
+                        <b><bean:write name="qtdFeminino" scope="request"/></b>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
-        </table>
+        <div class="row" align="center" style="padding-top: 50px">
+
+            <table border="0" width="90%" align="center">
+                <tr>
+                    <!--Infantil-->
+                    <td width="25%">
+                        <table width="50%" border="1" align="center" style="font-size: 16px">
+                            <logic:present name="listaCategoriaInfantil" scope="request">
+                                <tr>
+                                    <td colspan="2" align="center">
+                                        <b>INFANTIL</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <bean:write name="listaCategoriaInfantil" property="qtdAmbosSexo"/>
+                                    </td>
+                                    <td align="center">
+                                        <span style="color: blue"> M: <bean:write name="listaCategoriaInfantil" property="qtdMasculino"/></span>
+                                        <br/>
+                                        <span style="color: red">F: <bean:write name="listaCategoriaInfantil" property="qtdFeminino"/></span>
+                                    </td>
+                                </tr>
+                            </logic:present>
+                        </table>
+                    </td> 
+                    <!--Fundamental 1-->
+                    <td width="25%">
+                        <table width="50%" border="1" align="center" style="font-size: 16px">
+                            <logic:present name="listaCategoriaFundamental1" scope="request">
+                                <tr>
+                                    <td colspan="2" align="center">
+                                        <b>Ens. Fundamental I</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <bean:write name="listaCategoriaFundamental1" property="qtdAmbosSexo"/>
+                                    </td>
+                                    <td align="center">
+                                        <span style="color: blue"> M: <bean:write name="listaCategoriaFundamental1" property="qtdMasculino"/></span>
+                                        <br/>
+                                        <span style="color: red">F: <bean:write name="listaCategoriaFundamental1" property="qtdFeminino"/></span>
+                                    </td>
+                                </tr>
+                            </logic:present>
+                        </table>
+                    </td>
+                    <!--Fundamental 2-->
+                    <td width="25%">
+                        <table width="50%" border="1" align="center" style="font-size: 16px">
+                            <logic:present name="listaCategoriaFundamental2" scope="request">
+                                <tr>
+                                    <td colspan="2" align="center">
+                                        <b>Ens. Fundamental II</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <bean:write name="listaCategoriaFundamental2" property="qtdAmbosSexo"/>
+                                    </td>
+                                    <td align="center">
+                                        <span style="color: blue"> M: <bean:write name="listaCategoriaFundamental2" property="qtdMasculino"/></span>
+                                        <br/>
+                                        <span style="color: red">F: <bean:write name="listaCategoriaFundamental2" property="qtdFeminino"/></span>
+                                    </td>
+                                </tr>
+                            </logic:present>
+                        </table>
+                    </td>
+                    <!--Ensino Medio-->
+                    <td width="25%">
+                        <table width="50%" border="1" align="center" style="font-size: 16px">
+                            <logic:present name="listaCategoriaEnsinoMedio" scope="request">
+                                <tr>
+                                    <td colspan="2" align="center">
+                                        <b>Ens. Médio</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <bean:write name="listaCategoriaEnsinoMedio" property="qtdAmbosSexo"/>
+                                    </td>
+                                    <td align="center">
+                                        <span style="color: blue"> M: <bean:write name="listaCategoriaEnsinoMedio" property="qtdMasculino"/></span>
+                                        <br/>
+                                        <span style="color: red">F: <bean:write name="listaCategoriaEnsinoMedio" property="qtdFeminino"/></span>
+                                    </td>
+                                </tr>
+                            </logic:present>
+                        </table>
+                    </td>
+                </tr>
+                <tr><td colspan="4">&nbsp;</td></tr>
+                <tr>
+                    <td align="center">
+                        <img src="imagens/seta.png" width="30%"/>
+                    </td>
+                    <td align="center">
+                        <img src="imagens/seta.png" width="30%"/>
+                    </td>
+                    <td align="center">
+                        <img src="imagens/seta.png" width="30%"/>
+                    </td>
+                    <td align="center">
+                        <img src="imagens/seta.png" width="30%"/>
+                    </td>
+                </tr>
+                <tr><td colspan="4">&nbsp;</td></tr>
+
+                <tr>
+                    <!--Infantil-->
+                    <td valign="top">
+                        <table width="50%" border="0" align="center">
+                            <tr>
+                                <td>
+                                    <table width="100%" border="1" align="center" style="font-size: 16px">
+                                        <logic:present name="listaInfantil1" scope="request">
+                                            <tr>
+                                                <td colspan="2" align="center">
+                                                    <b>INFANTIL I</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">
+                                                    <bean:write name="listaInfantil1" property="qtdAmbosSexo"/>
+                                                </td>
+                                                <td align="center">
+                                                    <span style="color: blue"> M: <bean:write name="listaInfantil1" property="qtdMasculino"/></span>
+                                                    <br/>
+                                                    <span style="color: red">F: <bean:write name="listaInfantil1" property="qtdFeminino"/></span>
+                                                </td>
+                                            </tr>
+                                        </logic:present>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td>
+                                    <table width="100%" border="1" align="center" style="font-size: 16px">
+                                        <logic:present name="listaInfantil2" scope="request">
+                                            <tr>
+                                                <td colspan="2" align="center">
+                                                    <b>INFANTIL II</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">
+                                                    <bean:write name="listaInfantil2" property="qtdAmbosSexo"/>
+                                                </td>
+                                                <td align="center">
+                                                    <span style="color: blue"> M: <bean:write name="listaInfantil2" property="qtdMasculino"/></span>
+                                                    <br/>
+                                                    <span style="color: red">F: <bean:write name="listaInfantil2" property="qtdFeminino"/></span>
+                                                </td>
+                                            </tr>
+                                        </logic:present>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td>
+                                    <table width="100%" border="1" align="center" style="font-size: 16px">
+                                        <logic:present name="listaInfantil3" scope="request">
+                                            <tr>
+                                                <td colspan="2" align="center">
+                                                    <b>INFANTIL III</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">
+                                                    <bean:write name="listaInfantil3" property="qtdAmbosSexo"/>
+                                                </td>
+                                                <td align="center">
+                                                    <span style="color: blue"> M: <bean:write name="listaInfantil3" property="qtdMasculino"/></span>
+                                                    <br/>
+                                                    <span style="color: red">F: <bean:write name="listaInfantil3" property="qtdFeminino"/></span>
+                                                </td>
+                                            </tr>
+                                        </logic:present>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <!--Fundamental I-->
+                    <td valign="top">
+                        <table width="50%" border="0" align="center">
+                            <tr>
+                                <td>
+                                    <table width="100%" border="1" align="center" style="font-size: 16px">
+                                        <logic:present name="listaAno1" scope="request">
+                                            <tr>
+                                                <td colspan="2" align="center">
+                                                    <b>1º ANO</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">
+                                                    <bean:write name="listaAno1" property="qtdAmbosSexo"/>
+                                                </td>
+                                                <td align="center">
+                                                    <span style="color: blue"> M: <bean:write name="listaAno1" property="qtdMasculino"/></span>
+                                                    <br/>
+                                                    <span style="color: red">F: <bean:write name="listaAno1" property="qtdFeminino"/></span>
+                                                </td>
+                                            </tr>
+                                        </logic:present>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td>
+                                    <table width="100%" border="1" align="center" style="font-size: 16px">
+                                        <logic:present name="listaAno2" scope="request">
+                                            <tr>
+                                                <td colspan="2" align="center">
+                                                    <b>2º ANO</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">
+                                                    <bean:write name="listaAno2" property="qtdAmbosSexo"/>
+                                                </td>
+                                                <td align="center">
+                                                    <span style="color: blue"> M: <bean:write name="listaAno2" property="qtdMasculino"/></span>
+                                                    <br/>
+                                                    <span style="color: red">F: <bean:write name="listaAno2" property="qtdFeminino"/></span>
+                                                </td>
+                                            </tr>
+                                        </logic:present>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td>
+                                    <table width="100%" border="1" align="center" style="font-size: 16px">
+                                        <logic:present name="listaAno3" scope="request">
+                                            <tr>
+                                                <td colspan="2" align="center">
+                                                    <b>3º ANO</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">
+                                                    <bean:write name="listaAno3" property="qtdAmbosSexo"/>
+                                                </td>
+                                                <td align="center">
+                                                    <span style="color: blue"> M: <bean:write name="listaAno3" property="qtdMasculino"/></span>
+                                                    <br/>
+                                                    <span style="color: red">F: <bean:write name="listaAno3" property="qtdFeminino"/></span>
+                                                </td>
+                                            </tr>
+                                        </logic:present>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td>
+                                    <table width="100%" border="1" align="center" style="font-size: 16px">
+                                        <logic:present name="listaAno4" scope="request">
+                                            <tr>
+                                                <td colspan="2" align="center">
+                                                    <b>4º ANO</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">
+                                                    <bean:write name="listaAno4" property="qtdAmbosSexo"/>
+                                                </td>
+                                                <td align="center">
+                                                    <span style="color: blue"> M: <bean:write name="listaAno4" property="qtdMasculino"/></span>
+                                                    <br/>
+                                                    <span style="color: red">F: <bean:write name="listaAno4" property="qtdFeminino"/></span>
+                                                </td>
+                                            </tr>
+                                        </logic:present>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td>
+                                    <table width="100%" border="1" align="center" style="font-size: 16px">
+                                        <logic:present name="listaAno5" scope="request">
+                                            <tr>
+                                                <td colspan="2" align="center">
+                                                    <b>5º ANO</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">
+                                                    <bean:write name="listaAno5" property="qtdAmbosSexo"/>
+                                                </td>
+                                                <td align="center">
+                                                    <span style="color: blue"> M: <bean:write name="listaAno5" property="qtdMasculino"/></span>
+                                                    <br/>
+                                                    <span style="color: red">F: <bean:write name="listaAno5" property="qtdFeminino"/></span>
+                                                </td>
+                                            </tr>
+                                        </logic:present>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <!--Fundamental II-->
+                    <td valign="top">
+                        <table width="50%" border="0" align="center">
+                            <tr>
+                                <td>
+                                    <table width="100%" border="1" align="center" style="font-size: 16px">
+                                        <logic:present name="listaAno6" scope="request">
+                                            <tr>
+                                                <td colspan="2" align="center">
+                                                    <b>6º ANO</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">
+                                                    <bean:write name="listaAno6" property="qtdAmbosSexo"/>
+                                                </td>
+                                                <td align="center">
+                                                    <span style="color: blue"> M: <bean:write name="listaAno6" property="qtdMasculino"/></span>
+                                                    <br/>
+                                                    <span style="color: red">F: <bean:write name="listaAno6" property="qtdFeminino"/></span>
+                                                </td>
+                                            </tr>
+                                        </logic:present>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td>
+                                    <table width="100%" border="1" align="center" style="font-size: 16px">
+                                        <logic:present name="listaAno7" scope="request">
+                                            <tr>
+                                                <td colspan="2" align="center">
+                                                    <b>7º ANO</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">
+                                                    <bean:write name="listaAno7" property="qtdAmbosSexo"/>
+                                                </td>
+                                                <td align="center">
+                                                    <span style="color: blue"> M: <bean:write name="listaAno7" property="qtdMasculino"/></span>
+                                                    <br/>
+                                                    <span style="color: red">F: <bean:write name="listaAno7" property="qtdFeminino"/></span>
+                                                </td>
+                                            </tr>
+                                        </logic:present>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td>
+                                    <table width="100%" border="1" align="center" style="font-size: 16px">
+                                        <logic:present name="listaAno8" scope="request">
+                                            <tr>
+                                                <td colspan="2" align="center">
+                                                    <b>8º ANO</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">
+                                                    <bean:write name="listaAno8" property="qtdAmbosSexo"/>
+                                                </td>
+                                                <td align="center">
+                                                    <span style="color: blue"> M: <bean:write name="listaAno8" property="qtdMasculino"/></span>
+                                                    <br/>
+                                                    <span style="color: red">F: <bean:write name="listaAno8" property="qtdFeminino"/></span>
+                                                </td>
+                                            </tr>
+                                        </logic:present>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td>
+                                    <table width="100%" border="1" align="center" style="font-size: 16px">
+                                        <logic:present name="listaAno9" scope="request">
+                                            <tr>
+                                                <td colspan="2" align="center">
+                                                    <b>9º ANO</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">
+                                                    <bean:write name="listaAno9" property="qtdAmbosSexo"/>
+                                                </td>
+                                                <td align="center">
+                                                    <span style="color: blue"> M: <bean:write name="listaAno9" property="qtdMasculino"/></span>
+                                                    <br/>
+                                                    <span style="color: red">F: <bean:write name="listaAno9" property="qtdFeminino"/></span>
+                                                </td>
+                                            </tr>
+                                        </logic:present>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <!--Ensino Medio-->
+                    <td valign="top">
+                        <table width="50%" border="0" align="center">
+                            <tr>
+                                <td>
+                                    <table width="100%" border="1" align="center" style="font-size: 16px">
+                                        <logic:present name="listaSerie1" scope="request">
+                                            <tr>
+                                                <td colspan="2" align="center">
+                                                    <b>1ª SÉRIE</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">
+                                                    <bean:write name="listaSerie1" property="qtdAmbosSexo"/>
+                                                </td>
+                                                <td align="center">
+                                                    <span style="color: blue"> M: <bean:write name="listaSerie1" property="qtdMasculino"/></span>
+                                                    <br/>
+                                                    <span style="color: red">F: <bean:write name="listaSerie1" property="qtdFeminino"/></span>
+                                                </td>
+                                            </tr>
+                                        </logic:present>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td>
+                                    <table width="100%" border="1" align="center" style="font-size: 16px">
+                                        <logic:present name="listaSerie2" scope="request">
+                                            <tr>
+                                                <td colspan="2" align="center">
+                                                    <b>2ª SÉRIE</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">
+                                                    <bean:write name="listaSerie2" property="qtdAmbosSexo"/>
+                                                </td>
+                                                <td align="center">
+                                                    <span style="color: blue"> M: <bean:write name="listaSerie2" property="qtdMasculino"/></span>
+                                                    <br/>
+                                                    <span style="color: red">F: <bean:write name="listaSerie2" property="qtdFeminino"/></span>
+                                                </td>
+                                            </tr>
+                                        </logic:present>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td>
+                                    <table width="100%" border="1" align="center" style="font-size: 16px">
+                                        <logic:present name="listaSerie3" scope="request">
+                                            <tr>
+                                                <td colspan="2" align="center">
+                                                    <b>3ª SÉRIE</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center">
+                                                    <bean:write name="listaSerie3" property="qtdAmbosSexo"/>
+                                                </td>
+                                                <td align="center">
+                                                    <span style="color: blue"> M: <bean:write name="listaSerie3" property="qtdMasculino"/></span>
+                                                    <br/>
+                                                    <span style="color: red">F: <bean:write name="listaSerie3" property="qtdFeminino"/></span>
+                                                </td>
+                                            </tr>
+                                        </logic:present>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+
+
+
+            <!--            <table border="1" width="80%">
+            <logic:present name="listaCategoriaInfantil" scope="request">
+                <tr>
+                    <td colspan="2" align="center">
+                        <b>INFANTIL</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        3
+                    </td>
+                    <td>
+                        Masculino: <bean:write name="listaCategoriaInfantil" property="qtdMasculino"/>
+                        <br/>
+                        Feminino: <bean:write name="listaCategoriaInfantil" property="qtdFeminino"/>
+                    </td>
+                </tr>
+            </logic:present>
+        </table>-->
+        </div>
         <table width="100%" style="margin-top: 150px">
             <tr>
                 <td align="center">
                     <html:button property="btImprimir" styleClass="btn btn-green" onclick="javascript: style.display='none', window.print()">Imprimir</html:button>
-                    <button class="btn btn-info" onclick="ExportExcel('xlsx')">Exportar para Excel</button>
                 </td>
             </tr>
         </table>
 
-        <script type="text/javascript">
-            function ExportExcel(type, fn, dl) {
-                var elt = document.getElementById('exportable_table');
-                var wb = XLSX.utils.table_to_book(elt, {sheet: "Sheet JS"});
-                return dl ?
-                        XLSX.write(wb, {bookType: type, bookSST: true, type: 'base64'}) :
-                        XLSX.writeFile(wb, fn || ('ListaEnderecoTelefoneTransporte.' + (type || 'xlsx')));
-            }
-        </script>
     </body>
 </html>
 <script language="JavaScript">

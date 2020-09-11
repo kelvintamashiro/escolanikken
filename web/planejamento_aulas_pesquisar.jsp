@@ -44,7 +44,7 @@
             <table border="0" align="center" style="margin-top: 20px; background-color: #FFC0CB" width="100%">
                 <tr>
                     <td width="10%" style="padding-left: 50px">
-                        <!--<a href="PlanejamentoAulas.do?idPF=<bean:write name="PlanejamentoAulasForm" property="idProfessor"/>"><img src="imagens/bt_voltar_2.png" width="100px"/></a>-->
+                        <a href="javascript:history.back()"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
                     </td>
                     <td width="80%" align="center">
                         <h1>Planejamento de Aulas Cadastradas</h1>
@@ -63,10 +63,21 @@
                             <td><b>Bimestre</b></td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
+                            <td>&nbsp;</td>
                         </tr>
                         <logic:iterate id="lista" name="listaPlanoAulas" scope="request">
-                            <tr>
-                                <td><bean:write name="lista" property="data"/></td>
+                            <% String strCor = "bgColor=#F4F4F4";%>
+                            <logic:equal name="lista" property="confirmar" value="1">
+                                <%strCor = "bgColor=#9AFF9A";%>
+                            </logic:equal>
+                            <logic:equal name="lista" property="confirmar" value="0">
+                                <% strCor = "bgColor=#FFFFFF";%>
+                            </logic:equal>
+
+                            <tr <%=strCor%>>
+                                <td>
+                                    <bean:write name="lista" property="data"/>
+                                </td>
                                 <td><bean:write name="lista" property="nomeDisciplina"/></td>
                                 <td><bean:write name="lista" property="nomeProfessor"/></td>
                                 <td>
@@ -87,12 +98,24 @@
                                     <logic:equal name="lista" property="idSerieAno" value="30">3ª série E.M.</logic:equal>
                                     </td>
                                     <td><bean:write name="lista" property="nrBimestre"/>º Bimestre</td>
-                                <td>
-                                    <input class="btn btn-green" type="button" value="Editar" onClick="fEditar(<bean:write name="lista" property="idPlanejamento"/>);">
-                                </td>
-                                <td>
-                                    <input class="btn btn-danger" type="button" value="Excluir" onClick="fExcluir(<bean:write name="lista" property="idPlanejamento"/>);">
-                                </td>
+                                <logic:equal name="lista" property="confirmar" value="1">
+                                    <td colspan="3" align="center">
+                                        <b>Plano de aula confirmado</b>
+                                    </td>
+                                </logic:equal>
+                                <logic:equal name="lista" property="confirmar" value="0">
+                                    <td>
+                                        <input class="btn btn-info" type="button" value="Confirmar" style="color: white" onClick="fConfirmar(<bean:write name="lista" property="idPlanejamento"/>);">
+                                    </td>
+                                    <td>
+                                        <input class="btn btn-green" type="button" value="Editar" onClick="fEditar(<bean:write name="lista" property="idPlanejamento"/>);">
+                                    </td>
+                                    <td>
+                                        <input class="btn btn-danger" type="button" value="Excluir" onClick="fExcluir(<bean:write name="lista" property="idPlanejamento"/>);">
+                                    </td>
+                                </logic:equal>
+
+
                             </tr>
                         </logic:iterate>
                     </logic:present>
@@ -107,6 +130,13 @@
         function fEditar(idPlanejamento) {
             document.PlanejamentoAulasForm.action = "PlanejamentoAulas.do?action=editar&idPlanejamento=" + idPlanejamento + "&idPF=<bean:write name="PlanejamentoAulasForm" property="idProfessor"/>";
             document.PlanejamentoAulasForm.submit();
+        }
+
+        function fConfirmar(idPlanejamento) {
+            if (confirm("Você Confirma esse Planejamento??")) {
+                document.PlanejamentoAulasForm.action = "PlanejamentoAulas.do?action=confirmar&idPlanejamento=" + idPlanejamento + "&idPF=<bean:write name="PlanejamentoAulasForm" property="idProfessor"/>";
+                document.PlanejamentoAulasForm.submit();
+            }
         }
 
         function fExcluir(idPlanejamento) {

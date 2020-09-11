@@ -174,7 +174,8 @@
         }
 
         function fPesquisar() {
-            document.PlanejamentoAulasForm.action = "PlanejamentoAulas.do?action=pesquisar&idPF=<bean:write name="PlanejamentoAulasForm" property="idProfessor"/>";
+//            document.PlanejamentoAulasForm.action = "PlanejamentoAulas.do?action=pesquisar&idPF=<bean:write name="PlanejamentoAulasForm" property="idProfessor"/>";
+            document.PlanejamentoAulasForm.action = "PlanejamentoAulas.do?action=pagePesquisarPorProfessor&idPF=<bean:write name="PlanejamentoAulasForm" property="idProfessor"/>";
             document.PlanejamentoAulasForm.submit();
         }
 
