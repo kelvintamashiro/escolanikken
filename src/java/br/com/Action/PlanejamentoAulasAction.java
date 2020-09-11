@@ -7,6 +7,7 @@ package br.com.Action;
 
 import br.com.Dao.NotaBimestreDao;
 import br.com.Form.NotaBimestreForm;
+import br.com.Form.PessoaFisicaForm;
 import br.com.Form.PlanejamentoAulasForm;
 import br.com.Form.SerieAnoForm;
 import br.com.abre.Util.Errors;
@@ -35,6 +36,8 @@ public class PlanejamentoAulasAction extends IDRAction {
             this.salvar(form, request, errors);
         } else if (action.equals("pesquisar")) {
             this.pesquisar(form, request, errors);
+        } else if (action.equals("pesquisarProfessorBimestre")) {
+            this.pesquisarProfessorBimestre(form, request, errors);
         } else if (action.equals("pesquisarTodos")) {
             this.pesquisarTodos(form, request, errors);
         } else if (action.equals("editar")) {
@@ -43,6 +46,12 @@ public class PlanejamentoAulasAction extends IDRAction {
             this.excluir(form, request, errors);
         } else if (action.equals("atualizar")) {
             this.atualizar(form, request, errors);
+        } else if (action.equals("confirmar")) {
+            this.confirmar(form, request, errors);
+        } else if (action.equals("pagePesquisarPorProfessor")) {
+            this.pagePesquisarPorProfessor(form, request, errors);
+        } else if (action.equals("carregarDisciplinaPorProfessorSerie")) {
+            this.carregarDisciplinaPorProfessorSerie(form, request, errors);
         }
 
         return mapping.findForward(forward);
@@ -196,12 +205,102 @@ public class PlanejamentoAulasAction extends IDRAction {
         try {
             conn = connectionPool.getConnection();
 
-            //excluir plano de aula por idPlanejamento
+            //atualizar plano de aula por idPlanejamento
             planejamentoAulasForm.atualizar(conn, planejamentoAulasForm);
 
             errors.error("Plano de Aula atualizado com SUCESSO!!");
 
             this.editar(planejamentoAulasForm, request, errors);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.free(conn);
+        }
+    }
+
+    private void confirmar(ActionForm form, HttpServletRequest request, Errors errors) {
+        PlanejamentoAulasForm planejamentoAulasForm = (PlanejamentoAulasForm) form;
+        Connection conn = null;
+        try {
+            conn = connectionPool.getConnection();
+
+            //confirmar plano de aula por idPlanejamento
+            planejamentoAulasForm.confirmar(conn, planejamentoAulasForm);
+
+            errors.error("Plano de Aula Confirmado com SUCESSO!!");
+
+            this.pesquisar(planejamentoAulasForm, request, errors);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.free(conn);
+        }
+    }
+
+    private void pagePesquisarPorProfessor(ActionForm form, HttpServletRequest request, Errors errors) {
+        PlanejamentoAulasForm planejamentoAulasForm = (PlanejamentoAulasForm) form;
+        Connection conn = null;
+        try {
+            conn = connectionPool.getConnection();
+
+            //obter todos os professores
+            PessoaFisicaForm professorForm = new PessoaFisicaForm();
+            professorForm.setStatus(1);
+            ArrayList<PessoaFisicaForm> listaProfessores = professorForm.obterListaProfessores(conn, professorForm);
+            if (listaProfessores.size() > 0) {
+                request.setAttribute("listaProfessores", listaProfessores);
+            }
+
+            request.setAttribute("PlanejamentoAulasForm", planejamentoAulasForm);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.free(conn);
+        }
+    }
+
+    private void pesquisarProfessorBimestre(ActionForm form, HttpServletRequest request, Errors errors) {
+        PlanejamentoAulasForm planejamentoAulasForm = (PlanejamentoAulasForm) form;
+        Connection conn = null;
+        try {
+            conn = connectionPool.getConnection();
+
+            //carregar plano de aula por Professor
+            List<PlanejamentoAulasForm> listaPlanoAulas = planejamentoAulasForm.obterListaPlanoAulasPorProfessorBimestre(conn, planejamentoAulasForm);
+            if (listaPlanoAulas.size() > 0) {
+                request.setAttribute("listaPlanoAulas", listaPlanoAulas);
+            }
+
+            request.setAttribute("PlanejamentoAulasForm", planejamentoAulasForm);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.free(conn);
+        }
+    }
+
+    private void carregarDisciplinaPorProfessorSerie(ActionForm form, HttpServletRequest request, Errors errors) {
+        PlanejamentoAulasForm planejamentoAulasForm = (PlanejamentoAulasForm) form;
+        Connection conn = null;
+        try {
+            conn = connectionPool.getConnection();
+            
+            //carregar lista disciplinas por idProfessor e serie
+            List<PlanejamentoAulasForm> listaDisciplinaPorProfessor = planejamentoAulasForm.obterDisciplinasPorProfessorSerie(conn, planejamentoAulasForm);
+            if (listaDisciplinaPorProfessor.size() > 0) {
+                request.setAttribute("listaDisciplinaPorProfessor", listaDisciplinaPorProfessor);
+            }
+
+            //obter todos os professores
+            PessoaFisicaForm professorForm = new PessoaFisicaForm();
+            professorForm.setStatus(1);
+            ArrayList<PessoaFisicaForm> listaProfessores = professorForm.obterListaProfessores(conn, professorForm);
+            if (listaProfessores.size() > 0) {
+                request.setAttribute("listaProfessores", listaProfessores);
+            }
+
+            request.setAttribute("PlanejamentoAulasForm", planejamentoAulasForm);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

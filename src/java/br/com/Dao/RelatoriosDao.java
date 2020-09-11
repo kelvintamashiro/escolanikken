@@ -266,4 +266,96 @@ public class RelatoriosDao {
 
         return listaTelefonesPais;
     }
+
+    public RelatoriosForm obterInformacaoPorCategoria(Connection conn, int idCategoria) throws SQLException {
+        String query = "select pf.nome, pf.sexo, a.serie_ano, d.descricao"
+                + " from pessoa_fisica pf, alunos a, ano_vigente ano, descricao_serie_ano d"
+                + " where pf.id = a.id_pessoa_fisica"
+                + " and a.ano_vigente = ano.ano_vigente"
+                + " and a.serie_ano = d.id"
+                + " and d.ordem = ?"
+                + " order by d.ordem, d.id, pf.nome";
+
+        PreparedStatement prep = conn.prepareStatement(query);
+        prep.setInt(1, idCategoria);
+        ResultSet rs = prep.executeQuery();
+        int qtdMasc = 0;
+        int qtdFem = 0;
+        RelatoriosForm relatoriosForm = new RelatoriosForm();
+        while (rs.next()) {
+
+            AlunoForm alunoForm = new AlunoForm();
+            alunoForm.setNome(rs.getString("nome"));
+            alunoForm.setSexo(rs.getString("sexo"));
+            if (alunoForm.getSexo().equals("feminino")) {
+                qtdFem += 1;
+            } else {
+                qtdMasc += 1;
+            }
+            relatoriosForm.setAlunoForm(alunoForm);
+        }
+        rs.close();
+        prep.close();
+
+        relatoriosForm.setQtdFeminino(qtdFem);
+        relatoriosForm.setQtdMasculino(qtdMasc);
+        relatoriosForm.setQtdAmbosSexo(qtdMasc + qtdFem);
+
+        return relatoriosForm;
+    }
+
+    public RelatoriosForm obterInformacaoPorSerie(Connection conn, int idSerieAno) throws SQLException {
+        String query = "select pf.nome, pf.sexo, a.serie_ano, d.descricao"
+                + " from pessoa_fisica pf, alunos a, ano_vigente ano, descricao_serie_ano d"
+                + " where pf.id = a.id_pessoa_fisica"
+                + " and a.ano_vigente = ano.ano_vigente"
+                + " and a.serie_ano = d.id"
+                + " and a.serie_ano = ?"
+                + " order by d.ordem, d.id, pf.nome";
+
+        PreparedStatement prep = conn.prepareStatement(query);
+        prep.setInt(1, idSerieAno);
+        ResultSet rs = prep.executeQuery();
+        int qtdMasc = 0;
+        int qtdFem = 0;
+        RelatoriosForm relatoriosForm = new RelatoriosForm();
+        while (rs.next()) {
+            AlunoForm alunoForm = new AlunoForm();
+            alunoForm.setNome(rs.getString("nome"));
+            alunoForm.setSexo(rs.getString("sexo"));
+            if (alunoForm.getSexo().equals("feminino")) {
+                qtdFem += 1;
+            } else {
+                qtdMasc += 1;
+            }
+            relatoriosForm.setAlunoForm(alunoForm);
+        }
+        rs.close();
+        prep.close();
+
+        relatoriosForm.setQtdFeminino(qtdFem);
+        relatoriosForm.setQtdMasculino(qtdMasc);
+        relatoriosForm.setQtdAmbosSexo(qtdMasc + qtdFem);
+
+        return relatoriosForm;
+    }
+
+    public int obterQtdEstudantePorSexo(Connection conn, String sexo) throws SQLException {
+        int qtdPorSexo = 0;
+        String query = "select count(*) as qtdTotal"
+                + " from pessoa_fisica pf, alunos a, ano_vigente ano"
+                + " where pf.id = a.id_pessoa_fisica"
+                + " and a.ano_vigente = ano.ano_vigente"
+                + " and pf.sexo = ?";
+        PreparedStatement prep = conn.prepareStatement(query);
+        prep.setString(1, sexo);
+        ResultSet rs = prep.executeQuery();
+        if(rs.next()){
+            qtdPorSexo = rs.getInt("qtdTotal");
+        }
+        rs.close();
+        prep.close();
+        
+        return qtdPorSexo;
+    }
 }

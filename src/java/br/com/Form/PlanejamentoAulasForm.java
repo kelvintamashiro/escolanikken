@@ -35,6 +35,24 @@ public class PlanejamentoAulasForm extends FormBasico {
     private String avaliacao;
     private String conteudoAula;
     private String observacao;
+    private int confirmar;
+    private int anoVigente;
+
+    public int getAnoVigente() {
+        return anoVigente;
+    }
+
+    public void setAnoVigente(int anoVigente) {
+        this.anoVigente = anoVigente;
+    }
+
+    public int getConfirmar() {
+        return confirmar;
+    }
+
+    public void setConfirmar(int confirmar) {
+        this.confirmar = confirmar;
+    }
 
     public String getCategoriaEnsino() {
         return categoriaEnsino;
@@ -214,9 +232,10 @@ public class PlanejamentoAulasForm extends FormBasico {
     public List<PlanejamentoAulasForm> obterListaPlanoAulasPorProfessor(Connection conn, String idProfessor) throws SQLException {
         List<PlanejamentoAulasForm> listaPlanoAulas = new ArrayList<>();
         String query = "select a.*, d.nome_disciplina, pf.nome"
-                + " from planejamento_aula a, disciplina d, pessoa_fisica pf"
+                + " from planejamento_aula a, disciplina d, pessoa_fisica pf, ano_vigente av"
                 + " where a.id_disciplina = d.id_disciplina"
                 + " and a.id_professor = pf.id"
+                + " and a.ano_vigente = av.ano_vigente"
                 + " and a.id_professor = ?"
                 + " order by a.data desc, d.nome_disciplina";
 
@@ -239,6 +258,57 @@ public class PlanejamentoAulasForm extends FormBasico {
                     planoAulaForm.setConteudoAula(rs.getString("conteudo_aula"));
                     planoAulaForm.setObservacao(rs.getString("observacao"));
                     planoAulaForm.setNomeDisciplina(rs.getString("nome_disciplina"));
+                    planoAulaForm.setConfirmar(rs.getInt("confirmar"));
+
+                    listaPlanoAulas.add(planoAulaForm);
+                }
+            }
+        }
+
+        return listaPlanoAulas;
+    }
+
+    public List<PlanejamentoAulasForm> obterListaPlanoAulasPorProfessorBimestre(Connection conn, PlanejamentoAulasForm planejamentoAulasForm) throws SQLException {
+        List<PlanejamentoAulasForm> listaPlanoAulas = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        sb.append(" select a.*, d.nome_disciplina, pf.nome");
+        sb.append(" from planejamento_aula a, disciplina d, pessoa_fisica pf");
+        sb.append(" where a.id_disciplina = d.id_disciplina");
+        sb.append(" and a.id_professor = pf.id");
+        sb.append(" and a.id_professor = ?");
+        if (planejamentoAulasForm.getNrBimestre() > 0) {
+            sb.append(" and a.nr_bimestre = ").append(planejamentoAulasForm.getNrBimestre());
+        }
+        if (planejamentoAulasForm.getIdSerieAno()> 0) {
+            sb.append(" and a.serie_ano = ").append(planejamentoAulasForm.getIdSerieAno());
+        }
+        if (planejamentoAulasForm.getIdDisciplina()> 0) {
+            sb.append(" and a.id_disciplina = ").append(planejamentoAulasForm.getIdDisciplina());
+        }
+        sb.append(" and a.ano_vigente = ?");
+        sb.append(" order by a.data desc, d.nome_disciplina");
+
+        try (PreparedStatement prep = conn.prepareStatement(sb.toString())) {
+            prep.setInt(1, planejamentoAulasForm.getIdProfessor());
+            prep.setInt(2, planejamentoAulasForm.getAnoVigente());
+            try (ResultSet rs = prep.executeQuery()) {
+                while (rs.next()) {
+                    PlanejamentoAulasForm planoAulaForm = new PlanejamentoAulasForm();
+                    planoAulaForm.setIdPlanejamento(rs.getInt("id"));
+                    planoAulaForm.setIdProfessor(rs.getInt("id_professor"));
+                    planoAulaForm.setNomeProfessor(rs.getString("nome"));
+                    planoAulaForm.setIdDisciplina(rs.getInt("id_disciplina"));
+                    planoAulaForm.setIdSerieAno(rs.getInt("serie_ano"));
+                    planoAulaForm.setNrBimestre(rs.getInt("nr_bimestre"));
+                    planoAulaForm.setData(IDRDate.formatSQLDate(rs.getString("data")));
+                    planoAulaForm.setMetodologia(rs.getString("metodologia"));
+                    planoAulaForm.setRecurso(rs.getString("recurso"));
+                    planoAulaForm.setTarefa(rs.getString("tarefa"));
+                    planoAulaForm.setAvaliacao(rs.getString("avaliacao"));
+                    planoAulaForm.setConteudoAula(rs.getString("conteudo_aula"));
+                    planoAulaForm.setObservacao(rs.getString("observacao"));
+                    planoAulaForm.setNomeDisciplina(rs.getString("nome_disciplina"));
+                    planoAulaForm.setConfirmar(rs.getInt("confirmar"));
 
                     listaPlanoAulas.add(planoAulaForm);
                 }
@@ -274,6 +344,7 @@ public class PlanejamentoAulasForm extends FormBasico {
                     planoAulaForm.setConteudoAula(rs.getString("conteudo_aula"));
                     planoAulaForm.setObservacao(rs.getString("observacao"));
                     planoAulaForm.setNomeDisciplina(rs.getString("nome_disciplina"));
+                    planoAulaForm.setConfirmar(rs.getInt("confirmar"));
 
                     listaPlanoAulas.add(planoAulaForm);
                 }
@@ -309,6 +380,7 @@ public class PlanejamentoAulasForm extends FormBasico {
                     planoAulaForm.setAvaliacao(rs.getString("avaliacao"));
                     planoAulaForm.setConteudoAula(rs.getString("conteudo_aula"));
                     planoAulaForm.setObservacao(rs.getString("observacao"));
+                    planoAulaForm.setConfirmar(rs.getInt("confirmar"));
                 }
             }
         }
@@ -339,6 +411,39 @@ public class PlanejamentoAulasForm extends FormBasico {
             prep.setInt(9, planoAulaForm.getIdPlanejamento());
             prep.execute();
         }
+    }
+
+    public void confirmar(Connection conn, PlanejamentoAulasForm planoAulaForm) throws SQLException {
+        String query = "UPDATE planejamento_aula SET confirmar=1 WHERE id=?";
+        try (PreparedStatement prep = conn.prepareStatement(query)) {
+            prep.setInt(1, planoAulaForm.getIdPlanejamento());
+            prep.execute();
+        }
+    }
+
+    public List<PlanejamentoAulasForm> obterDisciplinasPorProfessorSerie(Connection conn, PlanejamentoAulasForm planoAulaForm) throws SQLException {
+        List<PlanejamentoAulasForm> listaDisciplinaPorProfessor = new ArrayList<>();
+        String query = "select dp.id_disciplina, d.nome_disciplina"
+                + " from disciplina_professor dp, disciplina d"
+                + " where dp.id_disciplina = d.id_disciplina"
+                + " and dp.id_professor = ?"
+                + " and dp.serie_ano = ?"
+                + " order by d.nome_disciplina";
+        PreparedStatement prep = conn.prepareStatement(query);
+        prep.setInt(1, planoAulaForm.getIdProfessor());
+        prep.setInt(2, planoAulaForm.getIdSerieAno());
+        ResultSet rs = prep.executeQuery();
+        while (rs.next()) {
+            PlanejamentoAulasForm planejamentoAula = new PlanejamentoAulasForm();
+            planejamentoAula.setIdDisciplina(rs.getInt("id_disciplina"));
+            planejamentoAula.setNomeDisciplina(rs.getString("nome_disciplina"));
+
+            listaDisciplinaPorProfessor.add(planejamentoAula);
+        }
+        rs.close();
+        prep.close();
+
+        return listaDisciplinaPorProfessor;
     }
 
 }

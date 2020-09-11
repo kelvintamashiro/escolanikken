@@ -279,14 +279,59 @@ public class RelatoriosAction extends IDRAction {
         try {
             conn = connectionPool.getConnection();
             
-            //obter quantidade de ativos e inativos do ano
-            String ano = request.getParameter("ano");
+            //obter quantidade total por sexo
+            int qtdFeminino = RelatoriosDao.getInstance().obterQtdEstudantePorSexo(conn, "feminino");
+            int qtdMasculino = RelatoriosDao.getInstance().obterQtdEstudantePorSexo(conn, "masculino");
+            int qtdTotal = qtdFeminino + qtdMasculino;
             
+            request.setAttribute("qtdTotal", qtdTotal);
+            request.setAttribute("qtdFeminino", qtdFeminino);
+            request.setAttribute("qtdMasculino", qtdMasculino);
             
+            //obter informacao geral por categoria
+            RelatoriosForm listaCategoriaInfantil = RelatoriosDao.getInstance().obterInformacaoPorCategoria(conn, 1);
+            RelatoriosForm listaCategoriaFundamental1 = RelatoriosDao.getInstance().obterInformacaoPorCategoria(conn, 2);
+            RelatoriosForm listaCategoriaFundamental2 = RelatoriosDao.getInstance().obterInformacaoPorCategoria(conn, 3);
+            RelatoriosForm listaCategoriaEnsinoMedio = RelatoriosDao.getInstance().obterInformacaoPorCategoria(conn, 4);
+            
+            request.setAttribute("listaCategoriaInfantil", listaCategoriaInfantil);
+            request.setAttribute("listaCategoriaFundamental1", listaCategoriaFundamental1);
+            request.setAttribute("listaCategoriaFundamental2", listaCategoriaFundamental2);
+            request.setAttribute("listaCategoriaEnsinoMedio", listaCategoriaEnsinoMedio);
             
             //obter informacao geral por serie/turma
-            List<RelatoriosForm> listaEnderecoTelefone = RelatoriosDao.getInstance().obterListaEnderecoTelefone(conn);
-            request.setAttribute("listaEnderecoTelefone", listaEnderecoTelefone);
+            RelatoriosForm listaInfantil1 = RelatoriosDao.getInstance().obterInformacaoPorSerie(conn, 11);
+            RelatoriosForm listaInfantil2 = RelatoriosDao.getInstance().obterInformacaoPorSerie(conn, 12);
+            RelatoriosForm listaInfantil3 = RelatoriosDao.getInstance().obterInformacaoPorSerie(conn, 13);
+            RelatoriosForm listaAno1 = RelatoriosDao.getInstance().obterInformacaoPorSerie(conn, 1);
+            RelatoriosForm listaAno2 = RelatoriosDao.getInstance().obterInformacaoPorSerie(conn, 2);
+            RelatoriosForm listaAno3 = RelatoriosDao.getInstance().obterInformacaoPorSerie(conn, 3);
+            RelatoriosForm listaAno4 = RelatoriosDao.getInstance().obterInformacaoPorSerie(conn, 4);
+            RelatoriosForm listaAno5 = RelatoriosDao.getInstance().obterInformacaoPorSerie(conn, 5);
+            RelatoriosForm listaAno6 = RelatoriosDao.getInstance().obterInformacaoPorSerie(conn, 6);
+            RelatoriosForm listaAno7 = RelatoriosDao.getInstance().obterInformacaoPorSerie(conn, 7);
+            RelatoriosForm listaAno8 = RelatoriosDao.getInstance().obterInformacaoPorSerie(conn, 8);
+            RelatoriosForm listaAno9 = RelatoriosDao.getInstance().obterInformacaoPorSerie(conn, 9);
+            RelatoriosForm listaSerie1 = RelatoriosDao.getInstance().obterInformacaoPorSerie(conn, 10);
+            RelatoriosForm listaSerie2 = RelatoriosDao.getInstance().obterInformacaoPorSerie(conn, 20);
+            RelatoriosForm listaSerie3 = RelatoriosDao.getInstance().obterInformacaoPorSerie(conn, 30);
+            
+            request.setAttribute("listaInfantil1", listaInfantil1);
+            request.setAttribute("listaInfantil2", listaInfantil2);
+            request.setAttribute("listaInfantil3", listaInfantil3);
+            request.setAttribute("listaAno1", listaAno1);
+            request.setAttribute("listaAno2", listaAno2);
+            request.setAttribute("listaAno3", listaAno3);
+            request.setAttribute("listaAno4", listaAno4);
+            request.setAttribute("listaAno5", listaAno5);
+            request.setAttribute("listaAno6", listaAno6);
+            request.setAttribute("listaAno7", listaAno7);
+            request.setAttribute("listaAno8", listaAno8);
+            request.setAttribute("listaAno9", listaAno9);
+            request.setAttribute("listaSerie1", listaSerie1);
+            request.setAttribute("listaSerie2", listaSerie2);
+            request.setAttribute("listaSerie3", listaSerie3);
+            
             request.setAttribute("RelatoriosForm", relForm);
 
         } catch (Exception e) {

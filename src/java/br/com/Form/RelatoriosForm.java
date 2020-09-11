@@ -19,7 +19,43 @@ public class RelatoriosForm extends FormBasico {
     private int nrBimestre;
     private int qtdMelhoresNotas;
     private int ano;
+    private int qtdMasculino;
+    private int qtdFeminino;
+    private int qtdAmbosSexo;
+    private String nomeSerieAno;
 
+    public String getNomeSerieAno() {
+        return nomeSerieAno;
+    }
+
+    public void setNomeSerieAno(String nomeSerieAno) {
+        this.nomeSerieAno = nomeSerieAno;
+    }
+    
+    public int getQtdAmbosSexo() {
+        return qtdAmbosSexo;
+    }
+
+    public void setQtdAmbosSexo(int qtdAmbosSexo) {
+        this.qtdAmbosSexo = qtdAmbosSexo;
+    }
+    
+    public int getQtdMasculino() {
+        return qtdMasculino;
+    }
+
+    public void setQtdMasculino(int qtdMasculino) {
+        this.qtdMasculino = qtdMasculino;
+    }
+
+    public int getQtdFeminino() {
+        return qtdFeminino;
+    }
+
+    public void setQtdFeminino(int qtdFeminino) {
+        this.qtdFeminino = qtdFeminino;
+    }
+    
     public int getAno() {
         return ano;
     }

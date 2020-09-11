@@ -415,6 +415,7 @@ public class PessoaFisicaForm extends FormBasico {
             sb.append(" and pf.sexo = '").append(professorForm.getSexo()).append("'");
         }
         sb.append(" and pf.status = ").append(professorForm.getStatus());
+        sb.append(" order by pf.nome");
 
         PreparedStatement prep = conn.prepareStatement(sb.toString());
         ResultSet rs = prep.executeQuery();
