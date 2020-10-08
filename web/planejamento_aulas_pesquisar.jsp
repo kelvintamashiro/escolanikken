@@ -53,7 +53,7 @@
                 </tr>
             </table>
             <div class="form-group">
-                <table border="0" class="table-condensed" align="center" style="margin-top: 20px;font-size: 11px" width="60%">
+                <table border="0" class="table-condensed" align="center" style="margin-top: 20px;font-size: 11px" width="80%">
                     <logic:present name="listaPlanoAulas" scope="request">
                         <tr>
                             <td><b>Data</b></td>
@@ -61,6 +61,8 @@
                             <td><b>Professor</b></td>
                             <td><b>Série/Ano</b></td>
                             <td><b>Bimestre</b></td>
+                            <td align="center"><b>Plano de Aula Vistado Diretoria/Coordenação</b></td>
+                            <td align="center"><b>Plano de Aula Confirmado</b></td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
                             <td>&nbsp;</td>
@@ -68,7 +70,7 @@
                         <logic:iterate id="lista" name="listaPlanoAulas" scope="request">
                             <% String strCor = "bgColor=#F4F4F4";%>
                             <logic:equal name="lista" property="confirmar" value="1">
-                                <%strCor = "bgColor=#9AFF9A";%>
+                                <%strCor = "bgColor=#FFFFE0";%>
                             </logic:equal>
                             <logic:equal name="lista" property="confirmar" value="0">
                                 <% strCor = "bgColor=#FFFFFF";%>
@@ -98,12 +100,29 @@
                                     <logic:equal name="lista" property="idSerieAno" value="30">3ª série E.M.</logic:equal>
                                     </td>
                                     <td><bean:write name="lista" property="nrBimestre"/>º Bimestre</td>
-                                <logic:equal name="lista" property="confirmar" value="1">
-                                    <td colspan="3" align="center">
-                                        <b>Plano de aula confirmado</b>
+                                 <logic:equal name="lista" property="vistado" value="0">
+                                    <td align="center">
+                                        <img src="imagens/warning.png" width="30px" alt="Plano de aula Não Vistado" title="Plano de aula Não Vistado"/>
                                     </td>
                                 </logic:equal>
+                                <logic:equal name="lista" property="vistado" value="1">
+                                    <td align="center">
+                                        <img src="imagens/check.png" width="30px" alt="Plano de aula Vistado" title="Plano de aula Vistado"/>
+                                    </td>
+                                </logic:equal>
+                                <logic:equal name="lista" property="confirmar" value="1">
+                                    <td align="center">
+                                        <img src="imagens/check.png" width="30px" alt="Plano de aula Não Vistado" title="Plano de aula Confirmado"/>
+                                    </td>
+                                    <td>
+                                        <input class="btn btn-default" type="button" value="Visualizar" onClick="fVisualizar(<bean:write name="lista" property="idPlanejamento"/>);">
+                                    </td>
+                                    <td colspan="2">&nbsp;</td>
+                                </logic:equal>
                                 <logic:equal name="lista" property="confirmar" value="0">
+                                    <td align="center">
+                                        <img src="imagens/warning.png" width="30px" alt="Plano de aula Não Vistado" title="Plano de aula Não Confirmado"/>
+                                    </td>
                                     <td>
                                         <input class="btn btn-info" type="button" value="Confirmar" style="color: white" onClick="fConfirmar(<bean:write name="lista" property="idPlanejamento"/>);">
                                     </td>
@@ -114,6 +133,7 @@
                                         <input class="btn btn-danger" type="button" value="Excluir" onClick="fExcluir(<bean:write name="lista" property="idPlanejamento"/>);">
                                     </td>
                                 </logic:equal>
+                               
 
 
                             </tr>
@@ -129,6 +149,11 @@
     <script language="javascript">
         function fEditar(idPlanejamento) {
             document.PlanejamentoAulasForm.action = "PlanejamentoAulas.do?action=editar&idPlanejamento=" + idPlanejamento + "&idPF=<bean:write name="PlanejamentoAulasForm" property="idProfessor"/>";
+            document.PlanejamentoAulasForm.submit();
+        }
+
+        function fVisualizar(idPlanejamento) {
+            document.PlanejamentoAulasForm.action = "PlanejamentoAulas.do?action=visualizar&idPlanejamento=" + idPlanejamento + "&idPF=<bean:write name="PlanejamentoAulasForm" property="idProfessor"/>";
             document.PlanejamentoAulasForm.submit();
         }
 

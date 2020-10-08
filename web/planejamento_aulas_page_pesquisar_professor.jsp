@@ -62,12 +62,18 @@
                                         <html:options collection="listaProfessores" property="idPF" labelProperty="nome"></html:options>
                                     </html:select>    
                                 </logic:equal>
-                                <logic:notEqual name="tipoPerfil" scope="session" value="diretoria">
-                                    <html:hidden name="PlanejamentoAulasForm" property="idProfessor"/>
-                                    <%--<html:text name="PlanejamentoAulasForm" property="nomeProfessor" styleId="nomeProfessor" styleClass="form-control" disabled="true"/>--%>
-                                    <html:select name="PlanejamentoAulasForm" property="idProfessor" styleId="idProfessor" styleClass="form-control" disabled="true">
+                                <logic:equal name="tipoPerfil" scope="session" value="coordenacao">
+                                    <html:select name="PlanejamentoAulasForm" property="idProfessor" styleId="idProfessor" styleClass="form-control">
                                         <html:options collection="listaProfessores" property="idPF" labelProperty="nome"></html:options>
-                                    </html:select>
+                                    </html:select>    
+                                </logic:equal>
+                                <logic:notEqual name="tipoPerfil" scope="session" value="diretoria">
+                                    <logic:notEqual name="tipoPerfil" scope="session" value="coordenacao">
+                                        <html:hidden name="PlanejamentoAulasForm" property="idProfessor"/>
+                                        <html:select name="PlanejamentoAulasForm" property="idProfessor" styleId="idProfessor" styleClass="form-control" disabled="true">
+                                            <html:options collection="listaProfessores" property="idPF" labelProperty="nome"></html:options>
+                                        </html:select>
+                                    </logic:notEqual>
                                 </logic:notEqual>
                             </div>
                         </td>

@@ -36,6 +36,7 @@
         <form-bean name="RelatoriosForm"  type="br.com.Form.RelatoriosForm"/>
         <form-bean name="TirarDuvidasForm"  type="br.com.Form.TirarDuvidasForm"/>
         <form-bean name="PlanejamentoAulasForm"  type="br.com.Form.PlanejamentoAulasForm"/>
+        <form-bean name="PlanejamentoOficinasForm"  type="br.com.Form.PlanejamentoOficinasForm"/>
         <form-bean name="UploadArquivoForm"  type="br.com.Form.UploadArquivoForm"/>
  
     </form-beans>
@@ -224,7 +225,21 @@
             <forward name="excluir"                                 path="/planejamento_aulas_pesquisar.jsp"/>
             <forward name="editar"                                  path="/planejamento_aulas_editar.jsp"/>
             <forward name="atualizar"                               path="/planejamento_aulas_editar.jsp"/>
+            <forward name="vistadoDiretoria"                        path="/planejamento_aulas_editar.jsp"/>
             <forward name="confirmar"                               path="/planejamento_aulas_pesquisar.jsp"/>
+            <forward name="visualizar"                              path="/planejamento_aulas_visualizar.jsp"/>
+        </action>
+        
+        <action    path="/PlanejamentoOficinas"
+                   type="br.com.Action.PlanejamentoOficinasAction"
+                   name="PlanejamentoOficinasForm"
+                   scope="request"
+                   validate="false"
+                   input="/planejamento_oficina.jsp">
+            <forward name="page"                                    path="/planejamento_oficina.jsp"/>
+            <forward name="carregarSerie"                           path="/planejamento_oficina.jsp"/>
+            <forward name="salvar"                                  path="/planejamento_oficina.jsp"/>
+            <forward name="pagePesquisarPorProfessor"               path="/planejamento_oficina_page_pesquisar.jsp"/>
         </action>
         
         <action    path="/UploadArquivo"

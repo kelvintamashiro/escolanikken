@@ -407,7 +407,7 @@ public class PessoaFisicaForm extends FormBasico {
         StringBuilder sb = new StringBuilder();
         sb.append("select pf.id, pf.nome, pf.data_nascimento, pf.sexo, pf.cidade, pf.provincia, pf.email, pf.status ");
         sb.append(" from pessoa_fisica pf");
-        sb.append(" where pf.tipo = 'professor' or pf.tipo = 'coordenacao'");
+        sb.append(" where (pf.tipo = 'professor' or pf.tipo = 'coordenacao')");
         if (professorForm.getNome() != null && !("").equals(professorForm.getNome())) {
             sb.append(" and pf.nome like '%").append(professorForm.getNome()).append("%'");
         }

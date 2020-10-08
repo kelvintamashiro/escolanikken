@@ -40,7 +40,7 @@ public class PlanejamentoAulasAction extends IDRAction {
             this.pesquisarProfessorBimestre(form, request, errors);
         } else if (action.equals("pesquisarTodos")) {
             this.pesquisarTodos(form, request, errors);
-        } else if (action.equals("editar")) {
+        } else if (action.equals("editar") || action.equals("visualizar")) {
             this.editar(form, request, errors);
         } else if (action.equals("excluir")) {
             this.excluir(form, request, errors);
@@ -52,6 +52,8 @@ public class PlanejamentoAulasAction extends IDRAction {
             this.pagePesquisarPorProfessor(form, request, errors);
         } else if (action.equals("carregarDisciplinaPorProfessorSerie")) {
             this.carregarDisciplinaPorProfessorSerie(form, request, errors);
+        } else if (action.equals("vistadoDiretoria")) {
+            this.vistadoDiretoria(form, request, errors);
         }
 
         return mapping.findForward(forward);
@@ -285,7 +287,7 @@ public class PlanejamentoAulasAction extends IDRAction {
         Connection conn = null;
         try {
             conn = connectionPool.getConnection();
-            
+
             //carregar lista disciplinas por idProfessor e serie
             List<PlanejamentoAulasForm> listaDisciplinaPorProfessor = planejamentoAulasForm.obterDisciplinasPorProfessorSerie(conn, planejamentoAulasForm);
             if (listaDisciplinaPorProfessor.size() > 0) {
@@ -301,6 +303,25 @@ public class PlanejamentoAulasAction extends IDRAction {
             }
 
             request.setAttribute("PlanejamentoAulasForm", planejamentoAulasForm);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.free(conn);
+        }
+    }
+
+    private void vistadoDiretoria(ActionForm form, HttpServletRequest request, Errors errors) {
+        PlanejamentoAulasForm planejamentoAulasForm = (PlanejamentoAulasForm) form;
+        Connection conn = null;
+        try {
+            conn = connectionPool.getConnection();
+
+            //vistarDiretoria plano de aula por idPlanejamento
+            planejamentoAulasForm.vistarDiretoria(conn, planejamentoAulasForm);
+
+            errors.error("Plano de Aula Vistado com SUCESSO!!");
+
+//            this.editar(planejamentoAulasForm, request, errors);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

@@ -36,6 +36,7 @@ public class PlanejamentoAulasForm extends FormBasico {
     private String conteudoAula;
     private String observacao;
     private int confirmar;
+    private int vistado;
     private int anoVigente;
 
     public int getAnoVigente() {
@@ -52,6 +53,14 @@ public class PlanejamentoAulasForm extends FormBasico {
 
     public void setConfirmar(int confirmar) {
         this.confirmar = confirmar;
+    }
+
+    public int getVistado() {
+        return vistado;
+    }
+
+    public void setVistado(int vistado) {
+        this.vistado = vistado;
     }
 
     public String getCategoriaEnsino() {
@@ -259,6 +268,7 @@ public class PlanejamentoAulasForm extends FormBasico {
                     planoAulaForm.setObservacao(rs.getString("observacao"));
                     planoAulaForm.setNomeDisciplina(rs.getString("nome_disciplina"));
                     planoAulaForm.setConfirmar(rs.getInt("confirmar"));
+                    planoAulaForm.setVistado(rs.getInt("vistado"));
 
                     listaPlanoAulas.add(planoAulaForm);
                 }
@@ -279,10 +289,10 @@ public class PlanejamentoAulasForm extends FormBasico {
         if (planejamentoAulasForm.getNrBimestre() > 0) {
             sb.append(" and a.nr_bimestre = ").append(planejamentoAulasForm.getNrBimestre());
         }
-        if (planejamentoAulasForm.getIdSerieAno()> 0) {
+        if (planejamentoAulasForm.getIdSerieAno() > 0) {
             sb.append(" and a.serie_ano = ").append(planejamentoAulasForm.getIdSerieAno());
         }
-        if (planejamentoAulasForm.getIdDisciplina()> 0) {
+        if (planejamentoAulasForm.getIdDisciplina() > 0) {
             sb.append(" and a.id_disciplina = ").append(planejamentoAulasForm.getIdDisciplina());
         }
         sb.append(" and a.ano_vigente = ?");
@@ -309,6 +319,7 @@ public class PlanejamentoAulasForm extends FormBasico {
                     planoAulaForm.setObservacao(rs.getString("observacao"));
                     planoAulaForm.setNomeDisciplina(rs.getString("nome_disciplina"));
                     planoAulaForm.setConfirmar(rs.getInt("confirmar"));
+                    planoAulaForm.setVistado(rs.getInt("vistado"));
 
                     listaPlanoAulas.add(planoAulaForm);
                 }
@@ -345,6 +356,7 @@ public class PlanejamentoAulasForm extends FormBasico {
                     planoAulaForm.setObservacao(rs.getString("observacao"));
                     planoAulaForm.setNomeDisciplina(rs.getString("nome_disciplina"));
                     planoAulaForm.setConfirmar(rs.getInt("confirmar"));
+                    planoAulaForm.setVistado(rs.getInt("vistado"));
 
                     listaPlanoAulas.add(planoAulaForm);
                 }
@@ -381,6 +393,7 @@ public class PlanejamentoAulasForm extends FormBasico {
                     planoAulaForm.setConteudoAula(rs.getString("conteudo_aula"));
                     planoAulaForm.setObservacao(rs.getString("observacao"));
                     planoAulaForm.setConfirmar(rs.getInt("confirmar"));
+                    planoAulaForm.setVistado(rs.getInt("vistado"));
                 }
             }
         }
@@ -415,6 +428,14 @@ public class PlanejamentoAulasForm extends FormBasico {
 
     public void confirmar(Connection conn, PlanejamentoAulasForm planoAulaForm) throws SQLException {
         String query = "UPDATE planejamento_aula SET confirmar=1 WHERE id=?";
+        try (PreparedStatement prep = conn.prepareStatement(query)) {
+            prep.setInt(1, planoAulaForm.getIdPlanejamento());
+            prep.execute();
+        }
+    }
+
+    public void vistarDiretoria(Connection conn, PlanejamentoAulasForm planoAulaForm) throws SQLException {
+        String query = "UPDATE planejamento_aula SET vistado=1 WHERE id=?";
         try (PreparedStatement prep = conn.prepareStatement(query)) {
             prep.setInt(1, planoAulaForm.getIdPlanejamento());
             prep.execute();

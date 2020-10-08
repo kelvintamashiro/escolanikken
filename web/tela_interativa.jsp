@@ -52,12 +52,15 @@
                     <button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
                         Planejamento <br/>de Aulas
                     </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'planejamento_oficina_page.jsp'">
+                        Planejamento <br/>de Oficinas
+                    </button>
                     <button class="btn-nikken" onclick="window.location.href = 'Comunicados.do'">
                         Comunicados <br/>Professores
                     </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=visualizarCardapio'">
-                        Cardápio <br/>Nikken
-                    </button>
+                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=visualizarCardapio'">
+                                            Cardápio <br/>Nikken
+                                        </button>-->
                 </div>
             </div>
         </logic:equal>
@@ -71,9 +74,9 @@
                     <button class="btn-nikken" onclick="window.location.href = 'TirarDuvidas.do?idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=aluno'">
                         Contato / <br/>Dúvidas
                     </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=visualizarCardapio'">
-                        Cardápio <br/>Nikken
-                    </button>
+                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=visualizarCardapio'">
+                                            Cardápio <br/>Nikken
+                                        </button>-->
                 </div>
                 <div class="col-12 col-s-12">
                     <button class="btn-nikken" onclick="window.location.href = 'Comunicados.do?action=listaComunicados&idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=aluno&tipoComunicado=PROFESSOR'">
@@ -100,11 +103,12 @@
                     <button class="btn-nikken" onclick="window.location.href = 'Professor.do?action=pageCadastrar'">
                         Cadastro <br/>de Professor
                     </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
-                        Lançamento <br/>de Notas
-                    </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
+                    <!--<button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?action=pagePesquisarPorProfessor'">-->
+                    <button class="btn-nikken" onclick="window.location.href = 'planejamento_aulas_page_coordenacao.jsp'">
                         Planejamento <br/>de Aulas
+                    </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'planejamento_oficina_page.jsp'">
+                        Planejamento <br/>de Oficinas
                     </button>
                 </div>
                 <div class="col-12 col-s-12">
@@ -117,12 +121,15 @@
                     <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?action=pageConsulta&idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=professor'">
                         Consulta <br/>de Notas
                     </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
+                        Lançamento <br/>de Notas
+                    </button>
                     <button class="btn-nikken" onclick="window.location.href = 'Comunicados.do'">
                         Comunicados <br/>Professores
                     </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=visualizarCardapio'">
-                        Cardápio <br/>Nikken
-                    </button>
+                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=visualizarCardapio'">
+                                            Cardápio <br/>Nikken
+                                        </button>-->
                 </div>
             </div>
         </logic:equal>
@@ -142,12 +149,15 @@
                     <button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?action=pagePesquisarPorProfessor'">
                         Planejamento <br/>de Aulas
                     </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'planejamento_oficina_page.jsp'">
+                        Planejamento <br/>de Oficinas
+                    </button>
                     <button class="btn-nikken" onclick="window.location.href = 'Disciplinas.do'">
                         Gerenciador <br/>de Disciplinas
                     </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=pageCardapio'">
-                        Cardápio <br/>Nikken
-                    </button>
+                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=pageCardapio'">
+                                            Cardápio <br/>Nikken
+                                        </button>-->
                 </div>
                 <div class="col-12 col-s-12">
                     <button class="btn-nikken" onclick="window.location.href = 'Aluno.do?action=pageConsultar'">
