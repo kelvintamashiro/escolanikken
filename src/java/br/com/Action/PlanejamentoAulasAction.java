@@ -321,7 +321,7 @@ public class PlanejamentoAulasAction extends IDRAction {
 
             errors.error("Plano de Aula Vistado com SUCESSO!!");
 
-//            this.editar(planejamentoAulasForm, request, errors);
+            this.pesquisarProfessorBimestre(planejamentoAulasForm, request, errors);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

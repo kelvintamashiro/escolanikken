@@ -51,13 +51,13 @@ public class SerieAnoForm {
 
         return dsSerie;
     }
-    
+
     public ArrayList<SerieAnoForm> listaTodasSeries(Connection conn) throws SQLException {
         ArrayList<SerieAnoForm> listaTodasSeries = new ArrayList<>();
         String query = "select * from descricao_serie_ano order by ordem, descricao";
         PreparedStatement prep = conn.prepareStatement(query);
         ResultSet rs = prep.executeQuery();
-        while(rs.next()){
+        while (rs.next()) {
             SerieAnoForm serieAnoForm = new SerieAnoForm();
             serieAnoForm.setSerieAno(rs.getInt("id"));
             serieAnoForm.setDsSerieAno(rs.getString("descricao"));
@@ -65,10 +65,11 @@ public class SerieAnoForm {
         }
         rs.close();
         prep.close();
-        
+
         return listaTodasSeries;
-        
+
     }
+
     public ArrayList<SerieAnoForm> listaTodasSeriesComNotas(Connection conn) throws SQLException {
         ArrayList<SerieAnoForm> listaTodasSeries = new ArrayList<>();
         String query = "select * from descricao_serie_ano"
@@ -76,7 +77,7 @@ public class SerieAnoForm {
                 + " order by ordem, descricao";
         PreparedStatement prep = conn.prepareStatement(query);
         ResultSet rs = prep.executeQuery();
-        while(rs.next()){
+        while (rs.next()) {
             SerieAnoForm serieAnoForm = new SerieAnoForm();
             serieAnoForm.setSerieAno(rs.getInt("id"));
             serieAnoForm.setDsSerieAno(rs.getString("descricao"));
@@ -84,15 +85,28 @@ public class SerieAnoForm {
         }
         rs.close();
         prep.close();
-        
+
         return listaTodasSeries;
-        
+
     }
 
     public ArrayList<SerieAnoForm> obterSerieAnoPorCategoria(String categoriaEnsino) {
         ArrayList<SerieAnoForm> listaSerieAno = new ArrayList<>();
         SerieAnoForm serieAno = new SerieAnoForm();
         switch (categoriaEnsino) {
+            case "INF":
+                serieAno.setSerieAno(11);
+                serieAno.setDsSerieAno("Infantil I");
+                listaSerieAno.add(serieAno);
+                serieAno = new SerieAnoForm();
+                serieAno.setSerieAno(12);
+                serieAno.setDsSerieAno("Infantil II");
+                listaSerieAno.add(serieAno);
+                serieAno = new SerieAnoForm();
+                serieAno.setSerieAno(13);
+                serieAno.setDsSerieAno("Infantil III");
+                listaSerieAno.add(serieAno);
+                break;
             case "EF1":
                 serieAno.setSerieAno(1);
                 serieAno.setDsSerieAno("1º ano");

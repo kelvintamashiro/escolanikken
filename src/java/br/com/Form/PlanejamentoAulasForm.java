@@ -394,6 +394,7 @@ public class PlanejamentoAulasForm extends FormBasico {
                     planoAulaForm.setObservacao(rs.getString("observacao"));
                     planoAulaForm.setConfirmar(rs.getInt("confirmar"));
                     planoAulaForm.setVistado(rs.getInt("vistado"));
+                    planoAulaForm.setAnoVigente(rs.getInt("ano_vigente"));
                 }
             }
         }
