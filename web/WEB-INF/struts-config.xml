@@ -225,7 +225,7 @@
             <forward name="excluir"                                 path="/planejamento_aulas_pesquisar.jsp"/>
             <forward name="editar"                                  path="/planejamento_aulas_editar.jsp"/>
             <forward name="atualizar"                               path="/planejamento_aulas_editar.jsp"/>
-            <forward name="vistadoDiretoria"                        path="/planejamento_aulas_editar.jsp"/>
+            <forward name="vistadoDiretoria"                        path="/planejamento_aulas_pesquisar.jsp"/>
             <forward name="confirmar"                               path="/planejamento_aulas_pesquisar.jsp"/>
             <forward name="visualizar"                              path="/planejamento_aulas_visualizar.jsp"/>
         </action>
@@ -239,7 +239,12 @@
             <forward name="page"                                    path="/planejamento_oficina.jsp"/>
             <forward name="carregarSerie"                           path="/planejamento_oficina.jsp"/>
             <forward name="salvar"                                  path="/planejamento_oficina.jsp"/>
-            <forward name="pagePesquisarPorProfessor"               path="/planejamento_oficina_page_pesquisar.jsp"/>
+            <forward name="pagePesquisar"                           path="/planejamento_oficina_page_pesquisar.jsp"/>
+            <forward name="pesquisar"                               path="/planejamento_oficina_pesquisar.jsp"/>
+            <forward name="editar"                                  path="/planejamento_oficina_editar.jsp"/>
+            <forward name="atualizar"                               path="/planejamento_oficina_editar.jsp"/>
+            <forward name="visualizar"                              path="/planejamento_oficina_visualizar.jsp"/>
+            <forward name="excluir"                                 path="/planejamento_oficina_pesquisar.jsp"/>
         </action>
         
         <action    path="/UploadArquivo"

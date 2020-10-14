@@ -38,16 +38,16 @@
                 alert('<bean:write name="errors"/>');
             </script>
         </logic:present>
-        <jsp:include page="topo.jsp"/>
+        <%--<jsp:include page="topo.jsp"/>--%>
         <html:form action="PlanejamentoAulas" name="PlanejamentoAulasForm" type="br.com.Form.PlanejamentoAulasForm" scope="request">
 
             <table border="0" align="center" style="margin-top: 20px; background-color: #FFC0CB" width="100%">
                 <tr>
                     <td width="10%" style="padding-left: 50px">
-                        <a href="javascript:history.back()"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
+                        <!--<a href="javascript:history.back()"><img src="imagens/bt_voltar_2.png" width="100px"/></a>-->
                     </td>
                     <td width="80%" align="center">
-                        <h1>Planejamento de Aulas - Visualizar</h1>
+                        <h1>Planejamento de Aula</h1>
                     </td>
                     <td width="10%">&nbsp;</td>
                 </tr>
@@ -56,98 +56,87 @@
                 <html:hidden name="PlanejamentoAulasForm" property="idProfessor"/>
                 <table border="0" class="table-condensed" align="center" style="margin-top: 20px;" width="60%">
                     <tr>
-                        <td width="33%">
-                            <label for="usr">ID:</label>
+                        <td>
+                            <label for="usr"><b>ID:</b></label>
                             <html:hidden name="PlanejamentoAulasForm" property="idPlanejamento"/>
-                            <b><bean:write name="PlanejamentoAulasForm" property="idPlanejamento"/></b>
+                            <bean:write name="PlanejamentoAulasForm" property="idPlanejamento"/>
                         </td>
-                        <td width="33%">
-                            <label for="usr">Série/Ano:</label>
-                            <b><bean:write name="PlanejamentoAulasForm" property="dsSerieAno"/></b>
+                        <td>
+                            <label for="usr"><b>Série/Ano:</b></label>
+                            <bean:write name="PlanejamentoAulasForm" property="dsSerieAno"/>
                         </td>
-                        <td width="33%">
-                            <label for="usr">Disciplina</label>
-                            <b><bean:write name="PlanejamentoAulasForm" property="nomeDisciplina"/></b>
+                        <td>
+                            <label for="usr"><b>Bimestre:</b></label>
+                            <bean:write name="PlanejamentoAulasForm" property="nrBimestre"/>º Bimestre
+                        </td>
+                        <td>
+                            <label for="usr"><b>Disciplina</b></label>
+                            <bean:write name="PlanejamentoAulasForm" property="nomeDisciplina"/>
                         </td>
                     </tr>
                 </table>
-                <table border="0" class="table-condensed" align="center" style="margin-top: 20px;" width="60%">
+                <table border="0" class="table-condensed" align="center" width="60%">
                     <tr>
-                        <td width="50%">
-                            <label for="usr">Data:</label>
-                            <html:text name="PlanejamentoAulasForm" property="data" styleId="data" styleClass="form-control" readonly="true"/>
-                        </td>
-                        <td width="50%">
-                            <label for="usr">Bimestre:</label>
-                            <html:select name="PlanejamentoAulasForm" property="nrBimestre" styleId="nrBimestre" styleClass="form-control" disabled="true">
-                                <html:option value="1">1º Bimestre</html:option>
-                                <html:option value="2">2º Bimestre</html:option>
-                                <html:option value="3">3º Bimestre</html:option>
-                                <html:option value="4">4º Bimestre</html:option>
-                            </html:select>
-                        </td>
-                    </tr>
-
-                    <tr>
-
-                    </tr>
-
-                    <tr>
-                        <td colspan="2">
-                            <label for="usr">Conteúdo da Aula:</label>
-                            <html:textarea name="PlanejamentoAulasForm" property="conteudoAula" styleId="conteudoAula" styleClass="form-control" rows="5" readonly="true"/>
+                        <td>
+                            <label for="usr"><b>Data:</b></label>
+                            <bean:write name="PlanejamentoAulasForm" property="data"/>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <label for="usr">Metodologia:</label>
-                            <html:text name="PlanejamentoAulasForm" property="metodologia" styleId="metodologia" styleClass="form-control" readonly="true"/>
+                            <label for="usr"><b>Conteúdo da Aula:</b></label>
+                            <bean:write name="PlanejamentoAulasForm" property="conteudoAula"/>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <label for="usr">Recursos:</label>
-                            <html:text name="PlanejamentoAulasForm" property="recurso" styleId="recurso" styleClass="form-control" readonly="true"/>
+                            <label for="usr"><b>Metodologia:</b></label>
+                            <bean:write name="PlanejamentoAulasForm" property="metodologia"/>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <label for="usr">Tarefas:</label>
-                            <html:text name="PlanejamentoAulasForm" property="tarefa" styleId="tarefa" styleClass="form-control" readonly="true"/>
+                            <label for="usr"><b>Recursos:</b></label>
+                            <bean:write name="PlanejamentoAulasForm" property="recurso"/>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <label for="usr">Avaliação:</label>
-                            <html:text name="PlanejamentoAulasForm" property="avaliacao" styleId="avaliacao" styleClass="form-control" readonly="true"/>
+                            <label for="usr"><b>Tarefas:</b></label>
+                            <bean:write name="PlanejamentoAulasForm" property="tarefa"/>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <label for="usr">Observação:</label>
-                            <html:textarea name="PlanejamentoAulasForm" property="observacao" styleId="observacao" styleClass="form-control" rows="5" readonly="true"/>
+                            <label for="usr"><b>Avaliação:</b></label>
+                            <bean:write name="PlanejamentoAulasForm" property="avaliacao"/>
                         </td>
                     </tr>
-
+                    <tr>
+                        <td colspan="2">
+                            <label for="usr"><b>Observação:</b></label>
+                            <bean:write name="PlanejamentoAulasForm" property="observacao"/>
+                        </td>
+                    </tr>
                     <tr><td align="center" colspan="2">&nbsp;</td></tr>
                     <tr><td align="center" colspan="2">&nbsp;</td></tr>
+                </table>
+                <table width="10%" align="center">
+                    <tr>
+                        <td align="center">
+                            <html:button property="btImprimir" styleClass="btn btn-green" onclick="javascript: style.display='none', window.print()">
+                                Imprimir
+                            </html:button>
+                        </td>
+                    </tr>
                 </table>
             </div>
         </html:form>
     </body>
 
-
     <script language="javascript">
-        function fAtualizar() {
-            var data = document.getElementById("data").value;
-            if (data === "") {
-                alert("Deve ser informado a Data");
-                document.getElementById("data").focus();
-            } else {
-                document.PlanejamentoAulasForm.action = "PlanejamentoAulas.do?action=atualizar";
-                document.PlanejamentoAulasForm.submit();
-            }
-
+        function DoPrinting() {
+            window.print();
         }
     </script>
 

@@ -54,6 +54,7 @@
             </table>
             <div class="form-group">
                 <html:hidden name="PlanejamentoAulasForm" property="idProfessor"/>
+                <html:hidden name="PlanejamentoAulasForm" property="anoVigente"/>
                 <table border="0" class="table-condensed" align="center" style="margin-top: 20px;" width="60%">
                     <tr>
                         <td width="33%">

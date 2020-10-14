@@ -60,6 +60,7 @@
                             <label for="usr">Categoria Ensino:</label>
                             <html:select name="PlanejamentoAulasForm" property="categoriaEnsino" styleId="categoriaEnsino" styleClass="form-control" onchange="fCarregarSerie()">
                                 <html:option value="">Selecione</html:option>
+                                <html:option value="INF">Educação Infantil</html:option>
                                 <html:option value="EF1">Ensino Fundamental I</html:option>
                                 <html:option value="EF2">Ensino Fundamental II</html:option>
                                 <html:option value="EM">Ensino Médio</html:option>

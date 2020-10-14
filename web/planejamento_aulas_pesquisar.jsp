@@ -100,7 +100,7 @@
                                     <logic:equal name="lista" property="idSerieAno" value="30">3ª série E.M.</logic:equal>
                                     </td>
                                     <td><bean:write name="lista" property="nrBimestre"/>º Bimestre</td>
-                                 <logic:equal name="lista" property="vistado" value="0">
+                                <logic:equal name="lista" property="vistado" value="0">
                                     <td align="center">
                                         <img src="imagens/warning.png" width="30px" alt="Plano de aula Não Vistado" title="Plano de aula Não Vistado"/>
                                     </td>
@@ -133,7 +133,7 @@
                                         <input class="btn btn-danger" type="button" value="Excluir" onClick="fExcluir(<bean:write name="lista" property="idPlanejamento"/>);">
                                     </td>
                                 </logic:equal>
-                               
+
 
 
                             </tr>
@@ -149,17 +149,20 @@
     <script language="javascript">
         function fEditar(idPlanejamento) {
             document.PlanejamentoAulasForm.action = "PlanejamentoAulas.do?action=editar&idPlanejamento=" + idPlanejamento + "&idPF=<bean:write name="PlanejamentoAulasForm" property="idProfessor"/>";
+            document.PlanejamentoAulasForm.target = "_self";
             document.PlanejamentoAulasForm.submit();
         }
 
         function fVisualizar(idPlanejamento) {
             document.PlanejamentoAulasForm.action = "PlanejamentoAulas.do?action=visualizar&idPlanejamento=" + idPlanejamento + "&idPF=<bean:write name="PlanejamentoAulasForm" property="idProfessor"/>";
+            document.PlanejamentoAulasForm.target = "_blank";
             document.PlanejamentoAulasForm.submit();
         }
 
         function fConfirmar(idPlanejamento) {
             if (confirm("Você Confirma esse Planejamento??")) {
                 document.PlanejamentoAulasForm.action = "PlanejamentoAulas.do?action=confirmar&idPlanejamento=" + idPlanejamento + "&idPF=<bean:write name="PlanejamentoAulasForm" property="idProfessor"/>";
+                document.PlanejamentoAulasForm.target = "_self";
                 document.PlanejamentoAulasForm.submit();
             }
         }
@@ -167,6 +170,7 @@
         function fExcluir(idPlanejamento) {
             if (confirm("Deseja Realmente EXCLUIR??")) {
                 document.PlanejamentoAulasForm.action = "PlanejamentoAulas.do?action=excluir&idPlanejamento=" + idPlanejamento + "&idPF=<bean:write name="PlanejamentoAulasForm" property="idProfessor"/>";
+                document.PlanejamentoAulasForm.target = "_self";
                 document.PlanejamentoAulasForm.submit();
             }
         }
