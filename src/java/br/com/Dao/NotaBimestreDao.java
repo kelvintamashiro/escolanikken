@@ -112,6 +112,7 @@ public final class NotaBimestreDao {
                 + " and n.id_aluno = ?"
                 + " and n.ano = ?"
                 + " and n.nr_bimestre = ?"
+                + " and n.id_disciplina not in (35)"
                 + " order by n.nr_bimestre, d.nome_disciplina";
 
         PreparedStatement prep = conn.prepareStatement(query);

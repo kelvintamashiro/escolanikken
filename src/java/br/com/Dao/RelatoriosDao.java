@@ -108,11 +108,11 @@ public class RelatoriosDao {
                 + " disciplina d left join nota_bimestre n"
                 + " on d.id_disciplina = n.id_disciplina"
                 + " and n.id_aluno = ?"
-                //verificar se passou o bimestre ou selecionou todos
                 + " and n.nr_bimestre = ?"
                 + " and n.ano = ?"
                 + " where"
                 + " d.categoria_ensino = ?"
+                + " and n.id_disciplina not in (35)"
                 + " order by d.nome_disciplina";
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setInt(1, idPF);
@@ -197,6 +197,7 @@ public class RelatoriosDao {
                 + " and n.ano = ?"
                 + " and n.nr_bimestre = ?"
                 + " and n.serie_ano = ?"
+                + " and n.id_disciplina not in (35)"
                 + " group by n.id_aluno"
                 + " order by n.serie_ano, media_total desc"
                 + " limit " + qtdMelhoresNotas;

@@ -244,6 +244,8 @@ public class PlanejamentoAulasAction extends IDRAction {
         Connection conn = null;
         try {
             conn = connectionPool.getConnection();
+            String idProfessor = request.getParameter("idPF");
+            planejamentoAulasForm.setIdProfessor(Integer.parseInt(idProfessor));
 
             //obter todos os professores
             PessoaFisicaForm professorForm = new PessoaFisicaForm();
@@ -254,7 +256,6 @@ public class PlanejamentoAulasAction extends IDRAction {
             }
 
             request.setAttribute("PlanejamentoAulasForm", planejamentoAulasForm);
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

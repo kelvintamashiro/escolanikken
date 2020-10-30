@@ -88,13 +88,17 @@ public class Utilitario {
         PreparedStatement prep = conn.prepareStatement(query);
         ResultSet rs = prep.executeQuery();
         int anoVigente = 0;
-        if(rs.next()){
+        if (rs.next()) {
             anoVigente = rs.getInt("ano_vigente");
         }
         rs.close();
         prep.close();
-        
+
         return anoVigente;
+    }
+
+    public static String desconsideraAcentuacao(String palavra) {
+        return palavra.replaceAll("[ÁÀÂÃÄ]", "A").replaceAll("[áàâãä]", "a").replaceAll("[ÉÈÊË]", "E").replaceAll("[éèêë]", "e").replaceAll("[ÍÌÎÏ]", "I").replaceAll("[íìîï]", "i").replaceAll("[ÓÒÔÖÕ]", "O").replaceAll("[óòôöõ]", "o").replaceAll("[ÚÙÛÜ]", "U").replaceAll("[úùûü]", "u").replaceAll("[Ç]", "C").replaceAll("[ç]", "c").replaceAll("[ºª]", " ");
     }
 
 }

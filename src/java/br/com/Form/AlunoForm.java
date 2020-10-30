@@ -407,6 +407,7 @@ public class AlunoForm extends PessoaFisicaForm {
             alunoForm.setRestricaoAlimentar(rs.getString("restricao_alimentar"));
             alunoForm.setObservacaoSaude(rs.getString("observacao_saude"));
             alunoForm.setObservacao(rs.getString("ds_observacao"));
+            alunoForm.setAutorizacaoImagem(rs.getString("autorizacao_imagem"));
         }
         rs.close();
         prep.close();
@@ -443,6 +444,30 @@ public class AlunoForm extends PessoaFisicaForm {
         prep.setInt(17, alunoForm.getIdPF());
         prep.execute();
         prep.close();
+    }
+
+    public void atualizarDadosAlunoRematricula(Connection conn, AlunoForm alunoForm) throws SQLException {
+        String query = "UPDATE alunos SET celular_aluno=?, alimentacao=?, nome_pai=?, celular_pai=?, email_pai=?, "
+                + " nome_mae=?, celular_mae=?, email_mae=?, linha_transporte=?, restricao_alimentar=?, observacao_saude=?, "
+                + " ds_observacao=?, autorizacao_imagem=?"
+                + " WHERE id_pessoa_fisica=?";
+        try (PreparedStatement prep = conn.prepareStatement(query)) {
+            prep.setString(1, alunoForm.getCelularAluno());
+            prep.setString(2, alunoForm.getTipoAlimentacao());
+            prep.setString(3, alunoForm.getNomePai());
+            prep.setString(4, alunoForm.getCelularPai());
+            prep.setString(5, alunoForm.getEmailPai());
+            prep.setString(6, alunoForm.getNomeMae());
+            prep.setString(7, alunoForm.getCelularMae());
+            prep.setString(8, alunoForm.getEmailMae());
+            prep.setString(9, alunoForm.getLinhaTransporte());
+            prep.setString(10, alunoForm.getRestricaoAlimentar());
+            prep.setString(11, alunoForm.getObservacaoSaude());
+            prep.setString(12, alunoForm.getObservacao());
+            prep.setString(13, alunoForm.getAutorizacaoImagem());
+            prep.setInt(14, alunoForm.getIdAluno());
+            prep.execute();
+        }
     }
 
     public ArrayList<AlunoForm> obterListaAlunosPorSerieSemNotas(Connection conn, String idSerie, int anoVigente, String bimestre, int idDisciplina) throws SQLException {
