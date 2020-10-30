@@ -51,7 +51,7 @@
                 <button class="btn-nikken" style="color: #4682B4; border: 1px solid #4682B4" onclick="window.location.href = 'PlanejamentoAulas.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
                     Cadastro 
                 </button>
-                <button class="btn-nikken" style="color: #4682B4; border: 1px solid #4682B4" onclick="window.location.href = 'PlanejamentoAulas.do?action=pagePesquisarPorProfessor'">
+                <button class="btn-nikken" style="color: #4682B4; border: 1px solid #4682B4" onclick="window.location.href = 'PlanejamentoAulas.do?action=pagePesquisarPorProfessor&idPF=<%=session.getAttribute("idPF").toString()%>'">
                     Pesquisa 
                 </button>
             </div>

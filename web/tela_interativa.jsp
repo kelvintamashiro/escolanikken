@@ -49,7 +49,8 @@
                     </button>
                 </div>
                 <div class="col-12 col-s-12">
-                    <button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
+                    <%--<button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?idPF=<%= //session.getAttribute("idPF").toString()%>'">--%>
+                    <button class="btn-nikken" onclick="window.location.href = 'planejamento_aulas_page_coordenacao.jsp'">
                         Planejamento <br/>de Aulas
                     </button>
                     <button class="btn-nikken" onclick="window.location.href = 'planejamento_oficina_page.jsp'">
@@ -73,6 +74,9 @@
                     </button>
                     <button class="btn-nikken" onclick="window.location.href = 'TirarDuvidas.do?idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=aluno'">
                         Contato / <br/>Dúvidas
+                    </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'Rematricula.do?idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=aluno'">
+                        Rematrícula<br/>2021
                     </button>
                     <!--                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=visualizarCardapio'">
                                             Cardápio <br/>Nikken
@@ -146,7 +150,7 @@
                         Lançamento <br/>de Notas
                     </button>
                     <!--<button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?action=pesquisarTodos'">-->
-                    <button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?action=pagePesquisarPorProfessor'">
+                    <button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?action=pagePesquisarPorProfessor&idPF=<%=session.getAttribute("idPF").toString()%>'">
                         Planejamento <br/>de Aulas
                     </button>
                     <button class="btn-nikken" onclick="window.location.href = 'planejamento_oficina_page.jsp'">

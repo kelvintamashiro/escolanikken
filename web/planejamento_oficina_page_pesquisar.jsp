@@ -59,22 +59,22 @@
                                 <label for="usr">Professor:</label>
                                 <logic:equal name="tipoPerfil" scope="session" value="diretoria">
                                     <html:select name="PlanejamentoOficinasForm" property="idProfessor" styleId="idProfessor" styleClass="form-control">
+                                        <html:option value="">Selecione</html:option>
                                         <html:options collection="listaProfessores" property="idPF" labelProperty="nome"></html:options>
                                     </html:select>    
                                 </logic:equal>
                                 <logic:equal name="tipoPerfil" scope="session" value="coordenacao">
                                     <html:select name="PlanejamentoOficinasForm" property="idProfessor" styleId="idProfessor" styleClass="form-control">
+                                        <html:option value="">Selecione</html:option>
                                         <html:options collection="listaProfessores" property="idPF" labelProperty="nome"></html:options>
                                     </html:select>    
                                 </logic:equal>
-                                <logic:notEqual name="tipoPerfil" scope="session" value="diretoria">
-                                    <logic:notEqual name="tipoPerfil" scope="session" value="coordenacao">
-                                        <html:hidden name="PlanejamentoOficinasForm" property="idProfessor"/>
-                                        <html:select name="PlanejamentoOficinasForm" property="idProfessor" styleId="idProfessor" styleClass="form-control" disabled="true">
-                                            <html:options collection="listaProfessores" property="idPF" labelProperty="nome"></html:options>
-                                        </html:select>
-                                    </logic:notEqual>
-                                </logic:notEqual>
+                                <logic:equal name="tipoPerfil" scope="session" value="professor">
+                                    <html:hidden name="PlanejamentoOficinasForm" property="idProfessor"/>
+                                    <html:select name="PlanejamentoOficinasForm" property="idProfessor" styleId="idProfessor" styleClass="form-control" disabled="true">
+                                        <html:options collection="listaProfessores" property="idPF" labelProperty="nome"></html:options>
+                                    </html:select>
+                                </logic:equal>
                             </div>
                         </td>
                     </tr>
@@ -119,8 +119,14 @@
 
     <script language="javascript">
         function fPesquisar() {
-            document.PlanejamentoOficinasForm.action = "PlanejamentoOficinas.do?action=pesquisar";
-            document.PlanejamentoOficinasForm.submit();
+            var idProfessor = document.PlanejamentoOficinasForm.idProfessor.value;
+            if (idProfessor === "") {
+                alert("Deve ser informado o(a) Professor(a)!!");
+                document.getElementById("idProfessor").focus();
+            } else {
+                document.PlanejamentoOficinasForm.action = "PlanejamentoOficinas.do?action=pesquisar";
+                document.PlanejamentoOficinasForm.submit();
+            }
         }
 
     </script>

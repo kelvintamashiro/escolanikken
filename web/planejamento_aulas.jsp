@@ -154,12 +154,12 @@
                     </tr>
 
                     <tr>
-                        <td align="center">
+                        <td align="center" colspan="2">
                             <input class="btn btn-green" type="button" value="Salvar" onClick="fSalvar();">
                         </td>
-                        <td align="center">
+<!--                        <td align="center">
                             <input class="btn btn-grey" type="button" value="Pesquisar" onClick="fPesquisar();">
-                        </td>
+                        </td>-->
                     </tr>
                 </table>
             </div>

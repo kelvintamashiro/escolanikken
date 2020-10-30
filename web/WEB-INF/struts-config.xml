@@ -38,6 +38,7 @@
         <form-bean name="PlanejamentoAulasForm"  type="br.com.Form.PlanejamentoAulasForm"/>
         <form-bean name="PlanejamentoOficinasForm"  type="br.com.Form.PlanejamentoOficinasForm"/>
         <form-bean name="UploadArquivoForm"  type="br.com.Form.UploadArquivoForm"/>
+        <form-bean name="RematriculaForm"  type="br.com.Form.RematriculaForm"/>
  
     </form-beans>
 
@@ -258,6 +259,29 @@
             <forward name="listarImagens"                   path="/upload_arquivo_lista.jsp"/>
             <forward name="excluir"                         path="/upload_arquivo_lista.jsp"/>
             <forward name="visualizarCardapio"              path="/visualizar_cardapio.jsp"/>
+        </action>
+        
+        <action    path="/Rematricula"
+                   type="br.com.Action.RematriculaAction"
+                   name="RematriculaForm"
+                   scope="request"
+                   validate="false"
+                   input="/rematricula.jsp">
+            <forward name="page"                            path="/rematricula.jsp"/>
+            <forward name="atualizarInformacoes"            path="/rematricula.jsp"/>
+            <forward name="fwrError"                        path="/error.jsp"/>
+            <forward name="pageDocZairyu"                   path="/documentos_aluno_zairyu.jsp"/>
+            <forward name="salvarDocZairyu"                 path="/documentos_aluno_zairyu.jsp"/>
+            <forward name="excluirDocZairyu"                path="/documentos_aluno_zairyu.jsp"/>
+            <forward name="pageDocMyNumber"                 path="/documentos_aluno_my_number.jsp"/>
+            <forward name="salvarDocMyNumber"               path="/documentos_aluno_my_number.jsp"/>
+            <forward name="excluirDocMyNumber"              path="/documentos_aluno_my_number.jsp"/>
+            <forward name="pageDocPassaporte"               path="/documentos_aluno_passaporte.jsp"/>
+            <forward name="salvarDocPassaporte"             path="/documentos_aluno_passaporte.jsp"/>
+            <forward name="excluirDocPassaporte"            path="/documentos_aluno_passaporte.jsp"/>
+            <forward name="pageDocumentosEscolares"         path="/documentos_aluno_escolares.jsp"/>
+            <forward name="salvarDocumentosEscolares"       path="/documentos_aluno_escolares.jsp"/>
+            <forward name="excluirDocumentosEscolares"      path="/documentos_aluno_escolares.jsp"/>
         </action>
         
     </action-mappings>

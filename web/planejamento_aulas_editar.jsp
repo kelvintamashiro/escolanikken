@@ -44,7 +44,8 @@
             <table border="0" align="center" style="margin-top: 20px; background-color: #FFC0CB" width="100%">
                 <tr>
                     <td width="10%" style="padding-left: 50px">
-                        <a href="PlanejamentoAulas.do?action=pagePesquisarPorProfessor"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
+<!--                        <a href="PlanejamentoAulas.do?action=pagePesquisarPorProfessor&idPF=<bean:write name="PlanejamentoAulasForm" property="idProfessor"/>"><img src="imagens/bt_voltar_2.png" width="100px"/></a>-->
+                        <a href="javascript:history.back()"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
                     </td>
                     <td width="80%" align="center">
                         <h1>Planejamento de Aulas - Editar / Visualizar</h1>
