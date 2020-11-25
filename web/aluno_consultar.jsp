@@ -139,7 +139,7 @@
                                     <bean:write name="lista" property="dsStatus"/>
                                 </td>
                                 <td>
-                                    <input class="btn btn-info" type="button" value="Editar" onClick="fAtualizar(<bean:write name="lista" property="idPF"/>);">    
+                                    <input class="btn btn-info" type="button" value="Visualizar/Editar" onClick="fAtualizar(<bean:write name="lista" property="idPF"/>);">    
                                 </td>
                                 <td width="5%">&nbsp;</td>
                             </tr>

@@ -75,9 +75,9 @@
                     <button class="btn-nikken" onclick="window.location.href = 'TirarDuvidas.do?idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=aluno'">
                         Contato / <br/>Dúvidas
                     </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'Rematricula.do?idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=aluno'">
+<!--                    <button class="btn-nikken" onclick="window.location.href = 'Rematricula.do?idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=aluno'">
                         Rematrícula<br/>2021
-                    </button>
+                    </button>-->
                     <!--                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=visualizarCardapio'">
                                             Cardápio <br/>Nikken
                                         </button>-->

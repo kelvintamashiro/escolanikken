@@ -78,15 +78,42 @@
                    scope="request"
                    validate="false"
                    input="/aluno.jsp">
-            <forward name="pageCadastrar"               path="/aluno.jsp"/>
-            <forward name="cadastrar"                   path="/aluno.jsp"/>
-            <forward name="pageConsultar"               path="/aluno_consultar.jsp"/>
-            <forward name="consultar"                   path="/aluno_consultar.jsp"/>
-            <forward name="pageAtualizar"               path="/aluno_atualizar.jsp"/>
-            <forward name="atualizar"                   path="/aluno_atualizar.jsp"/>
-            <forward name="pageHistoricoAluno"          path="/aluno_historico.jsp"/>
-            <forward name="salvarHistoricoAluno"        path="/aluno_historico.jsp"/>
-            <forward name="excluirHistoricoAluno"       path="/aluno_historico.jsp"/>
+            <forward name="pageCadastrar"                   path="/aluno.jsp"/>
+            <forward name="cadastrar"                       path="/aluno.jsp"/>
+            <forward name="pageConsultar"                   path="/aluno_consultar.jsp"/>
+            <forward name="consultar"                       path="/aluno_consultar.jsp"/>
+            <forward name="pageAtualizar"                   path="/aluno_atualizar.jsp"/>
+            <forward name="atualizar"                       path="/aluno_atualizar.jsp"/>
+            <forward name="pageHistoricoAluno"              path="/aluno_historico.jsp"/>
+            <forward name="salvarHistoricoAluno"            path="/aluno_historico.jsp"/>
+            <forward name="excluirHistoricoAluno"           path="/aluno_historico.jsp"/>
+            <forward name="pageDocZairyu"                   path="/documentos_aluno_zairyu_escola.jsp"/>
+            <forward name="pageDocMyNumber"                 path="/documentos_aluno_my_number_escola.jsp"/>
+            <forward name="pageDocPassaporte"               path="/documentos_aluno_passaporte_escola.jsp"/>
+            <forward name="pageDocumentosEscolares"         path="/documentos_aluno_escolares_escola.jsp"/>
+        </action>
+        
+        <action    path="/Rematricula"
+                   type="br.com.Action.RematriculaAction"
+                   name="RematriculaForm"
+                   scope="request"
+                   validate="false"
+                   input="/rematricula.jsp">
+            <forward name="page"                            path="/rematricula.jsp"/>
+            <forward name="atualizarInformacoes"            path="/rematricula.jsp"/>
+            <forward name="fwrError"                        path="/error.jsp"/>
+            <forward name="pageDocZairyu"                   path="/documentos_aluno_zairyu.jsp"/>
+            <forward name="salvarDocZairyu"                 path="/documentos_aluno_zairyu.jsp"/>
+            <forward name="excluirDocZairyu"                path="/documentos_aluno_zairyu.jsp"/>
+            <forward name="pageDocMyNumber"                 path="/documentos_aluno_my_number.jsp"/>
+            <forward name="salvarDocMyNumber"               path="/documentos_aluno_my_number.jsp"/>
+            <forward name="excluirDocMyNumber"              path="/documentos_aluno_my_number.jsp"/>
+            <forward name="pageDocPassaporte"               path="/documentos_aluno_passaporte.jsp"/>
+            <forward name="salvarDocPassaporte"             path="/documentos_aluno_passaporte.jsp"/>
+            <forward name="excluirDocPassaporte"            path="/documentos_aluno_passaporte.jsp"/>
+            <forward name="pageDocumentosEscolares"         path="/documentos_aluno_escolares.jsp"/>
+            <forward name="salvarDocumentosEscolares"       path="/documentos_aluno_escolares.jsp"/>
+            <forward name="excluirDocumentosEscolares"      path="/documentos_aluno_escolares.jsp"/>
         </action>
         
         <action    path="/Professor"
@@ -261,28 +288,7 @@
             <forward name="visualizarCardapio"              path="/visualizar_cardapio.jsp"/>
         </action>
         
-        <action    path="/Rematricula"
-                   type="br.com.Action.RematriculaAction"
-                   name="RematriculaForm"
-                   scope="request"
-                   validate="false"
-                   input="/rematricula.jsp">
-            <forward name="page"                            path="/rematricula.jsp"/>
-            <forward name="atualizarInformacoes"            path="/rematricula.jsp"/>
-            <forward name="fwrError"                        path="/error.jsp"/>
-            <forward name="pageDocZairyu"                   path="/documentos_aluno_zairyu.jsp"/>
-            <forward name="salvarDocZairyu"                 path="/documentos_aluno_zairyu.jsp"/>
-            <forward name="excluirDocZairyu"                path="/documentos_aluno_zairyu.jsp"/>
-            <forward name="pageDocMyNumber"                 path="/documentos_aluno_my_number.jsp"/>
-            <forward name="salvarDocMyNumber"               path="/documentos_aluno_my_number.jsp"/>
-            <forward name="excluirDocMyNumber"              path="/documentos_aluno_my_number.jsp"/>
-            <forward name="pageDocPassaporte"               path="/documentos_aluno_passaporte.jsp"/>
-            <forward name="salvarDocPassaporte"             path="/documentos_aluno_passaporte.jsp"/>
-            <forward name="excluirDocPassaporte"            path="/documentos_aluno_passaporte.jsp"/>
-            <forward name="pageDocumentosEscolares"         path="/documentos_aluno_escolares.jsp"/>
-            <forward name="salvarDocumentosEscolares"       path="/documentos_aluno_escolares.jsp"/>
-            <forward name="excluirDocumentosEscolares"      path="/documentos_aluno_escolares.jsp"/>
-        </action>
+        
         
     </action-mappings>
 

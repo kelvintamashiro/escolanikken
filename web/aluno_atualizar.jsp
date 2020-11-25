@@ -42,11 +42,26 @@
                         <a href="Aluno.do?action=pageConsultar"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
                     </td>
                     <td width="80%" align="center">
-                        <h1>Atualização de Aluno</h1>
+                        <h1>Informações Aluno</h1>
                     </td>
                     <td width="10%">&nbsp;</td>
                 </tr>
             </table>
+            <logic:notEqual name="tipoPerfil" scope="session" value="aluno">
+                <logic:notEqual name="tipoPerfil" scope="session" value="professor">
+                    <table width="100%" style="background-color: #F5F5F5; height: 100px">
+                        <tr>
+                            <td align="center">
+                                <input class="btn btn-info" type="button" value="1.Informações Aluno" onClick="fInformacaoAluno(<bean:write name="AlunoForm" property="idPF"/>);" style="border-bottom: 3px solid black; color: white">
+                                <input class="btn btn-info" type="button" value="2.Doc ZairyuCard" onClick="fEnvioDocZairyu(<bean:write name="AlunoForm" property="idPF"/>);">
+                                <input class="btn btn-info" type="button" value="3.Doc MyNumber" onClick="fEnvioDocMyNumber(<bean:write name="AlunoForm" property="idPF"/>);">
+                                <input class="btn btn-info" type="button" value="4.Doc Passaporte" onClick="fEnvioDocPassaporte(<bean:write name="AlunoForm" property="idPF"/>);">
+                                <input class="btn btn-info" type="button" value="5.Doc Escolares/Pessoais" onClick="fEnvioDocumentosEscolares(<bean:write name="AlunoForm" property="idPF"/>);">
+                            </td>
+                        </tr>
+                    </table>
+                </logic:notEqual>
+            </logic:notEqual>
             <div class="form-group">
                 <table border="0" align="center" style="margin-top: 20px;" width="80%">
                     <html:hidden name="AlunoForm" property="idPF"/>
@@ -54,8 +69,6 @@
                         <td width="6%">
                             <div class="col-lg-12">
                                 <label for="usr">ID: <b><bean:write name="AlunoForm" property="idPF"/></b></label>
-
-                                <%--<html:text styleClass="form-control" name="AlunoForm" property="idPF" styleId="idPF"/>--%>
                             </div>
                         </td>
                         <td width="22%">
@@ -508,6 +521,28 @@
 
     function fHistoricoAluno() {
         document.AlunoForm.action = "Aluno.do?action=pageHistoricoAluno";
+        document.AlunoForm.submit();
+    }
+
+    function fInformacaoAluno(idPF) {
+        document.AlunoForm.action = "Aluno.do?action=pageAtualizar&idPF=" + idPF;
+        document.AlunoForm.submit();
+    }
+
+    function fEnvioDocZairyu(idPF) {
+        document.AlunoForm.action = "Aluno.do?action=pageDocZairyu&idPF=" + idPF;
+        document.AlunoForm.submit();
+    }
+    function fEnvioDocMyNumber(idPF) {
+        document.AlunoForm.action = "Aluno.do?action=pageDocMyNumber&idPF=" + idPF;
+        document.AlunoForm.submit();
+    }
+    function fEnvioDocPassaporte(idPF) {
+        document.AlunoForm.action = "Aluno.do?action=pageDocPassaporte&idPF=" + idPF;
+        document.AlunoForm.submit();
+    }
+    function fEnvioDocumentosEscolares(idPF) {
+        document.AlunoForm.action = "Aluno.do?action=pageDocumentosEscolares&idPF=" + idPF;
         document.AlunoForm.submit();
     }
 </script>
