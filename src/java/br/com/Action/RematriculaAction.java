@@ -40,6 +40,8 @@ public class RematriculaAction extends IDRAction {
             this.atualizarInformacoes(form, request, errors);
         } else if (action.equals("pageDocZairyu")) {
             return pageDocZairyu(mapping, form, request, errors);
+        } else if (action.equals("pageDocZairyuEscola")) {
+            this.pageDocZairyuEscola(form, request, errors);
         } else if (action.equals("salvarDocZairyu") || action.equals("salvarDocMyNumber") || action.equals("salvarDocPassaporte") || action.equals("salvarDocumentosEscolares")) {
             this.salvarDocumentosAluno(form, request, errors);
         } else if (action.equals("excluirDocZairyu") || action.equals("excluirDocMyNumber") || action.equals("excluirDocPassaporte") || action.equals("excluirDocumentosEscolares")) {
@@ -178,6 +180,26 @@ public class RematriculaAction extends IDRAction {
             connectionPool.free(conn);
         }
         return mapping.findForward(strForward);
+    }
+
+    private void pageDocZairyuEscola(ActionForm form, HttpServletRequest request, Errors errors) {
+        RematriculaForm rematriculaForm = new RematriculaForm();
+        Connection conn = null;
+        try {
+            conn = connectionPool.getConnection();
+            String idPf = request.getParameter("idPF");
+
+            //carregar dados do aluno por ID
+            rematriculaForm = rematriculaForm.obterDocumentosAluno(conn, idPf);
+            AlunoForm alunoForm = new AlunoForm();
+            alunoForm = alunoForm.obterDadosAlunoPorID(conn, idPf);
+            rematriculaForm.setAlunoForm(alunoForm);
+            request.setAttribute("RematriculaForm", rematriculaForm);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.free(conn);
+        }
     }
 
     private ActionForward pageDocMyNumber(ActionMapping mapping, ActionForm form, HttpServletRequest request, Errors errors) {

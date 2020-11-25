@@ -5,9 +5,11 @@
  */
 package br.com.Action;
 
+import static br.com.Action.IDRAction.connectionPool;
 import br.com.Dao.HistoricoDao;
 import br.com.Form.AlunoForm;
 import br.com.Form.PessoaFisicaForm;
+import br.com.Form.RematriculaForm;
 import br.com.Util.EnvioEmail;
 import br.com.Util.GeradorSenha;
 import br.com.abre.Util.Errors;
@@ -48,7 +50,9 @@ public class AlunoAction extends IDRAction {
             this.salvarHistoricoAluno(form, request, errors);
         } else if (action.equals("excluirHistoricoAluno")) {
             this.excluirHistoricoAluno(form, request, errors);
-        }
+        } else if (action.equals("pageDocZairyu") || action.equals("pageDocMyNumber") || action.equals("pageDocPassaporte") || action.equals("pageDocumentosEscolares")) {
+            this.pageDocAluno(form, request, errors);
+        } 
 
         return mapping.findForward(forward);
     }
@@ -125,7 +129,7 @@ public class AlunoAction extends IDRAction {
 
                     EnvioEmail envio = new EnvioEmail();
 //                    envio.enviarEmail("kelvin@mitsistemas.com.br", sb.toString(), "Dados de Acesso ao Portal Nikken");
-                        envio.enviarEmail(alunoForm.getEmail(), sb.toString(), "Dados de Acesso ao Portal Nikken");
+                    envio.enviarEmail(alunoForm.getEmail(), sb.toString(), "Dados de Acesso ao Portal Nikken");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -294,5 +298,26 @@ public class AlunoAction extends IDRAction {
             connectionPool.free(conn);
         }
     }
+
+    private void pageDocAluno(ActionForm form, HttpServletRequest request, Errors errors) {
+        RematriculaForm rematriculaForm = new RematriculaForm();
+        Connection conn = null;
+        try {
+            conn = connectionPool.getConnection();
+            String idPf = request.getParameter("idPF");
+
+            //carregar dados do aluno por ID
+            rematriculaForm = rematriculaForm.obterDocumentosAluno(conn, idPf);
+            AlunoForm alunoForm = new AlunoForm();
+            alunoForm = alunoForm.obterDadosAlunoPorID(conn, idPf);
+            rematriculaForm.setAlunoForm(alunoForm);
+            request.setAttribute("RematriculaForm", rematriculaForm);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.free(conn);
+        }
+    }
+
 
 }
