@@ -95,6 +95,9 @@
                             <b>Total de Faltas</b>
                         </td>
                         <td rowspan="2" align="center">
+                            <b>Média Anual</b>
+                        </td>
+                        <td rowspan="2" align="center">
                             <b>Média Final</b>
                         </td>
                         <td rowspan="2" align="center">
@@ -197,7 +200,17 @@
                                         <logic:lessThan name="lista" property="mediaFinal" value="6">
                                             <i>
                                                 <b>
-                                                    <bean:write name="lista" property="mediaFinal"/>
+                                                    <logic:greaterThan name="lista" property="mediaRecupFinal" value="0">
+                                                        *<bean:write name="lista" property="mediaRecupFinal"/>
+                                                    </logic:greaterThan>
+                                                    <logic:equal name="lista" property="mediaRecupFinal" value="0">
+                                                        <logic:equal name="lista" property="fezProvaRecupAnual" value="true">
+                                                            *<bean:write name="lista" property="mediaFinal"/>        
+                                                        </logic:equal>
+                                                        <logic:equal name="lista" property="fezProvaRecupAnual" value="false">
+                                                            <bean:write name="lista" property="mediaFinal"/>    
+                                                        </logic:equal>
+                                                    </logic:equal>
                                                 </b>
                                             </i>
                                         </logic:lessThan>
@@ -205,12 +218,29 @@
                                             <bean:write name="lista" property="mediaFinal"/>
                                         </logic:greaterEqual>
                                     </logic:notEqual>
-                                </td> <!-- média final -->
+                                </td> <!-- média anual -->
+                                <td align="center">
+                                    
+                                </td>
                                 <td align="center"></td> <!-- Resultado final -->
                             </tr>
                         </logic:iterate>
                     </logic:present>
                 </table>
+                <logic:present name="listaObservacao" scope="request">
+                    <table border="0" style="margin-top: 20px" width="80%" align="center">
+                        <tr>
+                            <td>Observação:</td>
+                        </tr>
+                        <logic:iterate name="listaObservacao" id="listaObs" scope="request">
+                            <tr>
+                                <td style="font-size: 11px">
+                                    *<bean:write name="listaObs"/>
+                                </td>
+                            </tr>
+                        </logic:iterate>
+                    </table>
+                </logic:present>
                 <table border="0" align="center" width="200px" style="margin-top: 80px">
                     <tr>
                         <td align="center" style="border-bottom: 1px solid black">

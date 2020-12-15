@@ -39,6 +39,7 @@
         <form-bean name="PlanejamentoOficinasForm"  type="br.com.Form.PlanejamentoOficinasForm"/>
         <form-bean name="UploadArquivoForm"  type="br.com.Form.UploadArquivoForm"/>
         <form-bean name="RematriculaForm"  type="br.com.Form.RematriculaForm"/>
+        <form-bean name="RecuperacaoAnualForm"  type="br.com.Form.RecuperacaoAnualForm"/>
  
     </form-beans>
 
@@ -286,6 +287,19 @@
             <forward name="listarImagens"                   path="/upload_arquivo_lista.jsp"/>
             <forward name="excluir"                         path="/upload_arquivo_lista.jsp"/>
             <forward name="visualizarCardapio"              path="/visualizar_cardapio.jsp"/>
+        </action>
+        
+        <action    path="/RecuperacaoAnual"
+                   type="br.com.Action.RecuperacaoAnualAction"
+                   name="RecuperacaoAnualForm"
+                   scope="request"
+                   validate="false"
+                   input="/recuperacao_anual.jsp">
+            <forward name="page"                                        path="/recuperacao_anual.jsp"/>
+            <forward name="pesquisarAlunosPorSerieRecuperacaoAnual"     path="/recuperacao_anual.jsp"/>
+            <forward name="excluirNotaRecuperacao"                      path="/recuperacao_anual.jsp"/>
+            <forward name="pageIncluirNota"                             path="/recuperacao_anual_incluir_nota.jsp"/>
+            <forward name="salvarNotaRecuperacao"                       path="/recuperacao_anual_incluir_nota.jsp"/>
         </action>
         
         

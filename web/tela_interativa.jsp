@@ -47,6 +47,9 @@
                     <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
                         Lançamento <br/>de Notas
                     </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'RecuperacaoAnual.do'">
+                        Recuperação <br/>Anual
+                    </button>
                 </div>
                 <div class="col-12 col-s-12">
                     <%--<button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?idPF=<%= //session.getAttribute("idPF").toString()%>'">--%>
@@ -114,6 +117,9 @@
                     <button class="btn-nikken" onclick="window.location.href = 'planejamento_oficina_page.jsp'">
                         Planejamento <br/>de Oficinas
                     </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'RecuperacaoAnual.do'">
+                        Recuperação <br/>Anual
+                    </button>
                 </div>
                 <div class="col-12 col-s-12">
                     <button class="btn-nikken" onclick="window.location.href = 'Aluno.do?action=pageConsultar'">
@@ -140,35 +146,46 @@
         <logic:equal name="tipoPerfil" scope="session" value="diretoria">
             <div class="row" align="center">
                 <div class="col-12 col-s-12">
-                    <button class="btn-nikken" onclick="window.location.href = 'Aluno.do?action=pageCadastrar'">
-                        Cadastro <br/>de Alunos
+                    <button class="btn-nikken" onclick="window.location.href = 'gerenciador_aluno.jsp'">
+                        Gerenciador <br/>de Aluno
                     </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'Professor.do?action=pageCadastrar'">
-                        Cadastro <br/>de Professor
-                    </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
-                        Lançamento <br/>de Notas
-                    </button>
-                    <!--<button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?action=pesquisarTodos'">-->
-                    <button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?action=pagePesquisarPorProfessor&idPF=<%=session.getAttribute("idPF").toString()%>'">
-                        Planejamento <br/>de Aulas
-                    </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'planejamento_oficina_page.jsp'">
-                        Planejamento <br/>de Oficinas
+                    <button class="btn-nikken" onclick="window.location.href = 'gerenciador_professor.jsp'">
+                        Gerenciador <br/>de Professor
                     </button>
                     <button class="btn-nikken" onclick="window.location.href = 'Disciplinas.do'">
                         Gerenciador <br/>de Disciplinas
                     </button>
+
+                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'Aluno.do?action=pageCadastrar'">
+                                            Cadastro <br/>de Alunos
+                                        </button>-->
+                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'Professor.do?action=pageCadastrar'">
+                                            Cadastro <br/>de Professor
+                                        </button>-->
+                    <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
+                        Lançamento <br/>de Notas
+                    </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?action=pagePesquisarPorProfessor&idPF=<%=session.getAttribute("idPF").toString()%>'">
+                        Planejamento <br/>de Aulas
+                    </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'RecuperacaoAnual.do'">
+                        Recuperação <br/>Anual
+                    </button>
+
+
                     <!--                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=pageCardapio'">
                                             Cardápio <br/>Nikken
                                         </button>-->
                 </div>
                 <div class="col-12 col-s-12">
-                    <button class="btn-nikken" onclick="window.location.href = 'Aluno.do?action=pageConsultar'">
-                        Consulta <br/>de Alunos
-                    </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'Professor.do?action=pageConsultar'">
-                        Consulta <br/>de Professor
+                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'Aluno.do?action=pageConsultar'">
+                                            Consulta <br/>de Alunos
+                                        </button>-->
+                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'Professor.do?action=pageConsultar'">
+                                            Consulta <br/>de Professor
+                                        </button>-->
+                    <button class="btn-nikken" onclick="window.location.href = 'planejamento_oficina_page.jsp'">
+                        Planejamento <br/>de Oficinas
                     </button>
                     <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?action=pageConsulta&idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=professor'">
                         Consulta <br/>de Notas
