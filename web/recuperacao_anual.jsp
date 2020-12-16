@@ -178,7 +178,12 @@
                                 <td align="center"><bean:write name="lista" property="mediaAnual"/></td>
                                 <td align="center"><b><bean:write name="lista" property="mediaFinal"/></b></td>
                                 <td width="10%">
-                                    <input class="btn btn-danger" type="button" value="Excluir" onClick="fExcluir(<bean:write name="lista" property="id"/>);">
+                                    <logic:equal name="tipoPerfil" scope="session" value="coordenacao">
+                                        <input class="btn btn-danger" type="button" value="Excluir" onClick="fExcluir(<bean:write name="lista" property="id"/>);">
+                                    </logic:equal>
+                                    <logic:equal name="tipoPerfil" scope="session" value="diretoria">
+                                        <input class="btn btn-danger" type="button" value="Excluir" onClick="fExcluir(<bean:write name="lista" property="id"/>);">
+                                    </logic:equal>
                                 </td>
                                 <td width="10%">&nbsp;</td>
                             </tr>

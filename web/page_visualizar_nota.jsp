@@ -200,17 +200,7 @@
                                         <logic:lessThan name="lista" property="mediaFinal" value="6">
                                             <i>
                                                 <b>
-                                                    <logic:greaterThan name="lista" property="mediaRecupFinal" value="0">
-                                                        *<bean:write name="lista" property="mediaRecupFinal"/>
-                                                    </logic:greaterThan>
-                                                    <logic:equal name="lista" property="mediaRecupFinal" value="0">
-                                                        <logic:equal name="lista" property="fezProvaRecupAnual" value="true">
-                                                            *<bean:write name="lista" property="mediaFinal"/>        
-                                                        </logic:equal>
-                                                        <logic:equal name="lista" property="fezProvaRecupAnual" value="false">
-                                                            <bean:write name="lista" property="mediaFinal"/>    
-                                                        </logic:equal>
-                                                    </logic:equal>
+                                                    <bean:write name="lista" property="mediaFinal"/>
                                                 </b>
                                             </i>
                                         </logic:lessThan>
@@ -220,7 +210,24 @@
                                     </logic:notEqual>
                                 </td> <!-- média anual -->
                                 <td align="center">
-                                    
+                                    <logic:equal name="lista" property="mediaRecupFinal" value="0">
+                                        &nbsp;
+                                    </logic:equal>
+                                    <logic:notEqual name="lista" property="mediaRecupFinal" value="0">
+                                        <i>
+                                            <b>
+                                                <logic:equal name="lista" property="passouDisciplina" value="true">
+                                                    *<bean:write name="lista" property="mediaRecupFinal"/>
+                                                </logic:equal>
+                                                <logic:equal name="lista" property="passouDisciplina" value="false">
+                                                    *<bean:write name="lista" property="mediaFinal"/>
+                                                </logic:equal>
+                                            </b>
+                                        </i>
+                                        <logic:greaterEqual name="lista" property="mediaFinal" value="6">
+                                            <bean:write name="lista" property="mediaFinal"/>
+                                        </logic:greaterEqual>
+                                    </logic:notEqual>
                                 </td>
                                 <td align="center"></td> <!-- Resultado final -->
                             </tr>
