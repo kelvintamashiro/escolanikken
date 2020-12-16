@@ -277,4 +277,41 @@ public final class NotaBimestreDao {
 
         return notaBimestreForm;
     }
+
+    public List<NotaBimestreForm> obterListaMediaAnualPorAluno(Connection conn, int idPF, int idSerieAno, int anoVigente) throws SQLException {
+        List<NotaBimestreForm> listaNotasAlunos = new ArrayList();
+        String query = "select sum(n.media) as totalMedia, n.serie_ano, n.ano, d.id_disciplina, d.nome_disciplina, n.id_aluno, pf.nome"
+                + " from nota_bimestre n, disciplina d, pessoa_fisica pf "
+                + " where n.id_disciplina = d.id_disciplina"
+                + " and n.id_aluno = pf.id"
+                + " and n.serie_ano = ?"
+                + " and n.id_aluno = ?"
+                + " and n.ano = ?"
+                + " group by n.id_disciplina"
+                + " order by d.nome_disciplina";
+        
+        PreparedStatement prep = conn.prepareStatement(query);
+        prep.setInt(1, idSerieAno);
+        prep.setInt(2, idPF);
+        prep.setInt(3, anoVigente);
+        ResultSet rs = prep.executeQuery();
+        while(rs.next()){
+            NotaBimestreForm notaBimestreForm = new NotaBimestreForm();
+            double mediaAnual = rs.getDouble("totalMedia") / 4;
+            double mediaArredondada = Math.round(mediaAnual / 0.5) * 0.5;
+            notaBimestreForm.setIdDisciplina(rs.getInt("id_disciplina"));
+            notaBimestreForm.setNomeDisciplina(rs.getString("nome_disciplina"));
+            notaBimestreForm.setIdAluno(rs.getInt("id_aluno"));
+            notaBimestreForm.setNomeAluno(rs.getString("nome"));
+            notaBimestreForm.setMediaFinal(mediaArredondada);
+            
+            if(mediaArredondada < 6.0){
+                listaNotasAlunos.add(notaBimestreForm);
+            }
+        }
+        rs.close();
+        prep.close();
+        
+        return listaNotasAlunos;
+    }
 }

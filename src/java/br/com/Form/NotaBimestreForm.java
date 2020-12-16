@@ -20,7 +20,9 @@ public class NotaBimestreForm extends FormBasico {
 
     private int idNotaBimestre;
     private int idDisciplina;
+    private String nomeDisciplina;
     private int idAluno;
+    private String nomeAluno;
     private int nrBimestre;
     private int idSerieAno;
     private String dsSerieAno;
@@ -40,6 +42,7 @@ public class NotaBimestreForm extends FormBasico {
     private double media3Bimestre;
     private double media4Bimestre;
     private double mediaFinal;
+    private double mediaRecupFinal;
     private int falta1Bimestre;
     private int falta2Bimestre;
     private int falta3Bimestre;
@@ -47,7 +50,34 @@ public class NotaBimestreForm extends FormBasico {
     private int faltaTotal;
     private String dataEmissao;
     private int recuperacao;
+    private boolean passouDisciplina;
+    private boolean fezProvaRecupAnual = false;
+    private String observacaoRecupAnual;
 
+    public boolean isFezProvaRecupAnual() {
+        return fezProvaRecupAnual;
+    }
+
+    public void setFezProvaRecupAnual(boolean fezProvaRecupAnual) {
+        this.fezProvaRecupAnual = fezProvaRecupAnual;
+    }
+
+    public String getObservacaoRecupAnual() {
+        return observacaoRecupAnual;
+    }
+
+    public void setObservacaoRecupAnual(String observacaoRecupAnual) {
+        this.observacaoRecupAnual = observacaoRecupAnual;
+    }
+    
+    public boolean isPassouDisciplina() {
+        return passouDisciplina;
+    }
+
+    public void setPassouDisciplina(boolean passouDisciplina) {
+        this.passouDisciplina = passouDisciplina;
+    }
+    
     public int getRecuperacao() {
         return recuperacao;
     }
@@ -102,6 +132,14 @@ public class NotaBimestreForm extends FormBasico {
 
     public void setMediaFinal(double mediaFinal) {
         this.mediaFinal = mediaFinal;
+    }
+
+    public double getMediaRecupFinal() {
+        return mediaRecupFinal;
+    }
+
+    public void setMediaRecupFinal(double mediaRecupFinal) {
+        this.mediaRecupFinal = mediaRecupFinal;
     }
 
     public int getFalta1Bimestre() {
@@ -192,12 +230,28 @@ public class NotaBimestreForm extends FormBasico {
         this.idDisciplina = idDisciplina;
     }
 
+    public String getNomeDisciplina() {
+        return nomeDisciplina;
+    }
+
+    public void setNomeDisciplina(String nomeDisciplina) {
+        this.nomeDisciplina = nomeDisciplina;
+    }
+
     public int getIdAluno() {
         return idAluno;
     }
 
     public void setIdAluno(int idAluno) {
         this.idAluno = idAluno;
+    }
+
+    public String getNomeAluno() {
+        return nomeAluno;
+    }
+
+    public void setNomeAluno(String nomeAluno) {
+        this.nomeAluno = nomeAluno;
     }
 
     public String getCategoriaEnsino() {

@@ -11,6 +11,7 @@ import br.com.Form.AlunoForm;
 import br.com.Form.DisciplinasForm;
 import br.com.Form.NotaBimestreForm;
 import br.com.Form.PessoaFisicaForm;
+import br.com.Form.RecuperacaoAnualForm;
 import br.com.Form.SerieAnoForm;
 import br.com.Util.Utilitario;
 import br.com.abre.Util.Errors;
@@ -353,6 +354,7 @@ public class NotaBimestreAction extends IDRAction {
 
             //percorrer as disciplinas e pegar as notas e faltas
             List<NotaBimestreForm> listaNotasDisciplinas = new ArrayList<>();
+            List<String> listaObservacao = new ArrayList<>();
             for (DisciplinasForm disciplina : listaDisciplinas) {
                 //obter Notas e faltas de todos os bimestres por disciplinas
                 NotaBimestreForm notasFaltasDisciplinas = NotaBimestreDao.getInstance().obterNotasFaltasPorDisciplinaAluno(conn, disciplina.getIdDisciplina(), notaBimestreForm.getAno(), notaBimestreForm.getIdAluno(), notaBimestreForm.getIdSerieAno());
@@ -371,9 +373,33 @@ public class NotaBimestreAction extends IDRAction {
                     notasFaltasDisciplinas.setMediaFinal(mediaArredondada);
                 }
 
+                //se a media final for menor que 6.0 verificar se fez recuperacao final e pegar a nota
+                if (notasFaltasDisciplinas.getMediaFinal() < 6.0) {
+                    String observacaoRecup = "";
+                    RecuperacaoAnualForm recuperacaoAnualForm = new RecuperacaoAnualForm();
+                    double mediaRecupFinal = recuperacaoAnualForm.obterMediaRecupFinalPorAlunoDisciplina(conn, disciplina.getIdDisciplina(), notaBimestreForm.getAno(), notaBimestreForm.getIdAluno(), notaBimestreForm.getIdSerieAno());
+                    if (mediaRecupFinal > 0) {
+                        notasFaltasDisciplinas.setFezProvaRecupAnual(true);
+                        if (mediaRecupFinal >= 6.0) {
+                            notasFaltasDisciplinas.setMediaRecupFinal(mediaRecupFinal);
+                            notasFaltasDisciplinas.setPassouDisciplina(true);
+                            observacaoRecup = "Aluno(a) foi submetivo a recuperação anual e passou na disciplina: " + disciplina.getNomeDisciplina();
+                        } else {
+                            notasFaltasDisciplinas.setMediaRecupFinal(mediaRecupFinal);
+                            notasFaltasDisciplinas.setPassouDisciplina(false);
+                            observacaoRecup = "Aluno(a) foi submetivo a recuperação anual e não passou na disciplina: " + disciplina.getNomeDisciplina();
+                        }
+                        listaObservacao.add(observacaoRecup);
+                    }
+                }
+                
                 listaNotasDisciplinas.add(notasFaltasDisciplinas);
             }
             request.setAttribute("listaNotasDisciplinas", listaNotasDisciplinas);
+
+            if (listaObservacao.size() > 0) {
+                request.setAttribute("listaObservacao", listaObservacao);
+            }
 
             //pegar data atual
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
