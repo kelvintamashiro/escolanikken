@@ -76,6 +76,7 @@
                             <div class="col-lg-12">
                                 <label for="usr">Ano letivo:</label>
                                 <html:select name="RecuperacaoAnualForm" property="ano" styleId="ano" styleClass="form-control">
+                                    <html:option value="2021">2021</html:option>
                                     <html:option value="2020">2020</html:option>
                                 </html:select>
                             </div>

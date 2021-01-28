@@ -121,26 +121,28 @@
                             <tr>
                                 <td align="center"><bean:write name="disciplina" property="nomeDisciplina"/></td>
                                 <td align="center">
-                                    <logic:equal name="lista" property="media1Bimestre" value="0">
+                                    <logic:lessThan name="lista" property="media1Bimestre" value="0">
                                         -
-                                    </logic:equal>
-                                    <logic:notEqual name="lista" property="media1Bimestre" value="0">
+                                    </logic:lessThan>
+                                    <logic:greaterEqual name="lista" property="media1Bimestre" value="0">
                                         <logic:lessThan name="lista" property="media1Bimestre" value="6">
-                                            <b>
-                                                <bean:write name="lista" property="media1Bimestre"/>
-                                            </b>
+                                            <i>
+                                                <b>
+                                                    <bean:write name="lista" property="media1Bimestre"/>
+                                                </b>
+                                            </i>
                                         </logic:lessThan>
                                         <logic:greaterEqual name="lista" property="media1Bimestre" value="6">
                                             <bean:write name="lista" property="media1Bimestre"/>
                                         </logic:greaterEqual>
-                                    </logic:notEqual>
+                                    </logic:greaterEqual>
                                 </td> <!-- nota 1 bimestre -->
                                 <td align="center"><bean:write name="lista" property="falta1Bimestre"/></td> <!-- falta 1 bimestre -->
                                 <td align="center">
-                                    <logic:equal name="lista" property="media2Bimestre" value="0">
+                                    <logic:lessThan name="lista" property="media2Bimestre" value="0">
                                         -
-                                    </logic:equal>
-                                    <logic:notEqual name="lista" property="media2Bimestre" value="0">
+                                    </logic:lessThan>
+                                    <logic:greaterEqual name="lista" property="media2Bimestre" value="0">
                                         <logic:lessThan name="lista" property="media2Bimestre" value="6">
                                             <i>
                                                 <b>
@@ -151,14 +153,14 @@
                                         <logic:greaterEqual name="lista" property="media2Bimestre" value="6">
                                             <bean:write name="lista" property="media2Bimestre"/>
                                         </logic:greaterEqual>
-                                    </logic:notEqual>
+                                    </logic:greaterEqual>
                                 </td> <!-- nota 2 bimestre -->
                                 <td align="center"><bean:write name="lista" property="falta2Bimestre"/></td> <!-- falta 2 bimestre -->
                                 <td align="center">
-                                    <logic:equal name="lista" property="media3Bimestre" value="0">
+                                    <logic:lessThan name="lista" property="media3Bimestre" value="0">
                                         -
-                                    </logic:equal>
-                                    <logic:notEqual name="lista" property="media3Bimestre" value="0">
+                                    </logic:lessThan>
+                                    <logic:greaterEqual name="lista" property="media3Bimestre" value="0">
                                         <logic:lessThan name="lista" property="media3Bimestre" value="6">
                                             <i>
                                                 <b>
@@ -169,15 +171,14 @@
                                         <logic:greaterEqual name="lista" property="media3Bimestre" value="6">
                                             <bean:write name="lista" property="media3Bimestre"/>
                                         </logic:greaterEqual>
-
-                                    </logic:notEqual>
+                                    </logic:greaterEqual>
                                 </td> <!-- nota 3 bimestre -->
                                 <td align="center"><bean:write name="lista" property="falta3Bimestre"/></td> <!-- falta 3 bimestre -->
                                 <td align="center">
-                                    <logic:equal name="lista" property="media4Bimestre" value="0">
+                                    <logic:lessThan name="lista" property="media4Bimestre" value="0">
                                         -
-                                    </logic:equal>
-                                    <logic:notEqual name="lista" property="media4Bimestre" value="0">
+                                    </logic:lessThan>
+                                    <logic:greaterEqual name="lista" property="media4Bimestre" value="0">
                                         <logic:lessThan name="lista" property="media4Bimestre" value="6">
                                             <i>
                                                 <b>
@@ -188,7 +189,7 @@
                                         <logic:greaterEqual name="lista" property="media4Bimestre" value="6">
                                             <bean:write name="lista" property="media4Bimestre"/>
                                         </logic:greaterEqual>
-                                    </logic:notEqual>
+                                    </logic:greaterEqual>
                                 </td> <!-- nota 4 bimestre -->
                                 <td align="center"><bean:write name="lista" property="falta4Bimestre"/></td> <!-- falta 4 bimestre -->
                                 <td align="center"><bean:write name="lista" property="faltaTotal"/></td> <!-- total de faltas -->

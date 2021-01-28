@@ -40,6 +40,7 @@
         <form-bean name="UploadArquivoForm"  type="br.com.Form.UploadArquivoForm"/>
         <form-bean name="RematriculaForm"  type="br.com.Form.RematriculaForm"/>
         <form-bean name="RecuperacaoAnualForm"  type="br.com.Form.RecuperacaoAnualForm"/>
+        <form-bean name="ListaPresencaForm"  type="br.com.Form.ListaPresencaForm"/>
  
     </form-beans>
 
@@ -300,6 +301,24 @@
             <forward name="excluirNotaRecuperacao"                      path="/recuperacao_anual.jsp"/>
             <forward name="pageIncluirNota"                             path="/recuperacao_anual_incluir_nota.jsp"/>
             <forward name="salvarNotaRecuperacao"                       path="/recuperacao_anual_incluir_nota.jsp"/>
+        </action>
+        
+        <action    path="/ListaPresenca"
+                   type="br.com.Action.ListaPresencaAction"
+                   name="ListaPresencaForm"
+                   scope="request"
+                   validate="false"
+                   input="/lista_presenca.jsp">
+            <forward name="page"                                        path="/lista_presenca.jsp"/>
+            <forward name="pesquisar"                                   path="/lista_presenca.jsp"/>
+            <forward name="salvarPresenca"                              path="/lista_presenca.jsp"/>
+            <forward name="carregarDisciplinaCadastro"                  path="/lista_presenca.jsp"/>
+            <forward name="pageConsultar"                               path="/lista_presenca_consultar.jsp"/>
+            <forward name="carregarDisciplina"                          path="/lista_presenca_consultar.jsp"/>
+            <forward name="consultar"                                   path="/lista_presenca_consultar.jsp"/>
+            <forward name="excluirPresenca"                             path="/lista_presenca_consultar.jsp"/>
+            <forward name="editarPresenca"                              path="/lista_presenca_editar.jsp"/>
+            <forward name="atualizarPresenca"                           path="/lista_presenca_editar.jsp"/>
         </action>
         
         

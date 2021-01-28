@@ -53,6 +53,9 @@
                 </div>
                 <div class="col-12 col-s-12">
                     <%--<button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?idPF=<%= //session.getAttribute("idPF").toString()%>'">--%>
+                    <button class="btn-nikken" onclick="window.location.href = 'gerenciador_presenca.jsp'">
+                        Diário de  <br/>Classe Online
+                    </button>
                     <button class="btn-nikken" onclick="window.location.href = 'planejamento_aulas_page_coordenacao.jsp'">
                         Planejamento <br/>de Aulas
                     </button>
@@ -77,6 +80,9 @@
                     </button>
                     <button class="btn-nikken" onclick="window.location.href = 'TirarDuvidas.do?idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=aluno'">
                         Contato / <br/>Dúvidas
+                    </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'links_doc_alunos.jsp'">
+                        Links <br/>Importantes
                     </button>
 <!--                    <button class="btn-nikken" onclick="window.location.href = 'Rematricula.do?idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=aluno'">
                         Rematrícula<br/>2021
@@ -104,12 +110,18 @@
         <logic:equal name="tipoPerfil" scope="session" value="coordenacao">
             <div class="row" align="center">
                 <div class="col-12 col-s-12">
-                    <button class="btn-nikken" onclick="window.location.href = 'Aluno.do?action=pageCadastrar'">
-                        Cadastro <br/>de Alunos
+                    <button class="btn-nikken" onclick="window.location.href = 'gerenciador_aluno.jsp'">
+                        Gerenciador <br/>de Aluno
                     </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'Professor.do?action=pageCadastrar'">
-                        Cadastro <br/>de Professor
+                    <button class="btn-nikken" onclick="window.location.href = 'gerenciador_professor.jsp'">
+                        Gerenciador <br/>de Professor
                     </button>
+                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'Aluno.do?action=pageCadastrar'">
+                                            Cadastro <br/>de Alunos
+                                        </button>
+                                        <button class="btn-nikken" onclick="window.location.href = 'Professor.do?action=pageCadastrar'">
+                                            Cadastro <br/>de Professor
+                                        </button>-->
                     <!--<button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?action=pagePesquisarPorProfessor'">-->
                     <button class="btn-nikken" onclick="window.location.href = 'planejamento_aulas_page_coordenacao.jsp'">
                         Planejamento <br/>de Aulas
@@ -122,11 +134,14 @@
                     </button>
                 </div>
                 <div class="col-12 col-s-12">
-                    <button class="btn-nikken" onclick="window.location.href = 'Aluno.do?action=pageConsultar'">
-                        Consulta <br/>de Alunos
-                    </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'Professor.do?action=pageConsultar'">
-                        Consulta <br/>de Professor
+                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'Aluno.do?action=pageConsultar'">
+                                            Consulta <br/>de Alunos
+                                        </button>
+                                        <button class="btn-nikken" onclick="window.location.href = 'Professor.do?action=pageConsultar'">
+                                            Consulta <br/>de Professor
+                                        </button>-->
+                    <button class="btn-nikken" onclick="window.location.href = 'gerenciador_presenca.jsp'">
+                        Diário de  <br/>Classe Online
                     </button>
                     <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?action=pageConsulta&idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=professor'">
                         Consulta <br/>de Notas
@@ -184,6 +199,9 @@
                     <!--                    <button class="btn-nikken" onclick="window.location.href = 'Professor.do?action=pageConsultar'">
                                             Consulta <br/>de Professor
                                         </button>-->
+                    <button class="btn-nikken" onclick="window.location.href = 'gerenciador_presenca.jsp'">
+                        Diário de  <br/>Classe Online
+                    </button>
                     <button class="btn-nikken" onclick="window.location.href = 'planejamento_oficina_page.jsp'">
                         Planejamento <br/>de Oficinas
                     </button>

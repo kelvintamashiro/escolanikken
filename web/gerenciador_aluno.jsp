@@ -34,18 +34,16 @@
     <body>
         <jsp:include page="topo.jsp"/>
 
-        <logic:equal name="tipoPerfil" scope="session" value="diretoria">
-            <div class="row" align="center">
-                <div class="col-12 col-s-12 mt100px">
-                    <button class="btn-nikken2" onclick="window.location.href = 'Aluno.do?action=pageCadastrar'">
-                        Cadastro <br/>de Alunos
-                    </button>
-                    <button class="btn-nikken2" onclick="window.location.href = 'Aluno.do?action=pageConsultar'">
-                        Consulta <br/>de Alunos
-                    </button>
-                </div>
+        <div class="row" align="center">
+            <div class="col-12 col-s-12 mt100px">
+                <button class="btn-nikken2" onclick="window.location.href = 'Aluno.do?action=pageCadastrar'">
+                    Cadastro <br/>de Alunos
+                </button>
+                <button class="btn-nikken2" onclick="window.location.href = 'Aluno.do?action=pageConsultar'">
+                    Consulta <br/>de Alunos
+                </button>
             </div>
-        </logic:equal>
+        </div>
         <div>
             <jsp:include page="footer.jsp"/>
         </div>

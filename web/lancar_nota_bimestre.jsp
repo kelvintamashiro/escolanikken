@@ -90,9 +90,9 @@
                             <td width="40%">
                                 <b>Alunos</b>
                             </td>
-                            <td width="10%">
+<!--                            <td width="10%">
                                 <b>Qtd. Faltas</b>
-                            </td>
+                            </td>-->
                             <td width="10%">
                                 <b>Produção de Sala</b>
                             </td>
@@ -112,7 +112,7 @@
                                     <html:options collection="listaAlunosSemNota" property="idPF" labelProperty="nome"></html:options>
                                 </html:select>
                             </td>
-                            <td><html:text name="NotaBimestreForm" property="falta" styleClass="form-control"/></td>
+                            <!--<td><html:text name="NotaBimestreForm" property="falta" styleClass="form-control"/></td>-->
                             <td>
                                 <input class="nota form-control" name="notaProducaoSala" id="notaProducaoSala" type="text" min="0" max="10" />
                             </td>

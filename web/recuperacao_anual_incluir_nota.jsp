@@ -95,6 +95,7 @@
                                 <label for="usr">Ano letivo:</label>
                                 <html:hidden name="RecuperacaoAnualForm" property="ano"/>
                                 <html:select name="RecuperacaoAnualForm" property="ano" styleId="ano" styleClass="form-control" disabled="true">
+                                    <html:option value="2021">2021</html:option>
                                     <html:option value="2020">2020</html:option>
                                 </html:select>
                             </div>

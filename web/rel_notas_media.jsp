@@ -44,7 +44,7 @@
             </tr>
             <tr>
                 <td align="center">
-                    <h2>Relatório Média Final - <bean:write name="nrBimestre" scope="request"/>º Bimestre</h2>
+                    <h2>Relatório Média Final - <bean:write name="nrBimestre" scope="request"/>º Bimestre - <bean:write name="ano" scope="request"/></h2>
                 </td>
             </tr>
         </table>

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : planejamento_aulas_page_coordenacao
-    Created on : 08/10/2020, 21:01:06
+    Document   : gerenciador_presenca
+    Created on : 8/jan/2021, 23:53:32
     Author     : macuser
 --%>
 
@@ -13,7 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Escola Nikken - Painel</title>
+        <title>Escola Nikken - Lista de Presença</title>
         <link rel="shortcut icon" href="imagens/favico.png" />
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <script language="javascript1.2" src="js/mizanscene.js"></script>
@@ -34,29 +34,19 @@
     </head>
     <body>
         <jsp:include page="topo.jsp"/>
-            <table border="0" align="center" style="margin-top: 20px; background-color: #FFC0CB" width="100%">
-                <tr>
-                    <td width="10%" style="padding-left: 50px">
-                        <a href="javascript:history.back()"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
-                    </td>
-                    <td width="80%" align="center">
-                        <h1>Planejamento de Aulas</h1>
-                    </td>
-                    <td width="10%">&nbsp;</td>
-                </tr>
-            </table>
-        <div class="row" align="center" style="padding-top: 100px">
 
-            <div class="col-12 col-s-12">
-                <button class="btn-nikken" style="color: #4682B4; border: 1px solid #4682B4" onclick="window.location.href = 'PlanejamentoAulas.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
-                    Cadastro 
+        <div class="row" align="center">
+            <div class="col-12 col-s-12 mt100px">
+                <button class="btn-nikken2" onclick="window.location.href = 'ListaPresenca.do'">
+                    Lançar Lista <br/>de Presença/ <br/>Plano de Aula
                 </button>
-                <button class="btn-nikken" style="color: #4682B4; border: 1px solid #4682B4" onclick="window.location.href = 'PlanejamentoAulas.do?action=pagePesquisarPorProfessor&idPF=<%=session.getAttribute("idPF").toString()%>'">
-                    Pesquisa 
+                <button class="btn-nikken2" onclick="window.location.href = 'ListaPresenca.do?action=pageConsultar'">
+                    Consultar Lista <br/>de Presença/ <br/>Plano de Aula
                 </button>
             </div>
         </div>
-
-
+        <div>
+            <jsp:include page="footer.jsp"/>
+        </div>
     </body>
 </html>
