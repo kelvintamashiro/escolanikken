@@ -37,10 +37,10 @@ public class NotaBimestreForm extends FormBasico {
     private DisciplinasForm disciplinasForm;
     private SerieAnoForm serieAnoForm;
     private AlunoForm alunoForm;
-    private double media1Bimestre;
-    private double media2Bimestre;
-    private double media3Bimestre;
-    private double media4Bimestre;
+    private double media1Bimestre = -1.0;
+    private double media2Bimestre = -1.0;
+    private double media3Bimestre = -1.0;
+    private double media4Bimestre = -1.0;
     private double mediaFinal;
     private double mediaRecupFinal;
     private int falta1Bimestre;

@@ -159,6 +159,10 @@ public class NotaBimestreAction extends IDRAction {
             double mediaArredondada = Math.round(media / 0.5) * 0.5;
 
             notaBimestreForm.setMediaBimestre(String.valueOf(mediaArredondada));
+            
+            //obter a quantidade de falta do aluno pela lista de presenca (bimestre, idDisciplina, idAluno, idSerie)
+            int qtdFalta = NotaBimestreDao.getInstance().obterFaltasListaPresenca(conn, notaBimestreForm);
+            notaBimestreForm.setFalta(qtdFalta);
 
             //salvar nota do aluno e da materia
             NotaBimestreDao.getInstance().lancarNota(conn, notaBimestreForm, notaBimestreForm.getNrBimestre());
@@ -367,7 +371,8 @@ public class NotaBimestreAction extends IDRAction {
 
                 notasFaltasDisciplinas.setFaltaTotal(notasFaltasDisciplinas.getFalta1Bimestre() + notasFaltasDisciplinas.getFalta2Bimestre() + notasFaltasDisciplinas.getFalta3Bimestre() + notasFaltasDisciplinas.getFalta4Bimestre());
 
-                if (notasFaltasDisciplinas.getMedia1Bimestre() > 0 && notasFaltasDisciplinas.getMedia2Bimestre() > 0 && notasFaltasDisciplinas.getMedia3Bimestre() > 0 && notasFaltasDisciplinas.getMedia4Bimestre() > 0) {
+                if (notasFaltasDisciplinas.getMedia1Bimestre() >= 0 && notasFaltasDisciplinas.getMedia2Bimestre() >= 0 && 
+                        notasFaltasDisciplinas.getMedia3Bimestre() >= 0 && notasFaltasDisciplinas.getMedia4Bimestre() >= 0) {
                     double media = (notasFaltasDisciplinas.getMedia1Bimestre() + notasFaltasDisciplinas.getMedia2Bimestre() + notasFaltasDisciplinas.getMedia3Bimestre() + notasFaltasDisciplinas.getMedia4Bimestre()) / 4;
                     double mediaArredondada = Math.round(media / 0.5) * 0.5;
                     notasFaltasDisciplinas.setMediaFinal(mediaArredondada);
@@ -383,11 +388,11 @@ public class NotaBimestreAction extends IDRAction {
                         if (mediaRecupFinal >= 6.0) {
                             notasFaltasDisciplinas.setMediaRecupFinal(mediaRecupFinal);
                             notasFaltasDisciplinas.setPassouDisciplina(true);
-                            observacaoRecup = "Aluno(a) foi submetivo a recuperação anual e passou na disciplina: " + disciplina.getNomeDisciplina();
+                            observacaoRecup = "Aluno(a) foi submetivo a recuperação anual e obteve êxito na disciplina: " + disciplina.getNomeDisciplina();
                         } else {
                             notasFaltasDisciplinas.setMediaRecupFinal(mediaRecupFinal);
                             notasFaltasDisciplinas.setPassouDisciplina(false);
-                            observacaoRecup = "Aluno(a) foi submetivo a recuperação anual e não passou na disciplina: " + disciplina.getNomeDisciplina();
+                            observacaoRecup = "Aluno(a) foi submetivo a recuperação anual e não obteve êxito na disciplina: " + disciplina.getNomeDisciplina();
                         }
                         listaObservacao.add(observacaoRecup);
                     }

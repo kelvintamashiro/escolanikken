@@ -275,6 +275,7 @@ public class RelatoriosDao {
                 + " and a.ano_vigente = ano.ano_vigente"
                 + " and a.serie_ano = d.id"
                 + " and d.ordem = ?"
+                + " and pf.status = 1"
                 + " order by d.ordem, d.id, pf.nome";
 
         PreparedStatement prep = conn.prepareStatement(query);
@@ -312,6 +313,7 @@ public class RelatoriosDao {
                 + " and a.ano_vigente = ano.ano_vigente"
                 + " and a.serie_ano = d.id"
                 + " and a.serie_ano = ?"
+                + " and pf.status = 1"
                 + " order by d.ordem, d.id, pf.nome";
 
         PreparedStatement prep = conn.prepareStatement(query);
@@ -347,7 +349,8 @@ public class RelatoriosDao {
                 + " from pessoa_fisica pf, alunos a, ano_vigente ano"
                 + " where pf.id = a.id_pessoa_fisica"
                 + " and a.ano_vigente = ano.ano_vigente"
-                + " and pf.sexo = ?";
+                + " and pf.sexo = ?"
+                + " and pf.status = 1";
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setString(1, sexo);
         ResultSet rs = prep.executeQuery();

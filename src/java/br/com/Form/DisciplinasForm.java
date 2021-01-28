@@ -118,7 +118,6 @@ public class DisciplinasForm extends FormBasico {
     public List<DisciplinasForm> obterListaDisciplinasPorCategoria(Connection conn, String categoriaEnsino) throws SQLException {
         String query = "select * from disciplina d"
                 + " where d.categoria_ensino = ?"
-                + " and d.id_disciplina not in (35)"
                 + " order by d.nome_disciplina";
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setString(1, categoriaEnsino);
@@ -129,6 +128,38 @@ public class DisciplinasForm extends FormBasico {
             disciplinasForm.setIdDisciplina(rs.getInt("id_disciplina"));
             disciplinasForm.setNomeDisciplina(rs.getString("nome_disciplina"));
             disciplinasForm.setCategoriaEnsino(rs.getString("categoria_ensino"));
+            disciplinasForm.setDsCategoriaEnsino(this.obterDsCategoriaEnsino(rs.getString("categoria_ensino")));
+            disciplinasForm.setPesoProducaoSala(rs.getInt("peso_producao_sala"));
+            disciplinasForm.setPesoProvaMensal(rs.getInt("peso_prova_mensal"));
+            disciplinasForm.setPesoProvaBimestral(rs.getInt("peso_prova_bimestral"));
+            listaDisciplinas.add(disciplinasForm);
+        }
+        rs.close();
+        prep.close();
+
+        return listaDisciplinas;
+    }
+
+    public List<DisciplinasForm> obterListaDisciplinasPorCategoriaPorProfessor(Connection conn, String categoriaEnsino, int idPF) throws SQLException {
+        String query = "select d.*"
+                + " from disciplina_professor dp, disciplina d"
+                + " where dp.id_disciplina = d.id_disciplina"
+                + " and dp.id_professor = ?"
+                + " and dp.categoria_ensino = ?"
+                + " group by dp.id_disciplina"
+                + " order by nome_disciplina, serie_ano";
+        
+        PreparedStatement prep = conn.prepareStatement(query);
+        prep.setInt(1, idPF);
+        prep.setString(2, categoriaEnsino);
+        ResultSet rs = prep.executeQuery();
+        List<DisciplinasForm> listaDisciplinas = new ArrayList<>();
+        while (rs.next()) {
+            DisciplinasForm disciplinasForm = new DisciplinasForm();
+            disciplinasForm.setIdDisciplina(rs.getInt("id_disciplina"));
+            disciplinasForm.setNomeDisciplina(rs.getString("nome_disciplina"));
+            disciplinasForm.setCategoriaEnsino(rs.getString("categoria_ensino"));
+            disciplinasForm.setDsCategoriaEnsino(this.obterDsCategoriaEnsino(rs.getString("categoria_ensino")));
             disciplinasForm.setPesoProducaoSala(rs.getInt("peso_producao_sala"));
             disciplinasForm.setPesoProvaMensal(rs.getInt("peso_prova_mensal"));
             disciplinasForm.setPesoProvaBimestral(rs.getInt("peso_prova_bimestral"));

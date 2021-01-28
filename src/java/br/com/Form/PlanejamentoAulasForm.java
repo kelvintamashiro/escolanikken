@@ -401,6 +401,37 @@ public class PlanejamentoAulasForm extends FormBasico {
         return planoAulaForm;
     }
 
+    public PlanejamentoAulasForm obterPlanoAulaPorSerieDisciplinaData(Connection conn, int idSerie, int idDisciplina, String data) throws SQLException {
+        String query = "select * from planejamento_aula p"
+                + " where p.serie_ano = ?"
+                + " and p.id_disciplina = ?"
+                + " and p.data = ?";
+        PlanejamentoAulasForm planoAulaForm;
+        try (PreparedStatement prep = conn.prepareStatement(query)) {
+            prep.setInt(1, idSerie);
+            prep.setInt(2, idDisciplina);
+            prep.setString(3, data);
+            try (ResultSet rs = prep.executeQuery()) {
+                planoAulaForm = new PlanejamentoAulasForm();
+                if (rs.next()) {
+                    planoAulaForm.setIdPlanejamento(rs.getInt("id"));
+                    planoAulaForm.setIdProfessor(rs.getInt("id_professor"));
+                    planoAulaForm.setIdDisciplina(rs.getInt("id_disciplina"));
+                    planoAulaForm.setIdSerieAno(rs.getInt("serie_ano"));
+                    planoAulaForm.setNrBimestre(rs.getInt("nr_bimestre"));
+                    planoAulaForm.setData(rs.getString("data"));
+                    planoAulaForm.setMetodologia(rs.getString("metodologia"));
+                    planoAulaForm.setRecurso(rs.getString("recurso"));
+                    planoAulaForm.setTarefa(rs.getString("tarefa"));
+                    planoAulaForm.setAvaliacao(rs.getString("avaliacao"));
+                    planoAulaForm.setConteudoAula(rs.getString("conteudo_aula"));
+                    planoAulaForm.setObservacao(rs.getString("observacao"));
+                }
+            }
+        }
+        return planoAulaForm;
+    }
+
     public void excluir(Connection conn, int idPlanejamento) throws SQLException {
         String query = "DELETE FROM planejamento_aula WHERE id=?";
         try (PreparedStatement prep = conn.prepareStatement(query)) {
@@ -415,7 +446,7 @@ public class PlanejamentoAulasForm extends FormBasico {
                 + " WHERE id=?";
         try (PreparedStatement prep = conn.prepareStatement(query)) {
             prep.setInt(1, planoAulaForm.getNrBimestre());
-            prep.setString(2, IDRDate.parseDataIso(planoAulaForm.getData()));
+            prep.setString(2, planoAulaForm.getData());
             prep.setString(3, planoAulaForm.getMetodologia());
             prep.setString(4, planoAulaForm.getRecurso());
             prep.setString(5, planoAulaForm.getTarefa());

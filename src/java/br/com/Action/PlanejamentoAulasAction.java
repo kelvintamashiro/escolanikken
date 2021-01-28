@@ -11,6 +11,7 @@ import br.com.Form.PessoaFisicaForm;
 import br.com.Form.PlanejamentoAulasForm;
 import br.com.Form.SerieAnoForm;
 import br.com.abre.Util.Errors;
+import br.com.abre.Util.IDRDate;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
@@ -206,6 +207,9 @@ public class PlanejamentoAulasAction extends IDRAction {
         Connection conn = null;
         try {
             conn = connectionPool.getConnection();
+            
+            String dataFormatada = IDRDate.parseDataIso(planejamentoAulasForm.getData());
+            planejamentoAulasForm.setData(dataFormatada);
 
             //atualizar plano de aula por idPlanejamento
             planejamentoAulasForm.atualizar(conn, planejamentoAulasForm);

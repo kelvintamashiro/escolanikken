@@ -37,10 +37,11 @@ public class RelatoriosAction extends IDRAction {
             this.relTelefonePais(form, request, errors);
         } else if (action.equals("relListaAniversario")) {
             this.relListaAniversario(form, request, errors);
-        } else if (action.equals("pageRelNotasMensalPorBimestre") || action.equals("pageRelNotasBimestralPorBimestre") 
+        } else if (action.equals("pageRelNotasMensalPorBimestre") || action.equals("pageRelNotasBimestralPorBimestre")
                 || action.equals("pageRelNotasProducaoPorBimestre") || action.equals("pageRelNotasMediaPorBimestre")) {
             this.pageRelNotasPorBimestre(form, request, errors);
-        } else if (action.equals("relNotasMensalPorBimestre") || action.equals("relNotasBimestralPorBimestre") || action.equals("relNotasProducaoPorBimestre") || action.equals("relNotasMediaPorBimestre")) {
+        } else if (action.equals("relNotasMensalPorBimestre") || action.equals("relNotasBimestralPorBimestre")
+                || action.equals("relNotasProducaoPorBimestre") || action.equals("relNotasMediaPorBimestre")) {
             this.relNotasPorBimestre(form, request, errors);
         } else if (action.equals("pageRelLancamentoNotas")) {
             this.page(form, request, errors);
@@ -117,20 +118,19 @@ public class RelatoriosAction extends IDRAction {
 
             String nrBimestre = request.getParameter("nrBimestre");
             String ano = request.getParameter("ano");
+            String idSerieAno = request.getParameter("idSerieAno");
 
             //verificar se é do EF1, EF2 ou Ensino Medio
             NotaBimestreForm notaBimestreForm = new NotaBimestreForm();
             String categoriaEnsino = NotaBimestreDao.getInstance().obterCategoriaEnsinoPorSerie(Integer.parseInt(request.getParameter("idSerieAno")));
             notaBimestreForm.setCategoriaEnsino(categoriaEnsino);
 
-            //carregar lista de disciplinas por categoria de ensino
-//            DisciplinasForm disciplinasForm = new DisciplinasForm();
-//            List<DisciplinasForm> listaDisciplinas = disciplinasForm.obterListaDisciplinasPorCategoria(conn, categoriaEnsino);
             //percorrer lista de alunos por serie/Ano
             AlunoForm alunoForm = new AlunoForm();
-            alunoForm.setSerieAno(Integer.parseInt(request.getParameter("idSerieAno")));
-            alunoForm.setStatus(1);
-            ArrayList<AlunoForm> listaAlunos = alunoForm.obterListaAlunos(conn, alunoForm);
+//            alunoForm.setSerieAno(Integer.parseInt(request.getParameter("idSerieAno")));
+//            alunoForm.setStatus(1);
+//            ArrayList<AlunoForm> listaAlunos = alunoForm.obterListaAlunos(conn, alunoForm);
+            ArrayList<AlunoForm> listaAlunos = alunoForm.obterListaAlunosComNotaPorAno(conn, idSerieAno, ano);
             List<AlunoForm> listaNotasAlunos = new ArrayList<>();
             for (AlunoForm aluno : listaAlunos) {
                 //para cada aluno obter as notas de todas as disciplinas individualmente por bimestre
@@ -142,6 +142,7 @@ public class RelatoriosAction extends IDRAction {
             System.out.println(listaNotasAlunos);
 
             String tipo = request.getParameter("tipo");
+            request.setAttribute("ano", ano);
             request.setAttribute("tipo", tipo);
             request.setAttribute("listaNotasAlunos", listaNotasAlunos);
             request.setAttribute("nrBimestre", nrBimestre);
@@ -278,27 +279,27 @@ public class RelatoriosAction extends IDRAction {
         Connection conn = null;
         try {
             conn = connectionPool.getConnection();
-            
+
             //obter quantidade total por sexo
             int qtdFeminino = RelatoriosDao.getInstance().obterQtdEstudantePorSexo(conn, "feminino");
             int qtdMasculino = RelatoriosDao.getInstance().obterQtdEstudantePorSexo(conn, "masculino");
             int qtdTotal = qtdFeminino + qtdMasculino;
-            
+
             request.setAttribute("qtdTotal", qtdTotal);
             request.setAttribute("qtdFeminino", qtdFeminino);
             request.setAttribute("qtdMasculino", qtdMasculino);
-            
+
             //obter informacao geral por categoria
             RelatoriosForm listaCategoriaInfantil = RelatoriosDao.getInstance().obterInformacaoPorCategoria(conn, 1);
             RelatoriosForm listaCategoriaFundamental1 = RelatoriosDao.getInstance().obterInformacaoPorCategoria(conn, 2);
             RelatoriosForm listaCategoriaFundamental2 = RelatoriosDao.getInstance().obterInformacaoPorCategoria(conn, 3);
             RelatoriosForm listaCategoriaEnsinoMedio = RelatoriosDao.getInstance().obterInformacaoPorCategoria(conn, 4);
-            
+
             request.setAttribute("listaCategoriaInfantil", listaCategoriaInfantil);
             request.setAttribute("listaCategoriaFundamental1", listaCategoriaFundamental1);
             request.setAttribute("listaCategoriaFundamental2", listaCategoriaFundamental2);
             request.setAttribute("listaCategoriaEnsinoMedio", listaCategoriaEnsinoMedio);
-            
+
             //obter informacao geral por serie/turma
             RelatoriosForm listaInfantil1 = RelatoriosDao.getInstance().obterInformacaoPorSerie(conn, 11);
             RelatoriosForm listaInfantil2 = RelatoriosDao.getInstance().obterInformacaoPorSerie(conn, 12);
@@ -315,7 +316,7 @@ public class RelatoriosAction extends IDRAction {
             RelatoriosForm listaSerie1 = RelatoriosDao.getInstance().obterInformacaoPorSerie(conn, 10);
             RelatoriosForm listaSerie2 = RelatoriosDao.getInstance().obterInformacaoPorSerie(conn, 20);
             RelatoriosForm listaSerie3 = RelatoriosDao.getInstance().obterInformacaoPorSerie(conn, 30);
-            
+
             request.setAttribute("listaInfantil1", listaInfantil1);
             request.setAttribute("listaInfantil2", listaInfantil2);
             request.setAttribute("listaInfantil3", listaInfantil3);
@@ -331,7 +332,7 @@ public class RelatoriosAction extends IDRAction {
             request.setAttribute("listaSerie1", listaSerie1);
             request.setAttribute("listaSerie2", listaSerie2);
             request.setAttribute("listaSerie3", listaSerie3);
-            
+
             request.setAttribute("RelatoriosForm", relForm);
 
         } catch (Exception e) {

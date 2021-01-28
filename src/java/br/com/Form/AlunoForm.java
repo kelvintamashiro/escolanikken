@@ -50,7 +50,16 @@ public class AlunoForm extends PessoaFisicaForm {
     private String descricaoHistorico;
     private int idProfessorHistorico;
     private String nomeProfessor;
+    private int ano;
 
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+    
     public int getIdHistorico() {
         return idHistorico;
     }
@@ -327,7 +336,7 @@ public class AlunoForm extends PessoaFisicaForm {
     public ArrayList<AlunoForm> obterListaAlunos(Connection conn, AlunoForm alunoForm) throws SQLException {
         ArrayList<AlunoForm> listaAlunos = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
-        sb.append("select pf.id, pf.nome, pf.data_nascimento, pf.sexo, pf.cidade, pf.provincia, a.serie_ano, pf.email, pf.status, a.numero_id_aluno ");
+        sb.append("select pf.id, pf.nome, pf.data_nascimento, pf.sexo, pf.cidade, pf.provincia, a.id as id_aluno, a.serie_ano, pf.email, pf.status, a.numero_id_aluno ");
         sb.append(" from pessoa_fisica pf, alunos a");
         sb.append(" where pf.id = a.id_pessoa_fisica");
         if (alunoForm.getNome() != null && !("").equals(alunoForm.getNome())) {
@@ -347,6 +356,7 @@ public class AlunoForm extends PessoaFisicaForm {
         while (rs.next()) {
             AlunoForm aForm = new AlunoForm();
             aForm.setIdPF(rs.getInt("id"));
+            aForm.setIdAluno(rs.getInt("id_aluno"));
             aForm.setNome(rs.getString("nome"));
             aForm.setNumeroIDAluno(rs.getString("numero_id_aluno"));
             aForm.setDataNascimento(IDRDate.formatSQLDate(rs.getString("data_nascimento")));
@@ -357,6 +367,39 @@ public class AlunoForm extends PessoaFisicaForm {
             aForm.setSerieAno(rs.getInt("serie_ano"));
             aForm.setDsSerieAno(Utilitario.obterDescricaoSerieAno(aForm.getSerieAno()));
             aForm.setStatus(rs.getInt("status"));
+            aForm.setDsStatus(Utilitario.obterDescricaoStatus(aForm.getStatus()));
+
+            listaAlunos.add(aForm);
+        }
+        rs.close();
+        prep.close();
+
+        return listaAlunos;
+    }
+
+    public ArrayList<AlunoForm> obterListaAlunosComNotaPorAno(Connection conn, String idSerieAno, String ano) throws SQLException {
+        ArrayList<AlunoForm> listaAlunos = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        sb.append("select pf.id, pf.nome, n.serie_ano, n.ano, a.numero_id_aluno ");
+        sb.append(" from pessoa_fisica pf, alunos a, nota_bimestre n");
+        sb.append(" where pf.id = a.id_pessoa_fisica");
+        sb.append(" and a.id_pessoa_fisica = n.id_aluno");
+        sb.append(" and n.serie_ano = ").append(idSerieAno);
+        sb.append(" and n.ano = ").append(ano);
+        sb.append(" and pf.status = 1");
+        sb.append(" group by pf.id");
+        sb.append(" order by pf.nome");
+
+        PreparedStatement prep = conn.prepareStatement(sb.toString());
+        ResultSet rs = prep.executeQuery();
+        while (rs.next()) {
+            AlunoForm aForm = new AlunoForm();
+            aForm.setIdPF(rs.getInt("id"));
+            aForm.setNome(rs.getString("nome"));
+            aForm.setNumeroIDAluno(rs.getString("numero_id_aluno"));
+            aForm.setSerieAno(rs.getInt("serie_ano"));
+            aForm.setDsSerieAno(Utilitario.obterDescricaoSerieAno(aForm.getSerieAno()));
+            aForm.setAno(rs.getInt("ano"));
             aForm.setDsStatus(Utilitario.obterDescricaoStatus(aForm.getStatus()));
 
             listaAlunos.add(aForm);

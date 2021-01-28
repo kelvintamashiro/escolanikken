@@ -68,6 +68,31 @@ public final class NotaBimestreDao {
         return listaDisciplinaPorProfessor;
     }
 
+    public int obterFaltasListaPresenca(Connection conn, NotaBimestreForm notaBimestreForm) throws SQLException {
+        int qtdFalta = 0;
+        String query = "select SUM(l.qtd_falta) as qtd_falta"
+                + " from lista_presenca l "
+                + " where l.id_aluno = ?"
+                + " and l.id_serie = ?"
+                + " and l.nr_bimestre = ?"
+                + " and l.id_disciplina = ?"
+                + " and l.ano = ?";
+        PreparedStatement prep = conn.prepareStatement(query);
+        prep.setInt(1, notaBimestreForm.getIdAluno());
+        prep.setInt(2, notaBimestreForm.getIdSerieAno());
+        prep.setInt(3, notaBimestreForm.getNrBimestre());
+        prep.setInt(4, notaBimestreForm.getIdDisciplina());
+        prep.setInt(5, notaBimestreForm.getAno());
+        ResultSet rs = prep.executeQuery();
+        if (rs.next()) {
+            qtdFalta = rs.getInt("qtd_falta");
+        }
+        rs.close();
+        prep.close();
+
+        return qtdFalta;
+    }
+
     public void lancarNota(Connection conn, NotaBimestreForm notaBimestreForm, int nrBimestre) throws SQLException {
         String query = "INSERT INTO nota_bimestre (id_disciplina, id_aluno, nr_bimestre, ano, nota_mensal, nota_bimestral, producao_sala, media, falta, serie_ano) "
                 + " VALUES (?,?,?,?,?,?,?,?,?,?)";
@@ -194,6 +219,8 @@ public final class NotaBimestreDao {
             categoriaEnsino = "EF1";
         } else if (idSerieAno > 5 && idSerieAno <= 9) { //6,7,8,9 ano
             categoriaEnsino = "EF2";
+        } else if (idSerieAno >= 11 && idSerieAno <= 13) {
+            categoriaEnsino = "INF";
         } else { //1,2,3 serie
             categoriaEnsino = "EM";
         }
@@ -289,13 +316,13 @@ public final class NotaBimestreDao {
                 + " and n.ano = ?"
                 + " group by n.id_disciplina"
                 + " order by d.nome_disciplina";
-        
+
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setInt(1, idSerieAno);
         prep.setInt(2, idPF);
         prep.setInt(3, anoVigente);
         ResultSet rs = prep.executeQuery();
-        while(rs.next()){
+        while (rs.next()) {
             NotaBimestreForm notaBimestreForm = new NotaBimestreForm();
             double mediaAnual = rs.getDouble("totalMedia") / 4;
             double mediaArredondada = Math.round(mediaAnual / 0.5) * 0.5;
@@ -304,14 +331,14 @@ public final class NotaBimestreDao {
             notaBimestreForm.setIdAluno(rs.getInt("id_aluno"));
             notaBimestreForm.setNomeAluno(rs.getString("nome"));
             notaBimestreForm.setMediaFinal(mediaArredondada);
-            
-            if(mediaArredondada < 6.0){
+
+            if (mediaArredondada < 6.0) {
                 listaNotasAlunos.add(notaBimestreForm);
             }
         }
         rs.close();
         prep.close();
-        
+
         return listaNotasAlunos;
     }
 }
