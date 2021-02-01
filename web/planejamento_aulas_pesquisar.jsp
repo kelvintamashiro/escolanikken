@@ -123,9 +123,9 @@
                                     <td align="center">
                                         <img src="imagens/warning.png" width="30px" alt="Plano de aula Não Vistado" title="Plano de aula Não Confirmado"/>
                                     </td>
-                                    <td>
+<!--                                    <td>
                                         <input class="btn btn-info" type="button" value="Confirmar" style="color: white" onClick="fConfirmar(<bean:write name="lista" property="idPlanejamento"/>);">
-                                    </td>
+                                    </td>-->
                                     <td>
                                         <input class="btn btn-green" type="button" value="Editar" onClick="fEditar(<bean:write name="lista" property="idPlanejamento"/>);">
                                     </td>

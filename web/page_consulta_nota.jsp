@@ -60,6 +60,7 @@
                                 <%--<html:hidden name="serieAno" property="serieAno"/>--%>
                                 <html:select name="NotaBimestreForm" property="idSerieAno" styleId="idSerieAno" styleClass="form-control">
                                     <html:option value="">Selecione Série/Ano</html:option>
+                                    <html:option value="1">1º ano</html:option>
                                     <html:option value="2">2º ano</html:option>
                                     <html:option value="3">3º ano</html:option>
                                     <html:option value="4">4º ano</html:option>

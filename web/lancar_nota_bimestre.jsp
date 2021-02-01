@@ -164,7 +164,7 @@
                             <td width="5%">&nbsp;</td>
                             <!--<td><b>ID Aluno</b></td>-->
                             <td><b>Nome Aluno</b></td>
-                            <td align="center"><b>Qtd. Faltas</b></td>
+                            <!--<td align="center"><b>Qtd. Faltas</b></td>-->
                             <td align="center"><b>Nota Produção de Sala</b></td>
                             <td align="center"><b>Nota Prova Mensal</b></td>
                             <td align="center"><b>Nota Prova Bimestral</b></td>
@@ -178,7 +178,7 @@
                             <tr>
                                 <td>&nbsp;</td>
                                 <td><bean:write name="lista" property="nome"/></td>
-                                <td align="center"><bean:write name="notaBimestre" property="falta"/></td>
+                                <!--<td align="center"><bean:write name="notaBimestre" property="falta"/></td>-->
                                 <td align="center"><bean:write name="notaBimestre" property="notaProducaoSala"/></td>
                                 <td align="center"><bean:write name="notaBimestre" property="notaMensal"/></td>
                                 <td align="center"><bean:write name="notaBimestre" property="notaBimestral"/></td>

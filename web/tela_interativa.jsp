@@ -52,7 +52,6 @@
                     </button>
                 </div>
                 <div class="col-12 col-s-12">
-                    <%--<button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?idPF=<%= //session.getAttribute("idPF").toString()%>'">--%>
                     <button class="btn-nikken" onclick="window.location.href = 'gerenciador_presenca.jsp'">
                         Diário de  <br/>Classe Online
                     </button>
@@ -170,13 +169,6 @@
                     <button class="btn-nikken" onclick="window.location.href = 'Disciplinas.do'">
                         Gerenciador <br/>de Disciplinas
                     </button>
-
-                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'Aluno.do?action=pageCadastrar'">
-                                            Cadastro <br/>de Alunos
-                                        </button>-->
-                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'Professor.do?action=pageCadastrar'">
-                                            Cadastro <br/>de Professor
-                                        </button>-->
                     <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
                         Lançamento <br/>de Notas
                     </button>
@@ -193,12 +185,6 @@
                                         </button>-->
                 </div>
                 <div class="col-12 col-s-12">
-                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'Aluno.do?action=pageConsultar'">
-                                            Consulta <br/>de Alunos
-                                        </button>-->
-                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'Professor.do?action=pageConsultar'">
-                                            Consulta <br/>de Professor
-                                        </button>-->
                     <button class="btn-nikken" onclick="window.location.href = 'gerenciador_presenca.jsp'">
                         Diário de  <br/>Classe Online
                     </button>
