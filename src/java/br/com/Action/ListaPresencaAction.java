@@ -122,9 +122,11 @@ public class ListaPresencaAction extends IDRAction {
 
                 ArrayList<String> listaAlunosPresenca = new ArrayList<>();
                 String[] listaIdAlunos = listaPresencaForm.getSelectedOptions();
-                for (String idAluno : listaIdAlunos) {
-                    listaAlunosPresenca.add(idAluno);
-                    listaPresencaForm.salvarPresenca(conn, idAluno, idDisciplina, nrBimestre, idSerie, data, qtdAulas, 0, "N");
+                if (listaIdAlunos != null) {
+                    for (String idAluno : listaIdAlunos) {
+                        listaAlunosPresenca.add(idAluno);
+                        listaPresencaForm.salvarPresenca(conn, idAluno, idDisciplina, nrBimestre, idSerie, data, qtdAulas, 0, "N");
+                    }
                 }
 
                 listaAlunosFaltaram.removeAll(listaAlunosPresenca);
@@ -163,14 +165,17 @@ public class ListaPresencaAction extends IDRAction {
                     //verificar se nao esta com os dados em branco
                     if (!planoAulaForm.getConteudoAula().equals("") && !planoAulaForm.getMetodologia().equals("") && !planoAulaForm.getRecurso().equals("")
                             && !planoAulaForm.getTarefa().equals("") && !planoAulaForm.getAvaliacao().equals("") && !planoAulaForm.getObservacao().equals("")) {
-                        planoAulaForm.salvar(conn, planoAulaForm);
+                        planoAulaForm.salvarComConfirmacao(conn, planoAulaForm);
                     }
 
                 } else {
                     planoAulaForm.atualizar(conn, planoAulaForm);
                 }
 
-                errors.error("Presença lançada com Sucesso!!");
+                //confirmar planejamento
+                planoAulaForm.confirmar(conn, planoAulaForm);
+
+                errors.error("Presença e plano de aula confirmado com Sucesso!!");
             } else {
                 errors.error("Já foi lançado presença para essa série, disciplina e data. Caso queira alterar, consulte e faça a edição.");
             }

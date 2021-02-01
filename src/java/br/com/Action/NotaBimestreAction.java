@@ -161,8 +161,8 @@ public class NotaBimestreAction extends IDRAction {
             notaBimestreForm.setMediaBimestre(String.valueOf(mediaArredondada));
             
             //obter a quantidade de falta do aluno pela lista de presenca (bimestre, idDisciplina, idAluno, idSerie)
-            int qtdFalta = NotaBimestreDao.getInstance().obterFaltasListaPresenca(conn, notaBimestreForm);
-            notaBimestreForm.setFalta(qtdFalta);
+//            int qtdFalta = NotaBimestreDao.getInstance().obterFaltasListaPresenca(conn, notaBimestreForm);
+//            notaBimestreForm.setFalta(qtdFalta);©
 
             //salvar nota do aluno e da materia
             NotaBimestreDao.getInstance().lancarNota(conn, notaBimestreForm, notaBimestreForm.getNrBimestre());

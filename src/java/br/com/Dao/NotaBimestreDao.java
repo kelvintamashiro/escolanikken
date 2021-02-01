@@ -68,21 +68,22 @@ public final class NotaBimestreDao {
         return listaDisciplinaPorProfessor;
     }
 
-    public int obterFaltasListaPresenca(Connection conn, NotaBimestreForm notaBimestreForm) throws SQLException {
-        int qtdFalta = 0;
+    public int obterFaltasListaPresenca(Connection conn, int idDisciplina, int ano, int idAluno, int serieAno, int nrBimestre) throws SQLException {
+        int qtdFalta = -1;
         String query = "select SUM(l.qtd_falta) as qtd_falta"
                 + " from lista_presenca l "
                 + " where l.id_aluno = ?"
                 + " and l.id_serie = ?"
                 + " and l.nr_bimestre = ?"
                 + " and l.id_disciplina = ?"
-                + " and l.ano = ?";
+                + " and l.ano = ?"
+                + " group by l.id_aluno";
         PreparedStatement prep = conn.prepareStatement(query);
-        prep.setInt(1, notaBimestreForm.getIdAluno());
-        prep.setInt(2, notaBimestreForm.getIdSerieAno());
-        prep.setInt(3, notaBimestreForm.getNrBimestre());
-        prep.setInt(4, notaBimestreForm.getIdDisciplina());
-        prep.setInt(5, notaBimestreForm.getAno());
+        prep.setInt(1, idAluno);
+        prep.setInt(2, serieAno);
+        prep.setInt(3, nrBimestre);
+        prep.setInt(4, idDisciplina);
+        prep.setInt(5, ano);
         ResultSet rs = prep.executeQuery();
         if (rs.next()) {
             qtdFalta = rs.getInt("qtd_falta");
@@ -94,8 +95,8 @@ public final class NotaBimestreDao {
     }
 
     public void lancarNota(Connection conn, NotaBimestreForm notaBimestreForm, int nrBimestre) throws SQLException {
-        String query = "INSERT INTO nota_bimestre (id_disciplina, id_aluno, nr_bimestre, ano, nota_mensal, nota_bimestral, producao_sala, media, falta, serie_ano) "
-                + " VALUES (?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO nota_bimestre (id_disciplina, id_aluno, nr_bimestre, ano, nota_mensal, nota_bimestral, producao_sala, media, serie_ano) "
+                + " VALUES (?,?,?,?,?,?,?,?,?)";
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setInt(1, notaBimestreForm.getIdDisciplina());
         prep.setInt(2, notaBimestreForm.getIdAluno());
@@ -105,8 +106,8 @@ public final class NotaBimestreDao {
         prep.setString(6, notaBimestreForm.getNotaBimestral());
         prep.setString(7, notaBimestreForm.getNotaProducaoSala());
         prep.setString(8, notaBimestreForm.getMediaBimestre());
-        prep.setInt(9, notaBimestreForm.getFalta());
-        prep.setInt(10, notaBimestreForm.getIdSerieAno());
+//        prep.setInt(9, notaBimestreForm.getFalta());
+        prep.setInt(9, notaBimestreForm.getIdSerieAno());
         prep.execute();
         prep.close();
     }
@@ -252,22 +253,39 @@ public final class NotaBimestreDao {
             disciplinasForm.setIdDisciplina(rs.getInt("id_disciplina"));
             notaBimestreForm.setDisciplinasForm(disciplinasForm);
             int nrBimestre = rs.getInt("nr_bimestre");
+            int qtdFalta = this.obterFaltasListaPresenca(conn, idDisciplina, ano, idAluno, serieAno, nrBimestre);
             switch (nrBimestre) {
                 case 1:
                     notaBimestreForm.setMedia1Bimestre(rs.getDouble("media"));
-                    notaBimestreForm.setFalta1Bimestre(rs.getInt("falta"));
+                    if (qtdFalta > 0) {
+                        notaBimestreForm.setFalta1Bimestre(qtdFalta);
+                    } else {
+                        notaBimestreForm.setFalta1Bimestre(rs.getInt("falta"));
+                    }
                     break;
                 case 2:
                     notaBimestreForm.setMedia2Bimestre(rs.getDouble("media"));
-                    notaBimestreForm.setFalta2Bimestre(rs.getInt("falta"));
+                    if (qtdFalta > 0) {
+                        notaBimestreForm.setFalta2Bimestre(qtdFalta);
+                    } else {
+                        notaBimestreForm.setFalta2Bimestre(rs.getInt("falta"));
+                    }
                     break;
                 case 3:
                     notaBimestreForm.setMedia3Bimestre(rs.getDouble("media"));
-                    notaBimestreForm.setFalta3Bimestre(rs.getInt("falta"));
+                    if (qtdFalta > 0) {
+                        notaBimestreForm.setFalta3Bimestre(qtdFalta);
+                    } else {
+                        notaBimestreForm.setFalta3Bimestre(rs.getInt("falta"));
+                    }
                     break;
                 case 4:
                     notaBimestreForm.setMedia4Bimestre(rs.getDouble("media"));
-                    notaBimestreForm.setFalta4Bimestre(rs.getInt("falta"));
+                    if (qtdFalta > 0) {
+                        notaBimestreForm.setFalta4Bimestre(qtdFalta);
+                    } else {
+                        notaBimestreForm.setFalta4Bimestre(rs.getInt("falta"));
+                    }
                     break;
                 default:
                     break;

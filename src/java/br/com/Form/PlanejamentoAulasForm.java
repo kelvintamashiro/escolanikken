@@ -237,6 +237,26 @@ public class PlanejamentoAulasForm extends FormBasico {
         }
 
     }
+    public void salvarComConfirmacao(Connection conn, PlanejamentoAulasForm planoAulaForm) throws SQLException {
+        String query = "INSERT INTO planejamento_aula (id_professor, id_disciplina, serie_ano, nr_bimestre, data, metodologia, recurso, "
+                + " tarefa, avaliacao, conteudo_aula, observacao, confirmar) "
+                + " VALUES (?,?,?,?,?,?,?,?,?,?,?,1)";
+        try (PreparedStatement prep = conn.prepareStatement(query)) {
+            prep.setInt(1, planoAulaForm.getIdProfessor());
+            prep.setInt(2, planoAulaForm.getIdDisciplina());
+            prep.setInt(3, planoAulaForm.getIdSerieAno());
+            prep.setInt(4, planoAulaForm.getNrBimestre());
+            prep.setString(5, planoAulaForm.getData());
+            prep.setString(6, planoAulaForm.getMetodologia());
+            prep.setString(7, planoAulaForm.getRecurso());
+            prep.setString(8, planoAulaForm.getTarefa());
+            prep.setString(9, planoAulaForm.getAvaliacao());
+            prep.setString(10, planoAulaForm.getConteudoAula());
+            prep.setString(11, planoAulaForm.getObservacao());
+            prep.execute();
+        }
+
+    }
 
     public List<PlanejamentoAulasForm> obterListaPlanoAulasPorProfessor(Connection conn, String idProfessor) throws SQLException {
         List<PlanejamentoAulasForm> listaPlanoAulas = new ArrayList<>();
