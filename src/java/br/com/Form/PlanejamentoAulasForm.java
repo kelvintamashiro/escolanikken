@@ -477,6 +477,23 @@ public class PlanejamentoAulasForm extends FormBasico {
             prep.execute();
         }
     }
+    public void atualizarComConfirmacao(Connection conn, PlanejamentoAulasForm planoAulaForm) throws SQLException {
+        String query = "UPDATE planejamento_aula SET nr_bimestre=?, data=?, metodologia=?,"
+                + " recurso=?, tarefa=?, avaliacao=?, conteudo_aula=?, observacao=?, confirmar=1 "
+                + " WHERE id=?";
+        try (PreparedStatement prep = conn.prepareStatement(query)) {
+            prep.setInt(1, planoAulaForm.getNrBimestre());
+            prep.setString(2, planoAulaForm.getData());
+            prep.setString(3, planoAulaForm.getMetodologia());
+            prep.setString(4, planoAulaForm.getRecurso());
+            prep.setString(5, planoAulaForm.getTarefa());
+            prep.setString(6, planoAulaForm.getAvaliacao());
+            prep.setString(7, planoAulaForm.getConteudoAula());
+            prep.setString(8, planoAulaForm.getObservacao());
+            prep.setInt(9, planoAulaForm.getIdPlanejamento());
+            prep.execute();
+        }
+    }
 
     public void confirmar(Connection conn, PlanejamentoAulasForm planoAulaForm) throws SQLException {
         String query = "UPDATE planejamento_aula SET confirmar=1 WHERE id=?";

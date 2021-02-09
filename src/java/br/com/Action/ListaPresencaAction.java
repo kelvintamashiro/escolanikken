@@ -169,11 +169,8 @@ public class ListaPresencaAction extends IDRAction {
                     }
 
                 } else {
-                    planoAulaForm.atualizar(conn, planoAulaForm);
+                    planoAulaForm.atualizarComConfirmacao(conn, planoAulaForm);
                 }
-
-                //confirmar planejamento
-                planoAulaForm.confirmar(conn, planoAulaForm);
 
                 errors.error("Presença e plano de aula confirmado com Sucesso!!");
             } else {
