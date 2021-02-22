@@ -236,7 +236,7 @@
                     </logic:present>
                 </table>
                 <logic:present name="listaObservacao" scope="request">
-                    <table border="0" style="margin-top: 20px" width="80%" align="center">
+                    <table border="0" style="margin-top: 15px" width="80%" align="center">
                         <tr>
                             <td>Observação:</td>
                         </tr>
@@ -249,8 +249,13 @@
                         </logic:iterate>
                     </table>
                 </logic:present>
-                <table border="0" align="center" width="200px" style="margin-top: 80px">
+                <table border="0" align="center" width="200px" style="margin-top: 40px">
                     <tr>
+                        <td>
+                            <img src="imagens/assinatura_thiago.jpg" width="100%"/>
+                        </td>
+                    </tr>
+<!--                    <tr>
                         <td align="center" style="border-bottom: 1px solid black">
                             &nbsp;
                         </td>
@@ -259,7 +264,7 @@
                         <td align="center">
                             Diretor da Escola
                         </td>
-                    </tr>
+                    </tr>-->
                 </table>
 
             </div>

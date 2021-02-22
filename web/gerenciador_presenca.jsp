@@ -43,6 +43,9 @@
                 <button class="btn-nikken2" onclick="window.location.href = 'ListaPresenca.do?action=pageConsultar'">
                     Consultar Lista <br/>de Presença/ <br/>Plano de Aula
                 </button>
+                <button class="btn-nikken2" onclick="window.location.href = 'ListaPresenca.do?action=pageImprimirDiario'">
+                    Imprimir <br/>Diário de Classe
+                </button>
             </div>
         </div>
         <div>

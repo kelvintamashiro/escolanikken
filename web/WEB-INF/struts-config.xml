@@ -319,6 +319,9 @@
             <forward name="excluirPresenca"                             path="/lista_presenca_consultar.jsp"/>
             <forward name="editarPresenca"                              path="/lista_presenca_editar.jsp"/>
             <forward name="atualizarPresenca"                           path="/lista_presenca_editar.jsp"/>
+            <forward name="pageImprimirDiario"                          path="/lista_presenca_page_imprimir.jsp"/>
+            <forward name="carregarDisciplinaImpDiario"                 path="/lista_presenca_page_imprimir.jsp"/>
+            <forward name="imprimirDiario"                              path="/lista_presenca_imprimir_diario.jsp"/>
         </action>
         
         

@@ -85,7 +85,7 @@
                                 <td>
                                     <logic:equal name="lista" property="idSerieAno" value="11">Infantil I</logic:equal>
                                     <logic:equal name="lista" property="idSerieAno" value="12">Infantil II</logic:equal>
-                                    <logic:equal name="lista" property="idSerieAno" value="13">Infantil II</logic:equal>
+                                    <logic:equal name="lista" property="idSerieAno" value="13">Infantil III</logic:equal>
                                     <logic:equal name="lista" property="idSerieAno" value="1">1º ano</logic:equal>
                                     <logic:equal name="lista" property="idSerieAno" value="2">2º ano</logic:equal>
                                     <logic:equal name="lista" property="idSerieAno" value="3">3º ano</logic:equal>

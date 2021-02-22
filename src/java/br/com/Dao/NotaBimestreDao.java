@@ -359,4 +359,32 @@ public final class NotaBimestreDao {
 
         return listaNotasAlunos;
     }
+
+    public NotaBimestreForm obterNotaPorAlunoDiscBimestre(Connection conn, int idSerieAno, int nrBimestre, int idDisciplina, int idAluno) throws SQLException {
+        NotaBimestreForm notaBimestreForm = new NotaBimestreForm();
+        String query = "select n.nota_mensal,  n.nota_bimestral, n.producao_sala, n.media, n.falta"
+                + " from nota_bimestre n, ano_vigente av "
+                + " where n.ano = av.ano_vigente"
+                + " and n.serie_ano = ?"
+                + " and n.nr_bimestre = ?"
+                + " and n.id_disciplina = ?"
+                + " and n.id_aluno = ?";
+        try (PreparedStatement prep = conn.prepareStatement(query)) {
+            prep.setInt(1, idSerieAno);
+            prep.setInt(2, nrBimestre);
+            prep.setInt(3, idDisciplina);
+            prep.setInt(4, idAluno);
+            try (ResultSet rs = prep.executeQuery()) {
+                if (rs.next()) {
+                    notaBimestreForm.setFalta(rs.getInt("falta"));
+                    notaBimestreForm.setMediaBimestre(rs.getString("media"));
+                    notaBimestreForm.setNotaMensal(rs.getString("nota_mensal"));
+                    notaBimestreForm.setNotaBimestral(rs.getString("nota_bimestral"));
+                    notaBimestreForm.setNotaProducaoSala(rs.getString("producao_sala"));
+                }
+            }
+        }
+
+        return notaBimestreForm;
+    }
 }

@@ -30,12 +30,30 @@ public class ListaPresencaForm extends FormBasico {
     private String data;
     private int idDisciplina;
     private String dsDisciplina;
+    private String dsCategoriaEnsino;
     private int qtdAulas;
     private int nrBimestre;
     private String falta;
     private int qtdFalta;
     private PlanejamentoAulasForm planejamentoAulasForm;
+    private String nomeProfessor;
 
+    public String getNomeProfessor() {
+        return nomeProfessor;
+    }
+
+    public void setNomeProfessor(String nomeProfessor) {
+        this.nomeProfessor = nomeProfessor;
+    }
+
+    public String getDsCategoriaEnsino() {
+        return dsCategoriaEnsino;
+    }
+
+    public void setDsCategoriaEnsino(String dsCategoriaEnsino) {
+        this.dsCategoriaEnsino = dsCategoriaEnsino;
+    }
+    
     public PlanejamentoAulasForm getPlanejamentoAulasForm() {
         return planejamentoAulasForm;
     }
@@ -43,7 +61,7 @@ public class ListaPresencaForm extends FormBasico {
     public void setPlanejamentoAulasForm(PlanejamentoAulasForm planejamentoAulasForm) {
         this.planejamentoAulasForm = planejamentoAulasForm;
     }
-    
+
     public int getQtdFalta() {
         return qtdFalta;
     }
@@ -296,6 +314,53 @@ public class ListaPresencaForm extends FormBasico {
             prep.setString(1, idPresenca);
             prep.execute();
         }
+    }
+
+    public List<String> obterListaDatasPorSerieBimestreDisciplina(Connection conn, ListaPresencaForm listaPresencaForm) throws SQLException {
+        String query = "select distinct l.data"
+                + " from lista_presenca l"
+                + " where l.nr_bimestre = ? and l.id_serie = ? and l.id_disciplina = ?"
+                + " group by l.data";
+        List<String> listaDatas;
+        try (PreparedStatement prep = conn.prepareStatement(query)) {
+            prep.setInt(1, listaPresencaForm.getNrBimestre());
+            prep.setInt(2, listaPresencaForm.getIdSerieAno());
+            prep.setInt(3, listaPresencaForm.getIdDisciplina());
+            try (ResultSet rs = prep.executeQuery()) {
+                listaDatas = new ArrayList<>();
+                while (rs.next()) {
+                    String data = rs.getString("data");
+                    listaDatas.add(data);
+                }
+            }
+        }
+
+        return listaDatas;
+    }
+
+    public ListaPresencaForm verificarFaltaPorDataAluno(Connection conn, int nrBimestre, int idSerieAno, int idDisciplina, int idAluno, String dataAula) throws SQLException {
+        String query = "select l.falta, l.qtd_falta from lista_presenca l "
+                + " where l.nr_bimestre = ?"
+                + " and l.id_serie = ?"
+                + " and l.id_disciplina = ?"
+                + " and l.id_aluno = ?"
+                + " and l.data = ?";
+        ListaPresencaForm listaPresencaForm = new ListaPresencaForm();
+        try (PreparedStatement prep = conn.prepareStatement(query)) {
+            prep.setInt(1, nrBimestre);
+            prep.setInt(2, idSerieAno);
+            prep.setInt(3, idDisciplina);
+            prep.setInt(4, idAluno);
+            prep.setString(5, dataAula);
+            try (ResultSet rs = prep.executeQuery()) {
+                if(rs.next()){
+                    listaPresencaForm.setFalta(rs.getString("falta"));
+                    listaPresencaForm.setQtdFalta(rs.getInt("qtd_falta"));
+                }
+            }
+        }
+        
+        return listaPresencaForm;
     }
 
 }

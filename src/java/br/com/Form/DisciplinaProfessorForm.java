@@ -337,4 +337,40 @@ public class DisciplinaProfessorForm extends FormBasico {
         return listaProfessoresCadastradoDisciplina;
     }
 
+    public int obterIdProfessorPorDiscSerie(Connection conn, int idDisciplina, int idSerieAno) throws SQLException {
+        int idProfessor = 0;
+        String query = "select d.id_professor from disciplina_professor d where d.id_disciplina = ? and d.serie_ano = ?";
+        try (PreparedStatement prep = conn.prepareStatement(query)) {
+            prep.setInt(1, idDisciplina);
+            prep.setInt(2, idSerieAno);
+            ResultSet rs = prep.executeQuery();
+            if (rs.next()) {
+                idProfessor = rs.getInt("id_professor");
+            }
+            rs.close();
+        }
+        
+        return idProfessor;
+    }
+
+    public String obterNomeProfessorPorDiscSerie(Connection conn, int idDisciplina, int idSerieAno) throws SQLException {
+        String query = "select pf.nome from disciplina_professor d, pessoa_fisica pf "
+                + " where d.id_professor = pf.id"
+                + " and d.id_disciplina = ?"
+                + " and d.serie_ano = ?";
+        String nomeProfessor;
+        try ( PreparedStatement prep = conn.prepareStatement(query)) {
+            prep.setInt(1, idDisciplina);
+            prep.setInt(2, idSerieAno);
+            try ( ResultSet rs = prep.executeQuery()) {
+                nomeProfessor = "";
+                if (rs.next()) {
+                    nomeProfessor = rs.getString("nome");
+                }
+            }
+        }
+
+        return nomeProfessor;
+    }
+
 }
