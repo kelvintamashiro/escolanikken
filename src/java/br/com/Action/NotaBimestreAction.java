@@ -57,6 +57,12 @@ public class NotaBimestreAction extends IDRAction {
             this.visualizarNota(form, request, errors);
         } else if (action.equals("visualizarNotaAluno")) {
             this.visualizarNota(form, request, errors);
+        } else if (action.equals("pageEditarNota")) {
+            this.pageEditarNota(form, request, errors);
+        } else if (action.equals("editarNota")) {
+            this.editarNota(form, request, errors);
+        } else if (action.equals("pageNotasBimestrais")) {
+            this.pageNotasBimestrais(form, request, errors);
         }
 
         return mapping.findForward(forward);
@@ -145,24 +151,44 @@ public class NotaBimestreAction extends IDRAction {
             String ntProducaoSala = request.getParameter("notaProducaoSala");
             String ntMensal = request.getParameter("notaMensal");
             String ntBimestral = request.getParameter("notaBimestral");
+            double notaProducao = 0;
+            double notaMensal = 0;
+            double notaBimestral = 0;
+            boolean notasLancadas = true;
 
-            notaBimestreForm.setNotaProducaoSala(ntProducaoSala.replace(",", "."));
-            notaBimestreForm.setNotaMensal(ntMensal.replace(",", "."));
-            notaBimestreForm.setNotaBimestral(ntBimestral.replace(",", "."));
+            if (ntProducaoSala != null && !ntProducaoSala.equals("")) {
+                notaProducao = Double.parseDouble(ntProducaoSala.replace(",", "."));
+                notaBimestreForm.setNotaProducaoSala(String.valueOf(notaProducao));
+            } else {
+                notasLancadas = false;
+                notaBimestreForm.setNotaProducaoSala(null);
+            }
+
+            if (ntMensal != null && !ntMensal.equals("")) {
+                notaMensal = Double.parseDouble(ntMensal.replace(",", "."));
+                notaBimestreForm.setNotaMensal(String.valueOf(notaMensal));
+            } else {
+                notasLancadas = false;
+                notaBimestreForm.setNotaMensal(null);
+            }
+
+            if (ntBimestral != null && !ntBimestral.equals("")) {
+                notaBimestral = Double.parseDouble(ntBimestral.replace(",", "."));
+                notaBimestreForm.setNotaBimestral(String.valueOf(notaBimestral));
+            } else {
+                notasLancadas = false;
+                notaBimestreForm.setNotaBimestral(null);
+            }
+
             notaBimestreForm.setIdSerieAno(Integer.parseInt(request.getParameter("serieAno")));
 
-            //calcular media do bimestre
-            double notaProducao = Double.parseDouble(notaBimestreForm.getNotaProducaoSala());
-            double notaMensal = Double.parseDouble(notaBimestreForm.getNotaMensal());
-            double notaBimestral = Double.parseDouble(notaBimestreForm.getNotaBimestral());
-            double media = (notaMensal + notaProducao + (notaBimestral * 2)) / 4;
-            double mediaArredondada = Math.round(media / 0.5) * 0.5;
-
-            notaBimestreForm.setMediaBimestre(String.valueOf(mediaArredondada));
-            
-            //obter a quantidade de falta do aluno pela lista de presenca (bimestre, idDisciplina, idAluno, idSerie)
-//            int qtdFalta = NotaBimestreDao.getInstance().obterFaltasListaPresenca(conn, notaBimestreForm);
-//            notaBimestreForm.setFalta(qtdFalta);©
+            if (notasLancadas) {
+                double media = (notaMensal + notaProducao + (notaBimestral * 2)) / 4;
+                double mediaArredondada = Math.round(media / 0.5) * 0.5;
+                notaBimestreForm.setMediaBimestre(String.valueOf(mediaArredondada));
+            } else {
+                notaBimestreForm.setMediaBimestre(null);
+            }
 
             //salvar nota do aluno e da materia
             NotaBimestreDao.getInstance().lancarNota(conn, notaBimestreForm, notaBimestreForm.getNrBimestre());
@@ -178,7 +204,6 @@ public class NotaBimestreAction extends IDRAction {
                 descricaoHistorico.append(" - Nota Mensal: ").append(notaBimestreForm.getNotaMensal());
                 descricaoHistorico.append(" - Nota Bimestral: ").append(notaBimestreForm.getNotaBimestral());
                 descricaoHistorico.append(" - Média: ").append(notaBimestreForm.getMediaBimestre());
-                descricaoHistorico.append(" - Faltas: ").append(notaBimestreForm.getFalta());
 
                 HistoricoDao.getInstance().salvarHistoricoLancamentoNota(conn, notaBimestreForm, idProfessorSession, nomeProfessorSession, descricaoHistorico.toString());
             } catch (Exception ex) {
@@ -217,7 +242,6 @@ public class NotaBimestreAction extends IDRAction {
                 descricaoHistorico.append(" - Nota Mensal: ").append(notaForm.getNotaMensal());
                 descricaoHistorico.append(" - Nota Bimestral: ").append(notaForm.getNotaBimestral());
                 descricaoHistorico.append(" - Média: ").append(notaForm.getMediaBimestre());
-                descricaoHistorico.append(" - Faltas: ").append(notaForm.getFalta());
 
                 HistoricoDao.getInstance().salvarHistoricoLancamentoNota(conn, notaForm, idProfessorSession, nomeProfessorSession, descricaoHistorico.toString());
             } catch (Exception ex) {
@@ -371,8 +395,8 @@ public class NotaBimestreAction extends IDRAction {
 
                 notasFaltasDisciplinas.setFaltaTotal(notasFaltasDisciplinas.getFalta1Bimestre() + notasFaltasDisciplinas.getFalta2Bimestre() + notasFaltasDisciplinas.getFalta3Bimestre() + notasFaltasDisciplinas.getFalta4Bimestre());
 
-                if (notasFaltasDisciplinas.getMedia1Bimestre() >= 0 && notasFaltasDisciplinas.getMedia2Bimestre() >= 0 && 
-                        notasFaltasDisciplinas.getMedia3Bimestre() >= 0 && notasFaltasDisciplinas.getMedia4Bimestre() >= 0) {
+                if (notasFaltasDisciplinas.getMedia1Bimestre() >= 0 && notasFaltasDisciplinas.getMedia2Bimestre() >= 0
+                        && notasFaltasDisciplinas.getMedia3Bimestre() >= 0 && notasFaltasDisciplinas.getMedia4Bimestre() >= 0) {
                     double media = (notasFaltasDisciplinas.getMedia1Bimestre() + notasFaltasDisciplinas.getMedia2Bimestre() + notasFaltasDisciplinas.getMedia3Bimestre() + notasFaltasDisciplinas.getMedia4Bimestre()) / 4;
                     double mediaArredondada = Math.round(media / 0.5) * 0.5;
                     notasFaltasDisciplinas.setMediaFinal(mediaArredondada);
@@ -389,15 +413,20 @@ public class NotaBimestreAction extends IDRAction {
                             notasFaltasDisciplinas.setMediaRecupFinal(mediaRecupFinal);
                             notasFaltasDisciplinas.setPassouDisciplina(true);
                             observacaoRecup = "Aluno(a) foi submetivo a recuperação anual e obteve êxito na disciplina: " + disciplina.getNomeDisciplina();
+                            notasFaltasDisciplinas.setResultadoFinal("Aprovado");
                         } else {
                             notasFaltasDisciplinas.setMediaRecupFinal(mediaRecupFinal);
                             notasFaltasDisciplinas.setPassouDisciplina(false);
                             observacaoRecup = "Aluno(a) foi submetivo a recuperação anual e não obteve êxito na disciplina: " + disciplina.getNomeDisciplina();
+                            notasFaltasDisciplinas.setResultadoFinal("Reprovado");
                         }
                         listaObservacao.add(observacaoRecup);
                     }
+                } else {
+                    //se a media final for maior ou igual a 6, escreve no resultado final Aprovado
+                    notasFaltasDisciplinas.setResultadoFinal("Aprovado");
                 }
-                
+
                 listaNotasDisciplinas.add(notasFaltasDisciplinas);
             }
             request.setAttribute("listaNotasDisciplinas", listaNotasDisciplinas);
@@ -412,6 +441,119 @@ public class NotaBimestreAction extends IDRAction {
             notaBimestreForm.setDataEmissao(dateFormat.format(date));
 
             request.setAttribute("NotaBimestreForm", notaBimestreForm);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.free(conn);
+        }
+    }
+
+    private void pageEditarNota(ActionForm form, HttpServletRequest request, Errors errors) {
+        NotaBimestreForm notaBimestreForm = (NotaBimestreForm) form;
+        Connection conn = null;
+        try {
+            conn = connectionPool.getConnection();
+
+            NotaBimestreForm notaForm = NotaBimestreDao.getInstance().obterNotaPorID(conn, notaBimestreForm.getIdNotaBimestre());
+
+            request.setAttribute("NotaBimestreForm", notaForm);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.free(conn);
+        }
+    }
+
+    private void editarNota(ActionForm form, HttpServletRequest request, Errors errors) {
+        NotaBimestreForm notaBimestreForm = (NotaBimestreForm) form;
+        Connection conn = null;
+        try {
+            conn = connectionPool.getConnection();
+
+            String ntProducaoSala = request.getParameter("notaProducaoSala");
+            String ntMensal = request.getParameter("notaMensal");
+            String ntBimestral = request.getParameter("notaBimestral");
+            double notaProducao = 0;
+            double notaMensal = 0;
+            double notaBimestral = 0;
+            boolean notasLancadas = true;
+
+            if (ntProducaoSala != null && !ntProducaoSala.equals("")) {
+                notaProducao = Double.parseDouble(ntProducaoSala.replace(",", "."));
+                notaBimestreForm.setNotaProducaoSala(String.valueOf(notaProducao));
+            } else {
+                notasLancadas = false;
+                notaBimestreForm.setNotaProducaoSala(null);
+            }
+
+            if (ntMensal != null && !ntMensal.equals("")) {
+                notaMensal = Double.parseDouble(ntMensal.replace(",", "."));
+                notaBimestreForm.setNotaMensal(String.valueOf(notaMensal));
+            } else {
+                notasLancadas = false;
+                notaBimestreForm.setNotaMensal(null);
+            }
+
+            if (ntBimestral != null && !ntBimestral.equals("")) {
+                notaBimestral = Double.parseDouble(ntBimestral.replace(",", "."));
+                notaBimestreForm.setNotaBimestral(String.valueOf(notaBimestral));
+            } else {
+                notasLancadas = false;
+                notaBimestreForm.setNotaBimestral(null);
+            }
+
+            if (notasLancadas) {
+                double media = (notaMensal + notaProducao + (notaBimestral * 2)) / 4;
+                double mediaArredondada = Math.round(media / 0.5) * 0.5;
+                notaBimestreForm.setMediaBimestre(String.valueOf(mediaArredondada));
+            } else {
+                notaBimestreForm.setMediaBimestre(null);
+            }
+
+            //alterar nota do aluno
+            NotaBimestreDao.getInstance().atualizarNota(conn, notaBimestreForm);
+
+            errors.error("Lançamento de Nota Atualizada com Sucesso!!");
+
+            //salvar no historico_cadastro_aluno
+            try {
+                HttpSession session = request.getSession(true);
+                Integer idProfessorSession = (Integer) session.getAttribute("idPF");
+                String nomeProfessorSession = (String) session.getAttribute("nome");
+                StringBuilder descricaoHistorico = new StringBuilder();
+                descricaoHistorico.append("ALTERAÇÃO DE NOTA REALIZADO:");
+                descricaoHistorico.append(" - Prod. Sala: ").append(notaBimestreForm.getNotaProducaoSala());
+                descricaoHistorico.append(" - Nota Mensal: ").append(notaBimestreForm.getNotaMensal());
+                descricaoHistorico.append(" - Nota Bimestral: ").append(notaBimestreForm.getNotaBimestral());
+                descricaoHistorico.append(" - Média: ").append(notaBimestreForm.getMediaBimestre());
+
+                HistoricoDao.getInstance().salvarHistoricoLancamentoNota(conn, notaBimestreForm, idProfessorSession, nomeProfessorSession, descricaoHistorico.toString());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+            request.setAttribute("NotaBimestreForm", notaBimestreForm);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.free(conn);
+        }
+    }
+
+    private void pageNotasBimestrais(ActionForm form, HttpServletRequest request, Errors errors) {
+        NotaBimestreForm notaBimestreForm = new NotaBimestreForm();
+        Connection conn = null;
+        try {
+            conn = connectionPool.getConnection();
+            String idPF = request.getParameter("idPF");
+            notaBimestreForm.setIdAluno(Integer.parseInt(idPF));
+            
+            //obter notas do aluno no ano vigente
+            List<NotaBimestreForm> listaNotas = NotaBimestreDao.getInstance().obterNotasPorAluno(conn, notaBimestreForm.getIdAluno());
+            
+            request.setAttribute("listaNotas", listaNotas);
+            request.setAttribute("NotaBimestreForm", notaBimestreForm);
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

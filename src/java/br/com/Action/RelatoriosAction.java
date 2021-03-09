@@ -38,7 +38,7 @@ public class RelatoriosAction extends IDRAction {
         } else if (action.equals("relListaAniversario")) {
             this.relListaAniversario(form, request, errors);
         } else if (action.equals("pageRelNotasMensalPorBimestre") || action.equals("pageRelNotasBimestralPorBimestre")
-                || action.equals("pageRelNotasProducaoPorBimestre") || action.equals("pageRelNotasMediaPorBimestre")) {
+                || action.equals("pageRelNotasProducaoPorBimestre") || action.equals("pageRelNotasMediaPorBimestre") || action.equals("pageNotasPorAluno")) {
             this.pageRelNotasPorBimestre(form, request, errors);
         } else if (action.equals("relNotasMensalPorBimestre") || action.equals("relNotasBimestralPorBimestre")
                 || action.equals("relNotasProducaoPorBimestre") || action.equals("relNotasMediaPorBimestre")) {
@@ -55,6 +55,10 @@ public class RelatoriosAction extends IDRAction {
             this.relListaEndereco(form, request, errors);
         } else if (action.equals("relGeralAtivoInativoTurma")) {
             this.relGeralAtivoInativoTurma(form, request, errors);
+        } else if (action.equals("carregarAlunosPorSerie")) {
+            this.carregarAlunosPorSerie(form, request, errors);
+        } else if (action.equals("relNotasPorAluno")) {
+            this.relNotasPorAluno(form, request, errors);
         }
 
         return mapping.findForward(forward);
@@ -335,6 +339,48 @@ public class RelatoriosAction extends IDRAction {
 
             request.setAttribute("RelatoriosForm", relForm);
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.free(conn);
+        }
+    }
+
+    private void carregarAlunosPorSerie(ActionForm form, HttpServletRequest request, Errors errors) {
+        RelatoriosForm relForm = (RelatoriosForm) form;
+        Connection conn = null;
+        try {
+            NotaBimestreForm notaBimestreForm = new NotaBimestreForm();
+            conn = connectionPool.getConnection();
+            //obter lista de alunos por serie/ano
+            String idSerieAno = request.getParameter("idSerieAno");
+            notaBimestreForm.setIdSerieAno(Integer.parseInt(idSerieAno));
+            AlunoForm alunoForm = new AlunoForm();
+            List<AlunoForm> listaAlunos = alunoForm.obterAlunosPorSerie(conn, idSerieAno);
+            request.setAttribute("listaAlunos", listaAlunos);
+            relForm.setNotaBimestreForm(notaBimestreForm);
+            relForm.setAlunoForm(alunoForm);
+            request.setAttribute("RelatoriosForm", relForm);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.free(conn);
+        }
+
+    }
+
+    private void relNotasPorAluno(ActionForm form, HttpServletRequest request, Errors errors) {
+        NotaBimestreForm notaBimestreForm = new NotaBimestreForm();
+        Connection conn = null;
+        try {
+            conn = connectionPool.getConnection();
+            
+            //obter notas por ID do aluno
+             String idAluno = request.getParameter("idAluno");
+             List<NotaBimestreForm> listaNotas = NotaBimestreDao.getInstance().obterNotasPorAluno(conn, Integer.parseInt(idAluno));
+
+             request.setAttribute("listaNotas", listaNotas);
+             request.setAttribute("NotaBimestreForm", notaBimestreForm);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

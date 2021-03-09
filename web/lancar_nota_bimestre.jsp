@@ -90,9 +90,9 @@
                             <td width="40%">
                                 <b>Alunos</b>
                             </td>
-<!--                            <td width="10%">
-                                <b>Qtd. Faltas</b>
-                            </td>-->
+                            <!--                            <td width="10%">
+                                                            <b>Qtd. Faltas</b>
+                                                        </td>-->
                             <td width="10%">
                                 <b>Produção de Sala</b>
                             </td>
@@ -162,23 +162,20 @@
                     <table border="0" class="table" align="center" style="margin-top: 20px;" width="90%">
                         <tr>
                             <td width="5%">&nbsp;</td>
-                            <!--<td><b>ID Aluno</b></td>-->
                             <td><b>Nome Aluno</b></td>
-                            <!--<td align="center"><b>Qtd. Faltas</b></td>-->
                             <td align="center"><b>Nota Produção de Sala</b></td>
                             <td align="center"><b>Nota Prova Mensal</b></td>
                             <td align="center"><b>Nota Prova Bimestral</b></td>
                             <td align="center"><b>Média Bimestral</b></td>
                             <td>&nbsp;</td>
+                            <td>&nbsp;</td>
                             <td width="5%">&nbsp;</td>
                         </tr>
-                        <%--<bean:define name="listaAlunosComNota" id="notaBimestre" property="notaBimestre"/>--%>
                         <logic:iterate name="listaAlunosComNota" id="lista" scope="request">
                             <bean:define name="lista" property="notaBimestre" id="notaBimestre"/>
                             <tr>
                                 <td>&nbsp;</td>
                                 <td><bean:write name="lista" property="nome"/></td>
-                                <!--<td align="center"><bean:write name="notaBimestre" property="falta"/></td>-->
                                 <td align="center"><bean:write name="notaBimestre" property="notaProducaoSala"/></td>
                                 <td align="center"><bean:write name="notaBimestre" property="notaMensal"/></td>
                                 <td align="center"><bean:write name="notaBimestre" property="notaBimestral"/></td>
@@ -186,6 +183,9 @@
                                     <td align="center" style="color: red">
                                         <b><bean:write name="notaBimestre" property="mediaBimestre"/></b>
                                     </td>
+                                    <td>
+                                        <input class="btn btn-grey" type="button" value="Editar" onClick="fEditar(<bean:write name="bimestre" scope="request"/>, <bean:write name="notaBimestre" property="idNotaBimestre"/>, <bean:write name="disciplina" property="idDisciplina"/>);">
+                                    </td>F
                                     <td>
                                         <input class="btn btn-danger" type="button" value="Excluir" onClick="fExcluir(<bean:write name="bimestre" scope="request"/>, <bean:write name="notaBimestre" property="idNotaBimestre"/>, <bean:write name="disciplina" property="idDisciplina"/>);">
                                     </td>
@@ -204,6 +204,9 @@
                                             <b><bean:write name="notaBimestre" property="mediaBimestre"/></b>
                                         </td>
                                     </logic:notEqual>
+                                    <td>
+                                        <input class="btn btn-grey" type="button" value="Editar" onClick="fEditar(<bean:write name="bimestre" scope="request"/>, <bean:write name="notaBimestre" property="idNotaBimestre"/>, <bean:write name="disciplina" property="idDisciplina"/>);">
+                                    </td>
                                     <td>
                                         <input class="btn btn-danger" type="button" value="Excluir" onClick="fExcluir(<bean:write name="bimestre" scope="request"/>, <bean:write name="notaBimestre" property="idNotaBimestre"/>, <bean:write name="disciplina" property="idDisciplina"/>);">
                                     </td>
@@ -233,12 +236,17 @@
         var notaBimestral = document.getElementById("notaBimestral").value;
         if (idAluno === 0) {
             alert("Deve ser SELECIONADO o(a) estudante");
-        } else if (notaProducaoSala === "" || notaMensal === "" || notaBimestral === "") {
-            alert("Deve ser INFORMADO todas as notas");
+        } else if (notaProducaoSala === "" && notaMensal === "" && notaBimestral === "") {
+            alert("Deve ser INFORMADO uma das notas");
         } else {
             document.NotaBimestreForm.action = "NotaBimestre.do?action=salvarNota&nrBimestre=" + nrBimestre + "&idDisciplina=" + idDisciplina;
             document.NotaBimestreForm.submit();
         }
+    }
+
+    function fEditar(nrBimestre, idNotaBimestre, idDisciplina) {
+        document.NotaBimestreForm.action = "NotaBimestre.do?action=pageEditarNota&nrBimestre=" + nrBimestre + "&idNotaBimestre=" + idNotaBimestre + "&idDisciplina=" + idDisciplina;
+        document.NotaBimestreForm.submit();
     }
 
     function fExcluir(nrBimestre, idNotaBimestre, idDisciplina) {

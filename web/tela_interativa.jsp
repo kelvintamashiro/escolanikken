@@ -64,6 +64,9 @@
                     <button class="btn-nikken" onclick="window.location.href = 'Comunicados.do'">
                         Comunicados <br/>Professores
                     </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'Relatorios.do'">
+                        Relatórios
+                    </button>
                     <!--                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=visualizarCardapio'">
                                             Cardápio <br/>Nikken
                                         </button>-->
@@ -74,8 +77,11 @@
         <logic:equal name="tipoPerfil" scope="session" value="aluno">
             <div class="row" align="center">
                 <div class="col-12 col-s-12">
+                    <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?action=pageNotasBimestrais&idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=aluno'">
+                        Notas <br/>Bimestrais
+                    </button>
                     <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?action=pageConsultaAluno&idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=aluno'">
-                        Consulta <br/>de Notas
+                        Boletim <br/>Escolar
                     </button>
                     <button class="btn-nikken" onclick="window.location.href = 'TirarDuvidas.do?idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=aluno'">
                         Contato / <br/>Dúvidas
@@ -150,6 +156,9 @@
                     </button>
                     <button class="btn-nikken" onclick="window.location.href = 'Comunicados.do'">
                         Comunicados <br/>Professores
+                    </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'Relatorios.do'">
+                        Relatórios
                     </button>
                     <!--                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=visualizarCardapio'">
                                             Cardápio <br/>Nikken

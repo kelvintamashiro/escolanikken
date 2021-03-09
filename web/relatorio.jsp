@@ -123,20 +123,30 @@
                         <a href="Relatorios.do?action=pageRelNotasMediaPorBimestre" class="btn btn-green">Visualizar</a>
                     </td>
                 </tr>
+                <logic:equal name="tipoPerfil" scope="session" value="diretoria">
+                    <tr>
+                        <td>
+                            Relatório de Lançamentos de Notas (por data)
+                        </td>
+                        <td>
+                            <a href="Relatorios.do?action=pageRelLancamentoNotas" class="btn btn-green">Visualizar</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Relatório das Melhores Médias por Bimestre
+                        </td>
+                        <td>
+                            <a href="Relatorios.do?action=pageRelMelhoresNotasPorBimestre" class="btn btn-green">Visualizar</a>
+                        </td>
+                    </tr>
+                </logic:equal>
                 <tr>
                     <td>
-                        Relatório de Lançamentos de Notas (por data)
+                        Relatório de Notas Segmentada Por Aluno
                     </td>
                     <td>
-                        <a href="Relatorios.do?action=pageRelLancamentoNotas" class="btn btn-green">Visualizar</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Relatório das Melhores Médias por Bimestre
-                    </td>
-                    <td>
-                        <a href="Relatorios.do?action=pageRelMelhoresNotasPorBimestre" class="btn btn-green">Visualizar</a>
+                        <a href="Relatorios.do?action=pageNotasPorAluno" class="btn btn-green">Visualizar</a>
                     </td>
                 </tr>
             </table>

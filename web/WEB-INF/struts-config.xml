@@ -176,12 +176,15 @@
             <forward name="salvarNota"                  path="/lancar_nota_bimestre.jsp"/>
             <forward name="excluirNota"                 path="/lancar_nota_bimestre.jsp"/>
             <forward name="recuperouNota"               path="/lancar_nota_bimestre.jsp"/>
+            <forward name="pageEditarNota"              path="/page_editar_nota_bimestre.jsp"/>
+            <forward name="editarNota"                  path="/page_editar_nota_bimestre.jsp"/>
             <forward name="pageDisciplinasAluno"        path="/page_disciplinas_alunos.jsp"/>
             <forward name="pageConsulta"                path="/page_consulta_nota.jsp"/>
             <forward name="pageConsultaAluno"           path="/page_consulta_nota_aluno.jsp"/>
             <forward name="consultarAlunosSerie"        path="/page_consulta_nota.jsp"/>
             <forward name="visualizarNota"              path="/page_visualizar_nota.jsp"/>
             <forward name="visualizarNotaAluno"         path="/page_visualizar_nota_aluno.jsp"/>
+            <forward name="pageNotasBimestrais"         path="/page_notas_bimestrais_aluno.jsp"/>
         </action>
        
         <action    path="/Comunicados"
@@ -226,6 +229,10 @@
             <forward name="relMelhoresNotasPorBimestre"         path="/rel_melhores_notas.jsp"/>
             <forward name="relListaEndereco"                    path="/rel_lista_endereco.jsp"/>
             <forward name="relGeralAtivoInativoTurma"           path="/rel_geral_ativo_inativo_turma.jsp"/>
+            <forward name="pageNotasPorAluno"                   path="/rel_notas_aluno_page.jsp"/>
+            <forward name="carregarAlunosPorSerie"              path="/rel_notas_aluno_page.jsp"/>
+            <forward name="relNotasPorAluno"                    path="/rel_notas_aluno.jsp"/>
+
         </action>
         
         <action    path="/TirarDuvidas"

@@ -5,6 +5,10 @@
  */
 package br.com.Form;
 
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author macuser
@@ -12,6 +16,7 @@ package br.com.Form;
 public class RelatoriosForm extends FormBasico {
 
     private AlunoForm alunoForm;
+    private List<AlunoForm> listaAlunos;
     private DisciplinasForm disciplinasForm;
     private NotaBimestreForm notaBimestreForm;
     private String dataInicio;
@@ -24,6 +29,14 @@ public class RelatoriosForm extends FormBasico {
     private int qtdAmbosSexo;
     private String nomeSerieAno;
 
+    public List<AlunoForm> getListaAlunos() {
+        return listaAlunos;
+    }
+
+    public void setListaAlunos(List<AlunoForm> listaAlunos) {
+        this.listaAlunos = listaAlunos;
+    }
+
     public String getNomeSerieAno() {
         return nomeSerieAno;
     }
@@ -31,7 +44,7 @@ public class RelatoriosForm extends FormBasico {
     public void setNomeSerieAno(String nomeSerieAno) {
         this.nomeSerieAno = nomeSerieAno;
     }
-    
+
     public int getQtdAmbosSexo() {
         return qtdAmbosSexo;
     }
@@ -39,7 +52,7 @@ public class RelatoriosForm extends FormBasico {
     public void setQtdAmbosSexo(int qtdAmbosSexo) {
         this.qtdAmbosSexo = qtdAmbosSexo;
     }
-    
+
     public int getQtdMasculino() {
         return qtdMasculino;
     }
@@ -55,7 +68,7 @@ public class RelatoriosForm extends FormBasico {
     public void setQtdFeminino(int qtdFeminino) {
         this.qtdFeminino = qtdFeminino;
     }
-    
+
     public int getAno() {
         return ano;
     }
@@ -79,7 +92,7 @@ public class RelatoriosForm extends FormBasico {
     public void setNrBimestre(int nrBimestre) {
         this.nrBimestre = nrBimestre;
     }
-    
+
     public String getDataInicio() {
         return dataInicio;
     }
@@ -120,6 +133,5 @@ public class RelatoriosForm extends FormBasico {
         this.disciplinasForm = disciplinasForm;
     }
 
-   
 
 }

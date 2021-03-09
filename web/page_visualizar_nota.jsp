@@ -36,45 +36,30 @@
         </logic:present>
         <html:form action="NotaBimestre" name="NotaBimestreForm" type="br.com.Form.NotaBimestreForm" scope="request">
             <div class="form-group">
-                <table align="center" width="80%" border="0">
+                <table align="center" width="80%" border="0" style="font-size: 11px">
+
                     <tr>
-                        <td colspan="3">
-                            &nbsp;
+                        <td>
+                            <img src="imagens/logo.png" width="50%"/>
                         </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">
-                            <img src="imagens/logo.png" width="25%"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center" colspan="3">
+                        <td colspan="2" align="right">
                             <h2>BOLETIM ESCOLAR</h2>
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="3">
-                            &nbsp;
-                        </td>
-                    </tr>
+
                     <bean:define id="aluno" name="NotaBimestreForm" property="alunoForm"/>
                     <bean:define id="serie" name="NotaBimestreForm" property="serieAnoForm"/>
                     <tr>
                         <td colspan="2">Nome do Aluno(a): <b><bean:write name="aluno" property="nome"/></b></td>
-                        <td>Ano Letivo: <b><bean:write name="NotaBimestreForm" property="ano"/></b></td>
+                        <td align="right">Ano Letivo: <b><bean:write name="NotaBimestreForm" property="ano"/></b></td>
                     </tr>
                     <tr>
                         <td width="50%">Série/Ano: <b><bean:write name="serie" property="dsSerieAno"/></b></td>
                         <td width="30%">Turno: <b>Integral</b></td>
-                        <td width="20%">Emissão: <b><bean:write name="NotaBimestreForm" property="dataEmissao"/></b></td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">
-                            &nbsp;
-                        </td>
+                        <td width="20%" align="right">Emissão: <b><bean:write name="NotaBimestreForm" property="dataEmissao"/></b></td>
                     </tr>
                 </table>
-                <table border="1" align="center" width="80%">
+                <table border="1" align="center" width="80%" style="font-size: 10px">
                     <tr>
                         <td rowspan="2" align="center">
                             <b>Componentes Curriculares</b>
@@ -230,41 +215,44 @@
                                         </logic:greaterEqual>
                                     </logic:notEqual>
                                 </td>
-                                <td align="center"></td> <!-- Resultado final -->
+                                <td align="center"><!-- Resultado final -->
+                                    <bean:write name="lista" property="resultadoFinal"/>
+                                </td> 
+
                             </tr>
                         </logic:iterate>
                     </logic:present>
                 </table>
                 <logic:present name="listaObservacao" scope="request">
-                    <table border="0" style="margin-top: 15px" width="80%" align="center">
+                    <table border="1" style="margin-top: 2px; font-size: 9px" width="80%" align="center">
                         <tr>
                             <td>Observação:</td>
                         </tr>
                         <logic:iterate name="listaObservacao" id="listaObs" scope="request">
                             <tr>
-                                <td style="font-size: 11px">
+                                <td style="height: 2px">
                                     *<bean:write name="listaObs"/>
                                 </td>
                             </tr>
                         </logic:iterate>
                     </table>
                 </logic:present>
-                <table border="0" align="center" width="200px" style="margin-top: 40px">
+                <table border="0" align="center" width="150px" style="margin-top: 10px">
                     <tr>
                         <td>
                             <img src="imagens/assinatura_thiago.jpg" width="100%"/>
                         </td>
                     </tr>
-<!--                    <tr>
-                        <td align="center" style="border-bottom: 1px solid black">
-                            &nbsp;
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            Diretor da Escola
-                        </td>
-                    </tr>-->
+                    <!--                    <tr>
+                                            <td align="center" style="border-bottom: 1px solid black">
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">
+                                                Diretor da Escola
+                                            </td>
+                                        </tr>-->
                 </table>
 
             </div>

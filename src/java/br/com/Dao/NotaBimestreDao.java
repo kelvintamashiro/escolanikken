@@ -256,7 +256,10 @@ public final class NotaBimestreDao {
             int qtdFalta = this.obterFaltasListaPresenca(conn, idDisciplina, ano, idAluno, serieAno, nrBimestre);
             switch (nrBimestre) {
                 case 1:
-                    notaBimestreForm.setMedia1Bimestre(rs.getDouble("media"));
+                    String mediaBim1 = rs.getString("media");
+                    if (mediaBim1 != null && !mediaBim1.equals("")) {
+                        notaBimestreForm.setMedia1Bimestre(rs.getDouble("media"));
+                    }
                     if (qtdFalta > 0) {
                         notaBimestreForm.setFalta1Bimestre(qtdFalta);
                     } else {
@@ -264,7 +267,10 @@ public final class NotaBimestreDao {
                     }
                     break;
                 case 2:
-                    notaBimestreForm.setMedia2Bimestre(rs.getDouble("media"));
+                    String mediaBim2 = rs.getString("media");
+                    if (mediaBim2 != null && !mediaBim2.equals("")) {
+                        notaBimestreForm.setMedia2Bimestre(rs.getDouble("media"));
+                    }
                     if (qtdFalta > 0) {
                         notaBimestreForm.setFalta2Bimestre(qtdFalta);
                     } else {
@@ -272,7 +278,10 @@ public final class NotaBimestreDao {
                     }
                     break;
                 case 3:
-                    notaBimestreForm.setMedia3Bimestre(rs.getDouble("media"));
+                    String mediaBim3 = rs.getString("media");
+                    if (mediaBim3 != null && !mediaBim3.equals("")) {
+                        notaBimestreForm.setMedia3Bimestre(rs.getDouble("media"));
+                    }
                     if (qtdFalta > 0) {
                         notaBimestreForm.setFalta3Bimestre(qtdFalta);
                     } else {
@@ -280,7 +289,10 @@ public final class NotaBimestreDao {
                     }
                     break;
                 case 4:
-                    notaBimestreForm.setMedia4Bimestre(rs.getDouble("media"));
+                    String mediaBim4 = rs.getString("media");
+                    if (mediaBim4 != null && !mediaBim4.equals("")) {
+                        notaBimestreForm.setMedia4Bimestre(rs.getDouble("media"));
+                    }
                     if (qtdFalta > 0) {
                         notaBimestreForm.setFalta4Bimestre(qtdFalta);
                     } else {
@@ -300,13 +312,20 @@ public final class NotaBimestreDao {
 
     public NotaBimestreForm obterNotaPorID(Connection conn, int idNotaBimestre) throws SQLException {
         NotaBimestreForm notaBimestreForm = new NotaBimestreForm();
-        String query = "select * from nota_bimestre where id = ?";
-        try (PreparedStatement prep = conn.prepareStatement(query)) {
+        String query = "select n.id, n.id_disciplina, n.id_aluno, n.nr_bimestre, n.ano, n.serie_ano, n.falta,"
+                + " n.media, n.nota_mensal, n.nota_bimestral, n.producao_sala, d.nome_disciplina, pf.nome, ds.descricao, ds.categoria "
+                + " from nota_bimestre n, disciplina d, pessoa_fisica pf, descricao_serie_ano ds"
+                + " where n.id_disciplina = d.id_disciplina "
+                + " and n.id_aluno = pf.id"
+                + " and n.serie_ano = ds.id"
+                + " and n.id = ?";
+        try ( PreparedStatement prep = conn.prepareStatement(query)) {
             prep.setInt(1, idNotaBimestre);
-            try (ResultSet rs = prep.executeQuery()) {
+            try ( ResultSet rs = prep.executeQuery()) {
                 if (rs.next()) {
                     notaBimestreForm.setIdNotaBimestre(rs.getInt("id"));
                     notaBimestreForm.setIdDisciplina(rs.getInt("id_disciplina"));
+                    notaBimestreForm.setNomeDisciplina(rs.getString("nome_disciplina"));
                     notaBimestreForm.setIdAluno(rs.getInt("id_aluno"));
                     notaBimestreForm.setNrBimestre(rs.getInt("nr_bimestre"));
                     notaBimestreForm.setAno(rs.getInt("ano"));
@@ -316,6 +335,9 @@ public final class NotaBimestreDao {
                     notaBimestreForm.setNotaMensal(rs.getString("nota_mensal"));
                     notaBimestreForm.setNotaBimestral(rs.getString("nota_bimestral"));
                     notaBimestreForm.setNotaProducaoSala(rs.getString("producao_sala"));
+                    notaBimestreForm.setDsSerieAno(rs.getString("descricao"));
+                    notaBimestreForm.setCategoriaEnsino(rs.getString("categoria"));
+                    notaBimestreForm.setNomeAluno(rs.getString("nome"));
                 }
             }
         }
@@ -369,12 +391,12 @@ public final class NotaBimestreDao {
                 + " and n.nr_bimestre = ?"
                 + " and n.id_disciplina = ?"
                 + " and n.id_aluno = ?";
-        try (PreparedStatement prep = conn.prepareStatement(query)) {
+        try ( PreparedStatement prep = conn.prepareStatement(query)) {
             prep.setInt(1, idSerieAno);
             prep.setInt(2, nrBimestre);
             prep.setInt(3, idDisciplina);
             prep.setInt(4, idAluno);
-            try (ResultSet rs = prep.executeQuery()) {
+            try ( ResultSet rs = prep.executeQuery()) {
                 if (rs.next()) {
                     notaBimestreForm.setFalta(rs.getInt("falta"));
                     notaBimestreForm.setMediaBimestre(rs.getString("media"));
@@ -386,5 +408,56 @@ public final class NotaBimestreDao {
         }
 
         return notaBimestreForm;
+    }
+
+    public void atualizarNota(Connection conn, NotaBimestreForm notaBimestreForm) throws SQLException {
+        String query = "UPDATE nota_bimestre SET nota_mensal=?, nota_bimestral=?, producao_sala=?, media=? WHERE id=?";
+        PreparedStatement prep = conn.prepareStatement(query);
+        prep.setString(1, notaBimestreForm.getNotaMensal());
+        prep.setString(2, notaBimestreForm.getNotaBimestral());
+        prep.setString(3, notaBimestreForm.getNotaProducaoSala());
+        prep.setString(4, notaBimestreForm.getMediaBimestre());
+        prep.setInt(5, notaBimestreForm.getIdNotaBimestre());
+        prep.execute();
+        prep.close();
+    }
+
+    public List<NotaBimestreForm> obterNotasPorAluno(Connection conn, int idAluno) throws SQLException {
+        List<NotaBimestreForm> listaNotas = new ArrayList<>();
+        String query = "select d.categoria_ensino, d.id_disciplina, d.nome_disciplina, ds.descricao,"
+                + " n.nr_bimestre, n.nota_mensal, n.nota_bimestral, n.producao_sala, n.media, n.ano, n.serie_ano, pf.nome"
+                + " from nota_bimestre n, disciplina d, ano_vigente a, descricao_serie_ano ds, pessoa_fisica pf "
+                + " where n.id_disciplina = d.id_disciplina"
+                + " and n.ano = a.ano_vigente"
+                + " and n.serie_ano = ds.id"
+                + " and n.id_aluno = pf.id"
+                + " and n.id_aluno = ?"
+                + " order by n.nr_bimestre, d.nome_disciplina";
+        PreparedStatement prep = conn.prepareStatement(query);
+        prep.setInt(1, idAluno);
+        ResultSet rs = prep.executeQuery();
+        while (rs.next()) {
+            NotaBimestreForm notaForm = new NotaBimestreForm();
+            notaForm.setNomeAluno(rs.getString("nome"));
+            notaForm.setCategoriaEnsino(rs.getString("categoria_ensino"));
+            notaForm.setIdDisciplina(rs.getInt("id_disciplina"));
+            notaForm.setNomeDisciplina(rs.getString("nome_disciplina"));
+            notaForm.setDsSerieAno(rs.getString("descricao"));
+            notaForm.setNrBimestre(rs.getInt("nr_bimestre"));
+            notaForm.setMediaBimestre(rs.getString("media"));
+            notaForm.setNotaMensal(rs.getString("nota_mensal"));
+            notaForm.setNotaBimestral(rs.getString("nota_bimestral"));
+            notaForm.setNotaProducaoSala(rs.getString("producao_sala"));
+            notaForm.setAno(rs.getInt("ano"));
+            notaForm.setIdSerieAno(rs.getInt("serie_ano"));
+            int qtdFalta = this.obterFaltasListaPresenca(conn, notaForm.getIdDisciplina(), notaForm.getAno(), idAluno, notaForm.getIdSerieAno(), notaForm.getNrBimestre());
+            notaForm.setFalta(qtdFalta);
+            
+            listaNotas.add(notaForm);
+        }
+        rs.close();
+        prep.close();
+        
+        return listaNotas;
     }
 }

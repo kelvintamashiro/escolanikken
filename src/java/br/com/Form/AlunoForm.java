@@ -59,7 +59,7 @@ public class AlunoForm extends PessoaFisicaForm {
     public void setAno(int ano) {
         this.ano = ano;
     }
-    
+
     public int getIdHistorico() {
         return idHistorico;
     }
@@ -494,7 +494,7 @@ public class AlunoForm extends PessoaFisicaForm {
                 + " nome_mae=?, celular_mae=?, email_mae=?, linha_transporte=?, restricao_alimentar=?, observacao_saude=?, "
                 + " ds_observacao=?, autorizacao_imagem=?"
                 + " WHERE id_pessoa_fisica=?";
-        try (PreparedStatement prep = conn.prepareStatement(query)) {
+        try ( PreparedStatement prep = conn.prepareStatement(query)) {
             prep.setString(1, alunoForm.getCelularAluno());
             prep.setString(2, alunoForm.getTipoAlimentacao());
             prep.setString(3, alunoForm.getNomePai());
@@ -557,7 +557,7 @@ public class AlunoForm extends PessoaFisicaForm {
                 + " and pf.status = 1"
                 + " and nb.serie_ano = ?"
                 + " and nb.id_disciplina = ?"
-                + " and nb.nota_bimestral is not null"
+                + " and nb.id_disciplina is not null"
                 + " order by pf.nome";
 
         PreparedStatement prep = conn.prepareStatement(query);
@@ -585,6 +585,31 @@ public class AlunoForm extends PessoaFisicaForm {
 
             aForm.setNotaBimestre(notaBimestreForm);
 
+            listaAlunos.add(aForm);
+        }
+        rs.close();
+        prep.close();
+
+        return listaAlunos;
+    }
+
+    public List<AlunoForm> obterAlunosPorSerie(Connection conn, String idSerieAno) throws SQLException {
+        List<AlunoForm> listaAlunos = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        sb.append("select pf.id, pf.nome, pf.data_nascimento, pf.sexo, pf.cidade, pf.provincia, a.serie_ano, pf.email, pf.status, a.numero_id_aluno ");
+        sb.append(" from pessoa_fisica pf, alunos a");
+        sb.append(" where pf.id = a.id_pessoa_fisica");
+        sb.append(" and a.serie_ano = ").append(idSerieAno);
+        sb.append(" and pf.status = 1");
+        sb.append(" order by pf.nome");
+        PreparedStatement prep = conn.prepareStatement(sb.toString());
+        ResultSet rs = prep.executeQuery();
+        while (rs.next()) {
+            AlunoForm aForm = new AlunoForm();
+            aForm.setIdAluno(rs.getInt("id"));
+            aForm.setNome(rs.getString("nome"));
+            aForm.setSerieAno(rs.getInt("serie_ano"));
+            aForm.setDsSerieAno(Utilitario.obterDescricaoSerieAno(aForm.getSerieAno()));
             listaAlunos.add(aForm);
         }
         rs.close();
@@ -655,9 +680,9 @@ public class AlunoForm extends PessoaFisicaForm {
                 + " and c.serie_ano = d.id"
                 + " and c.id_comunicado_gerenciamento = ?"
                 + " order by pf.nome";
-        try (PreparedStatement prep = conn.prepareStatement(query)) {
+        try ( PreparedStatement prep = conn.prepareStatement(query)) {
             prep.setInt(1, idComunicado);
-            try (ResultSet rs = prep.executeQuery()) {
+            try ( ResultSet rs = prep.executeQuery()) {
                 while (rs.next()) {
                     AlunoForm alunoForm = new AlunoForm();
                     alunoForm.setNome(rs.getString("nome"));

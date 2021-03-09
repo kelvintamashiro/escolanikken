@@ -53,7 +53,16 @@ public class NotaBimestreForm extends FormBasico {
     private boolean passouDisciplina;
     private boolean fezProvaRecupAnual = false;
     private String observacaoRecupAnual;
+    private String resultadoFinal;
 
+    public String getResultadoFinal() {
+        return resultadoFinal;
+    }
+
+    public void setResultadoFinal(String resultadoFinal) {
+        this.resultadoFinal = resultadoFinal;
+    }
+    
     public boolean isFezProvaRecupAnual() {
         return fezProvaRecupAnual;
     }
