@@ -139,6 +139,35 @@ public class DisciplinasForm extends FormBasico {
 
         return listaDisciplinas;
     }
+    
+    public List<DisciplinasForm> obterListaDisciplinasPorCategoriaSerie(Connection conn, String categoriaEnsino, int idSerie) throws SQLException {
+        StringBuilder sb = new StringBuilder();
+        sb.append("select * from disciplina d");
+        sb.append(" where d.categoria_ensino = ?");
+        if(idSerie == 20 || idSerie == 30) {
+            sb.append(" and d.id_disciplina not in (15)");
+        }
+        sb.append(" order by d.nome_disciplina");
+        PreparedStatement prep = conn.prepareStatement(sb.toString());
+        prep.setString(1, categoriaEnsino);
+        ResultSet rs = prep.executeQuery();
+        List<DisciplinasForm> listaDisciplinas = new ArrayList<>();
+        while (rs.next()) {
+            DisciplinasForm disciplinasForm = new DisciplinasForm();
+            disciplinasForm.setIdDisciplina(rs.getInt("id_disciplina"));
+            disciplinasForm.setNomeDisciplina(rs.getString("nome_disciplina"));
+            disciplinasForm.setCategoriaEnsino(rs.getString("categoria_ensino"));
+            disciplinasForm.setDsCategoriaEnsino(this.obterDsCategoriaEnsino(rs.getString("categoria_ensino")));
+            disciplinasForm.setPesoProducaoSala(rs.getInt("peso_producao_sala"));
+            disciplinasForm.setPesoProvaMensal(rs.getInt("peso_prova_mensal"));
+            disciplinasForm.setPesoProvaBimestral(rs.getInt("peso_prova_bimestral"));
+            listaDisciplinas.add(disciplinasForm);
+        }
+        rs.close();
+        prep.close();
+
+        return listaDisciplinas;
+    }
 
     public List<DisciplinasForm> obterListaDisciplinasPorCategoriaPorProfessor(Connection conn, String categoriaEnsino, int idPF) throws SQLException {
         String query = "select d.*"

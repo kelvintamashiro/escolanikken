@@ -56,13 +56,13 @@ public class NotaBimestreAction extends IDRAction {
         } else if (action.equals("visualizarNota")) {
             this.visualizarNota(form, request, errors);
         } else if (action.equals("visualizarNotaAluno")) {
-            this.visualizarNota(form, request, errors);
+            return visualizarNotaAluno(mapping, form, request, errors);
         } else if (action.equals("pageEditarNota")) {
             this.pageEditarNota(form, request, errors);
         } else if (action.equals("editarNota")) {
             this.editarNota(form, request, errors);
         } else if (action.equals("pageNotasBimestrais")) {
-            this.pageNotasBimestrais(form, request, errors);
+            return pageNotasBimestrais(mapping, form, request, errors);
         }
 
         return mapping.findForward(forward);
@@ -378,7 +378,7 @@ public class NotaBimestreAction extends IDRAction {
 
             //carregar lista de disciplinas por categoria de ensino
             DisciplinasForm disciplinasForm = new DisciplinasForm();
-            List<DisciplinasForm> listaDisciplinas = disciplinasForm.obterListaDisciplinasPorCategoria(conn, categoriaEnsino);
+            List<DisciplinasForm> listaDisciplinas = disciplinasForm.obterListaDisciplinasPorCategoriaSerie(conn, categoriaEnsino, notaBimestreForm.getIdSerieAno());
 
             //percorrer as disciplinas e pegar as notas e faltas
             List<NotaBimestreForm> listaNotasDisciplinas = new ArrayList<>();
@@ -446,6 +446,118 @@ public class NotaBimestreAction extends IDRAction {
         } finally {
             connectionPool.free(conn);
         }
+    }
+
+    private ActionForward visualizarNotaAluno(ActionMapping mapping, ActionForm form, HttpServletRequest request, Errors errors) {
+        NotaBimestreForm notaBimestreForm = (NotaBimestreForm) form;
+        Connection conn = null;
+        HttpSession session = request.getSession();
+        String strForward = "";
+        try {
+            conn = connectionPool.getConnection();
+
+            Integer idAluno = Integer.parseInt(request.getParameter("idAluno"));
+            //verificar se o ID é o mesmo que esta na sessao
+            Object idPfSession = session.getAttribute("idPF");
+            if (idAluno != idPfSession) {
+                strForward = "fwrError";
+            } else {
+                strForward = "visualizarNotaAluno";
+                //obter descricao da serie/ano
+                SerieAnoForm serieAnoForm = new SerieAnoForm();
+                if (notaBimestreForm.getIdSerieAno() == 0) {
+                    //obter idSerieAno pelo Ano que o aluno estudou na Nikken
+                    int idSerie = notaBimestreForm.obterSeriePorAnoEstudando(conn, notaBimestreForm.getIdAluno(), notaBimestreForm.getAno());
+                    notaBimestreForm.setIdSerieAno(idSerie);
+                }
+
+                String dsSerie = serieAnoForm.obterDsSerieAnoPorID(conn, notaBimestreForm.getIdSerieAno());
+                serieAnoForm.setDsSerieAno(dsSerie);
+                notaBimestreForm.setSerieAnoForm(serieAnoForm);
+
+                //obter dados pessoa fisica por id_pessoa_fisica
+                PessoaFisicaForm pessoaFisicaForm = new PessoaFisicaForm();
+                pessoaFisicaForm = pessoaFisicaForm.obterDadosPessoaFisicaPorID(conn, request.getParameter("idAluno"));
+                AlunoForm alunoForm = new AlunoForm();
+                alunoForm.setNome(pessoaFisicaForm.getNome());
+                notaBimestreForm.setAlunoForm(alunoForm);
+
+                //verificar se é do EF1, EF2 ou Ensino Medio
+                String categoriaEnsino = NotaBimestreDao.getInstance().obterCategoriaEnsinoPorSerie(notaBimestreForm.getIdSerieAno());
+                notaBimestreForm.setCategoriaEnsino(categoriaEnsino);
+
+                //carregar lista de disciplinas por categoria de ensino
+                DisciplinasForm disciplinasForm = new DisciplinasForm();
+                List<DisciplinasForm> listaDisciplinas = disciplinasForm.obterListaDisciplinasPorCategoriaSerie(conn, categoriaEnsino, notaBimestreForm.getIdSerieAno());
+
+                //percorrer as disciplinas e pegar as notas e faltas
+                List<NotaBimestreForm> listaNotasDisciplinas = new ArrayList<>();
+                List<String> listaObservacao = new ArrayList<>();
+                for (DisciplinasForm disciplina : listaDisciplinas) {
+                    //obter Notas e faltas de todos os bimestres por disciplinas
+                    NotaBimestreForm notasFaltasDisciplinas = NotaBimestreDao.getInstance().obterNotasFaltasPorDisciplinaAluno(conn, disciplina.getIdDisciplina(), notaBimestreForm.getAno(), notaBimestreForm.getIdAluno(), notaBimestreForm.getIdSerieAno());
+                    if (notasFaltasDisciplinas.getDisciplinasForm() == null) {
+                        DisciplinasForm discForm = new DisciplinasForm();
+                        discForm.setNomeDisciplina(disciplina.getNomeDisciplina());
+                        discForm.setIdDisciplina(disciplina.getIdDisciplina());
+                        notasFaltasDisciplinas.setDisciplinasForm(discForm);
+                    }
+
+                    notasFaltasDisciplinas.setFaltaTotal(notasFaltasDisciplinas.getFalta1Bimestre() + notasFaltasDisciplinas.getFalta2Bimestre() + notasFaltasDisciplinas.getFalta3Bimestre() + notasFaltasDisciplinas.getFalta4Bimestre());
+
+                    if (notasFaltasDisciplinas.getMedia1Bimestre() >= 0 && notasFaltasDisciplinas.getMedia2Bimestre() >= 0
+                            && notasFaltasDisciplinas.getMedia3Bimestre() >= 0 && notasFaltasDisciplinas.getMedia4Bimestre() >= 0) {
+                        double media = (notasFaltasDisciplinas.getMedia1Bimestre() + notasFaltasDisciplinas.getMedia2Bimestre() + notasFaltasDisciplinas.getMedia3Bimestre() + notasFaltasDisciplinas.getMedia4Bimestre()) / 4;
+                        double mediaArredondada = Math.round(media / 0.5) * 0.5;
+                        notasFaltasDisciplinas.setMediaFinal(mediaArredondada);
+                    }
+
+                    //se a media final for menor que 6.0 verificar se fez recuperacao final e pegar a nota
+                    if (notasFaltasDisciplinas.getMediaFinal() < 6.0) {
+                        String observacaoRecup = "";
+                        RecuperacaoAnualForm recuperacaoAnualForm = new RecuperacaoAnualForm();
+                        double mediaRecupFinal = recuperacaoAnualForm.obterMediaRecupFinalPorAlunoDisciplina(conn, disciplina.getIdDisciplina(), notaBimestreForm.getAno(), notaBimestreForm.getIdAluno(), notaBimestreForm.getIdSerieAno());
+                        if (mediaRecupFinal > 0) {
+                            notasFaltasDisciplinas.setFezProvaRecupAnual(true);
+                            if (mediaRecupFinal >= 6.0) {
+                                notasFaltasDisciplinas.setMediaRecupFinal(mediaRecupFinal);
+                                notasFaltasDisciplinas.setPassouDisciplina(true);
+                                observacaoRecup = "Aluno(a) foi submetivo a recuperação anual e obteve êxito na disciplina: " + disciplina.getNomeDisciplina();
+                                notasFaltasDisciplinas.setResultadoFinal("Aprovado");
+                            } else {
+                                notasFaltasDisciplinas.setMediaRecupFinal(mediaRecupFinal);
+                                notasFaltasDisciplinas.setPassouDisciplina(false);
+                                observacaoRecup = "Aluno(a) foi submetivo a recuperação anual e não obteve êxito na disciplina: " + disciplina.getNomeDisciplina();
+                                notasFaltasDisciplinas.setResultadoFinal("Reprovado");
+                            }
+                            listaObservacao.add(observacaoRecup);
+                        }
+                    } else {
+                        //se a media final for maior ou igual a 6, escreve no resultado final Aprovado
+                        notasFaltasDisciplinas.setResultadoFinal("Aprovado");
+                    }
+
+                    listaNotasDisciplinas.add(notasFaltasDisciplinas);
+                }
+                request.setAttribute("listaNotasDisciplinas", listaNotasDisciplinas);
+
+                if (listaObservacao.size() > 0) {
+                    request.setAttribute("listaObservacao", listaObservacao);
+                }
+
+                //pegar data atual
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date date = new Date();
+                notaBimestreForm.setDataEmissao(dateFormat.format(date));
+
+                request.setAttribute("NotaBimestreForm", notaBimestreForm);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.free(conn);
+        }
+        return mapping.findForward(strForward);
     }
 
     private void pageEditarNota(ActionForm form, HttpServletRequest request, Errors errors) {
@@ -540,25 +652,36 @@ public class NotaBimestreAction extends IDRAction {
         }
     }
 
-    private void pageNotasBimestrais(ActionForm form, HttpServletRequest request, Errors errors) {
+    private ActionForward pageNotasBimestrais(ActionMapping mapping, ActionForm form, HttpServletRequest request, Errors errors) {
         NotaBimestreForm notaBimestreForm = new NotaBimestreForm();
         Connection conn = null;
+        HttpSession session = request.getSession();
+        String strForward = "";
         try {
             conn = connectionPool.getConnection();
-            String idPF = request.getParameter("idPF");
-            notaBimestreForm.setIdAluno(Integer.parseInt(idPF));
-            
-            //obter notas do aluno no ano vigente
-            List<NotaBimestreForm> listaNotas = NotaBimestreDao.getInstance().obterNotasPorAluno(conn, notaBimestreForm.getIdAluno());
-            
-            request.setAttribute("listaNotas", listaNotas);
-            request.setAttribute("NotaBimestreForm", notaBimestreForm);
+
+            Integer idPF = Integer.parseInt(request.getParameter("idPF"));
+            //verificar se o ID é o mesmo que esta na sessao
+            Object idPfSession = session.getAttribute("idPF");
+            if (idPF != idPfSession) {
+                strForward = "fwrError";
+            } else {
+                strForward = "pageNotasBimestrais";
+                notaBimestreForm.setIdAluno(idPF);
+
+                //obter notas do aluno no ano vigente
+                List<NotaBimestreForm> listaNotas = NotaBimestreDao.getInstance().obterNotasPorAluno(conn, notaBimestreForm.getIdAluno());
+
+                request.setAttribute("listaNotas", listaNotas);
+                request.setAttribute("NotaBimestreForm", notaBimestreForm);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             connectionPool.free(conn);
         }
+        return mapping.findForward(strForward);
     }
 
 }

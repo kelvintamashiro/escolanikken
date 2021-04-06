@@ -41,6 +41,7 @@
         <form-bean name="RematriculaForm"  type="br.com.Form.RematriculaForm"/>
         <form-bean name="RecuperacaoAnualForm"  type="br.com.Form.RecuperacaoAnualForm"/>
         <form-bean name="ListaPresencaForm"  type="br.com.Form.ListaPresencaForm"/>
+        <form-bean name="AdvertenciaForm"  type="br.com.Form.AdvertenciaForm"/>
  
     </form-beans>
 
@@ -171,6 +172,7 @@
                    scope="request"
                    validate="false"
                    input="/nota_bimestre.jsp">
+            <forward name="fwrError"                    path="/error.jsp"/>
             <forward name="page"                        path="/nota_bimestre.jsp"/>
             <forward name="pageLancarNota"              path="/lancar_nota_bimestre.jsp"/>
             <forward name="salvarNota"                  path="/lancar_nota_bimestre.jsp"/>
@@ -331,6 +333,22 @@
             <forward name="imprimirDiario"                              path="/lista_presenca_imprimir_diario.jsp"/>
         </action>
         
+        <action    path="/Advertencia"
+                   type="br.com.Action.AdvertenciaAction"
+                   name="AdvertenciaForm"
+                   scope="request"
+                   validate="false"
+                   input="/advertencia.jsp">
+            <forward name="fwrError"                                    path="/error.jsp"/>
+            <forward name="page"                                        path="/advertencia.jsp"/>
+            <forward name="carregarAlunosPorSerie"                      path="/advertencia.jsp"/>
+            <forward name="salvarAdvertencia"                           path="/advertencia.jsp"/>
+            <forward name="pagePesquisar"                               path="/advertencia_pesquisar.jsp"/>
+            <forward name="excluirAdvertencia"                          path="/advertencia_pesquisar.jsp"/>
+            <forward name="imprimirAdvertencia"                         path="/advertencia_imprimir.jsp"/>
+            <forward name="imprimirAdvertenciaAluno"                    path="/advertencia_imprimir.jsp"/>
+            <forward name="pagePesquisarAluno"                          path="/advertencia_pesquisar_aluno.jsp"/>
+        </action>
         
         
     </action-mappings>

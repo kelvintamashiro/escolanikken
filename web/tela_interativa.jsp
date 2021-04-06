@@ -105,6 +105,9 @@
                         <!--Visualizar <br/>Avisos-->
                         Comunicados <br/>Direção
                     </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'Advertencia.do?action=pagePesquisarAluno&idPF=<%=session.getAttribute("idPF").toString()%>'">
+                        Advertência <br/>
+                    </button>
                     <button class="btn-nikken" onclick="window.open('http://webmail.escolanikken.com/')">
                         Acessar <br/> E-mail Nikken
                     </button>
@@ -121,13 +124,6 @@
                     <button class="btn-nikken" onclick="window.location.href = 'gerenciador_professor.jsp'">
                         Gerenciador <br/>de Professor
                     </button>
-                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'Aluno.do?action=pageCadastrar'">
-                                            Cadastro <br/>de Alunos
-                                        </button>
-                                        <button class="btn-nikken" onclick="window.location.href = 'Professor.do?action=pageCadastrar'">
-                                            Cadastro <br/>de Professor
-                                        </button>-->
-                    <!--<button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?action=pagePesquisarPorProfessor'">-->
                     <button class="btn-nikken" onclick="window.location.href = 'planejamento_aulas_page_coordenacao.jsp'">
                         Planejamento <br/>de Aulas
                     </button>
@@ -139,26 +135,23 @@
                     </button>
                 </div>
                 <div class="col-12 col-s-12">
-                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'Aluno.do?action=pageConsultar'">
-                                            Consulta <br/>de Alunos
-                                        </button>
-                                        <button class="btn-nikken" onclick="window.location.href = 'Professor.do?action=pageConsultar'">
-                                            Consulta <br/>de Professor
-                                        </button>-->
                     <button class="btn-nikken" onclick="window.location.href = 'gerenciador_presenca.jsp'">
                         Diário de  <br/>Classe Online
                     </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?action=pageConsulta&idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=professor'">
-                        Consulta <br/>de Notas
-                    </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
-                        Lançamento <br/>de Notas
+                    <button class="btn-nikken" onclick="window.location.href = 'gerenciador_notas.jsp'">
+                        Gerenciador <br/>de Notas
                     </button>
                     <button class="btn-nikken" onclick="window.location.href = 'Comunicados.do'">
                         Comunicados <br/>Professores
                     </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'Comunicados.do?action=pageDirecao'">
+                        Comunicados <br/>Direção
+                    </button>
                     <button class="btn-nikken" onclick="window.location.href = 'Relatorios.do'">
                         Relatórios
+                    </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'Advertencia.do'">
+                        Advertência <br/>
                     </button>
                     <!--                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=visualizarCardapio'">
                                             Cardápio <br/>Nikken
@@ -178,8 +171,8 @@
                     <button class="btn-nikken" onclick="window.location.href = 'Disciplinas.do'">
                         Gerenciador <br/>de Disciplinas
                     </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
-                        Lançamento <br/>de Notas
+                    <button class="btn-nikken" onclick="window.location.href = 'gerenciador_notas.jsp'">
+                        Gerenciador <br/>de Notas
                     </button>
                     <button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?action=pagePesquisarPorProfessor&idPF=<%=session.getAttribute("idPF").toString()%>'">
                         Planejamento <br/>de Aulas
@@ -200,9 +193,9 @@
                     <button class="btn-nikken" onclick="window.location.href = 'planejamento_oficina_page.jsp'">
                         Planejamento <br/>de Oficinas
                     </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?action=pageConsulta&idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=professor'">
+<!--                    <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?action=pageConsulta&idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=professor'">
                         Consulta <br/>de Notas
-                    </button>
+                    </button>-->
                     <button class="btn-nikken" onclick="window.location.href = 'Comunicados.do'">
                         Comunicados <br/>Professores
                     </button>
@@ -212,23 +205,12 @@
                     <button class="btn-nikken" onclick="window.location.href = 'Relatorios.do'">
                         Relatórios
                     </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'Advertencia.do'">
+                        Advertência <br/>
+                    </button>
                 </div>
             </div>
         </logic:equal>
-
-        <!--        <style>
-                    .footer {
-                        position: fixed;
-                        left: 0;
-                        bottom: 0;
-                        width: 100%;
-                        background-color: red;
-                        color: white;
-                        text-align: center;
-                    }
-                </style>-->
-
-
         <div>
             <br/>
             <br/>
