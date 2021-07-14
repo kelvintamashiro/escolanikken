@@ -151,7 +151,7 @@
                         Relatórios
                     </button>
                     <button class="btn-nikken" onclick="window.location.href = 'Advertencia.do'">
-                        Advertência <br/>
+                        Advertência/<br/>Suspensão
                     </button>
                     <!--                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=visualizarCardapio'">
                                             Cardápio <br/>Nikken
@@ -206,7 +206,7 @@
                         Relatórios
                     </button>
                     <button class="btn-nikken" onclick="window.location.href = 'Advertencia.do'">
-                        Advertência <br/>
+                        Advertência/<br/>Suspensão
                     </button>
                 </div>
             </div>

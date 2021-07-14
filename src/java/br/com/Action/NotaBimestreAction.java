@@ -378,7 +378,7 @@ public class NotaBimestreAction extends IDRAction {
 
             //carregar lista de disciplinas por categoria de ensino
             DisciplinasForm disciplinasForm = new DisciplinasForm();
-            List<DisciplinasForm> listaDisciplinas = disciplinasForm.obterListaDisciplinasPorCategoriaSerie(conn, categoriaEnsino, notaBimestreForm.getIdSerieAno());
+            List<DisciplinasForm> listaDisciplinas = disciplinasForm.obterListaDisciplinasPorCategoriaSerie(conn, categoriaEnsino, notaBimestreForm.getIdSerieAno(), notaBimestreForm.getAno());
 
             //percorrer as disciplinas e pegar as notas e faltas
             List<NotaBimestreForm> listaNotasDisciplinas = new ArrayList<>();
@@ -456,9 +456,9 @@ public class NotaBimestreAction extends IDRAction {
         try {
             conn = connectionPool.getConnection();
 
-            Integer idAluno = Integer.parseInt(request.getParameter("idAluno"));
+            int idAluno = Integer.parseInt(request.getParameter("idAluno"));
             //verificar se o ID é o mesmo que esta na sessao
-            Object idPfSession = session.getAttribute("idPF");
+            int idPfSession = (int) session.getAttribute("idPF");
             if (idAluno != idPfSession) {
                 strForward = "fwrError";
             } else {
@@ -488,7 +488,7 @@ public class NotaBimestreAction extends IDRAction {
 
                 //carregar lista de disciplinas por categoria de ensino
                 DisciplinasForm disciplinasForm = new DisciplinasForm();
-                List<DisciplinasForm> listaDisciplinas = disciplinasForm.obterListaDisciplinasPorCategoriaSerie(conn, categoriaEnsino, notaBimestreForm.getIdSerieAno());
+                List<DisciplinasForm> listaDisciplinas = disciplinasForm.obterListaDisciplinasPorCategoriaSerie(conn, categoriaEnsino, notaBimestreForm.getIdSerieAno(), notaBimestreForm.getAno());
 
                 //percorrer as disciplinas e pegar as notas e faltas
                 List<NotaBimestreForm> listaNotasDisciplinas = new ArrayList<>();
@@ -660,9 +660,9 @@ public class NotaBimestreAction extends IDRAction {
         try {
             conn = connectionPool.getConnection();
 
-            Integer idPF = Integer.parseInt(request.getParameter("idPF"));
+            int idPF = Integer.parseInt(request.getParameter("idPF"));
             //verificar se o ID é o mesmo que esta na sessao
-            Object idPfSession = session.getAttribute("idPF");
+            int idPfSession = (int) session.getAttribute("idPF");
             if (idPF != idPfSession) {
                 strForward = "fwrError";
             } else {

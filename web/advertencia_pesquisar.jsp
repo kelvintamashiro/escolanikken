@@ -58,7 +58,8 @@
                         <td width="10%"><b>Data Advertência</b> </td>
                         <td width="15%"><b>Aluno</b> </td>
                         <td width="10%"><b>Série/Ano</b> </td>
-                        <td width="55%"><b>Advertência</b> </td>
+                        <td width="5%"><b>Tipo</b> </td>
+                        <td width="50%"><b>Advertência</b> </td>
                         <td width="5%">&nbsp;</td>
                         <td width="5%">&nbsp;</td>
                     </tr>
@@ -73,6 +74,10 @@
                                 </td>
                                 <td>
                                     <bean:write name="lista" property="dsSerieAno"/>
+                                </td>
+                                <td>
+                                    <logic:equal name="lista" property="tipoAdvSusp" value="0">Advertência</logic:equal>
+                                    <logic:equal name="lista" property="tipoAdvSusp" value="1">Suspensão</logic:equal>
                                 </td>
                                 <td>
                                     <bean:write name="lista" property="dsTipoAdvertencia"/>

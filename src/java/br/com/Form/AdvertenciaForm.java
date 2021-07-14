@@ -33,7 +33,16 @@ public class AdvertenciaForm extends FormBasico {
     private String dataAdvertencia;
     private String dataPorExtenso;
     private String[] selectedOptions;
+    private String tipoAdvSusp;
 
+    public String getTipoAdvSusp() {
+        return tipoAdvSusp;
+    }
+
+    public void setTipoAdvSusp(String tipoAdvSusp) {
+        this.tipoAdvSusp = tipoAdvSusp;
+    }
+    
     public String getIdAdvertenciaCripto() {
         return idAdvertenciaCripto;
     }
@@ -156,19 +165,20 @@ public class AdvertenciaForm extends FormBasico {
     }
 
     public void salvarAdvertencia(Connection conn, AdvertenciaForm advertenciaForm, String idAdvertencias) throws SQLException {
-        String query = "INSERT INTO advertencia_aluno (id_aluno, id_serie_ano, id_advertencia, observacao, data_advertencia) VALUES (?,?,?,?, ?)";
+        String query = "INSERT INTO advertencia_aluno (id_aluno, id_serie_ano, id_advertencia, observacao, data_advertencia, tipo_advertencia) VALUES (?,?,?,?,?,?)";
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setInt(1, advertenciaForm.getIdAluno());
         prep.setInt(2, advertenciaForm.getIdSerieAno());
         prep.setString(3, idAdvertencias);
         prep.setString(4, advertenciaForm.getObservacao());
         prep.setString(5, advertenciaForm.getDataAdvertencia());
+        prep.setString(6, advertenciaForm.getTipoAdvSusp());
         prep.execute();
         prep.close();
     }
 
     public List<AdvertenciaForm> obterListaAdvertenciasAlunos(Connection conn) throws SQLException {
-        String query = "select a.id, a.id_aluno, a.id_serie_ano, a.id_advertencia, a.observacao, a.data_advertencia, pf.nome, d.descricao"
+        String query = "select a.id, a.id_aluno, a.id_serie_ano, a.id_advertencia, a.observacao, a.data_advertencia, a.tipo_advertencia, pf.nome, d.descricao"
                 + " from advertencia_aluno a, pessoa_fisica pf, descricao_serie_ano d"
                 + " where a.id_aluno = pf.id"
                 + " and a.id_serie_ano = d.id"
@@ -183,6 +193,7 @@ public class AdvertenciaForm extends FormBasico {
             advForm.setIdSerieAno(rs.getInt("id_serie_ano"));
             advForm.setNomeAluno(rs.getString("nome"));
             advForm.setObservacao(rs.getString("observacao"));
+            advForm.setTipoAdvSusp(rs.getString("tipo_advertencia"));
             advForm.setDataAdvertencia(IDRDate.formatSQLDate(rs.getString("data_advertencia")));
             advForm.setDsSerieAno(rs.getString("descricao"));
             //obter descricao advertencias
@@ -197,7 +208,7 @@ public class AdvertenciaForm extends FormBasico {
     }
     
     public List<AdvertenciaForm> obterListaAdvertenciasAlunos(Connection conn, int idAluno) throws SQLException {
-        String query = "select a.id, a.id_aluno, a.id_serie_ano, a.id_advertencia, a.observacao, a.data_advertencia, pf.nome, d.descricao"
+        String query = "select a.id, a.id_aluno, a.id_serie_ano, a.id_advertencia, a.observacao, a.data_advertencia, a.tipo_advertencia, pf.nome, d.descricao"
                 + " from advertencia_aluno a, pessoa_fisica pf, descricao_serie_ano d"
                 + " where a.id_aluno = pf.id"
                 + " and a.id_serie_ano = d.id"
@@ -219,6 +230,7 @@ public class AdvertenciaForm extends FormBasico {
             advForm.setIdSerieAno(rs.getInt("id_serie_ano"));
             advForm.setNomeAluno(rs.getString("nome"));
             advForm.setObservacao(rs.getString("observacao"));
+            advForm.setTipoAdvSusp(rs.getString("tipo_advertencia"));
             advForm.setDataAdvertencia(IDRDate.formatSQLDate(rs.getString("data_advertencia")));
             advForm.setDsSerieAno(rs.getString("descricao"));
             //obter descricao advertencias
@@ -233,7 +245,7 @@ public class AdvertenciaForm extends FormBasico {
     }
 
     public AdvertenciaForm obterListaAdvertenciasPorID(Connection conn, String idAdvertencia) throws SQLException {
-        String query = "select a.id, a.id_aluno, a.id_serie_ano, a.id_advertencia, a.observacao, a.data_advertencia, pf.nome, d.descricao, d.categoria"
+        String query = "select a.id, a.id_aluno, a.id_serie_ano, a.id_advertencia, a.observacao, a.data_advertencia, a.tipo_advertencia, pf.nome, d.descricao, d.categoria"
                 + " from advertencia_aluno a, pessoa_fisica pf, descricao_serie_ano d"
                 + " where a.id_aluno = pf.id"
                 + " and a.id_serie_ano = d.id"
@@ -250,6 +262,7 @@ public class AdvertenciaForm extends FormBasico {
             advForm.setNomeAluno(rs.getString("nome"));
             advForm.setObservacao(rs.getString("observacao"));
             advForm.setDataAdvertencia(rs.getString("data_advertencia"));
+            advForm.setTipoAdvSusp(rs.getString("tipo_advertencia"));
             advForm.setDsSerieAno(rs.getString("descricao"));
             advForm.setDsCategoriaSerie(rs.getString("categoria"));
             //obter descricao advertencias

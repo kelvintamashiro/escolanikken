@@ -83,6 +83,17 @@
                         <tr>
                             <td colspan="2">
                                 <div class="col-lg-12">
+                                    <label for="usr">Advertência ou Suspensão:</label>
+                                    <html:select name="AdvertenciaForm" property="tipoAdvSusp" styleId="tipoAdvSusp" styleClass="form-control">
+                                        <html:option value="0">Advertência</html:option>
+                                        <html:option value="1">Suspensão</html:option>
+                                    </html:select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div class="col-lg-12">
                                     <label for="usr">Aluno:</label>
 
                                     <html:select name="AdvertenciaForm" property="idAluno" styleId="idAluno" styleClass="form-control">
@@ -96,14 +107,19 @@
                             <tr>
                                 <td colspan="2">
                                     <div class="col-lg-12">
-                                        <label for="usr">Tipo Advertência:</label>
-                                        <logic:iterate name="listaAdvertencia" id="lista" scope="session">
-                                            <html:multibox name="AdvertenciaForm" property="selectedOptions"> 
-                                                <bean:write name="lista" property="idAdvertencia"/> 
-                                            </html:multibox>
-                                            <bean:write name="lista" property="dsTipoAdvertencia"/>
-                                            <br/>
-                                        </logic:iterate>
+                                        <label for="usr">Descrição:</label>
+                                        <table width="100%">
+                                            <logic:iterate name="listaAdvertencia" id="lista" scope="session">
+                                                <tr>
+                                                    <td>
+                                                        <html:multibox name="AdvertenciaForm" property="selectedOptions"> 
+                                                            <bean:write name="lista" property="idAdvertencia"/> 
+                                                        </html:multibox>
+                                                        <bean:write name="lista" property="dsTipoAdvertencia"/>
+                                                    </td>
+                                                </tr>
+                                            </logic:iterate>
+                                        </table>
                                     </div>
                                 </td>
                             </tr>

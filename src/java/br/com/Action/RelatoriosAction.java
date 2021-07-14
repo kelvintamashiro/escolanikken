@@ -38,7 +38,8 @@ public class RelatoriosAction extends IDRAction {
         } else if (action.equals("relListaAniversario")) {
             this.relListaAniversario(form, request, errors);
         } else if (action.equals("pageRelNotasMensalPorBimestre") || action.equals("pageRelNotasBimestralPorBimestre")
-                || action.equals("pageRelNotasProducaoPorBimestre") || action.equals("pageRelNotasMediaPorBimestre") || action.equals("pageNotasPorAluno")) {
+                || action.equals("pageRelNotasProducaoPorBimestre") || action.equals("pageRelNotasMediaPorBimestre")
+                || action.equals("pageNotasPorAluno") || action.equals("pageRelFaltasPorBimestre")) {
             this.pageRelNotasPorBimestre(form, request, errors);
         } else if (action.equals("relNotasMensalPorBimestre") || action.equals("relNotasBimestralPorBimestre")
                 || action.equals("relNotasProducaoPorBimestre") || action.equals("relNotasMediaPorBimestre")) {
@@ -59,6 +60,12 @@ public class RelatoriosAction extends IDRAction {
             this.carregarAlunosPorSerie(form, request, errors);
         } else if (action.equals("relNotasPorAluno")) {
             this.relNotasPorAluno(form, request, errors);
+        } else if (action.equals("pageRelSinteticoMediaPorSerie")) {
+            this.pageRelNotasPorBimestre(form, request, errors);
+        } else if (action.equals("relSinteticoMediaPorSerie")) {
+            this.relSinteticoMediaPorSerie(form, request, errors);
+        } else if (action.equals("relFaltasPorBimestre")) {
+            this.relFaltasPorBimestre(form, request, errors);
         }
 
         return mapping.findForward(forward);
@@ -374,13 +381,77 @@ public class RelatoriosAction extends IDRAction {
         Connection conn = null;
         try {
             conn = connectionPool.getConnection();
-            
-            //obter notas por ID do aluno
-             String idAluno = request.getParameter("idAluno");
-             List<NotaBimestreForm> listaNotas = NotaBimestreDao.getInstance().obterNotasPorAluno(conn, Integer.parseInt(idAluno));
 
-             request.setAttribute("listaNotas", listaNotas);
-             request.setAttribute("NotaBimestreForm", notaBimestreForm);
+            //obter notas por ID do aluno
+            String idAluno = request.getParameter("idAluno");
+            List<NotaBimestreForm> listaNotas = NotaBimestreDao.getInstance().obterNotasPorAluno(conn, Integer.parseInt(idAluno));
+
+            request.setAttribute("listaNotas", listaNotas);
+            request.setAttribute("NotaBimestreForm", notaBimestreForm);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.free(conn);
+        }
+    }
+
+    private void relSinteticoMediaPorSerie(ActionForm form, HttpServletRequest request, Errors errors) {
+        RelatoriosForm relForm = (RelatoriosForm) form;
+        Connection conn = null;
+        try {
+            conn = connectionPool.getConnection();
+
+            //carregar lista dos alunos ativos por serie/ano
+            String idSerieAno = request.getParameter("idSerieAno");
+            String ano = request.getParameter("ano");
+            AlunoForm alunoForm = new AlunoForm();
+            List<AlunoForm> listaAlunos = alunoForm.obterAlunosPorSerie(conn, idSerieAno);
+
+            //obter lista de disciplinas por serie/ano
+            String categoriaEnsino = NotaBimestreDao.getInstance().obterCategoriaEnsinoPorSerie(Integer.parseInt(idSerieAno));
+            DisciplinasForm disciplinasForm = new DisciplinasForm();
+            List<DisciplinasForm> listaDisciplinas = disciplinasForm.obterListaDisciplinasPorCategoriaSerie(conn, categoriaEnsino, Integer.parseInt(idSerieAno), Integer.parseInt(ano));
+            request.setAttribute("listaDisciplinas", listaDisciplinas);
+            request.setAttribute("tamDisciplinas", listaDisciplinas.size());
+
+            //percorrer para cada aluno as medias bimestrais de todas as disciplinas
+            List<RelatoriosForm> listaConsolidado = new ArrayList<>();
+            for (AlunoForm dadosAluno : listaAlunos) {
+                RelatoriosForm relatoriosForm = new RelatoriosForm();
+                relatoriosForm.setAlunoForm(dadosAluno);
+
+                List<NotaBimestreForm> listaMediasDisciplina = new ArrayList<>();
+                for (DisciplinasForm dadosDisciplina : listaDisciplinas) {
+                    //obter notas dos 4 bimestres por aluno e por disciplina
+                    NotaBimestreForm mediaBimestraisDisciplina = RelatoriosDao.getInstance().obterMediasBimestraisPorAlunoDisciplina(conn, dadosAluno.getIdAluno(), dadosDisciplina.getIdDisciplina(), ano);
+                    listaMediasDisciplina.add(mediaBimestraisDisciplina);
+                }
+                relatoriosForm.setListaNotaBimestreForm(listaMediasDisciplina);
+                listaConsolidado.add(relatoriosForm);
+            }
+
+            request.setAttribute("listaConsolidado", listaConsolidado);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.free(conn);
+        }
+    }
+
+    private void relFaltasPorBimestre(ActionForm form, HttpServletRequest request, Errors errors) {
+        RelatoriosForm relForm = (RelatoriosForm) form;
+        Connection conn = null;
+        try {
+            conn = connectionPool.getConnection();
+
+            String nrBimestre = request.getParameter("nrBimestre");
+            String ano = request.getParameter("ano");
+            String idSerieAno = request.getParameter("idSerieAno");
+
+            List<RelatoriosForm> listaRelFaltas = RelatoriosDao.getInstance().obterListaFaltasPorBimestre(conn, idSerieAno, nrBimestre, ano);
+            request.setAttribute("listaRelFaltas", listaRelFaltas);
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

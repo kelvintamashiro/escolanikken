@@ -140,12 +140,15 @@ public class DisciplinasForm extends FormBasico {
         return listaDisciplinas;
     }
     
-    public List<DisciplinasForm> obterListaDisciplinasPorCategoriaSerie(Connection conn, String categoriaEnsino, int idSerie) throws SQLException {
+    public List<DisciplinasForm> obterListaDisciplinasPorCategoriaSerie(Connection conn, String categoriaEnsino, int idSerie, int anoVigente) throws SQLException {
         StringBuilder sb = new StringBuilder();
         sb.append("select * from disciplina d");
         sb.append(" where d.categoria_ensino = ?");
         if(idSerie == 20 || idSerie == 30) {
             sb.append(" and d.id_disciplina not in (15)");
+        }
+        if(anoVigente > 2020) {
+            sb.append(" and d.id_disciplina not in (13)");
         }
         sb.append(" order by d.nome_disciplina");
         PreparedStatement prep = conn.prepareStatement(sb.toString());

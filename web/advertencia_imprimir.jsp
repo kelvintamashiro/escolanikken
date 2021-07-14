@@ -42,7 +42,8 @@
                 </tr>
                 <tr>
                     <td align="center" style="padding-top: 50px; padding-bottom: 50px">
-                        <b><u>CARTA DE ADVERTÊNCIA</u></b>
+                        <logic:equal name="AdvertenciaForm" property="tipoAdvSusp" value="0"><b><u>CARTA DE ADVERTÊNCIA</u></b></logic:equal>
+                        <logic:equal name="AdvertenciaForm" property="tipoAdvSusp" value="1"><b><u>CARTA DE SUSPENSÃO</u></b></logic:equal>
                     </td>
                 </tr>
                 <tr>

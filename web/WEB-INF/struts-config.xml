@@ -234,6 +234,10 @@
             <forward name="pageNotasPorAluno"                   path="/rel_notas_aluno_page.jsp"/>
             <forward name="carregarAlunosPorSerie"              path="/rel_notas_aluno_page.jsp"/>
             <forward name="relNotasPorAluno"                    path="/rel_notas_aluno.jsp"/>
+            <forward name="pageRelSinteticoMediaPorSerie"       path="/rel_sintetico_serie_page.jsp"/>
+            <forward name="relSinteticoMediaPorSerie"           path="/rel_sintetico_serie.jsp"/>
+            <forward name="pageRelFaltasPorBimestre"            path="/rel_faltas_serie_page.jsp"/>
+            <forward name="relFaltasPorBimestre"                path="/rel_faltas_serie.jsp"/>
 
         </action>
         

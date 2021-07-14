@@ -42,8 +42,7 @@ public class RelatoriosDao {
                 + " and pf.status = 1"
                 + " order by d.ordem, d.id, pf.nome";
 
-        try (PreparedStatement prep = conn.prepareStatement(query);
-                ResultSet rs = prep.executeQuery()) {
+        try ( PreparedStatement prep = conn.prepareStatement(query);  ResultSet rs = prep.executeQuery()) {
             while (rs.next()) {
                 RelatoriosForm relForm = new RelatoriosForm();
                 AlunoForm alunoForm = new AlunoForm();
@@ -78,8 +77,7 @@ public class RelatoriosDao {
                 + " and pf.status = 1"
                 + " order by mes, dia, pf.nome";
 
-        try (PreparedStatement prep = conn.prepareStatement(query);
-                ResultSet rs = prep.executeQuery()) {
+        try ( PreparedStatement prep = conn.prepareStatement(query);  ResultSet rs = prep.executeQuery()) {
             while (rs.next()) {
                 RelatoriosForm relForm = new RelatoriosForm();
                 AlunoForm alunoForm = new AlunoForm();
@@ -157,10 +155,10 @@ public class RelatoriosDao {
                 + " and h.serie_ano = ds.id"
                 + " and h.data_cadastro between ? and ?"
                 + " order by h.data_cadastro desc";
-        try (PreparedStatement prep = conn.prepareStatement(query)) {
+        try ( PreparedStatement prep = conn.prepareStatement(query)) {
             prep.setString(1, IDRDate.parseDataIso(relForm.getDataInicio()));
             prep.setString(2, IDRDate.parseDataIso(relForm.getDataFim()));
-            try (ResultSet rs = prep.executeQuery()) {
+            try ( ResultSet rs = prep.executeQuery()) {
                 while (rs.next()) {
                     RelatoriosForm relatoriosForm = new RelatoriosForm();
                     AlunoForm alunoForm = new AlunoForm();
@@ -201,11 +199,11 @@ public class RelatoriosDao {
                 + " group by n.id_aluno"
                 + " order by n.serie_ano, media_total desc"
                 + " limit " + qtdMelhoresNotas;
-        try (PreparedStatement prep = conn.prepareStatement(query)) {
+        try ( PreparedStatement prep = conn.prepareStatement(query)) {
             prep.setString(1, ano);
             prep.setString(2, nrBimestre);
             prep.setInt(3, serieAno);
-            try (ResultSet rs = prep.executeQuery()) {
+            try ( ResultSet rs = prep.executeQuery()) {
                 while (rs.next()) {
                     RelatoriosForm relForm = new RelatoriosForm();
                     AlunoForm alunoForm = new AlunoForm();
@@ -236,8 +234,7 @@ public class RelatoriosDao {
                 + " and pf.status = 1"
                 + " order by d.ordem, d.id, pf.nome";
 
-        try (PreparedStatement prep = conn.prepareStatement(query);
-                ResultSet rs = prep.executeQuery()) {
+        try ( PreparedStatement prep = conn.prepareStatement(query);  ResultSet rs = prep.executeQuery()) {
             while (rs.next()) {
                 RelatoriosForm relForm = new RelatoriosForm();
                 AlunoForm alunoForm = new AlunoForm();
@@ -354,12 +351,104 @@ public class RelatoriosDao {
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setString(1, sexo);
         ResultSet rs = prep.executeQuery();
-        if(rs.next()){
+        if (rs.next()) {
             qtdPorSexo = rs.getInt("qtdTotal");
         }
         rs.close();
         prep.close();
-        
+
         return qtdPorSexo;
     }
+
+    public NotaBimestreForm obterMediasBimestraisPorAlunoDisciplina(Connection conn, int idAluno, int idDisciplina, String ano) throws SQLException {
+        String query = "select pf.nome, n.id_aluno, n.id_disciplina, d.nome_disciplina, n.media, n.nr_bimestre"
+                + " from nota_bimestre n, disciplina d, pessoa_fisica pf"
+                + " where n.id_disciplina = d.id_disciplina"
+                + " and n.id_aluno = pf.id"
+                + " and n.id_aluno = ?"
+                + " and n.id_disciplina = ?"
+                + " and n.ano = ?"
+                + " order by n.nr_bimestre";
+        PreparedStatement prep = conn.prepareStatement(query);
+        prep.setInt(1, idAluno);
+        prep.setInt(2, idDisciplina);
+        prep.setString(3, ano);
+        ResultSet rs = prep.executeQuery();
+        NotaBimestreForm notaBimestreForm = new NotaBimestreForm();
+        while (rs.next()) {
+            notaBimestreForm.setIdAluno(rs.getInt("id_aluno"));
+            notaBimestreForm.setNomeAluno(rs.getString("nome"));
+            notaBimestreForm.setIdDisciplina(rs.getInt("id_disciplina"));
+            notaBimestreForm.setNomeDisciplina(rs.getString("nome_disciplina"));
+            int nrBimestre = rs.getInt("nr_bimestre");
+            switch (nrBimestre) {
+                case 1:
+                    String mediaBim1 = rs.getString("media");
+                    if (mediaBim1 != null && !mediaBim1.equals("")) {
+                        notaBimestreForm.setMedia1Bimestre(rs.getDouble("media"));
+                    }
+                    break;
+                case 2:
+                    String mediaBim2 = rs.getString("media");
+                    if (mediaBim2 != null && !mediaBim2.equals("")) {
+                        notaBimestreForm.setMedia2Bimestre(rs.getDouble("media"));
+                    }
+                    break;
+                case 3:
+                    String mediaBim3 = rs.getString("media");
+                    if (mediaBim3 != null && !mediaBim3.equals("")) {
+                        notaBimestreForm.setMedia3Bimestre(rs.getDouble("media"));
+                    }
+                    break;
+                case 4:
+                    String mediaBim4 = rs.getString("media");
+                    if (mediaBim4 != null && !mediaBim4.equals("")) {
+                        notaBimestreForm.setMedia4Bimestre(rs.getDouble("media"));
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+        }
+        rs.close();
+        prep.close();
+
+        return notaBimestreForm;
+    }
+
+    public List<RelatoriosForm> obterListaFaltasPorBimestre(Connection conn, String idSerieAno, String nrBimestre, String ano) throws SQLException {
+        List<RelatoriosForm> listaRelFaltas = new ArrayList<>();
+        String query = "select d.nome_disciplina, pf.nome, SUM(l.qtd_falta) as qtd_faltas,"
+                + " l.nr_bimestre, l.ano"
+                + " from lista_presenca l , disciplina d, pessoa_fisica pf"
+                + " where l.id_disciplina = d.id_disciplina"
+                + " and l.id_aluno = pf.id"
+                + " and l.id_serie = ?"
+                + " and l.nr_bimestre = ?"
+                + " and l.ano = ?"
+                + " group by l.id_disciplina, l.id_aluno"
+                + " order by d.nome_disciplina, pf.nome";
+        
+        PreparedStatement prep = conn.prepareStatement(query);
+        prep.setString(1, idSerieAno);
+        prep.setString(2, nrBimestre);
+        prep.setString(3, ano);
+        ResultSet rs = prep.executeQuery();
+        while(rs.next()) {
+            RelatoriosForm relForm = new RelatoriosForm();
+            relForm.setNomeDisciplina(rs.getString("nome_disciplina"));
+            relForm.setNomeAluno(rs.getString("nome"));
+            relForm.setQtdFaltas(rs.getInt("qtd_faltas"));
+            relForm.setNrBimestre(rs.getInt("nr_bimestre"));
+            relForm.setAno(rs.getInt("ano"));
+            listaRelFaltas.add(relForm);
+        }
+        rs.close();
+        prep.close();
+        
+        return listaRelFaltas;
+        
+    }
+
 }

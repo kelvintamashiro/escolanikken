@@ -149,6 +149,22 @@
                         <a href="Relatorios.do?action=pageNotasPorAluno" class="btn btn-green">Visualizar</a>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        Relatório de Médias Bimestrais Por Série/Ano
+                    </td>
+                    <td>
+                        <a href="Relatorios.do?action=pageRelSinteticoMediaPorSerie" class="btn btn-green">Visualizar</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Relatório de Faltas Bimestrais Por Série/Ano
+                    </td>
+                    <td>
+                        <a href="Relatorios.do?action=pageRelFaltasPorBimestre" class="btn btn-green">Visualizar</a>
+                    </td>
+                </tr>
             </table>
         </div>
 

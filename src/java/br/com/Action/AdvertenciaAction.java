@@ -15,6 +15,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -143,10 +144,10 @@ public class AdvertenciaAction extends IDRAction {
         try {
             conn = connectionPool.getConnection();
 
-            Integer idAluno = Integer.parseInt(request.getParameter("idPF"));
+            int idAluno = Integer.parseInt(request.getParameter("idPF"));
 
             //verificar se o ID é o mesmo que esta na sessao
-            Object idPfSession = session.getAttribute("idPF");
+            int idPfSession = (int) session.getAttribute("idPF");
             if (idAluno != idPfSession) {
                 strForward = "fwrError";
             } else {
@@ -178,8 +179,9 @@ public class AdvertenciaAction extends IDRAction {
             advertenciaForm = advertenciaForm.obterListaAdvertenciasPorID(conn, idAdvertencia);
 
             DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            Date date = (Date) formatter.parse(advertenciaForm.getDataAdvertencia());
-            String dataExtenso = IDRDate.retornarDataPorExtenso(date);
+            Date data = (Date) formatter.parse(advertenciaForm.getDataAdvertencia());
+            DateFormat dfl = DateFormat.getDateInstance(DateFormat.LONG, new Locale("pt", "BR"));
+            String dataExtenso = dfl.format(data);
 
             advertenciaForm.setDataPorExtenso(dataExtenso);
             request.setAttribute("AdvertenciaForm", advertenciaForm);
@@ -203,8 +205,9 @@ public class AdvertenciaAction extends IDRAction {
             advertenciaForm = advertenciaForm.obterListaAdvertenciasPorID(conn, idDecripto);
 
             DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            Date date = (Date) formatter.parse(advertenciaForm.getDataAdvertencia());
-            String dataExtenso = IDRDate.retornarDataPorExtenso(date);
+            Date data = (Date) formatter.parse(advertenciaForm.getDataAdvertencia());
+            DateFormat dfl = DateFormat.getDateInstance(DateFormat.LONG, new Locale("pt", "BR"));
+            String dataExtenso = dfl.format(data);
 
             advertenciaForm.setDataPorExtenso(dataExtenso);
             request.setAttribute("AdvertenciaForm", advertenciaForm);

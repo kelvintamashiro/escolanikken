@@ -19,6 +19,7 @@ public class RelatoriosForm extends FormBasico {
     private List<AlunoForm> listaAlunos;
     private DisciplinasForm disciplinasForm;
     private NotaBimestreForm notaBimestreForm;
+    private List<NotaBimestreForm> listaNotaBimestreForm;
     private String dataInicio;
     private String dataFim;
     private int nrBimestre;
@@ -28,7 +29,42 @@ public class RelatoriosForm extends FormBasico {
     private int qtdFeminino;
     private int qtdAmbosSexo;
     private String nomeSerieAno;
+    private String nomeAluno;
+    private String nomeDisciplina;
+    private int qtdFaltas;
 
+    public String getNomeAluno() {
+        return nomeAluno;
+    }
+
+    public void setNomeAluno(String nomeAluno) {
+        this.nomeAluno = nomeAluno;
+    }
+
+    public String getNomeDisciplina() {
+        return nomeDisciplina;
+    }
+
+    public void setNomeDisciplina(String nomeDisciplina) {
+        this.nomeDisciplina = nomeDisciplina;
+    }
+
+    public int getQtdFaltas() {
+        return qtdFaltas;
+    }
+
+    public void setQtdFaltas(int qtdFaltas) {
+        this.qtdFaltas = qtdFaltas;
+    }
+    
+    public List<NotaBimestreForm> getListaNotaBimestreForm() {
+        return listaNotaBimestreForm;
+    }
+
+    public void setListaNotaBimestreForm(List<NotaBimestreForm> listaNotaBimestreForm) {
+        this.listaNotaBimestreForm = listaNotaBimestreForm;
+    }
+    
     public List<AlunoForm> getListaAlunos() {
         return listaAlunos;
     }
