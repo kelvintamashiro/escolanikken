@@ -36,7 +36,7 @@
         <jsp:include page="topo.jsp"/>
 
         <logic:equal name="tipoPerfil" scope="session" value="professor">
-            <div class="row" align="center" style="padding-top: 50px">
+            <div class="row" align="center">
                 <div class="col-12 col-s-12">
                     <button class="btn-nikken" onclick="window.location.href = 'Aluno.do?action=pageConsultar'">
                         Consulta <br/>de Alunos
@@ -51,7 +51,7 @@
                         Recuperação <br/>Anual
                     </button>
                 </div>
-                <div class="col-12 col-s-12">
+                <div class="col-12 col-s-12" style="margin-top: -25px">
                     <button class="btn-nikken" onclick="window.location.href = 'gerenciador_presenca.jsp'">
                         Diário de  <br/>Classe Online
                     </button>
@@ -64,12 +64,18 @@
                     <button class="btn-nikken" onclick="window.location.href = 'Comunicados.do'">
                         Comunicados <br/>Professores
                     </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'Relatorios.do'">
-                        Relatórios
-                    </button>
+
                     <!--                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=visualizarCardapio'">
                                             Cardápio <br/>Nikken
                                         </button>-->
+                </div>
+                <div class="col-12 col-s-12" style="margin-top: -25px">
+                    <button class="btn-nikken" onclick="window.location.href = 'Relatorios.do'">
+                        Relatórios
+                    </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'gerenciador_pauta.jsp'">
+                        Gerenciador<br/>de Pauta
+                    </button>
                 </div>
             </div>
         </logic:equal>
@@ -111,8 +117,7 @@
                     <button class="btn-nikken" onclick="window.open('http://webmail.escolanikken.com/')">
                         Acessar <br/> E-mail Nikken
                     </button>
-
-                </div>
+                </div>                       
             </div>
         </logic:equal>
         <logic:equal name="tipoPerfil" scope="session" value="coordenacao">
@@ -134,7 +139,7 @@
                         Recuperação <br/>Anual
                     </button>
                 </div>
-                <div class="col-12 col-s-12">
+                <div class="col-12 col-s-12" style="margin-top: -25px">
                     <button class="btn-nikken" onclick="window.location.href = 'gerenciador_presenca.jsp'">
                         Diário de  <br/>Classe Online
                     </button>
@@ -147,15 +152,17 @@
                     <button class="btn-nikken" onclick="window.location.href = 'Comunicados.do?action=pageDirecao'">
                         Comunicados <br/>Direção
                     </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'Relatorios.do'">
-                        Relatórios
-                    </button>
                     <button class="btn-nikken" onclick="window.location.href = 'Advertencia.do'">
                         Advertência/<br/>Suspensão
                     </button>
-                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=visualizarCardapio'">
-                                            Cardápio <br/>Nikken
-                                        </button>-->
+                </div>
+                <div class="col-12 col-s-12" style="margin-top: -25px">
+                    <button class="btn-nikken" onclick="window.location.href = 'Relatorios.do'">
+                        Relatórios
+                    </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'gerenciador_pauta.jsp'">
+                        Gerenciador<br/>de Pauta
+                    </button>
                 </div>
             </div>
         </logic:equal>
@@ -177,36 +184,45 @@
                     <button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?action=pagePesquisarPorProfessor&idPF=<%=session.getAttribute("idPF").toString()%>'">
                         Planejamento <br/>de Aulas
                     </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'RecuperacaoAnual.do'">
-                        Recuperação <br/>Anual
-                    </button>
 
-
-                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=pageCardapio'">
-                                            Cardápio <br/>Nikken
-                                        </button>-->
                 </div>
-                <div class="col-12 col-s-12">
+                <div class="col-12 col-s-12" style="margin-top: -25px">
                     <button class="btn-nikken" onclick="window.location.href = 'gerenciador_presenca.jsp'">
                         Diário de  <br/>Classe Online
                     </button>
                     <button class="btn-nikken" onclick="window.location.href = 'planejamento_oficina_page.jsp'">
                         Planejamento <br/>de Oficinas
                     </button>
-<!--                    <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?action=pageConsulta&idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=professor'">
-                        Consulta <br/>de Notas
-                    </button>-->
                     <button class="btn-nikken" onclick="window.location.href = 'Comunicados.do'">
                         Comunicados <br/>Professores
                     </button>
                     <button class="btn-nikken" onclick="window.location.href = 'Comunicados.do?action=pageDirecao'">
                         Comunicados <br/>Direção
                     </button>
+
+                    <button class="btn-nikken" onclick="window.location.href = 'Advertencia.do'">
+                        Advertência/<br/>Suspensão
+                    </button>
+                </div>
+                <div class="col-12 col-s-12" style="margin-top: -25px">
                     <button class="btn-nikken" onclick="window.location.href = 'Relatorios.do'">
                         Relatórios
                     </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'Advertencia.do'">
-                        Advertência/<br/>Suspensão
+
+                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'Pauta.do?action=pagePerfilAluno'">
+                                            Perfil do Aluno/<br/>Pauta
+                                        </button>
+                                        <button class="btn-nikken" onclick="window.location.href = 'Pauta.do?action=pageCriarPautaBimestre'">
+                                            Crição Pauta<br/>por Bimestre
+                                        </button>
+                                        <button class="btn-nikken" onclick="window.location.href = 'Pauta.do?action=pagePautaAlunoBimestre'">
+                                            Pauta<br/>por Aluno
+                                        </button>-->
+                    <button class="btn-nikken" onclick="window.location.href = 'RecuperacaoAnual.do'">
+                        Recuperação <br/>Anual
+                    </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'gerenciador_pauta.jsp'">
+                        Gerenciador<br/>de Pauta
                     </button>
                 </div>
             </div>

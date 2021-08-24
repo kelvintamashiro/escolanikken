@@ -54,6 +54,7 @@
                     <td><b>Disciplina</b></td>
                     <td><b>Aluno</b></td>
                     <td><b>Qtd. Faltas</b></td>
+                    <td><b>Qtd. Aulas</b></td>
                     <td><b>Bimestre</b></td>
                     <td><b>Ano</b></td>
                 </tr>
@@ -67,6 +68,9 @@
                         </td>
                         <td style="font-size: 11px" valign="middle">
                             <bean:write name="lista" property="qtdFaltas"/>
+                        </td>
+                        <td style="font-size: 11px" valign="middle">
+                            <bean:write name="lista" property="qtdAulas"/>
                         </td>
                         <td style="font-size: 11px" valign="middle">
                             <bean:write name="lista" property="nrBimestre"/>º Bimestre

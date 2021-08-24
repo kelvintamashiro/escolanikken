@@ -42,6 +42,7 @@
         <form-bean name="RecuperacaoAnualForm"  type="br.com.Form.RecuperacaoAnualForm"/>
         <form-bean name="ListaPresencaForm"  type="br.com.Form.ListaPresencaForm"/>
         <form-bean name="AdvertenciaForm"  type="br.com.Form.AdvertenciaForm"/>
+        <form-bean name="PautaForm"  type="br.com.Form.PautaForm"/>
  
     </form-beans>
 
@@ -352,6 +353,31 @@
             <forward name="imprimirAdvertencia"                         path="/advertencia_imprimir.jsp"/>
             <forward name="imprimirAdvertenciaAluno"                    path="/advertencia_imprimir.jsp"/>
             <forward name="pagePesquisarAluno"                          path="/advertencia_pesquisar_aluno.jsp"/>
+        </action>
+        
+        <action       path="/Pauta"
+                      type="br.com.Action.PautaAction"
+                      name="PautaForm"
+                      scope="request"
+                      validate="false"
+                      input="/pauta_perfil_aluno_page.jsp">
+            <forward name="pagePerfilAluno"                             path="/pauta_perfil_aluno_page.jsp"/>
+            <forward name="carregarAlunosPorSerie"                      path="/pauta_perfil_aluno_page.jsp"/>
+            <forward name="salvarPerfilAluno"                           path="/pauta_perfil_aluno_page.jsp"/>
+            <forward name="excluirPerfilAluno"                          path="/pauta_perfil_aluno_page.jsp"/>
+            <forward name="visualizarPerfilAluno"                       path="/pauta_perfil_aluno_visualizar.jsp"/>
+            <forward name="atualizarPerfilAluno"                        path="/pauta_perfil_aluno_visualizar.jsp"/>
+            <forward name="pageCriarPautaBimestre"                      path="/pauta_bimestre.jsp"/>
+            <forward name="salvarPautaBimestre"                         path="/pauta_bimestre.jsp"/>
+            <forward name="excluirPautaBimestre"                        path="/pauta_bimestre.jsp"/>
+            <forward name="editarPautaBimestre"                         path="/pauta_bimestre_editar.jsp"/>
+            <forward name="atualizarPautaBimestre"                      path="/pauta_bimestre_editar.jsp"/>
+            <forward name="pagePautaAlunoBimestre"                      path="/pauta_aluno_bimestre_page.jsp"/>
+            <forward name="carregarAlunosPorSeriePauta"                 path="/pauta_aluno_bimestre_page.jsp"/>
+            <forward name="excluirPautaCadastrada"                      path="/pauta_aluno_bimestre_page.jsp"/>
+            <forward name="visualizarPautaCadastrada"                   path="/pauta_aluno_bimestre_visualizar.jsp"/>
+            <forward name="montarPautaAluno"                            path="/pauta_aluno_bimestre.jsp"/>
+            <forward name="salvarPautaAluno"                            path="/pauta_aluno_bimestre.jsp"/>
         </action>
         
         

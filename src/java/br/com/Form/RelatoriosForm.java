@@ -32,6 +32,7 @@ public class RelatoriosForm extends FormBasico {
     private String nomeAluno;
     private String nomeDisciplina;
     private int qtdFaltas;
+    private int qtdAulas;
 
     public String getNomeAluno() {
         return nomeAluno;
@@ -55,6 +56,14 @@ public class RelatoriosForm extends FormBasico {
 
     public void setQtdFaltas(int qtdFaltas) {
         this.qtdFaltas = qtdFaltas;
+    }
+
+    public int getQtdAulas() {
+        return qtdAulas;
+    }
+
+    public void setQtdAulas(int qtdAulas) {
+        this.qtdAulas = qtdAulas;
     }
     
     public List<NotaBimestreForm> getListaNotaBimestreForm() {

@@ -419,7 +419,7 @@ public class RelatoriosDao {
 
     public List<RelatoriosForm> obterListaFaltasPorBimestre(Connection conn, String idSerieAno, String nrBimestre, String ano) throws SQLException {
         List<RelatoriosForm> listaRelFaltas = new ArrayList<>();
-        String query = "select d.nome_disciplina, pf.nome, SUM(l.qtd_falta) as qtd_faltas,"
+        String query = "select d.nome_disciplina, pf.nome, SUM(l.qtd_falta) as qtd_faltas, SUM(l.qtd_aula) as qtd_aulas,"
                 + " l.nr_bimestre, l.ano"
                 + " from lista_presenca l , disciplina d, pessoa_fisica pf"
                 + " where l.id_disciplina = d.id_disciplina"
@@ -440,6 +440,7 @@ public class RelatoriosDao {
             relForm.setNomeDisciplina(rs.getString("nome_disciplina"));
             relForm.setNomeAluno(rs.getString("nome"));
             relForm.setQtdFaltas(rs.getInt("qtd_faltas"));
+            relForm.setQtdAulas(rs.getInt("qtd_aulas"));
             relForm.setNrBimestre(rs.getInt("nr_bimestre"));
             relForm.setAno(rs.getInt("ano"));
             listaRelFaltas.add(relForm);
