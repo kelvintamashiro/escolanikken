@@ -159,7 +159,7 @@ public class RecuperacaoAnualForm extends FormBasico {
         String query = "select sum(n.media) as totalMedia, n.serie_ano, n.ano, d.id_disciplina, d.nome_disciplina, n.id_aluno, pf.nome,"
                 + " r.nota_media_anual, r.nota_media_recup_final, r.nota_recup_anual, r.passou"
                 + " from disciplina d, pessoa_fisica pf, nota_bimestre n"
-                + " left join recuperacao_anual r on (n.id_aluno = r.id_aluno and n.id_disciplina = r.id_disciplina) "
+                + " left join recuperacao_anual r on (n.id_aluno = r.id_aluno and n.id_disciplina = r.id_disciplina and r.ano = ?) "
                 + " where n.id_disciplina = d.id_disciplina"
                 + " and n.id_aluno = pf.id"
                 + " and n.serie_ano = ?"
@@ -170,9 +170,10 @@ public class RecuperacaoAnualForm extends FormBasico {
                 + " order by d.nome_disciplina";
 
         PreparedStatement prep = conn.prepareStatement(query);
-        prep.setInt(1, idSerieAno);
-        prep.setInt(2, idPF);
-        prep.setInt(3, anoVigente);
+        prep.setInt(1, anoVigente);
+        prep.setInt(2, idSerieAno);
+        prep.setInt(3, idPF);
+        prep.setInt(4, anoVigente);
         ResultSet rs = prep.executeQuery();
         while (rs.next()) {
             RecuperacaoAnualForm recuperacaoAnualForm = new RecuperacaoAnualForm();

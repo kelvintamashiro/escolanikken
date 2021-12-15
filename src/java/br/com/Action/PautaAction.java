@@ -61,8 +61,10 @@ public class PautaAction extends IDRAction {
             this.salvarPautaAluno(form, request, errors);
         } else if (action.equals("excluirPautaCadastrada")) {
             this.excluirPautaCadastrada(form, request, errors);
-        } else if (action.equals("visualizarPautaCadastrada")) {
+        } else if (action.equals("visualizarPautaCadastrada") || action.equals("editarPautaCadastrada")) {
             this.visualizarPautaCadastrada(form, request, errors);
+        } else if (action.equals("atualizarPautaCadastrada")){
+            this.atualizarPautaCadastrada(form, request, errors);
         }
 
         return mapping.findForward(forward);
@@ -417,6 +419,8 @@ public class PautaAction extends IDRAction {
         HttpSession session = request.getSession(true);
         try {
             conn = connectionPool.getConnection();
+            
+            int idPautaObsAluno = pautaForm.getIdPauta();
 
             //obter dados da pauta_bimestre_aluno
             PautaForm dadosPauta = PautaDao.getInstance().obterDadosPautaCadastrada(conn, pautaForm.getIdPauta());
@@ -444,6 +448,7 @@ public class PautaAction extends IDRAction {
             pautaForm.setNomeMaeAluno(alunoForm.getNomeMae());
             pautaForm.setNomePaiAluno(alunoForm.getNomePai());
             pautaForm.setEspacoSugestao(dadosPauta.getEspacoSugestao());
+            pautaForm.setIdPautaObsAluno(idPautaObsAluno);
 
             request.setAttribute("PautaForm", pautaForm);
         } catch (Exception e) {
@@ -452,5 +457,53 @@ public class PautaAction extends IDRAction {
             connectionPool.free(conn);
         }
     }
+
+    private void atualizarPautaCadastrada(ActionForm form, HttpServletRequest request, Errors errors) {
+        PautaForm pautaForm = (PautaForm) form;
+        Connection conn = null;
+        HttpSession session = request.getSession(true);
+        try {
+            conn = connectionPool.getConnection();
+            
+            //atualizar sugestao por idPauta
+            PautaDao.getInstance().atualizarSugestaoPautaBimestreAluno(conn, pautaForm.getEspacoSugestao(), pautaForm.getIdPautaObsAluno());
+            
+            //obter dados da pauta_bimestre_aluno
+            PautaForm dadosPauta = PautaDao.getInstance().obterDadosPautaCadastrada(conn, pautaForm.getIdPautaObsAluno());
+            
+            int idAluno = dadosPauta.getIdAluno();
+            int idSerieAno = dadosPauta.getIdSerieAno();
+            String dsSerieAno = Utilitario.obterDescricaoSerieAno(idSerieAno);
+
+            //obter dados da pauta por bimestre
+            int ano = Utilitario.obterAnoVigente(conn);
+            pautaForm = PautaDao.getInstance().obterPautaPorBimestre(conn, pautaForm.getNrBimestre(), ano);
+
+            //obter dados da pauta_obs_aluno por bimestre, ano e mostrar o professor
+            List<PautaObsPerfilAlunoForm> listaObsPerfil = PautaDao.getInstance().listaObsPorProfessor(conn, pautaForm.getNrBimestre(), ano, idAluno, idSerieAno);
+            request.setAttribute("listaObsPerfil", listaObsPerfil);
+
+            pautaForm.setDsSerieAno(dsSerieAno);
+
+            //obter dados do estudante
+            AlunoForm alunoForm = new AlunoForm();
+            alunoForm = alunoForm.obterDadosAlunoPorID(conn, String.valueOf(idAluno));
+            pautaForm.setIdAluno(idAluno);
+            pautaForm.setIdSerieAno(idSerieAno);
+            pautaForm.setNomeAluno(alunoForm.getNome());
+            pautaForm.setNomeMaeAluno(alunoForm.getNomeMae());
+            pautaForm.setNomePaiAluno(alunoForm.getNomePai());
+            pautaForm.setEspacoSugestao(dadosPauta.getEspacoSugestao());
+
+            request.setAttribute("PautaForm", pautaForm);
+            errors.error("Pauta Atualizada!!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.free(conn);
+        }
+    }
+
+
 
 }

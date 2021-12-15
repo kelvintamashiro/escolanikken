@@ -12,6 +12,7 @@ import br.com.Form.RecuperacaoAnualForm;
 import br.com.Util.Utilitario;
 import br.com.abre.Util.Errors;
 import java.sql.Connection;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -123,11 +124,15 @@ public class RecuperacaoAnualAction extends IDRAction {
             double notaRecuperacao = Double.parseDouble(notaRecup);
             recuperacaoAnualForm.setNotaRecuperacao(notaRecuperacao);
 
-            double mediaRecuperacao = notaRecuperacao / 4;
-            double mediaRecuperacaoArredondada = Math.round(mediaRecuperacao / 0.5) * 0.5;
-            double mediaFinal = mediaAnual + mediaRecuperacaoArredondada;
-            recuperacaoAnualForm.setMediaFinal(mediaFinal);
-            if (mediaFinal < 6.0) {
+//            double mediaRecuperacao = notaRecuperacao / 4;
+//            double mediaRecuperacaoArredondada = Math.round(mediaRecuperacao / 0.5) * 0.5;
+//            double mediaFinal = mediaAnual + mediaRecuperacaoArredondada;
+
+            double mediaFinal = (mediaAnual + notaRecuperacao) / 2;
+            double mediaFinalArredondado = this.arredondar(mediaFinal);
+            
+            recuperacaoAnualForm.setMediaFinal(mediaFinalArredondado);
+            if (mediaFinalArredondado < 6.0) {
                 recuperacaoAnualForm.setPassouDeAno(false);
             } else {
                 recuperacaoAnualForm.setPassouDeAno(true);
@@ -161,6 +166,12 @@ public class RecuperacaoAnualAction extends IDRAction {
         } finally {
             connectionPool.free(conn);
         }
+    }
+    
+    private double arredondar(Double valor) {
+        String vlStringArredondado = new DecimalFormat("0.0").format(valor).replace(",", ".");
+        double valorArredondado = Double.parseDouble(vlStringArredondado);
+        return valorArredondado;
     }
 
 }

@@ -144,6 +144,7 @@
                                             <td><bean:write name="listaCadastrado" property="nomeAluno"/></td>
                                             <td><bean:write name="listaCadastrado" property="nrBimestre"/>º Bimestre</td>
                                             <td><bean:write name="listaCadastrado" property="ano"/></td>
+                                            <td style="padding: 2px"><input style="font-size: 10px" class="btn btn-success" type="button" value="Editar" onClick="fEditar(<bean:write name="listaCadastrado" property="idPauta"/>)"></td>
                                             <td style="padding: 2px"><input style="font-size: 10px" class="btn btn-info" type="button" value="Visualizar" onClick="fVisualizar(<bean:write name="listaCadastrado" property="idPauta"/>)"></td>
                                             <td style="padding: 2px"><input style="font-size: 10px; color: white" class="btn btn-danger" type="button" value="Excluir" onClick="fExcluir(<bean:write name="listaCadastrado" property="idPauta"/>)"></td>
                                         </tr>
@@ -185,6 +186,12 @@
             document.PautaForm.target = "_self";
             document.PautaForm.submit();
         }
+    }
+    
+    function fEditar(idPauta) {
+        document.PautaForm.action = "Pauta.do?action=editarPautaCadastrada&idPauta=" + idPauta;
+        document.PautaForm.target = "_self";
+        document.PautaForm.submit();
     }
 
     function fVisualizar(idPauta) {

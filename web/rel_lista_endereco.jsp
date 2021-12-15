@@ -52,10 +52,9 @@
         </table>
         <table class="table" style="font-size: 10px" width="50%" id="exportable_table">
             <tr>
-                <td><b>Ensino</b></td>
+                <!--<td><b>Ensino</b></td>-->
                 <td><b>Série/Ano</b></td>
                 <td><b>Aluno</b></td>
-                <!--<td><b>Sexo</b></td>-->
                 <td><b>Província</b></td>
                 <td><b>Cidade</b></td>
                 <td><b>Endereço</b></td>
@@ -65,7 +64,8 @@
                 <td><b>Contato do Pai</b></td>
                 <td><b>Nome Emergência</b></td>
                 <td><b>Contato Emergência</b></td>
-                <td><b>Linha Transporte</b></td>
+                <td><b>Linha Transp.</b></td>
+                <td><b>Horário Transp.</b></td>
             </tr>
             <logic:present name="listaEnderecoTelefone" scope="request">
                 <%int i = 1;%>
@@ -73,10 +73,9 @@
                     <bean:define id="disciplinaForm" name="lista" property="disciplinasForm"/>
                     <bean:define id="alunoForm" name="lista" property="alunoForm"/>
                     <tr>
-                        <td><bean:write name="disciplinaForm" property="categoriaEnsino"/></td>
+                        <%--<td><bean:write name="disciplinaForm" property="categoriaEnsino"/></td>--%>
                         <td><bean:write name="disciplinaForm" property="dsCategoriaEnsino"/></td>
                         <td><bean:write name="alunoForm" property="nome"/></td>
-                        <!--<td><bean:write name="alunoForm" property="sexo"/></td>-->
                         <td><bean:write name="alunoForm" property="provincia"/></td>
                         <td><bean:write name="alunoForm" property="cidade"/></td>
                         <td><bean:write name="alunoForm" property="dsEndereco"/></td>
@@ -87,15 +86,10 @@
                         <td><bean:write name="alunoForm" property="contatoEmergencia"/></td>
                         <td><bean:write name="alunoForm" property="telefoneContato"/></td>
                         <td><bean:write name="alunoForm" property="linhaTransporte"/></td>
+                        <td><bean:write name="alunoForm" property="horarioTransporte"/></td>
                     </tr>
                 </logic:iterate>
             </logic:present>
-            <!--            <tr>
-                            <td colspan="9" align="center">
-                                <input type="button" class="btn btn-green" value="Imprimir" onclick="javascript:DoPrinting()">
-                            </td>
-                        </tr>-->
-
         </table>
         <table width="100%" style="margin-top: 150px">
             <tr>

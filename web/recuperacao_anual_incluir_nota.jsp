@@ -135,7 +135,7 @@
                         </tr>
                         <tr>
                             <td colspan="2" style="color: #000080; font-size: 12px">
-                                *O cálculo para a nota final é: Média Anual + (Nota Recuperação Anual / 4)
+                                *O cálculo para a nota final é: (Média Anual + Recuperação Anual) / 2
                             </td>
                         </tr>
                         <tr>

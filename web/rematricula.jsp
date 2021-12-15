@@ -370,9 +370,6 @@
                                 <label for="usr">Transporte (Linha/Região):</label>
                                 <html:select name="AlunoForm" property="linhaTransporte" styleId="linhaTransporte" styleClass="form-control">
                                     <html:option value="">Selecione</html:option>
-                                    <html:option value="INABE">INABE</html:option>
-                                    <html:option value="KASUMIGAURA">KASUMIGAURA</html:option>
-                                    <html:option value="KAWAGOE">KAWAGOE</html:option>
                                     <html:option value="KUWANA">KUWANA</html:option>
                                     <html:option value="NAGOYA">NAGOYA</html:option>
                                     <html:option value="SASAGAWA">SASAGAWA</html:option>

@@ -165,7 +165,7 @@
                                 <span style="font-size: 11px">(Soma das Médias Bim. / 4)</span>
                             </td>
                             <td align="center"><b>Média Final</b><br/>
-                                <span style="font-size: 11px"> Média Anual + (Nota Recuperação Anual / 4)</span>
+                                <span style="font-size: 11px"> (Média Anual + Recuperação Anual) / 2</span>
                             </td>
                             <td width="10%">&nbsp;</td>
                             <td width="10%">&nbsp;</td>

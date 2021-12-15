@@ -477,4 +477,13 @@ public class PautaDao {
         return pautaForm;
     }
 
+    public void atualizarSugestaoPautaBimestreAluno(Connection conn, String espacoSugestao, int idPauta) throws SQLException {
+        String query = "UPDATE pauta_bimestre_aluno SET ds_sugestao=? WHERE id=?";
+        PreparedStatement prep = conn.prepareStatement(query);
+        prep.setString(1, espacoSugestao);
+        prep.setInt(2, idPauta);
+        prep.execute();
+        prep.close();
+    }
+
 }

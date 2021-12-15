@@ -43,6 +43,7 @@
         <form-bean name="ListaPresencaForm"  type="br.com.Form.ListaPresencaForm"/>
         <form-bean name="AdvertenciaForm"  type="br.com.Form.AdvertenciaForm"/>
         <form-bean name="PautaForm"  type="br.com.Form.PautaForm"/>
+        <form-bean name="JustificativaFaltaForm"  type="br.com.Form.JustificativaFaltaForm"/>
  
     </form-beans>
 
@@ -375,12 +376,26 @@
             <forward name="pagePautaAlunoBimestre"                      path="/pauta_aluno_bimestre_page.jsp"/>
             <forward name="carregarAlunosPorSeriePauta"                 path="/pauta_aluno_bimestre_page.jsp"/>
             <forward name="excluirPautaCadastrada"                      path="/pauta_aluno_bimestre_page.jsp"/>
+            <forward name="editarPautaCadastrada"                       path="/pauta_aluno_bimestre_editar.jsp"/>
+            <forward name="atualizarPautaCadastrada"                    path="/pauta_aluno_bimestre_editar.jsp"/>
             <forward name="visualizarPautaCadastrada"                   path="/pauta_aluno_bimestre_visualizar.jsp"/>
             <forward name="montarPautaAluno"                            path="/pauta_aluno_bimestre.jsp"/>
             <forward name="salvarPautaAluno"                            path="/pauta_aluno_bimestre.jsp"/>
         </action>
         
-        
+        <action    path="/JustificativaFalta"
+                   type="br.com.Action.JustificativaFaltaAction"
+                   name="JustificativaFaltaForm"
+                   scope="request"
+                   validate="false"
+                   input="/justificativa_falta_page.jsp">
+            <forward name="page"                                        path="/justificativa_falta_page.jsp"/>
+            <forward name="carregarAlunosPorSerie"                      path="/justificativa_falta_page.jsp"/>
+            <forward name="salvarJustificativa"                         path="/justificativa_falta_page.jsp"/>
+            <forward name="pesquisar"                                   path="/justificativa_falta_pesquisar.jsp"/>
+            <forward name="excluir"                                     path="/justificativa_falta_pesquisar.jsp"/>
+        </action>
+              
     </action-mappings>
 
     <!-- ================ Tamanho Maximo para Upload ======================= -->

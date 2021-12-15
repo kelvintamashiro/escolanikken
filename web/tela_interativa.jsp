@@ -208,21 +208,14 @@
                     <button class="btn-nikken" onclick="window.location.href = 'Relatorios.do'">
                         Relatórios
                     </button>
-
-                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'Pauta.do?action=pagePerfilAluno'">
-                                            Perfil do Aluno/<br/>Pauta
-                                        </button>
-                                        <button class="btn-nikken" onclick="window.location.href = 'Pauta.do?action=pageCriarPautaBimestre'">
-                                            Crição Pauta<br/>por Bimestre
-                                        </button>
-                                        <button class="btn-nikken" onclick="window.location.href = 'Pauta.do?action=pagePautaAlunoBimestre'">
-                                            Pauta<br/>por Aluno
-                                        </button>-->
                     <button class="btn-nikken" onclick="window.location.href = 'RecuperacaoAnual.do'">
                         Recuperação <br/>Anual
                     </button>
                     <button class="btn-nikken" onclick="window.location.href = 'gerenciador_pauta.jsp'">
                         Gerenciador<br/>de Pauta
+                    </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'JustificativaFalta.do'">
+                        Justificativa<br/>Falta
                     </button>
                 </div>
             </div>

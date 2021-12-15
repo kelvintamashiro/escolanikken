@@ -376,14 +376,11 @@
                                 </html:select>
                             </div>
                         </td>
-                        <td width="50%">
+                        <td width="25%">
                             <div class="col-lg-12">
                                 <label for="usr">Transporte (Linha/Região):</label>
                                 <html:select name="AlunoForm" property="linhaTransporte" styleId="linhaTransporte" styleClass="form-control">
                                     <html:option value="">Selecione</html:option>
-                                    <html:option value="INABE">INABE</html:option>
-                                    <html:option value="KASUMIGAURA">KASUMIGAURA</html:option>
-                                    <html:option value="KAWAGOE">KAWAGOE</html:option>
                                     <html:option value="KUWANA">KUWANA</html:option>
                                     <html:option value="NAGOYA">NAGOYA</html:option>
                                     <html:option value="SASAGAWA">SASAGAWA</html:option>
@@ -393,6 +390,12 @@
                                     <html:option value="OUTRO">OUTRO</html:option>
                                 </html:select>
                                 <%--<html:text styleClass="form-control" name="AlunoForm" property="linhaTransporte" styleId="linhaTransporte"/>--%>
+                            </div>
+                        </td>
+                        <td width="25%">
+                            <div class="col-lg-12">
+                                <label for="usr">Horário do Ônibus:</label>
+                                <html:text styleClass="form-control" name="AlunoForm" property="horarioTransporte" styleId="horarioTransporte"/>
                             </div>
                         </td>
                     </tr>

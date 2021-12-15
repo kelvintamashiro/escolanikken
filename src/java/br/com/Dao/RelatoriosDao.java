@@ -227,7 +227,7 @@ public class RelatoriosDao {
     public List<RelatoriosForm> obterListaEnderecoTelefone(Connection conn) throws SQLException {
         List<RelatoriosForm> listaTelefonesPais = new ArrayList<>();
         String query = "select d.categoria, d.descricao, pf.nome, pf.sexo, pf.provincia, pf.cidade, pf.endereco, a.nome_mae, a.celular_mae,"
-                + " a.nome_pai, a.celular_pai, pf.telefone_contato, pf.contato_emergencia, a.linha_transporte"
+                + " a.nome_pai, a.celular_pai, pf.telefone_contato, pf.contato_emergencia, a.linha_transporte, a.horario_transporte"
                 + " from pessoa_fisica pf, alunos a, descricao_serie_ano d"
                 + " where pf.id = a.id_pessoa_fisica"
                 + " and a.serie_ano = d.id"
@@ -256,6 +256,7 @@ public class RelatoriosDao {
                 alunoForm.setTelefoneContato(rs.getString("telefone_contato"));
                 alunoForm.setContatoEmergencia(rs.getString("contato_emergencia"));
                 alunoForm.setLinhaTransporte(rs.getString("linha_transporte"));
+                alunoForm.setHorarioTransporte(rs.getString("horario_transporte"));
                 relForm.setAlunoForm(alunoForm);
 
                 listaTelefonesPais.add(relForm);
