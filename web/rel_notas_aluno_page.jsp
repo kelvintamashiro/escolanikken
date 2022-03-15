@@ -86,32 +86,7 @@
                                 </logic:present>
                             </div>
                         </td>
-                    </tr>
-                    <%--                    <tr>
-                                            <td>
-                                                <div class="col-lg-12">
-                                                    <label for="usr">Bimestre:</label>
-                                                    <bean:define id="notaBimestreForm" name="RelatoriosForm" property="notaBimestreForm"/>
-                                                    <html:select name="notaBimestreForm" property="nrBimestre" styleId="nrBimestre" styleClass="form-control">
-                                                        <html:option value="1">1º Bimestre</html:option>
-                                                        <html:option value="2">2º Bimestre</html:option>
-                                                        <html:option value="3">3º Bimestre</html:option>
-                                                        <html:option value="4">4º Bimestre</html:option>
-                                                    </html:select>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="col-lg-12">
-                                                    <label for="usr">Ano letivo:</label>
-                                                    <html:select name="notaBimestreForm" property="ano" styleId="ano" styleClass="form-control">
-                                                        <html:option value="2021">2021</html:option>
-                                                        <html:option value="2020">2020</html:option>
-                                                    </html:select>
-                                                </div>
-                                            </td>
-                                        </tr>--%>
+                    </tr>ß
                     <tr>
                         <td>
                             <div class="col-lg-12">

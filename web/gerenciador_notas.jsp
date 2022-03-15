@@ -32,17 +32,34 @@
     </head>
     <body>
         <jsp:include page="topo.jsp"/>
-
-        <div class="row" align="center">
-            <div class="col-12 col-s-12 mt100px">
-                <button class="btn-nikken2" onclick="window.location.href = 'NotaBimestre.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
-                    Lançamento <br/>de Notas
-                </button>
-                <button class="btn-nikken2" onclick="window.location.href = 'NotaBimestre.do?action=pageConsulta&idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=professor'">
-                    Consulta <br/>de Notas
-                </button>
+        <logic:equal name="tipoPerfil" scope="session" value="professor">
+            <div class="row" align="center">
+                <div class="col-12 col-s-12 mt100px">
+                    <button class="btn-nikken2" onclick="window.location.href = 'NotaBimestre.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
+                        Lançamento <br/>de Notas
+                    </button>
+                    <button class="btn-nikken2" onclick="window.location.href = 'NotaItinerario.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
+                        Lançamento <br/> Notas Itinerário
+                    </button>
+                </div>
             </div>
-        </div>
+        </logic:equal>
+        <logic:notEqual name="tipoPerfil" scope="session" value="professor">
+
+            <div class="row" align="center">
+                <div class="col-12 col-s-12 mt100px">
+                    <button class="btn-nikken2" onclick="window.location.href = 'NotaBimestre.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
+                        Lançamento <br/>de Notas
+                    </button>
+                    <button class="btn-nikken2" onclick="window.location.href = 'NotaItinerario.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
+                        Lançamento <br/>Notas Itinerário
+                    </button>
+                    <button class="btn-nikken2" onclick="window.location.href = 'NotaBimestre.do?action=pageConsulta&idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=professor'">
+                        Consulta <br/>de Notas
+                    </button>
+                </div>
+            </div>
+        </logic:notEqual>
         <div>
             <jsp:include page="footer.jsp"/>
         </div>

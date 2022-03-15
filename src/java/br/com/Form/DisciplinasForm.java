@@ -139,15 +139,15 @@ public class DisciplinasForm extends FormBasico {
 
         return listaDisciplinas;
     }
-    
+
     public List<DisciplinasForm> obterListaDisciplinasPorCategoriaSerie(Connection conn, String categoriaEnsino, int idSerie, int anoVigente) throws SQLException {
         StringBuilder sb = new StringBuilder();
         sb.append("select * from disciplina d");
         sb.append(" where d.categoria_ensino = ?");
-        if(idSerie == 20 || idSerie == 30) {
+        if (idSerie == 20 || idSerie == 30) {
             sb.append(" and d.id_disciplina not in (15)");
         }
-        if(anoVigente > 2020) {
+        if (anoVigente > 2020) {
             sb.append(" and d.id_disciplina not in (13)");
         }
         sb.append(" order by d.nome_disciplina");
@@ -180,7 +180,7 @@ public class DisciplinasForm extends FormBasico {
                 + " and dp.categoria_ensino = ?"
                 + " group by dp.id_disciplina"
                 + " order by nome_disciplina, serie_ano";
-        
+
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setInt(1, idPF);
         prep.setString(2, categoriaEnsino);
@@ -256,6 +256,24 @@ public class DisciplinasForm extends FormBasico {
             default:
                 return "Ensino Médio";
         }
+    }
+
+    public boolean isExisteNotaDisciplina(Connection conn, int idDisciplina) throws SQLException {
+        boolean isExisteNotaDisciplina = false;
+        String query = "select count(*) as qtd from nota_bimestre n where n.id_disciplina = ?";
+        PreparedStatement prep = conn.prepareStatement(query);
+        prep.setInt(1, idDisciplina);
+        ResultSet rs = prep.executeQuery();
+        if (rs.next()) {
+            int qtd = rs.getInt("qtd");
+            if (qtd > 0) {
+                isExisteNotaDisciplina = true;
+            }
+        }
+        rs.close();
+        prep.close();
+
+        return isExisteNotaDisciplina;
     }
 
 }

@@ -36,7 +36,7 @@ public class DisciplinasAction extends IDRAction {
             this.atualizar(form, request, errors);
         } else if (action.equals("excluir")) {
             this.excluir(form, request, errors);
-        } 
+        }
 //        else if (action.equals("vincularProfessor")) {
 //            this.vincularProfessor(form, request, errors);
 //        }
@@ -123,12 +123,17 @@ public class DisciplinasAction extends IDRAction {
         try {
             conn = connectionPool.getConnection();
 
-            disciplinasForm.excluir(conn, disciplinasForm.getIdDisciplina());
-            errors.error("Exclusão da Disciplina Realizado com Sucesso!");
-            this.page(form, request, errors);
+            //verificar se essa disciplina ja possui alguma nota vinculada
+            boolean isExisteNotaDisciplina = disciplinasForm.isExisteNotaDisciplina(conn, disciplinasForm.getIdDisciplina());
+            if (isExisteNotaDisciplina) {
+                errors.error("Não pode ser realizada a Exclusão da Disciplina pois já possui notas vinculadas!");
+            } else {
+                disciplinasForm.excluir(conn, disciplinasForm.getIdDisciplina());
+                errors.error("Exclusão da Disciplina Realizado com Sucesso!");
+                this.page(form, request, errors);
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            errors.error("Erro no Cadastro. Favor verificar!");
         } finally {
             connectionPool.free(conn);
         }

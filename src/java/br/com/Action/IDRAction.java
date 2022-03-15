@@ -6,7 +6,6 @@
 package br.com.Action;
 
 import br.com.ConnectionPool.JDCConnectionDriver;
-import br.com.Util.VerificaSessaoUsuario;
 import br.com.abre.Util.Errors;
 import br.com.abre.Util.UsuarioSessaoUtil;
 import javax.servlet.ServletContext;

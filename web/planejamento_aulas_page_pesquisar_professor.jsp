@@ -140,6 +140,7 @@
                             <div class="col-lg-12">
                                 <label for="usr">Ano:</label>
                                 <html:select name="PlanejamentoAulasForm" property="anoVigente" styleId="anoVigente" styleClass="form-control">
+                                    <html:option value="2022">2022</html:option>
                                     <html:option value="2021">2021</html:option>
                                     <html:option value="2020">2020</html:option>
                                 </html:select>

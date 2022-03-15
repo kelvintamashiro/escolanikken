@@ -81,6 +81,9 @@ public class JustificativaFaltaAction extends IDRAction {
 
             //salvar na tabela justificativa_falta
             justificativaFaltaForm.salvar(conn, justificativaFaltaForm);
+            
+            //verificar para o aluno, ano, serie e data quais aulas foram dado presenca para zerar a quantidade de faltas
+            justificativaFaltaForm.zerarQtdFaltas(conn, justificativaFaltaForm);
 
             justificativaFaltaForm = new JustificativaFaltaForm();
             request.setAttribute("JustificativaFaltaForm", justificativaFaltaForm);

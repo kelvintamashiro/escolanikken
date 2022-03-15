@@ -47,6 +47,15 @@
                     Imprimir <br/>Diário de Classe
                 </button>
             </div>
+        
+            <div class="col-12 col-s-12">
+                <button class="btn-nikken2" onclick="window.location.href = 'ListaPresencaItinerario.do'">
+                    Lançar Lista <br/>de Presença <br/>Itinerário
+                </button>
+                <button class="btn-nikken2" onclick="window.location.href = 'ListaPresencaItinerario.do?action=pageConsultar'">
+                    Consultar Lista <br/>de Presença <br/>Itinerário
+                </button>
+            </div>
         </div>
         <div>
             <jsp:include page="footer.jsp"/>

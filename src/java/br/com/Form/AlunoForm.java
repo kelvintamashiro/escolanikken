@@ -52,7 +52,25 @@ public class AlunoForm extends PessoaFisicaForm {
     private int idProfessorHistorico;
     private String nomeProfessor;
     private int ano;
+    private int idItinerarioAluno;
+    private String periodo;
 
+    public String getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
+    }
+    
+    public int getIdItinerarioAluno() {
+        return idItinerarioAluno;
+    }
+
+    public void setIdItinerarioAluno(int idItinerarioAluno) {
+        this.idItinerarioAluno = idItinerarioAluno;
+    }
+    
     public int getAno() {
         return ano;
     }
@@ -311,8 +329,9 @@ public class AlunoForm extends PessoaFisicaForm {
 
     public void inserirAluno(Connection conn, AlunoForm alunoForm, int idPessoaFisica) throws SQLException {
         String query = "INSERT INTO alunos (id_pessoa_fisica, numero_id_aluno, serie_ano, celular_aluno, nome_pai, alimentacao, celular_pai, email_pai, escolaridade_pai,"
-                + " nome_mae, celular_mae, email_mae, escolaridade_mae, linha_transporte, horario_transporte, restricao_alimentar, observacao_saude, ds_observacao, data_matricula, autorizacao_imagem) "
-                + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                + " nome_mae, celular_mae, email_mae, escolaridade_mae, linha_transporte, horario_transporte, restricao_alimentar, observacao_saude, ds_observacao,"
+                + " data_matricula, autorizacao_imagem, periodo) "
+                + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setInt(1, idPessoaFisica);
@@ -339,6 +358,7 @@ public class AlunoForm extends PessoaFisicaForm {
             prep.setString(19, null);
         }
         prep.setString(20, alunoForm.getAutorizacaoImagem());
+        prep.setString(21, alunoForm.getPeriodo());
         prep.execute();
         prep.close();
     }
@@ -462,6 +482,7 @@ public class AlunoForm extends PessoaFisicaForm {
             alunoForm.setObservacaoSaude(rs.getString("observacao_saude"));
             alunoForm.setObservacao(rs.getString("ds_observacao"));
             alunoForm.setAutorizacaoImagem(rs.getString("autorizacao_imagem"));
+            alunoForm.setPeriodo(rs.getString("periodo"));
         }
         rs.close();
         prep.close();
@@ -472,7 +493,7 @@ public class AlunoForm extends PessoaFisicaForm {
     public void atualizarDadosAluno(Connection conn, AlunoForm alunoForm) throws SQLException {
         String query = "UPDATE alunos SET serie_ano=?, celular_aluno=?, nome_pai=?, alimentacao=?, celular_pai=?, email_pai=?, "
                 + " nome_mae=?, celular_mae=?, email_mae=?, linha_transporte=?, horario_transporte=?, restricao_alimentar=?, observacao_saude=?, "
-                + " ds_observacao=?, data_saida=?, numero_id_aluno=?, autorizacao_imagem=?"
+                + " ds_observacao=?, data_saida=?, numero_id_aluno=?, autorizacao_imagem=?, periodo=?"
                 + " WHERE id_pessoa_fisica=?";
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setInt(1, alunoForm.getSerieAno());
@@ -496,7 +517,8 @@ public class AlunoForm extends PessoaFisicaForm {
         }
         prep.setString(16, alunoForm.getNumeroIDAluno());
         prep.setString(17, alunoForm.getAutorizacaoImagem());
-        prep.setInt(18, alunoForm.getIdPF());
+        prep.setString(18, alunoForm.getPeriodo());
+        prep.setInt(19, alunoForm.getIdPF());
         prep.execute();
         prep.close();
     }
@@ -707,5 +729,57 @@ public class AlunoForm extends PessoaFisicaForm {
 
         return listaAlunosAvisos;
 
+    }
+
+    public List<AlunoForm> obterAlunosPorSerieSemVinculoItinerario(Connection conn, String idSerieAno, int idItinerario) throws SQLException {
+        List<AlunoForm> listaAlunos = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        sb.append("select pf.id, pf.nome, pf.data_nascimento, pf.sexo, pf.cidade, pf.provincia, a.serie_ano, pf.email, pf.status, a.numero_id_aluno ");
+        sb.append(" from pessoa_fisica pf, alunos a left join itinerario_alunos i");
+        sb.append(" on a.id_pessoa_fisica = i.id_aluno and i.id_itinerario = ").append(idItinerario);
+        sb.append(" where pf.id = a.id_pessoa_fisica");
+        sb.append(" and a.serie_ano = ").append(idSerieAno);
+        sb.append(" and pf.status = 1");
+        sb.append(" and i.id_aluno is null");
+        sb.append(" order by pf.nome");
+        PreparedStatement prep = conn.prepareStatement(sb.toString());
+        ResultSet rs = prep.executeQuery();
+        while (rs.next()) {
+            AlunoForm aForm = new AlunoForm();
+            aForm.setIdAluno(rs.getInt("id"));
+            aForm.setNome(rs.getString("nome"));
+            aForm.setSerieAno(rs.getInt("serie_ano"));
+            listaAlunos.add(aForm);
+        }
+        rs.close();
+        prep.close();
+
+        return listaAlunos;
+    }
+    public List<AlunoForm> obterAlunosPorSerieComVinculoItinerario(Connection conn, String idSerieAno, int idItinerario) throws SQLException {
+        List<AlunoForm> listaAlunos = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        sb.append("select pf.id, pf.nome, pf.data_nascimento, pf.sexo, pf.cidade, pf.provincia, a.serie_ano, pf.email, pf.status, a.numero_id_aluno, i.id as itinerario_aluno ");
+        sb.append(" from pessoa_fisica pf, alunos a left join itinerario_alunos i");
+        sb.append(" on a.id_pessoa_fisica = i.id_aluno and i.id_itinerario = ").append(idItinerario);
+        sb.append(" where pf.id = a.id_pessoa_fisica");
+        sb.append(" and a.serie_ano = ").append(idSerieAno);
+        sb.append(" and pf.status = 1");
+        sb.append(" and i.id_aluno is not null");
+        sb.append(" order by pf.nome");
+        PreparedStatement prep = conn.prepareStatement(sb.toString());
+        ResultSet rs = prep.executeQuery();
+        while (rs.next()) {
+            AlunoForm aForm = new AlunoForm();
+            aForm.setIdAluno(rs.getInt("id"));
+            aForm.setNome(rs.getString("nome"));
+            aForm.setSerieAno(rs.getInt("serie_ano"));
+            aForm.setIdItinerarioAluno(rs.getInt("itinerario_aluno"));
+            listaAlunos.add(aForm);
+        }
+        rs.close();
+        prep.close();
+
+        return listaAlunos;
     }
 }

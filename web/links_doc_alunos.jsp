@@ -53,7 +53,7 @@
                         Calendário Escolar
                     </td>
                     <td>
-                        <a href="pdf/Calendario_2021.pdf" target="_blank" class="btn btn-green">Visualizar</a>
+                        <a href="pdf/CALENDARIO_NIKKEN.pdf" target="_blank" class="btn btn-green">Visualizar</a>
                     </td>
                 </tr>
                 <tr>
@@ -61,7 +61,7 @@
                         Guia do Aluno
                     </td>
                     <td>
-                        <a href="pdf/GUIA_ESCOLA_NIKKEN_2021.pdf" target="_blank" class="btn btn-green">Visualizar</a>
+                        <a href="pdf/GUIA_ALUNO_ESCOLANIKKEN.pdf" target="_blank" class="btn btn-green">Visualizar</a>
                     </td>
                 </tr>
                

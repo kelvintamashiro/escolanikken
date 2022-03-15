@@ -44,7 +44,7 @@
                     <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?action=pageConsulta&idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=professor'">
                         Consulta <br/>de Notas
                     </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'NotaBimestre.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
+                    <button class="btn-nikken" onclick="window.location.href = 'gerenciador_notas.jsp'">
                         Lançamento <br/>de Notas
                     </button>
                     <button class="btn-nikken" onclick="window.location.href = 'RecuperacaoAnual.do'">
@@ -64,10 +64,6 @@
                     <button class="btn-nikken" onclick="window.location.href = 'Comunicados.do'">
                         Comunicados <br/>Professores
                     </button>
-
-                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=visualizarCardapio'">
-                                            Cardápio <br/>Nikken
-                                        </button>-->
                 </div>
                 <div class="col-12 col-s-12" style="margin-top: -25px">
                     <button class="btn-nikken" onclick="window.location.href = 'Relatorios.do'">
@@ -95,12 +91,6 @@
                     <button class="btn-nikken" onclick="window.location.href = 'links_doc_alunos.jsp'">
                         Links <br/>Importantes
                     </button>
-<!--                    <button class="btn-nikken" onclick="window.location.href = 'Rematricula.do?idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=aluno'">
-                        Rematrícula<br/>2021
-                    </button>-->
-                    <!--                    <button class="btn-nikken" onclick="window.location.href = 'UploadArquivo.do?action=visualizarCardapio'">
-                                            Cardápio <br/>Nikken
-                                        </button>-->
                 </div>
                 <div class="col-12 col-s-12">
                     <button class="btn-nikken" onclick="window.location.href = 'Comunicados.do?action=listaComunicados&idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=aluno&tipoComunicado=PROFESSOR'">
@@ -178,15 +168,19 @@
                     <button class="btn-nikken" onclick="window.location.href = 'Disciplinas.do'">
                         Gerenciador <br/>de Disciplinas
                     </button>
+                    <button class="btn-nikken" onclick="window.location.href = 'Itinerario.do'">
+                        Gerenciador <br/>de Itinerários
+                    </button>
                     <button class="btn-nikken" onclick="window.location.href = 'gerenciador_notas.jsp'">
                         Gerenciador <br/>de Notas
                     </button>
-                    <button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?action=pagePesquisarPorProfessor&idPF=<%=session.getAttribute("idPF").toString()%>'">
-                        Planejamento <br/>de Aulas
-                    </button>
+
 
                 </div>
                 <div class="col-12 col-s-12" style="margin-top: -25px">
+                    <button class="btn-nikken" onclick="window.location.href = 'PlanejamentoAulas.do?action=pagePesquisarPorProfessor&idPF=<%=session.getAttribute("idPF").toString()%>'">
+                        Planejamento <br/>de Aulas
+                    </button>
                     <button class="btn-nikken" onclick="window.location.href = 'gerenciador_presenca.jsp'">
                         Diário de  <br/>Classe Online
                     </button>
@@ -199,12 +193,11 @@
                     <button class="btn-nikken" onclick="window.location.href = 'Comunicados.do?action=pageDirecao'">
                         Comunicados <br/>Direção
                     </button>
-
+                </div>
+                <div class="col-12 col-s-12" style="margin-top: -25px">
                     <button class="btn-nikken" onclick="window.location.href = 'Advertencia.do'">
                         Advertência/<br/>Suspensão
                     </button>
-                </div>
-                <div class="col-12 col-s-12" style="margin-top: -25px">
                     <button class="btn-nikken" onclick="window.location.href = 'Relatorios.do'">
                         Relatórios
                     </button>

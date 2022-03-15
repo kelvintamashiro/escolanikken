@@ -378,7 +378,17 @@
                                 </html:select>
                             </div>
                         </td>
-                        <td width="50%">
+                        <td width="25%">
+                            <div class="col-lg-12">
+                                <label for="usr">Período:</label>
+                                <html:select name="AlunoForm" property="periodo" styleId="periodo" styleClass="form-control">
+                                    <html:option value="">Selecione</html:option>
+                                    <html:option value="integral">Integral</html:option>
+                                    <html:option value="meio_periodo">Meio Período</html:option>
+                                </html:select>
+                            </div>
+                        </td>
+                        <td width="25%">
                             <div class="col-lg-12">
                                 <label for="usr">Data da Matrícula:</label>
                                 <html:text name="AlunoForm" property="dataMatricula" styleId="dataMatricula" styleClass="form-control" size="15" maxlength="10" onkeyup="formatarData(this);" onkeypress="return(validarConteudo(event, 'numero'))" onfocus="show('dataMatricula')" onblur="hide('dataMatricula')"/>

@@ -30,6 +30,7 @@
         <form-bean name="PessoaFisicaForm"  type="br.com.Form.PessoaFisicaForm"/>
         <form-bean name="AlterarSenhaForm"  type="br.com.Form.AlterarSenhaForm"/>
         <form-bean name="DisciplinasForm"  type="br.com.Form.DisciplinasForm"/>
+        <form-bean name="ItinerarioForm"  type="br.com.Form.ItinerarioForm"/>
         <form-bean name="DisciplinaProfessorForm"  type="br.com.Form.DisciplinaProfessorForm"/>
         <form-bean name="NotaBimestreForm"  type="br.com.Form.NotaBimestreForm"/>
         <form-bean name="ComunicadosForm"  type="br.com.Form.ComunicadosForm"/>
@@ -41,9 +42,11 @@
         <form-bean name="RematriculaForm"  type="br.com.Form.RematriculaForm"/>
         <form-bean name="RecuperacaoAnualForm"  type="br.com.Form.RecuperacaoAnualForm"/>
         <form-bean name="ListaPresencaForm"  type="br.com.Form.ListaPresencaForm"/>
+        <form-bean name="ListaPresencaItinerarioForm"  type="br.com.Form.ListaPresencaItinerarioForm"/>
         <form-bean name="AdvertenciaForm"  type="br.com.Form.AdvertenciaForm"/>
         <form-bean name="PautaForm"  type="br.com.Form.PautaForm"/>
         <form-bean name="JustificativaFaltaForm"  type="br.com.Form.JustificativaFaltaForm"/>
+        <form-bean name="NotaItinerarioForm"  type="br.com.Form.NotaItinerarioForm"/>
  
     </form-beans>
 
@@ -189,6 +192,35 @@
             <forward name="visualizarNota"              path="/page_visualizar_nota.jsp"/>
             <forward name="visualizarNotaAluno"         path="/page_visualizar_nota_aluno.jsp"/>
             <forward name="pageNotasBimestrais"         path="/page_notas_bimestrais_aluno.jsp"/>
+        </action>
+        
+        <action    path="/Itinerario"
+                    type="br.com.Action.ItinerarioAction"
+                    name="ItinerarioForm"
+                    scope="request"
+                    validate="false"
+                    input="/itinerario.jsp">
+            <forward name="page"                        path="/itinerario.jsp"/>
+            <forward name="cadastrar"                   path="/itinerario.jsp"/>
+            <forward name="excluir"                     path="/itinerario.jsp"/>
+            <forward name="pageEditarItinerario"        path="/itinerario_editar.jsp"/>        
+            <forward name="atualizar"                   path="/itinerario.jsp"/>
+            <forward name="pageVincularAlunos"          path="/itinerario_vincular_alunos.jsp"/>
+            <forward name="vincularAlunos"              path="/itinerario_vincular_alunos.jsp"/>
+            <forward name="desvincularAluno"            path="/itinerario_vincular_alunos.jsp"/>
+        </action>
+        
+        <action    path="/NotaItinerario"
+                   type="br.com.Action.NotaItinerarioAction"
+                   name="NotaItinerarioForm"
+                   scope="request"
+                   validate="false"
+                   input="/nota_projeto.jsp">
+            <forward name="fwrError"                    path="/error.jsp"/>
+            <forward name="page"                        path="/nota_itinerario.jsp"/>
+            <forward name="pageLancarNota"              path="/lancar_nota_itinerario.jsp"/>
+            <forward name="salvarNota"                  path="/lancar_nota_itinerario.jsp"/>
+            <forward name="excluirNota"                 path="/lancar_nota_itinerario.jsp"/>
         </action>
        
         <action    path="/Comunicados"
@@ -337,6 +369,23 @@
             <forward name="pageImprimirDiario"                          path="/lista_presenca_page_imprimir.jsp"/>
             <forward name="carregarDisciplinaImpDiario"                 path="/lista_presenca_page_imprimir.jsp"/>
             <forward name="imprimirDiario"                              path="/lista_presenca_imprimir_diario.jsp"/>
+        </action>
+        
+        <action    path="/ListaPresencaItinerario"
+                   type="br.com.Action.ListaPresencaItinerarioAction"
+                   name="ListaPresencaItinerarioForm"
+                   scope="request"
+                   validate="false"
+                   input="/lista_presenca_itinerario.jsp">
+            <forward name="page"                                        path="/lista_presenca_itinerario.jsp"/>
+            <forward name="pesquisar"                                   path="/lista_presenca_itinerario.jsp"/>
+            <forward name="salvarPresenca"                              path="/lista_presenca_itinerario.jsp"/>
+            <forward name="excluirPresenca"                             path="/lista_presenca_itinerario.jsp"/>
+            <forward name="carregarItinerario"                          path="/lista_presenca_itinerario.jsp"/>
+            <forward name="pageConsultar"                               path="/lista_presenca_itinerario_consultar.jsp"/>
+            <forward name="carregarItinerarioConsulta"                  path="/lista_presenca_itinerario_consultar.jsp"/>
+            <forward name="consultar"                                   path="/lista_presenca_itinerario_consultar.jsp"/>
+            <forward name="excluirPresenca"                             path="/lista_presenca_itinerario_consultar.jsp"/>
         </action>
         
         <action    path="/Advertencia"

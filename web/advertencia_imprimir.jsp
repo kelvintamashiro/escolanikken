@@ -106,8 +106,8 @@
                     </td>
                     <td>&nbsp;</td>
                     <td align="center">
-                        Thiago Gimenes Simões <br/>
-                        Diretor da Escola
+                        Fujimi Hanazono Kataoka <br/>
+                        Diretora da Escola
                     </td>
                 </tr>
             </table>

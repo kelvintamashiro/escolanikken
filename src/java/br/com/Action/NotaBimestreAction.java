@@ -7,9 +7,11 @@ package br.com.Action;
 
 import br.com.Dao.HistoricoDao;
 import br.com.Dao.NotaBimestreDao;
+import br.com.Dao.NotaItinerarioDao;
 import br.com.Form.AlunoForm;
 import br.com.Form.DisciplinasForm;
 import br.com.Form.NotaBimestreForm;
+import br.com.Form.NotaItinerarioForm;
 import br.com.Form.PessoaFisicaForm;
 import br.com.Form.RecuperacaoAnualForm;
 import br.com.Form.SerieAnoForm;
@@ -433,6 +435,27 @@ public class NotaBimestreAction extends IDRAction {
 
             if (listaObservacao.size() > 0) {
                 request.setAttribute("listaObservacao", listaObservacao);
+            }
+
+            //obter notas itinerario do aluno que ja possui nota lancada
+            List<NotaItinerarioForm> listaNotasItinerarios = new ArrayList<>();
+            List<NotaItinerarioForm> listaItinerarios = NotaItinerarioDao.getInstance().obterItinerariosAluno(conn, notaBimestreForm.getIdAluno());
+            for (NotaItinerarioForm itinerario : listaItinerarios) {
+                //obter notas para cada itinerario do aluno
+                NotaItinerarioForm notasFaltasItinerario = NotaItinerarioDao.getInstance().obterNotasFaltasPorItinerarioAluno(conn, notaBimestreForm.getIdAluno(), notaBimestreForm.getAno(), notaBimestreForm.getIdSerieAno(), itinerario.getIdItinerario());
+                notasFaltasItinerario.setFaltaTotal(notasFaltasItinerario.getFaltaBimestre1() + notasFaltasItinerario.getFaltaBimestre2() + notasFaltasItinerario.getFaltaBimestre3() + notasFaltasItinerario.getFaltaBimestre4());
+
+                if (notasFaltasItinerario.getNotaBimestre1() >= 0 && notasFaltasItinerario.getNotaBimestre2() >= 0
+                        && notasFaltasItinerario.getNotaBimestre3() >= 0 && notasFaltasItinerario.getNotaBimestre4() >= 0) {
+                    double media = (notasFaltasItinerario.getNotaBimestre1() + notasFaltasItinerario.getNotaBimestre2() + notasFaltasItinerario.getNotaBimestre3() + notasFaltasItinerario.getNotaBimestre4()) / 4;
+                    double mediaArredondada = Math.round(media / 0.5) * 0.5;
+                    notasFaltasItinerario.setMediaAnual(mediaArredondada);
+                }
+                listaNotasItinerarios.add(notasFaltasItinerario);
+            }
+            
+            if(listaNotasItinerarios.size() > 0) {
+                request.setAttribute("listaNotasItinerarios", listaNotasItinerarios);
             }
 
             //pegar data atual
