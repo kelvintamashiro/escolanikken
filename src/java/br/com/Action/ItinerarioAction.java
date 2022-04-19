@@ -131,6 +131,8 @@ public class ItinerarioAction extends IDRAction {
             request.setAttribute("ItinerarioForm", itinerarioForm);
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            connectionPool.free(conn);
         }
     }
 

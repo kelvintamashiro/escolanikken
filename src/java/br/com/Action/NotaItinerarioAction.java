@@ -135,6 +135,8 @@ public class NotaItinerarioAction extends IDRAction {
             request.setAttribute("NotaItinerarioForm", notaItinerarioForm);
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            connectionPool.free(conn);
         }
     }
 
@@ -151,6 +153,8 @@ public class NotaItinerarioAction extends IDRAction {
             request.setAttribute("NotaItinerarioForm", notaItinerarioForm);
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            connectionPool.free(conn);
         }
     }
 }
