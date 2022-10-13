@@ -166,6 +166,7 @@ public class ProfessorAction extends IDRAction {
             errors.error("Atualização realizada com Sucesso!");
             request.setAttribute("atualizar", "true");
             request.setAttribute("PessoaFisicaForm", professorForm);
+            this.pageAtualizar(form, request, errors);
         } catch (Exception e) {
             errors.error("Erro na Atualização. Favor verificar!");
             request.setAttribute("atualizar", "false");

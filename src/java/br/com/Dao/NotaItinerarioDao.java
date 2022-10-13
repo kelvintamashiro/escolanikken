@@ -158,7 +158,9 @@ public class NotaItinerarioDao {
         String query = "select i.id_itinerario, i.nome_itinerario"
                 + " from nota_itinerario n, itinerario i"
                 + " where n.id_itinerario = i.id_itinerario"
-                + " and n.id_aluno = ?";
+                + " and n.id_aluno = ?"
+                + " group by i.id_itinerario"
+                + " order by i.nome_itinerario";
 
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setInt(1, idAluno);

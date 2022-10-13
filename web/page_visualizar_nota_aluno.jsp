@@ -222,6 +222,60 @@
                             </tr>
                         </logic:iterate>
                     </logic:present>
+
+                    <!-- Notas Itinerarios -->        
+                    <logic:present name="listaNotasItinerarios" scope="request">
+                        <tr>
+                            <td align="center"><b>Itinerários Formativos</b></td>
+                            <td colspan="12">&nbsp;</td>
+                        </tr>  
+                        <logic:iterate name="listaNotasItinerarios" id="listaItinerario" scope="request">
+                            <tr>
+                                <td align="center"><bean:write name="listaItinerario" property="nomeItinerario"/></td>
+                                <td align="center"><!--nota itinerario 1 bimestre -->
+                                    <logic:lessThan name="listaItinerario" property="notaBimestre1" value="0">
+                                        -
+                                    </logic:lessThan>
+                                    <logic:greaterEqual name="listaItinerario" property="notaBimestre1" value="0">
+                                        <bean:write name="listaItinerario" property="notaBimestre1"/>
+                                    </logic:greaterEqual>
+                                </td> 
+                                <td align="center"><bean:write name="listaItinerario" property="faltaBimestre1"/></td> <!--falta itinerario 1 bimestre -->
+                                <td align="center"><!--nota itinerario 2 bimestre -->
+                                    <logic:lessThan name="listaItinerario" property="notaBimestre2" value="0">
+                                        -
+                                    </logic:lessThan>
+                                    <logic:greaterEqual name="listaItinerario" property="notaBimestre2" value="0">
+                                        <bean:write name="listaItinerario" property="notaBimestre2"/>
+                                    </logic:greaterEqual>
+                                </td> 
+                                <td align="center"><bean:write name="listaItinerario" property="faltaBimestre2"/></td> <!--falta itinerario 2 bimestre -->
+                                <td align="center"> <!--nota itinerario 3 bimestre -->
+                                    <logic:lessThan name="listaItinerario" property="notaBimestre3" value="0">
+                                        -
+                                    </logic:lessThan>
+                                    <logic:greaterEqual name="listaItinerario" property="notaBimestre3" value="0">
+                                        <bean:write name="listaItinerario" property="notaBimestre3"/>
+                                    </logic:greaterEqual>
+                                </td> 
+                                <td align="center"><bean:write name="listaItinerario" property="faltaBimestre3"/></td> <!--falta itinerario 3 bimestre -->
+                                <td align="center"> <!--nota itinerario 4 bimestre -->
+                                    <logic:lessThan name="listaItinerario" property="notaBimestre4" value="0">
+                                        -
+                                    </logic:lessThan>
+                                    <logic:greaterEqual name="listaItinerario" property="notaBimestre4" value="0">
+                                        <bean:write name="listaItinerario" property="notaBimestre4"/>
+                                    </logic:greaterEqual>
+                                </td>
+                                <td align="center"><bean:write name="listaItinerario" property="faltaBimestre4"/></td> <!--falta itinerario 4 bimestre -->
+                                <td align="center"><bean:write name="listaItinerario" property="faltaTotal"/></td> <!--total de faltas -->
+                                <td align="center"><bean:write name="listaItinerario" property="mediaAnual"/></td>
+                                <td align="center">&nbsp;</td>
+                                <td align="center">&nbsp;</td>
+                            </tr>
+                        </logic:iterate>
+                    </logic:present>
+
                 </table>
                 <logic:present name="listaObservacao" scope="request">
                     <table border="1" style="margin-top: 2px; font-size: 9px" width="80%" align="center">

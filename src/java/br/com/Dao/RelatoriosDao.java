@@ -268,9 +268,8 @@ public class RelatoriosDao {
 
     public RelatoriosForm obterInformacaoPorCategoria(Connection conn, int idCategoria) throws SQLException {
         String query = "select pf.nome, pf.sexo, a.serie_ano, d.descricao"
-                + " from pessoa_fisica pf, alunos a, ano_vigente ano, descricao_serie_ano d"
+                + " from pessoa_fisica pf, alunos a, descricao_serie_ano d"
                 + " where pf.id = a.id_pessoa_fisica"
-                + " and a.ano_vigente = ano.ano_vigente"
                 + " and a.serie_ano = d.id"
                 + " and d.ordem = ?"
                 + " and pf.status = 1"
@@ -308,7 +307,6 @@ public class RelatoriosDao {
         String query = "select pf.nome, pf.sexo, a.serie_ano, d.descricao"
                 + " from pessoa_fisica pf, alunos a, ano_vigente ano, descricao_serie_ano d"
                 + " where pf.id = a.id_pessoa_fisica"
-                + " and a.ano_vigente = ano.ano_vigente"
                 + " and a.serie_ano = d.id"
                 + " and a.serie_ano = ?"
                 + " and pf.status = 1"
@@ -344,9 +342,8 @@ public class RelatoriosDao {
     public int obterQtdEstudantePorSexo(Connection conn, String sexo) throws SQLException {
         int qtdPorSexo = 0;
         String query = "select count(*) as qtdTotal"
-                + " from pessoa_fisica pf, alunos a, ano_vigente ano"
+                + " from pessoa_fisica pf, alunos a"
                 + " where pf.id = a.id_pessoa_fisica"
-                + " and a.ano_vigente = ano.ano_vigente"
                 + " and pf.sexo = ?"
                 + " and pf.status = 1";
         PreparedStatement prep = conn.prepareStatement(query);

@@ -305,7 +305,7 @@
                     </tr>
                     <tr>
                         <td style="font-size: 11px">
-                            <bean:write name="PautaForm" property="pautaApresentacao" filter="false"/>
+                            <bean:write name="PautaForm" property="pautaBoletim" filter="false"/>
                         </td>
                     </tr>
                     <tr><td>&nbsp;</td></tr>

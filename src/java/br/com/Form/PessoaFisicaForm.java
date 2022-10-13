@@ -377,7 +377,7 @@ public class PessoaFisicaForm extends FormBasico {
 
     public void atualizarPessoaFisica(Connection conn, PessoaFisicaForm pessoaFisicaForm) throws SQLException {
         String query = "UPDATE pessoa_fisica SET nome=?, data_nascimento=?, naturalidade=?, sexo=?, nacionalidade=?, endereco=?, provincia=?,"
-                + " cidade=?, telefone_contato=?, contato_emergencia=?, status=?, tipo=?"
+                + " cidade=?, telefone_contato=?, contato_emergencia=?, status=?, tipo=?, telefone_professor=?"
                 + " WHERE id=?";
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setString(1, pessoaFisicaForm.getNome());
@@ -396,7 +396,8 @@ public class PessoaFisicaForm extends FormBasico {
         prep.setString(10, pessoaFisicaForm.getContatoEmergencia());
         prep.setInt(11, pessoaFisicaForm.getStatus());
         prep.setString(12, pessoaFisicaForm.getTipoPerfil());
-        prep.setInt(13, pessoaFisicaForm.getIdPF());
+        prep.setString(13, pessoaFisicaForm.getTelefoneProfessor());
+        prep.setInt(14, pessoaFisicaForm.getIdPF());
         prep.execute();
         prep.close();
     }
@@ -494,6 +495,7 @@ public class PessoaFisicaForm extends FormBasico {
             pfForm.setDsEndereco(rs.getString("endereco"));
             pfForm.setProvincia(rs.getString("provincia"));
             pfForm.setCidade(rs.getString("cidade"));
+            pfForm.setTelefoneProfessor(rs.getString("telefone_professor"));
             pfForm.setTelefoneContato(rs.getString("telefone_contato"));
             pfForm.setContatoEmergencia(rs.getString("contato_emergencia"));
             pfForm.setStatus(rs.getInt("status"));

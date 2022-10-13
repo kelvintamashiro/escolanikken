@@ -56,6 +56,10 @@
                                 <bean:define id="notaBimestreForm" name="RelatoriosForm" property="notaBimestreForm"/>
                                 <html:select name="notaBimestreForm" property="idSerieAno" styleId="idSerieAno" styleClass="form-control">
                                     <html:option value="">Selecione Série/Ano</html:option>
+                                    <html:option value="11">Infantil I</html:option>
+                                    <html:option value="12">Infantil II</html:option>
+                                    <html:option value="13">Infantil III</html:option>
+                                    <html:option value="1">1º ano</html:option>
                                     <html:option value="2">2º ano</html:option>
                                     <html:option value="3">3º ano</html:option>
                                     <html:option value="4">4º ano</html:option>
