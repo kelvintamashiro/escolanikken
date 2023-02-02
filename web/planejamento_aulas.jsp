@@ -122,7 +122,7 @@
                             <html:textarea name="PlanejamentoAulasForm" property="conteudoAula" styleId="conteudoAula" styleClass="form-control" rows="5"/>
                         </td>
                     </tr>
-                    <tr>
+<!--                    <tr>
                         <td colspan="2">
                             <label for="usr">Metodologia:</label>
                             <html:text name="PlanejamentoAulasForm" property="metodologia" styleId="metodologia" styleClass="form-control"/>
@@ -133,19 +133,19 @@
                             <label for="usr">Recursos:</label>
                             <html:text name="PlanejamentoAulasForm" property="recurso" styleId="recurso" styleClass="form-control"/>
                         </td>
-                    </tr>
+                    </tr>-->
                     <tr>
                         <td colspan="2">
                             <label for="usr">Tarefas:</label>
                             <html:text name="PlanejamentoAulasForm" property="tarefa" styleId="tarefa" styleClass="form-control"/>
                         </td>
                     </tr>
-                    <tr>
+<!--                    <tr>
                         <td colspan="2">
                             <label for="usr">Avaliação:</label>
                             <html:text name="PlanejamentoAulasForm" property="avaliacao" styleId="avaliacao" styleClass="form-control"/>
                         </td>
-                    </tr>
+                    </tr>-->
                     <tr>
                         <td colspan="2">
                             <label for="usr">Observação:</label>

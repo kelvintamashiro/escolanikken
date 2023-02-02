@@ -111,14 +111,14 @@
                         </td>
                     </tr>
 
-                    <tr>
+<!--                    <tr>
                         <td colspan="2">
                             <div class="col-lg-12">
                                 <label for="usr">Qualidades:</label>
                                 <html:text name="PautaForm" property="obsQualidade" styleId="obsQualidade" styleClass="form-control" maxlength="250"/>
                             </div>
                         </td>
-                    </tr>
+                    </tr>-->
                     <tr>
                         <td colspan="2">
                             <div class="col-lg-12">
@@ -135,7 +135,7 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
+<!--                    <tr>
                         <td colspan="2">
                             <div class="col-lg-12">
                                 <label for="usr">Comportamento em sala:</label>
@@ -182,11 +182,11 @@
                                 <html:text name="PautaForm" property="obsDicaProfessor" styleId="obsDicaProfessor" styleClass="form-control" maxlength="250"/>
                             </div>
                         </td>
-                    </tr>
+                    </tr>-->
                     <tr>
                         <td colspan="2">
                             <div class="col-lg-12">
-                                <label for="usr">Outros assuntos (sobre a sala de aula ou desempenho do aluno): </label>
+                                <label for="usr">Observação: </label>
                                 <html:text name="PautaForm" property="obsOutroAssunto" styleId="obsOutroAssunto" styleClass="form-control" maxlength="250"/>
                             </div>
                         </td>
