@@ -57,10 +57,10 @@
         <html:form action="Login" name="LoginForm" type="br.com.Form.LoginForm" scope="request">
 
             <table width="50%" border="0" align="center" class="table-responsive">
-                <tr><td style="padding-top: 20%;">&nbsp;</td></tr>
+                <tr><td style="padding-top: 10%;">&nbsp;</td></tr>
                 <tr>
                     <td align="center">
-                        <img src="imagens/logo.png" width="80%"/>
+                        <img src="imagens/logo-nikken.png" width="80%"/>
                     </td>
                 </tr>
                 <tr><td style="padding-top: 10px;">&nbsp;</td></tr>

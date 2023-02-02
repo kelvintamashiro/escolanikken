@@ -451,6 +451,32 @@ public class NotaBimestreAction extends IDRAction {
                     double mediaArredondada = Math.round(media / 0.5) * 0.5;
                     notasFaltasItinerario.setMediaAnual(mediaArredondada);
                 }
+
+                //se a media final for menor que 6.0 verificar se fez recuperacao final e pegar a nota
+                if (notasFaltasItinerario.getMediaAnual() < 6.0) {
+                    String observacaoRecup = "";
+                    RecuperacaoAnualForm recuperacaoAnualForm = new RecuperacaoAnualForm();
+                    double mediaRecupFinal = recuperacaoAnualForm.obterMediaRecupFinalPorAlunoDisciplina(conn, itinerario.getIdItinerario(), notaBimestreForm.getAno(), notaBimestreForm.getIdAluno(), notaBimestreForm.getIdSerieAno());
+                    if (mediaRecupFinal > 0) {
+                        notasFaltasItinerario.setFezProvaRecupAnual(true);
+                        if (mediaRecupFinal >= 6.0) {
+                            notasFaltasItinerario.setMediaRecupFinal(mediaRecupFinal);
+                            notasFaltasItinerario.setPassouDisciplina(true);
+                            observacaoRecup = "Aluno(a) foi submetivo a recuperação anual e obteve êxito no itinerário: " + itinerario.getNomeItinerario();
+                            notasFaltasItinerario.setResultadoFinal("Aprovado");
+                        } else {
+                            notasFaltasItinerario.setMediaRecupFinal(mediaRecupFinal);
+                            notasFaltasItinerario.setPassouDisciplina(false);
+                            observacaoRecup = "Aluno(a) foi submetivo a recuperação anual e não obteve êxito no itinerário: " + itinerario.getNomeItinerario();
+                            notasFaltasItinerario.setResultadoFinal("Reprovado");
+                        }
+                        listaObservacao.add(observacaoRecup);
+                    }
+                } else {
+                    //se a media final for maior ou igual a 6, escreve no resultado final Aprovado
+                    notasFaltasItinerario.setResultadoFinal("Aprovado");
+                }
+
                 listaNotasItinerarios.add(notasFaltasItinerario);
             }
 
@@ -582,6 +608,32 @@ public class NotaBimestreAction extends IDRAction {
                         double mediaArredondada = Math.round(media / 0.5) * 0.5;
                         notasFaltasItinerario.setMediaAnual(mediaArredondada);
                     }
+
+                    //se a media final for menor que 6.0 verificar se fez recuperacao final e pegar a nota
+                    if (notasFaltasItinerario.getMediaAnual() < 6.0) {
+                        String observacaoRecup = "";
+                        RecuperacaoAnualForm recuperacaoAnualForm = new RecuperacaoAnualForm();
+                        double mediaRecupFinal = recuperacaoAnualForm.obterMediaRecupFinalPorAlunoDisciplina(conn, itinerario.getIdItinerario(), notaBimestreForm.getAno(), notaBimestreForm.getIdAluno(), notaBimestreForm.getIdSerieAno());
+                        if (mediaRecupFinal > 0) {
+                            notasFaltasItinerario.setFezProvaRecupAnual(true);
+                            if (mediaRecupFinal >= 6.0) {
+                                notasFaltasItinerario.setMediaRecupFinal(mediaRecupFinal);
+                                notasFaltasItinerario.setPassouDisciplina(true);
+                                observacaoRecup = "Aluno(a) foi submetivo a recuperação anual e obteve êxito no itinerário: " + itinerario.getNomeItinerario();
+                                notasFaltasItinerario.setResultadoFinal("Aprovado");
+                            } else {
+                                notasFaltasItinerario.setMediaRecupFinal(mediaRecupFinal);
+                                notasFaltasItinerario.setPassouDisciplina(false);
+                                observacaoRecup = "Aluno(a) foi submetivo a recuperação anual e não obteve êxito no itinerário: " + itinerario.getNomeItinerario();
+                                notasFaltasItinerario.setResultadoFinal("Reprovado");
+                            }
+                            listaObservacao.add(observacaoRecup);
+                        }
+                    } else {
+                        //se a media final for maior ou igual a 6, escreve no resultado final Aprovado
+                        notasFaltasItinerario.setResultadoFinal("Aprovado");
+                    }
+
                     listaNotasItinerarios.add(notasFaltasItinerario);
                 }
 

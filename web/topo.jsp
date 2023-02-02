@@ -15,7 +15,7 @@
             <td colspan="3">&nbsp;</td>
         </tr>
         <tr>
-            <td width="25%">
+            <td width="20%">
                 <a href="tela_interativa.jsp">
                     <img src="imagens/logo.png" width="100%"/>
                 </a>

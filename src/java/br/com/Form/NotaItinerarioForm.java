@@ -30,12 +30,75 @@ public class NotaItinerarioForm extends FormBasico {
     private double notaBimestre3 = -1.0;
     private double notaBimestre4 = -1.0;
     private double mediaAnual;
+    private double mediaFinal;
+    private double mediaRecupFinal;
     private int faltaBimestre1;
     private int faltaBimestre2;
     private int faltaBimestre3;
     private int faltaBimestre4;
     private int faltaTotal;
+    private int recuperacao;
+    private boolean passouDisciplina;
+    private boolean fezProvaRecupAnual = false;
+    private String observacaoRecupAnual;
+    private String resultadoFinal;
 
+    public double getMediaFinal() {
+        return mediaFinal;
+    }
+
+    public void setMediaFinal(double mediaFinal) {
+        this.mediaFinal = mediaFinal;
+    }
+
+    public double getMediaRecupFinal() {
+        return mediaRecupFinal;
+    }
+
+    public void setMediaRecupFinal(double mediaRecupFinal) {
+        this.mediaRecupFinal = mediaRecupFinal;
+    }
+
+    public int getRecuperacao() {
+        return recuperacao;
+    }
+
+    public void setRecuperacao(int recuperacao) {
+        this.recuperacao = recuperacao;
+    }
+
+    public boolean isPassouDisciplina() {
+        return passouDisciplina;
+    }
+
+    public void setPassouDisciplina(boolean passouDisciplina) {
+        this.passouDisciplina = passouDisciplina;
+    }
+
+    public boolean isFezProvaRecupAnual() {
+        return fezProvaRecupAnual;
+    }
+
+    public void setFezProvaRecupAnual(boolean fezProvaRecupAnual) {
+        this.fezProvaRecupAnual = fezProvaRecupAnual;
+    }
+
+    public String getObservacaoRecupAnual() {
+        return observacaoRecupAnual;
+    }
+
+    public void setObservacaoRecupAnual(String observacaoRecupAnual) {
+        this.observacaoRecupAnual = observacaoRecupAnual;
+    }
+
+    public String getResultadoFinal() {
+        return resultadoFinal;
+    }
+
+    public void setResultadoFinal(String resultadoFinal) {
+        this.resultadoFinal = resultadoFinal;
+    }
+    
     public int getFaltaTotal() {
         return faltaTotal;
     }
@@ -43,7 +106,7 @@ public class NotaItinerarioForm extends FormBasico {
     public void setFaltaTotal(int faltaTotal) {
         this.faltaTotal = faltaTotal;
     }
-    
+
     public int getFaltaBimestre1() {
         return faltaBimestre1;
     }
@@ -75,7 +138,7 @@ public class NotaItinerarioForm extends FormBasico {
     public void setFaltaBimestre4(int faltaBimestre4) {
         this.faltaBimestre4 = faltaBimestre4;
     }
-    
+
     public double getNotaBimestre1() {
         return notaBimestre1;
     }
@@ -115,7 +178,7 @@ public class NotaItinerarioForm extends FormBasico {
     public void setMediaAnual(double mediaAnual) {
         this.mediaAnual = mediaAnual;
     }
-    
+
     public int getIdProfessor() {
         return idProfessor;
     }
@@ -131,7 +194,7 @@ public class NotaItinerarioForm extends FormBasico {
     public void setNomeProfessor(String nomeProfessor) {
         this.nomeProfessor = nomeProfessor;
     }
-    
+
     public String getCategoriaEnsino() {
         return categoriaEnsino;
     }
@@ -139,7 +202,7 @@ public class NotaItinerarioForm extends FormBasico {
     public void setCategoriaEnsino(String categoriaEnsino) {
         this.categoriaEnsino = categoriaEnsino;
     }
-    
+
     public int getIdNotaItinerario() {
         return idNotaItinerario;
     }
@@ -227,7 +290,5 @@ public class NotaItinerarioForm extends FormBasico {
     public void setNotaBimestral(String notaBimestral) {
         this.notaBimestral = notaBimestral;
     }
-
-   
 
 }

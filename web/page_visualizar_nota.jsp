@@ -271,7 +271,9 @@
                                 <td align="center"><bean:write name="listaItinerario" property="faltaTotal"/></td> <!--total de faltas -->
                                 <td align="center"><bean:write name="listaItinerario" property="mediaAnual"/></td>
                                 <td align="center">&nbsp;</td>
-                                <td align="center">&nbsp;</td>
+                                <td align="center"><!-- Resultado final -->
+                                    <bean:write name="listaItinerario" property="resultadoFinal"/>
+                                </td> 
                             </tr>
                         </logic:iterate>
                     </logic:present>
