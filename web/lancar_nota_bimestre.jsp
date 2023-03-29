@@ -14,12 +14,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Escola Nikken - Painel</title>
         <link rel="shortcut icon" href="imagens/favico.png" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <script language="javascript1.2" src="js/mizanscene.js"></script>
-        <script type="text/javascript" src="js/JQuery/js/jquery-1.3.2.js"></script>
-
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/fix.css" />
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/style.css" />
+        <!--        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+                <script language="javascript1.2" src="js/mizanscene.js"></script>
+                <script type="text/javascript" src="js/JQuery/js/jquery-1.3.2.js"></script>
+                <link rel="stylesheet" media="all" type="text/css" href="assets/css/fix.css" />
+                <link rel="stylesheet" media="all" type="text/css" href="assets/css/style.css" />-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <style>
             body {
                 margin:0;
@@ -36,18 +37,17 @@
         </logic:present>
         <html:form action="NotaBimestre" name="NotaBimestreForm" type="br.com.Form.NotaBimestreForm" scope="request">
             <jsp:include page="topo.jsp"/>
-
-            <table border="0" align="center" style="margin-top: 20px; background-color: #ADD8E6" width="100%">
-                <tr>
-                    <td width="10%" style="padding-left: 50px">
-                        <a href="NotaBimestre.do?idPF=<%=session.getAttribute("idPF").toString()%>"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
-                    </td>
-                    <td width="80%" align="center">
+            <div class="container-fluid">
+                <div class="row p-3" style="background-color: #F4F4F4" >
+                    <div class="col-12 col-sm-1" align="center">
+                        <a href="tela_interativa.jsp"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
+                    </div>
+                    <div class="col-sm-10" align="center">
                         <h1>Lançamento de Notas por Série/Ano</h1>
-                    </td>
-                    <td width="10%">&nbsp;</td>
-                </tr>
-            </table>
+                    </div>
+                    <div class="col-sm-1">&nbsp;</div>
+                </div>
+            </div>
 
             <bean:define id="disciplina" name="NotaBimestreForm" property="disciplinasForm"/>
             <bean:define id="serieAno" name="NotaBimestreForm" property="serieAnoForm"/>
@@ -90,9 +90,6 @@
                             <td width="40%">
                                 <b>Alunos</b>
                             </td>
-                            <!--                            <td width="10%">
-                                                            <b>Qtd. Faltas</b>
-                                                        </td>-->
                             <td width="10%">
                                 <b>Produção de Sala</b>
                             </td>
@@ -107,22 +104,21 @@
                         <tr>
                             <td>&nbsp;</td>
                             <td>
-                                <html:select name="NotaBimestreForm" property="idAluno" styleClass="form-control">
+                                <html:select name="NotaBimestreForm" property="idAluno" styleClass="form-control form-control-sm">
                                     <html:option value="0">Selecione</html:option>
                                     <html:options collection="listaAlunosSemNota" property="idPF" labelProperty="nome"></html:options>
                                 </html:select>
                             </td>
-                            <!--<td><html:text name="NotaBimestreForm" property="falta" styleClass="form-control"/></td>-->
                             <td>
-                                <input class="nota form-control" name="notaProducaoSala" id="notaProducaoSala" type="text" min="0" max="10" />
+                                <input class="nota form-control form-control-sm" name="notaProducaoSala" id="notaProducaoSala" type="text" min="0" max="10" />
                             </td>
                             <td>
-                                <input class="nota form-control" name="notaMensal" id="notaMensal" type="text" min="0" max="10" />
+                                <input class="nota form-control form-control-sm" name="notaMensal" id="notaMensal" type="text" min="0" max="10" />
                             </td>
                             <td>
-                                <input class="nota form-control" name="notaBimestral" id="notaBimestral" type="text" min="0" max="10" />
+                                <input class="nota form-control form-control-sm" name="notaBimestral" id="notaBimestral" type="text" min="0" max="10" />
                             </td>
-                            <td><input class="btn btn-grey" type="button" value="Lançar" onClick="fLancarNota(<bean:write name="bimestre" scope="request"/>, <bean:write name="disciplina" property="idDisciplina"/>);"></td>
+                            <td><input class="btn btn-sm btn-primary" type="button" value="Lançar" onClick="fLancarNota(<bean:write name="bimestre" scope="request"/>, <bean:write name="disciplina" property="idDisciplina"/>);"></td>
                             <td>&nbsp;</td>
                         </tr>
                         <script type="text/javascript">
@@ -151,15 +147,10 @@
                     </table>
                 </div>
             </logic:present>
-            <%--<logic:notPresent name="listaAlunosSemNota" scope="request">
-                <div class="alert-danger" align="center">
-                    <b class="vermelho10">Nenhum Aluno Cadastrado para essa Série</b>
-                </div>
-                <br/><br/><br/><br/><br/><br/><br/>
-            </logic:notPresent>--%>
+
             <logic:present name="listaAlunosComNota" scope="request">
-                <div class="form-group">
-                    <table border="0" class="table" align="center" style="margin-top: 20px;" width="90%">
+                <table border="0" class="table" align="center" style="margin-top: 20px;" width="90%">
+                    <thead>
                         <tr>
                             <td width="5%">&nbsp;</td>
                             <td><b>Nome Aluno</b></td>
@@ -167,10 +158,10 @@
                             <td align="center"><b>Nota Prova Mensal</b></td>
                             <td align="center"><b>Nota Prova Bimestral</b></td>
                             <td align="center"><b>Média Bimestral</b></td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td width="5%">&nbsp;</td>
+                            <td colspan="3">&nbsp;</td>
                         </tr>
+                    </thead>
+                    <tbody>
                         <logic:iterate name="listaAlunosComNota" id="lista" scope="request">
                             <bean:define name="lista" property="notaBimestre" id="notaBimestre"/>
                             <tr>
@@ -184,13 +175,9 @@
                                         <b><bean:write name="notaBimestre" property="mediaBimestre"/></b>
                                     </td>
                                     <td>
-                                        <input class="btn btn-grey" type="button" value="Editar" onClick="fEditar(<bean:write name="bimestre" scope="request"/>, <bean:write name="notaBimestre" property="idNotaBimestre"/>, <bean:write name="disciplina" property="idDisciplina"/>);">
-                                    </td>F
-                                    <td>
-                                        <input class="btn btn-danger" type="button" value="Excluir" onClick="fExcluir(<bean:write name="bimestre" scope="request"/>, <bean:write name="notaBimestre" property="idNotaBimestre"/>, <bean:write name="disciplina" property="idDisciplina"/>);">
-                                    </td>
-                                    <td>
-                                        <input class="btn btn-green" type="button" value="Recuperou" onClick="fRecuperou(<bean:write name="bimestre" scope="request"/>, <bean:write name="notaBimestre" property="idNotaBimestre"/>, <bean:write name="disciplina" property="idDisciplina"/>);">
+                                        <input class="btn btn-sm btn-success" type="button" value="Editar" onClick="fEditar(<bean:write name="bimestre" scope="request"/>, <bean:write name="notaBimestre" property="idNotaBimestre"/>, <bean:write name="disciplina" property="idDisciplina"/>);">
+                                        <input class="btn btn-sm btn-danger" type="button" value="Excluir" onClick="fExcluir(<bean:write name="bimestre" scope="request"/>, <bean:write name="notaBimestre" property="idNotaBimestre"/>, <bean:write name="disciplina" property="idDisciplina"/>);">
+                                        <input class="btn btn-sm btn-dark" type="button" value="Recuperou" onClick="fRecuperou(<bean:write name="bimestre" scope="request"/>, <bean:write name="notaBimestre" property="idNotaBimestre"/>, <bean:write name="disciplina" property="idDisciplina"/>);">
                                     </td>
                                 </logic:lessThan>
                                 <logic:greaterEqual name="notaBimestre" property="mediaBimestre" value="6">
@@ -205,21 +192,17 @@
                                         </td>
                                     </logic:notEqual>
                                     <td>
-                                        <input class="btn btn-grey" type="button" value="Editar" onClick="fEditar(<bean:write name="bimestre" scope="request"/>, <bean:write name="notaBimestre" property="idNotaBimestre"/>, <bean:write name="disciplina" property="idDisciplina"/>);">
-                                    </td>
-                                    <td>
-                                        <input class="btn btn-danger" type="button" value="Excluir" onClick="fExcluir(<bean:write name="bimestre" scope="request"/>, <bean:write name="notaBimestre" property="idNotaBimestre"/>, <bean:write name="disciplina" property="idDisciplina"/>);">
+                                        <input class="btn btn-sm btn-success" type="button" value="Editar" onClick="fEditar(<bean:write name="bimestre" scope="request"/>, <bean:write name="notaBimestre" property="idNotaBimestre"/>, <bean:write name="disciplina" property="idDisciplina"/>);">
+                                        <input class="btn btn-sm btn-danger" type="button" value="Excluir" onClick="fExcluir(<bean:write name="bimestre" scope="request"/>, <bean:write name="notaBimestre" property="idNotaBimestre"/>, <bean:write name="disciplina" property="idDisciplina"/>);">
                                     </td>
                                 </logic:greaterEqual>
                                 <td>&nbsp;</td>
                             </tr>
                         </logic:iterate>
-                    </table>
-                </div>
+                    </tbody>
+                </table>
             </logic:present>
 
-            <!--<br/><br/><br/><br/><br/><br/>-->
-            <%--<jsp:include page="footer.jsp"/>--%>
         </html:form>
     </body>
 </html>

@@ -13,14 +13,8 @@
     <head>
         <title>Escola Nikken - Comunicados</title>
         <link rel="shortcut icon" href="imagens/favico.png" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <script language="javascript1.2" src="js/mizanscene.js"></script>
-        <script type="text/javascript" src="js/JQuery/js/jquery-1.3.2.js"></script>
-
-        <!--<link rel="stylesheet" media="all" type="text/css" href="assets/css/reset.css" />-->
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/fix.css" />
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/style_original.css" />
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/mobile.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
         <!--Ajax-->
         <script type="text/javascript" src="js/ajax.js"></script>
@@ -70,18 +64,17 @@
         </logic:present>
         <html:form action="Comunicados.do" name="ComunicadosForm" type="br.com.Form.ComunicadosForm" scope="request">
             <jsp:include page="topo.jsp"/>
-
-            <table border="0" align="center" style="margin-top: 20px; background-color: #ADD8E6" width="100%">
-                <tr>
-                    <td width="10%" style="padding-left: 50px">
+            <div class="container-fluid">
+                <div class="row p-3" style="background-color: #F4F4F4" >
+                    <div class="col-12 col-sm-1" align="center">
                         <a href="tela_interativa.jsp"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
-                    </td>
-                    <td width="80%" align="center">
-                        <h1>Comunicados - Direção</h1>
-                    </td>
-                    <td width="10%">&nbsp;</td>
-                </tr>
-            </table>
+                    </div>
+                    <div class="col-sm-10" align="center">
+                        <h2>Comunicados - Direção</h2>
+                    </div>
+                    <div class="col-sm-1">&nbsp;</div>
+                </div>
+            </div>
 
             <div class="form-group">
                 <table border="0" align="center" style="margin-top: 20px;" width="80%">
@@ -129,7 +122,7 @@
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>
-                                        <input type="button" class="botao" name="Submit" value="+ / -" onClick="inverte()">
+                                        <input type="button" class="btn btn-sm btn-dark" name="Submit" value="+ / -" onClick="inverte()">
                                     </td>
                                     <td>&nbsp;</td>
                                 </tr>
@@ -142,7 +135,7 @@
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td colspan="2">
-                                        <input type="button" name="Button"  class="btn btn-green" value="Comunicado Por Aluno" onClick="fComunicadoAluno();">
+                                        <input type="button" name="Button"  class="btn btn-sm btn-success" value="Comunicado Por Aluno" onClick="fComunicadoAluno();">
                                     </td>
                                 </tr>
                             </table>
@@ -151,19 +144,22 @@
                             <table width="100%" class="table-condensed" border="0">
                                 <tr>
                                     <td width="20%" align="right"><b>Título:</b></td>
-                                    <td colspan="2"><html:text name="ComunicadosForm" property="assunto" styleClass="form-control"/></td>
+                                    <td colspan="2"><html:text name="ComunicadosForm" property="assunto" styleClass="form-control form-control-sm"/></td>
                                 </tr>
                                 <tr>
                                     <td width="20%" align="right" valign="top"><b>Descrição:</b></td>
-                                    <td colspan="2"><html:textarea name="ComunicadosForm" property="descricao" rows="20" cols="70" styleClass="form-control"/></td>
+                                    <td colspan="2"><html:textarea name="ComunicadosForm" property="descricao" rows="20" cols="70" styleClass="form-control form-control-sm"/></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td width="40%">
-                                        <input type="button" name="Button"  class="btn btn-green" value="Salvar" onClick="fSalvar();">
+                                        <input type="button" name="Button"  class="btn btn-sm btn-success" value="Salvar" onClick="fSalvar();">
                                     </td>
                                     <td width="40%">
-                                        <input type="button" name="Button"  class="btn btn-grey" value="Pesquisar" onClick="fPesquisar();">
+                                        <input type="button" name="Button"  class="btn btn-sm btn-primary" value="Pesquisar" onClick="fPesquisar();">
                                     </td>
                                 </tr>
                             </table>

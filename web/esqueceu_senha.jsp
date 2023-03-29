@@ -1,6 +1,6 @@
 <%-- 
-    Document   : esqueceu_senha
-    Created on : 13/07/2020, 22:22:21
+    Document   : index
+    Created on : 18/02/2020, 21:54:10
     Author     : macuser
 --%>
 
@@ -10,24 +10,34 @@
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <!DOCTYPE html>
 <html>
+
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Escola Nikken - Esqueceu senha</title>
-        <link rel="shortcut icon" href="imagens/favico.png" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <script language="javascript1.2" src="js/mizanscene.js"></script>
-        <script type="text/javascript" src="js/JQuery/js/jquery-1.3.2.js"></script>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <style>
-            body {
-                margin:0;
-                padding:0;
+            .divider:after,
+            .divider:before {
+                content: "";
+                flex: 1;
+                height: 1px;
+                background: #eee;
             }
+            .h-custom {
+                height: calc(100% - 73px);
+            }
+            @media (max-width: 450px) {
+                .h-custom {
+                    height: 90%;
+                }
+            }
+            a {
+                text-decoration: none;
+            }
+
         </style>
         <script language="javascript">
-            $(function () {
-                $("#login").attr("placeholder", "E-mail. Ex. email@email.com");
-                $("#dtNascimento").attr("placeholder", "dd/mm/yyyy");
-            });
             function fEnviar() {
                 var login = document.getElementById('login').value.trim();
                 var dtNascimento = document.getElementById('dtNascimento').value.trim();
@@ -47,63 +57,53 @@
                 document.LoginForm.action = "index.jsp";
                 document.LoginForm.submit();
             }
-
         </script>
     </head>
     <body>
-        <logic:present name="errors">
-            <script>
-                alert('<bean:write name="errors"/>');
-            </script>
-        </logic:present>
-        <html:form action="Login" name="LoginForm" type="br.com.Form.LoginForm" scope="request">
+        <section class="vh-100">
+            <div class="container-fluid h-custom">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-md-9 col-lg-6 col-xl-4">
+                        <img src="imagens/draw2.webp" class="img-fluid"/>
+                    </div>
 
-            <table width="50%" border="0" align="center" class="table-responsive">
-                <tr><td style="padding-top: 20%;">&nbsp;</td></tr>
-                <tr>
-                    <td align="center">
-                        <img src="imagens/logo.png" width="80%"/>
-                    </td>
-                </tr>
-                <tr><td style="padding-top: 10px;">&nbsp;</td></tr>
-                <tr>
-                    <td>
-                        <div class="form-group">
-                            <label for="usr">E-mail:</label>
-                            <html:text styleClass="form-control" name="LoginForm" property="login" styleId="login"/>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form-group">
-                            <label for="usr">Data de Nascimento:</label>
-                            <html:text name="LoginForm" property="dtNascimento" styleId="dtNascimento" styleClass="form-control" size="15" maxlength="10" onkeyup="formatarData(this);" onkeypress="return(validarConteudo(event, 'numero'))" onfocus="show('dtNascimento')" onblur="hide('dtNascimento')"/>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input class="btn btn-primary" type="button" value="Solicitar Nova Senha" onClick="fEnviar();">
-                        <input class="btn btn-success" type="button" value="Voltar Início" onClick="fVoltar();">
-                    </td>
-                </tr>
-            </table>
-            <logic:equal name="erroLogin" value="false">
-                <br/>
-                <div class="alert alert-success alert-dismissible" id="myAlert" style="text-align: center">
-                    <a href="#" class="close">&times;</a>
-                    <b>Foi enviado uma nova senha para o seu e-mail</b>
+                    <div class="col-md-8 col-lg-6 col-xl-4">
+                        <html:form action="Login" name="LoginForm" type="br.com.Form.LoginForm" scope="request">
+                            <div class="card">
+                                <div align="center">
+                                    <img src="imagens/logo-nikken.png" width="70%"/>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3" align="center">
+                                        <p class="small">Informe seu e-mail e sua data de nascimento cadastrado, <br/> para receber uma nova senha no seu e-mail.</p>
+                                    </div>
+                                    <div class="p-2">
+                                        <input type="email" class="form-control" id="login" name="login" placeholder="E-mail. ex: name@example.com">
+                                    </div>
+                                    <div class="p-2">
+                                        <input type="date" class="form-control" id="dtNascimento" name="dtNascimento" placeholder="dd/mm/yyyy">
+                                    </div>
+                                    <div class="p-2" align="center">
+                                        <input class="btn btn-success" type="button" value="Solicitar nova senha" onClick="fEnviar();">
+                                        <input class="btn btn-dark" type="button" value="Voltar página inicial" onClick="fVoltar();">
+                                    </div>
+                                </div>
+                            </div>
+                        </html:form>
+                    </div>
+
+
                 </div>
-            </logic:equal>                
-            <logic:equal name="erroLogin" value="true">
-                <br/>
-                <div class="alert alert-danger alert-dismissible" id="myAlert" style="text-align: center">
-                    <a href="#" class="close">&times;</a>
-                    <b>Erro na solicitação, favor entrar em contato!</b>
+            </div>
+
+            <div class=" py-4 px-4 bg-success" align="center">
+                <!-- Copyright -->
+                <div class="text-white small mb-3 mb-md-0">
+                    Desenvolvido por <a href="https://www.mitsistemas.com.br" target="_blank"> 
+                        <img src="imagens/logo_mitsistemas_nova_preta.png" width="10%"/>
+                    </a>
                 </div>
-            </logic:equal>
-        </html:form>
+            </div>
+        </section>
     </body>
 </html>
-

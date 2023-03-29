@@ -14,12 +14,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Escola Nikken - Painel</title>
         <link rel="shortcut icon" href="imagens/favico.png" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <script language="javascript1.2" src="js/mizanscene.js"></script>
-        <script type="text/javascript" src="js/JQuery/js/jquery-1.3.2.js"></script>
-
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/fix.css" />
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/style.css" />
+        <!--        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+                <script language="javascript1.2" src="js/mizanscene.js"></script>
+                <script type="text/javascript" src="js/JQuery/js/jquery-1.3.2.js"></script>
+                <link rel="stylesheet" media="all" type="text/css" href="assets/css/fix.css" />
+                <link rel="stylesheet" media="all" type="text/css" href="assets/css/style.css" />-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <style>
             body {
                 margin:0;
@@ -38,20 +39,17 @@
             <jsp:include page="topo.jsp"/>
 
             <html:hidden name="NotaBimestreForm" property="idDisciplina"/>
-            <table border="0" align="center" style="margin-top: 20px; background-color: #ADD8E6" width="100%">
-                <tr>
-                    <td width="10%" style="padding-left: 50px">
-                        <!--<a href="NotaBimestre.do?idPF=<%=session.getAttribute("idPF").toString()%>"><img src="imagens/bt_voltar_2.png" width="100px"/></a>-->
-                        <a href=NotaBimestre.do?action=pageLancarNota&idDisciplina=<bean:write name="NotaBimestreForm" property="idDisciplina"/>&serieAno=<bean:write name="NotaBimestreForm" property="idSerieAno"/>&nrBimestre=<bean:write name="NotaBimestreForm" property="nrBimestre"/>>
-                            <img src="imagens/bt_voltar_2.png" width="100px"/>
-                        </a>
-                    </td>
-                    <td width="80%" align="center">
+            <div class="container-fluid">
+                <div class="row p-3" style="background-color: #F4F4F4" >
+                    <div class="col-12 col-sm-1" align="center">
+                        <a href="tela_interativa.jsp"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
+                    </div>
+                    <div class="col-sm-10" align="center">
                         <h1>Lançamento de Notas por Série/Ano</h1>
-                    </td>
-                    <td width="10%">&nbsp;</td>
-                </tr>
-            </table>
+                    </div>
+                    <div class="col-sm-1">&nbsp;</div>
+                </div>
+            </div>
             <div class="form-group">
                 <table border="0" align="center" style="margin-top: 20px;" width="80%">
                     <tr>
@@ -113,15 +111,15 @@
                             <html:hidden name="NotaBimestreForm" property="nomeAluno"/>
                         </td>
                         <td>
-                            <input class="nota form-control" name="notaProducaoSala" id="notaProducaoSala" type="text" min="0" max="10" value="<bean:write name="NotaBimestreForm" property="notaProducaoSala"/>"/>
+                            <input class="nota form-control form-control-sm" name="notaProducaoSala" id="notaProducaoSala" type="text" min="0" max="10" value="<bean:write name="NotaBimestreForm" property="notaProducaoSala"/>"/>
                         </td>
                         <td>
-                            <input class="nota form-control" name="notaMensal" id="notaMensal" type="text" min="0" max="10" value="<bean:write name="NotaBimestreForm" property="notaMensal"/>" />
+                            <input class="nota form-control form-control-sm" name="notaMensal" id="notaMensal" type="text" min="0" max="10" value="<bean:write name="NotaBimestreForm" property="notaMensal"/>" />
                         </td>
                         <td>
-                            <input class="nota form-control" name="notaBimestral" id="notaBimestral" type="text" min="0" max="10" value="<bean:write name="NotaBimestreForm" property="notaBimestral"/>" />
+                            <input class="nota form-control form-control-sm" name="notaBimestral" id="notaBimestral" type="text" min="0" max="10" value="<bean:write name="NotaBimestreForm" property="notaBimestral"/>" />
                         </td>
-                        <td><input class="btn btn-grey" type="button" value="Atualizar" onClick="fAtualizar()"></td>
+                        <td><input class="btn btn-sm btn-success" type="button" value="Atualizar" onClick="fAtualizar()"></td>
                         <td>&nbsp;</td>
                     </tr>
                     <script type="text/javascript">

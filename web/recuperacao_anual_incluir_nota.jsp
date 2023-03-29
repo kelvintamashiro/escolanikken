@@ -14,12 +14,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Escola Nikken - Recuperação Anual</title>
         <link rel="shortcut icon" href="imagens/favico.png" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <script language="javascript1.2" src="js/mizanscene.js"></script>
-        <script type="text/javascript" src="js/JQuery/js/jquery-1.3.2.js"></script>
-
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/fix.css" />
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/style.css" />
+        <!--        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+                <script language="javascript1.2" src="js/mizanscene.js"></script>
+                <script type="text/javascript" src="js/JQuery/js/jquery-1.3.2.js"></script>
+                <link rel="stylesheet" media="all" type="text/css" href="assets/css/fix.css" />
+                <link rel="stylesheet" media="all" type="text/css" href="assets/css/style.css" />-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <style>
             body {
                 margin:0;
@@ -36,25 +37,24 @@
         </logic:present>
         <html:form action="RecuperacaoAnual" name="RecuperacaoAnualForm" type="br.com.Form.RecuperacaoAnualForm" scope="request">
             <jsp:include page="topo.jsp"/>
-
-            <table border="0" align="center" style="margin-top: 20px; background-color: #ADD8E6" width="100%">
-                <tr>
-                    <td width="10%" style="padding-left: 50px">
+            <div class="container-fluid">
+                <div class="row p-3" style="background-color: #F4F4F4" >
+                    <div class="col-12 col-sm-1" align="center">
                         <a href="RecuperacaoAnual.do"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
-                    </td>
-                    <td width="80%" align="center">
+                    </div>
+                    <div class="col-sm-10" align="center">
                         <h1>Recuperação Anual</h1>
-                    </td>
-                    <td width="10%">&nbsp;</td>
-                </tr>
-            </table>
+                    </div>
+                    <div class="col-sm-1">&nbsp;</div>
+                </div>
+            </div>
 
             <div class="form-group">
                 <table border="0" align="center" style="margin-top: 20px;" width="80%">
                     <tr>
                         <td width="30%">
-                            <div class="col-lg-12">
-                                <label for="usr">Disciplina:</label>
+                            <div class="col-lg-10">
+                                <label for="usr">Disciplina:</label><br/>
                                 <b>
                                     <html:hidden name="RecuperacaoAnualForm" property="nomeAluno"/>
                                     <bean:write name="RecuperacaoAnualForm" property="nomeAluno"/>
@@ -63,7 +63,7 @@
                         </td>
                         <td width="10%">
                             <div class="col-lg-12">
-                                <label for="usr">Disciplina:</label>
+                                <label for="usr">Disciplina:</label><br/>
                                 <b>
                                     <html:hidden name="RecuperacaoAnualForm" property="nomeDisciplina"/>
                                     <bean:write name="RecuperacaoAnualForm" property="nomeDisciplina"/>
@@ -71,10 +71,10 @@
                             </div>
                         </td>
                         <td width="25%">
-                            <div class="col-lg-12">
+                            <div class="col-lg-10">
                                 <label for="usr">Série/Ano:</label>
                                 <html:hidden name="RecuperacaoAnualForm" property="idSerieAno"/>
-                                <html:select name="RecuperacaoAnualForm" property="idSerieAno" styleId="idSerieAno" styleClass="form-control" disabled="true">
+                                <html:select name="RecuperacaoAnualForm" property="idSerieAno" styleId="idSerieAno" styleClass="form-control form-control-sm" disabled="true">
                                     <html:option value="">Selecione Série/Ano</html:option>
                                     <html:option value="2">2º ano</html:option>
                                     <html:option value="3">3º ano</html:option>
@@ -91,10 +91,10 @@
                             </div>
                         </td>
                         <td width="25%">
-                            <div class="col-lg-12">
+                            <div class="col-lg-10">
                                 <label for="usr">Ano letivo:</label>
                                 <html:hidden name="RecuperacaoAnualForm" property="ano"/>
-                                <html:select name="RecuperacaoAnualForm" property="ano" styleId="ano" styleClass="form-control" disabled="true">
+                                <html:select name="RecuperacaoAnualForm" property="ano" styleId="ano" styleClass="form-control form-control-sm" disabled="true">
                                     <html:option value="2023">2023</html:option>
                                     <html:option value="2022">2022</html:option>
                                     <html:option value="2021">2021</html:option>
@@ -132,7 +132,7 @@
                                 Nota Recuperação Anual
                             </td>
                             <td>
-                                <input class="nota form-control" name="notaRecuperacao" id="notaRecuperacao" type="text" min="0" max="10" />
+                                <input class="nota form-control form-control-sm" name="notaRecuperacao" id="notaRecuperacao" type="text" min="0" max="10" />
                             </td>
                         </tr>
                         <tr>
@@ -143,7 +143,7 @@
                         <tr>
                             <td></td>
                             <td>
-                                <input class="btn btn-green" type="button" value="Salvar" onClick="fSalvarNota(<bean:write name="RecuperacaoAnualForm" property="idAluno"/>, <bean:write name="RecuperacaoAnualForm" property="idDisciplina"/>, '<bean:write name="RecuperacaoAnualForm" property="mediaAnual"/>');">
+                                <input class="btn btn-sm btn-success" type="button" value="Salvar" onClick="fSalvarNota(<bean:write name="RecuperacaoAnualForm" property="idAluno"/>, <bean:write name="RecuperacaoAnualForm" property="idDisciplina"/>, '<bean:write name="RecuperacaoAnualForm" property="mediaAnual"/>');">
                             </td>
                         </tr>
                         <tr>

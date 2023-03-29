@@ -15,45 +15,70 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Escola Nikken - Painel</title>
         <link rel="shortcut icon" href="imagens/favico.png" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <script language="javascript1.2" src="js/mizanscene.js"></script>
-        <script type="text/javascript" src="js/JQuery/js/jquery-1.3.2.js"></script>
-
-        <!--<link rel="stylesheet" media="all" type="text/css" href="assets/css/reset.css" />-->
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/fix.css" />
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/style_original.css" />
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/mobile.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
         <style>
             body {
                 margin:0;
                 padding:0;
             }
+            .my-div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-top: 80px;
+            }
 
+            .menu {
+                color: #696969;
+            }
+            .menu:hover {
+                background-color: #F0FFFF;
+                color: #000;
+            }
         </style>
     </head>
     <body>
         <jsp:include page="topo.jsp"/>
-            <table border="0" align="center" style="margin-top: 20px; background-color: #FFC0CB" width="100%">
-                <tr>
-                    <td width="10%" style="padding-left: 50px">
-                        <a href="javascript:history.back()"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
-                    </td>
-                    <td width="80%" align="center">
-                        <h1>Planejamento de Aulas</h1>
-                    </td>
-                    <td width="10%">&nbsp;</td>
-                </tr>
-            </table>
-        <div class="row" align="center" style="padding-top: 100px">
+        <div class="container-fluid">
+            <div class="row p-3" style="background-color: #F4F4F4" >
+                <div class="col-12 col-sm-1" align="center">
+                    <a href="tela_interativa.jsp"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
+                </div>
+                <div class="col-sm-10" align="center">
+                    <h1>Planejamento de Aulas</h1>
+                </div>
+                <div class="col-sm-1">&nbsp;</div>
+            </div>
+        </div>Ï
 
-            <div class="col-12 col-s-12">
-                <button class="btn-nikken" style="color: #4682B4; border: 1px solid #4682B4" onclick="window.location.href = 'PlanejamentoAulas.do?idPF=<%=session.getAttribute("idPF").toString()%>'">
-                    Cadastro 
-                </button>
-                <button class="btn-nikken" style="color: #4682B4; border: 1px solid #4682B4" onclick="window.location.href = 'PlanejamentoAulas.do?action=pagePesquisarPorProfessor&idPF=<%=session.getAttribute("idPF").toString()%>'">
-                    Pesquisa 
-                </button>
+        <div class="container my-div">
+            <div class="row row-cols-1 row-cols-md-2 g-3">
+                <div class="col-12 col-sm-4">
+                    <div class="card" align="center">
+                        <a href="PlanejamentoAulas.do?idPF=<%=session.getAttribute("idPF").toString()%>" style="text-decoration: none" class="menu">
+                            <div class="pt-4">
+                                <img src="imagens/edit.png" class="card-img-top" style="width: 40%">
+                                <div class="card-body" align="center">
+                                    <p class="card-title">Cadastrar Planejamento</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <div class="card" align="center">
+                        <a href="PlanejamentoAulas.do?action=pagePesquisarPorProfessor&idPF=<%=session.getAttribute("idPF").toString()%>" style="text-decoration: none" class="menu">
+                            <div class="pt-4">
+                                <img src="imagens/search3.png" class="card-img-top" style="width: 40%">
+                                <div class="card-body" align="center">
+                                    <p class="card-title">Pesquisar Planejamento</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
 

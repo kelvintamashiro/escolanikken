@@ -15,14 +15,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Escola Nikken - Painel</title>
         <link rel="shortcut icon" href="imagens/favico.png" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <script language="javascript1.2" src="js/mizanscene.js"></script>
-        <script type="text/javascript" src="js/JQuery/js/jquery-1.3.2.js"></script>
-
-        <!--<link rel="stylesheet" media="all" type="text/css" href="assets/css/reset.css" />-->
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/fix.css" />
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/style_original.css" />
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/mobile.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
         <style>
             body {
@@ -34,18 +28,18 @@
     </head>
     <body>
         <jsp:include page="topo.jsp"/>
-
-        <table border="0" align="center" style="margin-top: 20px; background-color: #C1FFC1" width="100%">
-            <tr>
-                <td width="10%" style="padding-left: 50px">
+        <div class="container-fluid">
+            <div class="row p-3" style="background-color: #F4F4F4" >
+                <div class="col-12 col-sm-1" align="center">
                     <a href="tela_interativa.jsp"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
-                </td>
-                <td width="80%" align="center">
-                    <h1>Links Importantes</h1>
-                </td>
-                <td width="10%">&nbsp;</td>
-            </tr>
-        </table>
+                </div>
+                <div class="col-sm-10" align="center">
+                    <h2>Links Importantes</h2>
+                </div>
+                <div class="col-sm-1">&nbsp;</div>
+            </div>
+        </div>
+
         <div class="form-group">
             <table border="0" class="table-condensed" align="center" style="margin-top: 20px;" width="80%">
                 <tr>
@@ -53,7 +47,7 @@
                         Calendário Escolar
                     </td>
                     <td>
-                        <a href="pdf/CALENDARIO_NIKKEN.pdf" target="_blank" class="btn btn-green">Visualizar</a>
+                        <a href="pdf/CALENDARIO_NIKKEN.pdf" target="_blank" class="btn btn-sm btn-success">Visualizar</a>
                     </td>
                 </tr>
                 <tr>
@@ -61,10 +55,10 @@
                         Guia do Aluno
                     </td>
                     <td>
-                        <a href="pdf/GUIA_ALUNO_ESCOLANIKKEN.pdf" target="_blank" class="btn btn-green">Visualizar</a>
+                        <a href="pdf/GUIA_ALUNO_ESCOLANIKKEN.pdf" target="_blank" class="btn btn-sm btn-success">Visualizar</a>
                     </td>
                 </tr>
-               
+
             </table>
         </div>
 

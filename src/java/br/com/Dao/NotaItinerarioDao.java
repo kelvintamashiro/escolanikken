@@ -70,7 +70,9 @@ public class NotaItinerarioDao {
                 + " where pf.id = ia.id_aluno"
                 + " and ia.id_itinerario = ?"
                 + " and ia.id_serie = ?"
-                + " and ni.id_itinerario is null";
+                + " and ni.id_itinerario is null"
+                + " and ia.ano = ?"
+                + " and pf.status = 1";
 
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setInt(1, idItinerario);
@@ -78,6 +80,7 @@ public class NotaItinerarioDao {
         prep.setString(3, bimestre);
         prep.setInt(4, idItinerario);
         prep.setString(5, idSerieAno);
+        prep.setInt(6, anoVigente);
         ResultSet rs = prep.executeQuery();
         while (rs.next()) {
             AlunoForm aForm = new AlunoForm();

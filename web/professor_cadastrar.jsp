@@ -14,12 +14,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Escola Nikken - Painel</title>
         <link rel="shortcut icon" href="imagens/favico.png" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <script language="javascript1.2" src="js/mizanscene.js"></script>
-        <script type="text/javascript" src="js/JQuery/js/jquery-1.3.2.js"></script>
-
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/fix.css" />
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/style.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <style>
             body {
                 margin:0;
@@ -35,31 +31,31 @@
         </logic:present>
         <html:form action="Professor" name="PessoaFisicaForm" type="br.com.Form.PessoaFisicaForm" scope="request">
             <jsp:include page="topo.jsp"/>
-
-            <table border="0" align="center" style="margin-top: 20px; background-color: #C1FFC1" width="100%">
-                <tr>
-                    <td width="10%" style="padding-left: 50px">
+            <div class="container-fluid">
+                <div class="row p-3" style="background-color: #F4F4F4" >
+                    <div class="col-12 col-sm-1" align="center">
                         <a href="tela_interativa.jsp"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
-                    </td>
-                    <td width="80%" align="center">
-                        <h1>Cadastro de Professor</h1>
-                    </td>
-                    <td width="10%">&nbsp;</td>
-                </tr>
-            </table>
+                    </div>
+                    <div class="col-sm-10" align="center">
+                        <h2>Cadastro de Professor</h2>
+                    </div>
+                    <div class="col-sm-1">&nbsp;</div>
+                </div>
+            </div>
+
             <div class="form-group">
                 <table border="0" align="center" style="margin-top: 20px;" width="80%">
                     <tr>
                         <td width="50%">
-                            <div class="col-lg-12">
+                            <div class="col-lg-10">
                                 <label for="usr">Nome do Professor:</label>
-                                <html:text styleClass="form-control" name="PessoaFisicaForm" property="nome" styleId="nome"/>
+                                <html:text styleClass="form-control form-control-sm" name="PessoaFisicaForm" property="nome" styleId="nome"/>
                             </div>
                         </td>
                         <td width="25%">
-                            <div class="col-lg-12">
+                            <div class="col-lg-10">
                                 <label for="usr">Sexo:</label>
-                                <html:select name="PessoaFisicaForm" property="sexo" styleId="sexo" styleClass="form-control">
+                                <html:select name="PessoaFisicaForm" property="sexo" styleId="sexo" styleClass="form-control form-control-sm">
                                     <html:option value="">Selecione</html:option>
                                     <html:option value="masculino">Masculino</html:option>
                                     <html:option value="feminino">Feminino</html:option>
@@ -67,9 +63,9 @@
                             </div>
                         </td>
                         <td width="25%">
-                            <div class="col-lg-12">
+                            <div class="col-lg-10">
                                 <label for="usr">Data de Nascimento:</label>
-                                <html:text name="PessoaFisicaForm" property="dataNascimento" styleId="dataNascimento" styleClass="form-control" size="15" maxlength="10" onkeyup="formatarData(this);" onkeypress="return(validarConteudo(event, 'numero'))" onfocus="show('dataNascimento')" onblur="hide('dataNascimento')"/>
+                                <html:text name="PessoaFisicaForm" property="dataNascimento" styleId="dataNascimento" styleClass="form-control form-control-sm" size="15" maxlength="10" onkeyup="formatarData(this);" onkeypress="return(validarConteudo(event, 'numero'))" onfocus="show('dataNascimento')" onblur="hide('dataNascimento')"/>
                             </div>
                         </td>
                     </tr>
@@ -79,15 +75,15 @@
                 <table border="0" align="center" width="80%">
                     <tr>
                         <td width="50%">
-                            <div class="col-lg-12">
+                            <div class="col-lg-10">
                                 <label for="usr">Naturalidade:</label>
-                                <html:text styleClass="form-control" name="PessoaFisicaForm" property="naturalidade" styleId="naturalidade"/>
+                                <html:text styleClass="form-control form-control-sm" name="PessoaFisicaForm" property="naturalidade" styleId="naturalidade"/>
                             </div>
                         </td>
                         <td width="50%">
-                            <div class="col-lg-12">
+                            <div class="col-lg-10">
                                 <label for="usr">Nacionalidade:</label>
-                                <html:text styleClass="form-control" name="PessoaFisicaForm" property="nacionalidade" styleId="nacionalidade"/>
+                                <html:text styleClass="form-control form-control-sm" name="PessoaFisicaForm" property="nacionalidade" styleId="nacionalidade"/>
                             </div>
                         </td>
                     </tr>
@@ -97,15 +93,15 @@
                 <table border="0" align="center" width="80%">
                     <tr>
                         <td width="50%">
-                            <div class="col-lg-12">
+                            <div class="col-lg-10">
                                 <label for="usr">Endereço:</label>
-                                <html:text styleClass="form-control" name="PessoaFisicaForm" property="dsEndereco" styleId="dsEndereco"/>
+                                <html:text styleClass="form-control form-control-sm" name="PessoaFisicaForm" property="dsEndereco" styleId="dsEndereco"/>
                             </div>
                         </td>
                         <td width="25%">
-                            <div class="col-lg-12">
+                            <div class="col-lg-10">
                                 <label for="usr">Província:</label>
-                                <html:select name="PessoaFisicaForm" property="provincia" styleId="provincia" styleClass="form-control">
+                                <html:select name="PessoaFisicaForm" property="provincia" styleId="provincia" styleClass="form-control form-control-sm">
                                     <html:option value="">Selecione</html:option>
                                     <html:option value="AICHI">AICHI</html:option>
                                     <html:option value="AKITA">AKITA</html:option>
@@ -155,13 +151,13 @@
                                     <html:option value="YAMAGUCHI">YAMAGUCHI</html:option>
                                     <html:option value="YAMANASHI">YAMANASHI</html:option>
                                 </html:select>
-                                <%--<html:text styleClass="form-control" name="PessoaFisicaForm" property="provincia" styleId="provincia"/>--%>
+                                <%--<html:text styleClass="form-control form-control-sm" name="PessoaFisicaForm" property="provincia" styleId="provincia"/>--%>
                             </div>
                         </td>
                         <td width="25%">
-                            <div class="col-lg-12">
+                            <div class="col-lg-10">
                                 <label for="usr">Cidade:</label>
-                                <html:text styleClass="form-control" name="PessoaFisicaForm" property="cidade" styleId="cidade"/>
+                                <html:text styleClass="form-control form-control-sm" name="PessoaFisicaForm" property="cidade" styleId="cidade"/>
                             </div>
                         </td>
                     </tr>
@@ -171,21 +167,21 @@
                 <table border="0" align="center" width="80%">
                     <tr>
                         <td width="50%">
-                            <div class="col-lg-12">
+                            <div class="col-lg-10">
                                 <label for="usr">E-mail de Acesso ao sistema NIKKEN:</label>
-                                <html:text styleClass="form-control" name="PessoaFisicaForm" property="email" styleId="email"/>
+                                <html:text styleClass="form-control form-control-sm" name="PessoaFisicaForm" property="email" styleId="email"/>
                             </div>
                         </td>
                         <td width="25%">
-                            <div class="col-lg-12">
+                            <div class="col-lg-10">
                                 <label for="usr">Telefone de Contato:</label>
-                                <html:text name="PessoaFisicaForm" property="telefoneProfessor" styleId="telefoneProfessor" styleClass="form-control"/>
+                                <html:text name="PessoaFisicaForm" property="telefoneProfessor" styleId="telefoneProfessor" styleClass="form-control form-control-sm"/>
                             </div>
                         </td>
                         <td width="25%">
-                            <div class="col-lg-12">
+                            <div class="col-lg-10">
                                 <label for="usr">Tipo Perfil:</label>
-                                <html:select name="PessoaFisicaForm" property="tipoPerfil" styleId="tipoPerfil" styleClass="form-control">
+                                <html:select name="PessoaFisicaForm" property="tipoPerfil" styleId="tipoPerfil" styleClass="form-control form-control-sm">
                                     <html:option value="professor">PROFESSOR</html:option>
                                     <html:option value="coordenacao">COORDENAÇÃO</html:option>
                                     <html:option value="diretoria">DIRETORIA</html:option>
@@ -205,15 +201,15 @@
                     </tr>
                     <tr>
                         <td width="50%">
-                            <div class="col-lg-12">
+                            <div class="col-lg-10">
                                 <label for="usr">Nome(s) para Emergência (ou responsável):</label>
-                                <html:text styleClass="form-control" name="PessoaFisicaForm" property="contatoEmergencia" styleId="contatoEmergencia"/>
+                                <html:text styleClass="form-control form-control-sm" name="PessoaFisicaForm" property="contatoEmergencia" styleId="contatoEmergencia"/>
                             </div>
                         </td>
                         <td width="50%">
-                            <div class="col-lg-12">
+                            <div class="col-lg-10">
                                 <label for="usr">Telefone(s) para Emergência:</label>
-                                <html:text styleClass="form-control" name="PessoaFisicaForm" property="telefoneContato" styleId="telefoneContato"/>
+                                <html:text styleClass="form-control form-control-sm" name="PessoaFisicaForm" property="telefoneContato" styleId="telefoneContato"/>
                             </div>
                         </td>
                     </tr>
@@ -223,8 +219,8 @@
             <div align="center">
                 <br/>
                 <br/>
-                <input class="btn btn-danger" type="reset" value="Resetar" onClick="fResetar();">
-                <input class="btn btn-green" type="button" value="Cadastrar" onClick="fCadastrar();">
+                <input class="btn btn-sm btn-danger" type="reset" value="Resetar" onClick="fResetar();">
+                <input class="btn btn-sm btn-success" type="button" value="Cadastrar" onClick="fCadastrar();">
             </div>
 
             <logic:equal name="cadastro" value="true">

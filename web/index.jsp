@@ -10,24 +10,34 @@
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
 <!DOCTYPE html>
 <html>
+
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Escola Nikken - Painel</title>
-        <link rel="shortcut icon" href="imagens/favico.png" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <script language="javascript1.2" src="js/mizanscene.js"></script>
-        <script type="text/javascript" src="js/JQuery/js/jquery-1.3.2.js"></script>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <style>
-            body {
-                margin:0;
-                padding:0;
+            .divider:after,
+            .divider:before {
+                content: "";
+                flex: 1;
+                height: 1px;
+                background: #eee;
             }
+            .h-custom {
+                height: calc(100% - 73px);
+            }
+            @media (max-width: 450px) {
+                .h-custom {
+                    height: 90%;
+                }
+            }
+            a {
+                text-decoration: none;
+            }
+
         </style>
         <script language="javascript">
-            $(function () {
-                $("#login").attr("placeholder", "E-mail. Ex. email@email.com");
-                $("#password").attr("placeholder", "Password");
-            });
             function fEntrar() {
                 var login = document.getElementById('login').value.trim();
                 var password = document.getElementById('password').value.trim();
@@ -53,62 +63,62 @@
         </script>
     </head>
     <body>
-        <!--<form class="cd-form" action="Login.do?action=page" method="post" name="frmlogin">-->
-        <html:form action="Login" name="LoginForm" type="br.com.Form.LoginForm" scope="request">
+        <section class="vh-100">
+            <div class="container-fluid h-custom">
+                <div class="row d-flex justify-content-center align-items-center h-100">
 
-            <table width="50%" border="0" align="center" class="table-responsive">
-                <tr><td style="padding-top: 10%;">&nbsp;</td></tr>
-                <tr>
-                    <td align="center">
-                        <img src="imagens/logo-nikken.png" width="80%"/>
-                    </td>
-                </tr>
-                <tr><td style="padding-top: 10px;">&nbsp;</td></tr>
-                <tr>
-                    <td>
-                        <div class="form-group">
-                            <label for="usr">Login:</label>
-                            <html:text styleClass="form-control" name="LoginForm" property="login" styleId="login"/>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form-group">
-                            <label for="usr">Senha:</label>
-                            <html:password styleClass="form-control" name="LoginForm" property="password" styleId="password"/>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form-group">
-                            <label for="usr">Tipo de Acesso:</label>
-                            <html:select name="LoginForm" property="tipoPerfil" styleId="tipoPerfil" styleClass="form-control">
-                                <html:option value="">Selecione</html:option>
-                                <html:option value="aluno">Aluno / Pais</html:option>
-                                <html:option value="coordenacao">Coordenação</html:option>
-                                <html:option value="diretoria">Diretoria</html:option>
-                                <html:option value="professor">Professor</html:option>
-                            </html:select>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input class="btn btn-primary" type="button" value="Entrar" onClick="fEntrar();">
-                        <input class="btn btn-warning" type="button" value="Esqueceu Senha?" onClick="fEsqueceuSenha();">
-                        <!--<button type="submit" class="btn btn-primary">Entrar</button>-->
-                    </td>
-                </tr>
-            </table>
-            <logic:equal name="erroLogin" value="true">
-                <br/>
-                <div class="alert alert-danger alert-dismissible" id="myAlert" style="text-align: center">
-                    <a href="#" class="close">&times;</a>
-                    <b>Erro de Login e/ou Senha!</b>
+
+                    <div class="col-md-8 col-lg-6 col-xl-4">
+                        <html:form action="Login" name="LoginForm" type="br.com.Form.LoginForm" scope="request">
+                            <div class="card">
+                                <div align="center">
+                                    <img src="imagens/logo-nikken.png" width="70%"/>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3" align="center">
+                                        <p class="small">Sistema de Gestão Escolar. Para acessar informe seu e-mail e senha de acesso.</p>
+                                    </div>
+                                    <div class="p-2">
+                                        <input type="email" class="form-control" id="login" name="login" placeholder="E-mail. ex: name@example.com">
+                                    </div>
+                                    <div class="p-2">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Informe a senha de acesso">
+                                    </div>
+                                    <div class="p-2">
+                                        <select class="form-select" name="tipoPerfil" id="tipoPerfil" aria-label="Default select example">
+                                            <option value="">Selecione</option>
+                                            <option value="aluno">Aluno / Pais</option>
+                                            <option value="coordenacao">Coordenação</option>
+                                            <option value="diretoria">Diretoria</option>
+                                            <option value="professor">Professor</option>
+                                        </select>
+                                    </div>
+                                    <div class="d-grid gap-2 p-2">
+                                        <input class="btn btn-primary" type="button" value="Acessar Sistema" onClick="fEntrar();">
+                                    </div>
+                                    <div class="p-2">
+                                        <p class="small mt-2 pt-1 mb-0">Esqueceu a senha?
+                                            <a href="Login.do?action=pageEsqueceuSenha" class="link-danger">Clique aqui</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </html:form>
+                    </div>
+
+                    <div class="col-md-9 col-lg-6 col-xl-4">
+                        <img src="imagens/img-login-page.png" class="img-fluid"/>
+                    </div>
                 </div>
-            </logic:equal>
-        </html:form>
+            </div>
+
+            <div class=" py-4 px-4 bg-primary" align="center">
+                <!-- Copyright -->
+                <div class="text-white small mb-3 mb-md-0">
+                    Desenvolvido por <a href="https://www.mitsistemas.com.br" target="_blank"> 
+                        <img src="imagens/logo_mitsistemas_nova_preta.png" width="10%"/>
+                    </a>
+                </div>
+            </div>
+        </section>
     </body>
 </html>

@@ -15,14 +15,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Escola Nikken - Painel</title>
         <link rel="shortcut icon" href="imagens/favico.png" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <script language="javascript1.2" src="js/mizanscene.js"></script>
-        <script type="text/javascript" src="js/JQuery/js/jquery-1.3.2.js"></script>
-
-        <!--<link rel="stylesheet" media="all" type="text/css" href="assets/css/reset.css" />-->
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/fix.css" />
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/style_original.css" />
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/mobile.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
         <style>
             body {
@@ -39,18 +33,19 @@
             </script>
         </logic:present>
         <jsp:include page="topo.jsp"/>
+        <div class="container-fluid">
+            <div class="row p-3" style="background-color: #F4F4F4" >
+                <div class="col-12 col-sm-1" align="center">
+                    <a href="tela_interativa.jsp"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
+                </div>
+                <div class="col-sm-10" align="center">
+                    <h2>Planejamento de Aulas Por Professor</h2>
+                </div>
+                <div class="col-sm-1">&nbsp;</div>
+            </div>
+        </div>
         <html:form action="PlanejamentoAulas" name="PlanejamentoAulasForm" type="br.com.Form.PlanejamentoAulasForm" scope="request">
-            <table border="0" align="center" style="margin-top: 20px; background-color: #FFC0CB" width="100%">
-                <tr>
-                    <td width="10%" style="padding-left: 50px">
-                        <a href="javascript:history.back()"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
-                    </td>
-                    <td width="80%" align="center">
-                        <h1>Planejamento de Aulas Por Professor</h1>
-                    </td>
-                    <td width="10%">&nbsp;</td>
-                </tr>
-            </table>
+
             <div class="form-group">
                 <table border="0" align="center" style="margin-top: 20px;" width="30%">
                     <tr>
@@ -58,20 +53,20 @@
                             <div class="col-lg-12">
                                 <label for="usr">Professor:</label>
                                 <logic:equal name="tipoPerfil" scope="session" value="diretoria">
-                                    <html:select name="PlanejamentoAulasForm" property="idProfessor" styleId="idProfessor" styleClass="form-control">
+                                    <html:select name="PlanejamentoAulasForm" property="idProfessor" styleId="idProfessor" styleClass="form-control form-control-sm">
                                         <html:option value="">Selecione</html:option>
                                         <html:options collection="listaProfessores" property="idPF" labelProperty="nome"></html:options>
                                     </html:select>    
                                 </logic:equal>
                                 <logic:equal name="tipoPerfil" scope="session" value="coordenacao">
-                                    <html:select name="PlanejamentoAulasForm" property="idProfessor" styleId="idProfessor" styleClass="form-control">
+                                    <html:select name="PlanejamentoAulasForm" property="idProfessor" styleId="idProfessor" styleClass="form-control form-control-sm">
                                         <html:option value="">Selecione</html:option>
                                         <html:options collection="listaProfessores" property="idPF" labelProperty="nome"></html:options>
                                     </html:select>    
                                 </logic:equal>
                                 <logic:equal name="tipoPerfil" scope="session" value="professor">
                                     <html:hidden name="PlanejamentoAulasForm" property="idProfessor"/>
-                                        <html:select name="PlanejamentoAulasForm" property="idProfessor" styleId="idProfessor" styleClass="form-control" disabled="true">
+                                    <html:select name="PlanejamentoAulasForm" property="idProfessor" styleId="idProfessor" styleClass="form-control form-control-sm" disabled="true">
                                         <html:options collection="listaProfessores" property="idPF" labelProperty="nome"></html:options>
                                     </html:select>
                                 </logic:equal>
@@ -82,7 +77,7 @@
                         <td>
                             <div class="col-lg-12">
                                 <label for="usr">Série/Ano:</label>
-                                <html:select name="PlanejamentoAulasForm" property="idSerieAno" styleId="idSerieAno" styleClass="form-control" onchange="fCarregarDisciplina()">
+                                <html:select name="PlanejamentoAulasForm" property="idSerieAno" styleId="idSerieAno" styleClass="form-control form-control-sm" onchange="fCarregarDisciplina()">
                                     <html:option value="0">Todos</html:option>
                                     <html:option value="11">Infantil I</html:option>
                                     <html:option value="12">Infantil II</html:option>
@@ -108,13 +103,13 @@
                             <div class="col-lg-12">
                                 <label for="usr">Disciplina:</label>
                                 <logic:present name="listaDisciplinaPorProfessor" scope="request">
-                                    <html:select name="PlanejamentoAulasForm" property="idDisciplina" styleId="idDisciplina" styleClass="form-control">
+                                    <html:select name="PlanejamentoAulasForm" property="idDisciplina" styleId="idDisciplina" styleClass="form-control form-control-sm">
                                         <html:option value="0">Selecione</html:option>
                                         <html:options collection="listaDisciplinaPorProfessor" property="idDisciplina" labelProperty="nomeDisciplina"></html:options>
                                     </html:select>
                                 </logic:present>
                                 <logic:notPresent name="listaDisciplinaPorProfessor" scope="request">
-                                    <html:select name="PlanejamentoAulasForm" property="idDisciplina" styleId="idDisciplina" styleClass="form-control">
+                                    <html:select name="PlanejamentoAulasForm" property="idDisciplina" styleId="idDisciplina" styleClass="form-control form-control-sm">
                                         <html:option value="0">Selecione a Série/Ano Corretamente</html:option>
                                     </html:select>
                                 </logic:notPresent>
@@ -125,7 +120,7 @@
                         <td>
                             <div class="col-lg-12">
                                 <label for="usr">Bimestre:</label>
-                                <html:select name="PlanejamentoAulasForm" property="nrBimestre" styleId="nrBimestre" styleClass="form-control">
+                                <html:select name="PlanejamentoAulasForm" property="nrBimestre" styleId="nrBimestre" styleClass="form-control form-control-sm">
                                     <html:option value="0">Todos</html:option>
                                     <html:option value="1">1º Bimestre</html:option>
                                     <html:option value="2">2º Bimestre</html:option>
@@ -139,7 +134,7 @@
                         <td>
                             <div class="col-lg-12">
                                 <label for="usr">Ano:</label>
-                                <html:select name="PlanejamentoAulasForm" property="anoVigente" styleId="anoVigente" styleClass="form-control">
+                                <html:select name="PlanejamentoAulasForm" property="anoVigente" styleId="anoVigente" styleClass="form-control form-control-sm">
                                     <html:option value="2023">2023</html:option>
                                     <html:option value="2022">2022</html:option>
                                     <html:option value="2021">2021</html:option>
@@ -151,8 +146,8 @@
                     <tr>
                         <td>
                             <div class="col-lg-12">
-                                <label for="usr">&nbsp;</label>
-                                <input class="btn btn-green" type="button" value="Pesquisar" onClick="fPesquisar()">
+                                <label for="usr">&nbsp;</label><br/>
+                                <input class="btn btn-sm btn-success" type="button" value="Pesquisar" onClick="fPesquisar()">
                             </div>
                         </td>
                     </tr>

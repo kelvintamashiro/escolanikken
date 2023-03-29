@@ -1,40 +1,40 @@
 <style>
-    .topoHeader {
-        /*position: fixed;*/
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        background-color: #F4F4F4;
-        text-align: center;
+    .div-centralizada {
+        display: flex;
+        align-items: center;
     }
+
+    body {
+        /*font-family: Arial, sans-serif;*/
+        font-family: "lato", sans-serif;
+        font-size: 14px;
+        font-weight: 200;
+    }
+
 </style>
 
-<div class="topoHeader" style="color: black">
-    <table width="90%" align="center">
-        <tr>
-            <td colspan="3">&nbsp;</td>
-        </tr>
-        <tr>
-            <td width="20%">
-                <a href="tela_interativa.jsp">
-                    <img src="imagens/logo.png" width="100%"/>
-                </a>
-            </td>
-            <td align="center" width="50%" style="font-size: 11px">
+
+<div class="container-fluid" style="background-color: #000">
+    <div class="row p-4 div-centralizada">
+        <div class="col-12 col-sm-2" align="center">
+            <a href="tela_interativa.jsp">
+                <img src="imagens/logo-nikken-branca.png" width="100%"/>
+            </a>
+        </div>
+        <div class="col-12 col-sm-8" align="center">
+            <br/>
+            <p style="color: #FFF; font-size: 12px">
                 Bem vindo ao Portal Nikken, 
-                <strong> 
+                <b> 
                     <%if (session.getAttribute("nome") != null) {%>
                     <%=session.getAttribute("nome").toString()%>
                     <%}%>
-                </strong>
-            </td>
-            <td width="25%" align="right">
-                <a href="AlterarSenha.do" class="btn btn-big btn-grey">Alterar Senha</a>
-                <a href="desconectar.jsp" class="btn btn-big btn-grey">Deslogar</a>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="3" style="border-bottom: 0px solid #CCCCCC;">&nbsp;</td>
-        </tr>
-    </table>
+                </b>
+            </p>
+        </div>
+        <div class="col-12 col-sm-2" align="center">
+            <button type="button" onclick="window.location.href = 'AlterarSenha.do'" class="btn btn-sm btn-light">Alterar Senha</button>
+            <button type="button" onclick="window.location.href = 'desconectar.jsp'" class="btn btn-sm btn-danger">Sair</button>
+        </div>
+    </div>
 </div>

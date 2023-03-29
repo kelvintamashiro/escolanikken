@@ -15,13 +15,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Escola Nikken - Painel</title>
         <link rel="shortcut icon" href="imagens/favico.png" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <script language="javascript1.2" src="js/mizanscene.js"></script>
-        <script type="text/javascript" src="js/JQuery/js/jquery-1.3.2.js"></script>
-
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/fix.css" />
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/style_original.css" />
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/mobile.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
         <!--Ajax-->
         <script type="text/javascript" src="js/ajax.js"></script>
@@ -59,19 +54,19 @@
             </script>
         </logic:present>
         <jsp:include page="topo.jsp"/>
+        <div class="container-fluid">
+            <div class="row p-3" style="background-color: #F4F4F4" >
+                <div class="col-12 col-sm-1" align="center">
+                    <a href="planejamento_oficina_page.jsp"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
+                </div>
+                <div class="col-sm-10" align="center">
+                    <h2>Planejamento de Oficinas - Editar</h2>
+                </div>
+                <div class="col-sm-1">&nbsp;</div>
+            </div>
+        </div>
         <html:form action="PlanejamentoOficinas" name="PlanejamentoOficinasForm" type="br.com.Form.PlanejamentoOficinasForm" scope="request">
 
-            <table border="0" align="center" style="margin-top: 20px; background-color: #F0FFFF" width="100%">
-                <tr>
-                    <td width="10%" style="padding-left: 50px">
-                        <a href="planejamento_oficina_page.jsp"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
-                    </td>
-                    <td width="80%" align="center">
-                        <h1>Planejamento de Oficinas - Editar</h1>
-                    </td>
-                    <td width="10%">&nbsp;</td>
-                </tr>
-            </table>
             <div class="form-group">
                 <html:hidden name="PlanejamentoOficinasForm" property="idProfessor"/>
                 <table border="0" class="table-condensed" align="center" style="margin-top: 20px;" width="60%">
@@ -98,7 +93,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="button" class="btn btn-info" name="Submit" value="+ / -" onClick="inverte()">
+                                        <input type="button" class="btn btn-sm btn-dark" name="Submit" value="+ / -" onClick="inverte()">
                                     </td>
                                 </tr>
                             </table>
@@ -109,12 +104,12 @@
                                 <tr>
                                     <td width="50%">
                                         <label for="usr">Data:</label>
-                                        <html:text name="PlanejamentoOficinasForm" property="data" styleId="data" styleClass="form-control" size="15" maxlength="10" onkeyup="formatarData(this);" onkeypress="return(validarConteudo(event, 'numero'))" onfocus="show('data')" onblur="hide('data')"/>
-                                        <!--<input type="text" class="form-control" name="data" id="data" maxlength="10" onkeypress="mascaraData(this)">-->
+                                        <html:text name="PlanejamentoOficinasForm" property="data" styleId="data" styleClass="form-control form-control-sm" size="15" maxlength="10" onkeyup="formatarData(this);" onkeypress="return(validarConteudo(event, 'numero'))" onfocus="show('data')" onblur="hide('data')"/>
+                                        <!--<input type="text" class="form-control form-control-sm" name="data" id="data" maxlength="10" onkeypress="mascaraData(this)">-->
                                     </td>
                                     <td width="50%">
                                         <label for="usr">Bimestre:</label>
-                                        <html:select name="PlanejamentoOficinasForm" property="nrBimestre" styleId="nrBimestre" styleClass="form-control">
+                                        <html:select name="PlanejamentoOficinasForm" property="nrBimestre" styleId="nrBimestre" styleClass="form-control form-control-sm">
                                             <html:option value="1">1º Bimestre</html:option>
                                             <html:option value="2">2º Bimestre</html:option>
                                             <html:option value="3">3º Bimestre</html:option>
@@ -126,25 +121,25 @@
                                 <tr>
                                     <td colspan="2">
                                         <label for="usr">Nome da Oficina:</label>
-                                        <html:text name="PlanejamentoOficinasForm" property="nomeOficina" styleId="nomeOficina" styleClass="form-control"/>
+                                        <html:text name="PlanejamentoOficinasForm" property="nomeOficina" styleId="nomeOficina" styleClass="form-control form-control-sm"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
                                         <label for="usr">Conteúdo da Oficina:</label>
-                                        <html:textarea name="PlanejamentoOficinasForm" property="conteudo" styleId="conteudo" styleClass="form-control" rows="8"/>
+                                        <html:textarea name="PlanejamentoOficinasForm" property="conteudo" styleId="conteudo" styleClass="form-control form-control-sm" rows="8"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
                                         <label for="usr">Observação:</label>
-                                        <html:textarea name="PlanejamentoOficinasForm" property="observacao" styleId="observacao" styleClass="form-control" rows="8"/>
+                                        <html:textarea name="PlanejamentoOficinasForm" property="observacao" styleId="observacao" styleClass="form-control form-control-sm" rows="8"/>
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td align="center" colspan="2">
-                                        <input class="btn btn-green" type="button" value="Atualizar" onClick="fAtualizar();">
+                                        <input class="btn btn-sm btn-success" type="button" value="Atualizar" onClick="fAtualizar();">
                                     </td>
                                 </tr>
                             </table>

@@ -15,13 +15,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Escola Nikken</title>
         <link rel="shortcut icon" href="imagens/favico.png" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <script language="javascript1.2" src="js/mizanscene.js"></script>
-        <script type="text/javascript" src="js/JQuery/js/jquery-1.3.2.js"></script>
-
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/fix.css" />
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/style_original.css" />
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/mobile.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
         <style>
             body {
@@ -38,19 +33,18 @@
             </script>
         </logic:present>
         <jsp:include page="topo.jsp"/>
+        <div class="container-fluid">
+            <div class="row p-3" style="background-color: #F4F4F4" >
+                <div class="col-12 col-sm-1" align="center">
+                    <a href="tela_interativa.jsp"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
+                </div>
+                <div class="col-sm-10" align="center">
+                    <h2>Advertência por Aluno</h2>
+                </div>
+                <div class="col-sm-1">&nbsp;</div>
+            </div>
+        </div>
         <html:form action="Advertencia" name="AdvertenciaForm" type="br.com.Form.AdvertenciaForm" scope="request">
-
-            <table border="0" align="center" style="margin-top: 20px; background-color: #ADD8E6" width="100%">
-                <tr>
-                    <td width="10%" style="padding-left: 50px">
-                        <a href="tela_interativa.jsp"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
-                    </td>
-                    <td width="80%" align="center">
-                        <h2>Advertência por Aluno</h2>
-                    </td>
-                    <td width="10%">&nbsp;</td>
-                </tr>
-            </table>
 
             <div class="form-group">
                 <table border="0" align="center" style="margin-top: 20px;" width="60%">
@@ -58,7 +52,7 @@
                         <td colspan="2">
                             <div class="col-lg-12">
                                 <label for="usr">Série/Ano:</label>
-                                <html:select name="AdvertenciaForm" property="idSerieAno" styleId="idSerieAno" styleClass="form-control" onchange="fCarregarAlunos()">
+                                <html:select name="AdvertenciaForm" property="idSerieAno" styleId="idSerieAno" styleClass="form-control form-control-sm" onchange="fCarregarAlunos()">
                                     <html:option value="">Selecione Série/Ano</html:option>
                                     <html:option value="11">Infantil I</html:option>
                                     <html:option value="12">Infantil II</html:option>
@@ -84,7 +78,7 @@
                             <td colspan="2">
                                 <div class="col-lg-12">
                                     <label for="usr">Advertência ou Suspensão:</label>
-                                    <html:select name="AdvertenciaForm" property="tipoAdvSusp" styleId="tipoAdvSusp" styleClass="form-control">
+                                    <html:select name="AdvertenciaForm" property="tipoAdvSusp" styleId="tipoAdvSusp" styleClass="form-control form-control-sm">
                                         <html:option value="0">Advertência</html:option>
                                         <html:option value="1">Suspensão</html:option>
                                     </html:select>
@@ -96,7 +90,7 @@
                                 <div class="col-lg-12">
                                     <label for="usr">Aluno:</label>
 
-                                    <html:select name="AdvertenciaForm" property="idAluno" styleId="idAluno" styleClass="form-control">
+                                    <html:select name="AdvertenciaForm" property="idAluno" styleId="idAluno" styleClass="form-control form-control-sm">
                                         <html:option value="0">Selecione</html:option>
                                         <html:options collection="listaAlunos" property="idAluno" labelProperty="nome"></html:options>
                                     </html:select>
@@ -130,7 +124,7 @@
                             <td colspan="2">
                                 <div class="col-lg-12">
                                     <label for="usr">Observação:</label>
-                                    <html:textarea name="AdvertenciaForm" property="observacao" styleId="observacao" styleClass="form-control" rows="8"/>
+                                    <html:textarea name="AdvertenciaForm" property="observacao" styleId="observacao" styleClass="form-control form-control-sm" rows="8"/>
                                 </div>
                             </td>
                         </tr>
@@ -138,23 +132,23 @@
                             <td colspan="2">
                                 <div class="col-lg-12">
                                     <label for="usr">Data Advertência:</label>
-                                    <input type="date" class="form-control" name="dataAdvertencia" id="dataAdvertencia">
+                                    <input type="date" class="form-control form-control-sm" name="dataAdvertencia" id="dataAdvertencia">
                                 </div>
                             </td>
                         </tr>
 
                     </logic:present>
                     <tr>
-                        <td width="50%">
+                        <td colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
                             <div class="col-lg-12">
                                 <label for="usr">&nbsp;</label>
-                                <input class="btn btn-green" type="button" value="Salvar" onClick="fSalvar()">
-                            </div>
-                        </td>
-                        <td width="50%">
-                            <div class="col-lg-12">
+                                <input class="btn btn-sm btn-success" type="button" value="Salvar" onClick="fSalvar()">
+
                                 <label for="usr">&nbsp;</label>
-                                <input class="btn btn-grey" type="button" value="Pesquisar" onClick="fPesquisar()">
+                                <input class="btn btn-sm btn-dark" type="button" value="Pesquisar" onClick="fPesquisar()">
                             </div>
                         </td>
                     </tr>

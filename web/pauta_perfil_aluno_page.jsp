@@ -16,13 +16,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Escola Nikken</title>
         <link rel="shortcut icon" href="imagens/favico.png" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <script language="javascript1.2" src="js/mizanscene.js"></script>
-        <script type="text/javascript" src="js/JQuery/js/jquery-1.3.2.js"></script>
-
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/fix.css" />
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/style_original.css" />
-        <link rel="stylesheet" media="all" type="text/css" href="assets/css/mobile.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
         <style>
             body {
@@ -40,18 +35,17 @@
         </logic:present>
         <jsp:include page="topo.jsp"/>
         <html:form action="Pauta" name="PautaForm" type="br.com.Form.PautaForm" scope="request">
-
-            <table border="0" align="center" style="margin-top: 20px; background-color: #ADD8E6" width="100%">
-                <tr>
-                    <td width="10%" style="padding-left: 50px">
+            <div class="container-fluid">
+                <div class="row p-3" style="background-color: #F4F4F4" >
+                    <div class="col-12 col-sm-1" align="center">
                         <a href="gerenciador_pauta.jsp"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
-                    </td>
-                    <td width="80%" align="center">
+                    </div>
+                    <div class="col-sm-10" align="center">
                         <h2>Perfil do Aluno para Pauta de Reunião</h2>
-                    </td>
-                    <td width="10%">&nbsp;</td>
-                </tr>
-            </table>
+                    </div>
+                    <div class="col-sm-1">&nbsp;</div>
+                </div>
+            </div>
 
             <div class="form-group">
                 <table border="0" align="center" style="margin-top: 20px;" width="90%">
@@ -63,7 +57,7 @@
                                     <td colspan="2">
                                         <div class="col-lg-12">
                                             <label for="usr">Série/Ano:</label>
-                                            <html:select name="PautaForm" property="idSerieAno" styleId="idSerieAno" styleClass="form-control">
+                                            <html:select name="PautaForm" property="idSerieAno" styleId="idSerieAno" styleClass="form-control form-control-sm">
                                                 <html:option value="">Selecione Série/Ano</html:option>
                                                 <html:option value="11">Infantil I</html:option>
                                                 <html:option value="12">Infantil II</html:option>
@@ -88,7 +82,7 @@
                                     <td colspan="2">
                                         <div class="col-lg-12">
                                             <label for="usr">Bimestre:</label>
-                                            <html:select name="PautaForm" property="nrBimestre" styleId="nrBimestre" styleClass="form-control" onchange="fCarregarAlunos()">
+                                            <html:select name="PautaForm" property="nrBimestre" styleId="nrBimestre" styleClass="form-control form-control-sm" onchange="fCarregarAlunos()">
                                                 <html:option value="0">Selecione</html:option>
                                                 <html:option value="1">1º Bimestre</html:option>
                                                 <html:option value="2">2º Bimestre</html:option>
@@ -104,26 +98,18 @@
                                             <div class="col-lg-12">
                                                 <label for="usr">Aluno:</label>
 
-                                                <html:select name="PautaForm" property="idAluno" styleId="idAluno" styleClass="form-control">
+                                                <html:select name="PautaForm" property="idAluno" styleId="idAluno" styleClass="form-control form-control-sm">
                                                     <html:option value="0">Selecione</html:option>
                                                     <html:options collection="listaAlunos" property="idAluno" labelProperty="nome"></html:options>
                                                 </html:select>
                                             </div>
                                         </td>
                                     </tr>
-<!--                                    <tr>
-                                        <td colspan="2">
-                                            <div class="col-lg-12">
-                                                <label for="usr">Qualidades:</label>
-                                                <html:text name="PautaForm" property="obsQualidade" styleId="obsQualidade" styleClass="form-control" maxlength="250"/>
-                                            </div>
-                                        </td>
-                                    </tr>-->
                                     <tr>
                                         <td colspan="2">
                                             <div class="col-lg-12">
                                                 <label for="usr">Participação na aula:</label>
-                                                <html:text name="PautaForm" property="obsParticipacaoAula" styleId="obsParticipacaoAula" styleClass="form-control" maxlength="250"/>
+                                                <html:text name="PautaForm" property="obsParticipacaoAula" styleId="obsParticipacaoAula" styleClass="form-control form-control-sm" maxlength="250"/>
                                             </div>
                                         </td>
                                     </tr>
@@ -131,63 +117,15 @@
                                         <td colspan="2">
                                             <div class="col-lg-12">
                                                 <label for="usr">Realização das tarefas:</label>
-                                                <html:text name="PautaForm" property="obsRealizacaoTarefa" styleId="obsRealizacaoTarefa" styleClass="form-control" maxlength="250"/>
+                                                <html:text name="PautaForm" property="obsRealizacaoTarefa" styleId="obsRealizacaoTarefa" styleClass="form-control form-control-sm" maxlength="250"/>
                                             </div>
                                         </td>
                                     </tr>
-<!--                                    <tr>
-                                        <td colspan="2">
-                                            <div class="col-lg-12">
-                                                <label for="usr">Comportamento em sala:</label>
-                                                <html:text name="PautaForm" property="obsComportamento" styleId="obsComportamento" styleClass="form-control" maxlength="250"/>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">
-                                            <div class="col-lg-12">
-                                                <label for="usr">Relacionamento com seus colegas/professores/namoros:</label>
-                                                <html:text name="PautaForm" property="obsRelacionamento" styleId="obsRelacionamento" styleClass="form-control" maxlength="250"/>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">
-                                            <div class="col-lg-12">
-                                                <label for="usr">Dificuldades específicas do aluno:</label>
-                                                <html:text name="PautaForm" property="obsDificuldade" styleId="obsDificuldade" styleClass="form-control" maxlength="250"/>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">
-                                            <div class="col-lg-12">
-                                                <label for="usr">Precisa de reforço? (se precisar, informe a disciplina)</label>
-                                                <html:text name="PautaForm" property="obsPrecisaReforco" styleId="obsPrecisaReforco" styleClass="form-control" maxlength="250"/>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">
-                                            <div class="col-lg-12">
-                                                <label for="usr">Como o aluno está(estava) se comportando nos horários de Reforço:</label>
-                                                <html:text name="PautaForm" property="obsComportamentoReforco" styleId="obsComportamentoReforco" styleClass="form-control" maxlength="250"/>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">
-                                            <div class="col-lg-12">
-                                                <label for="usr">Dicas dos professores para o aluno melhorar:</label>
-                                                <html:text name="PautaForm" property="obsDicaProfessor" styleId="obsDicaProfessor" styleClass="form-control" maxlength="250"/>
-                                            </div>
-                                        </td>
-                                    </tr>-->
                                     <tr>
                                         <td colspan="2">
                                             <div class="col-lg-12">
                                                 <label for="usr">Observação: </label>
-                                                <html:text name="PautaForm" property="obsOutroAssunto" styleId="obsOutroAssunto" styleClass="form-control" maxlength="250"/>
+                                                <html:text name="PautaForm" property="obsOutroAssunto" styleId="obsOutroAssunto" styleClass="form-control form-control-sm" maxlength="250"/>
                                             </div>
                                         </td>
                                     </tr>
@@ -197,8 +135,8 @@
                                 <tr>
                                     <td>
                                         <div class="col-lg-12">
-                                            <label for="usr">&nbsp;</label>
-                                            <input class="btn btn-green" type="button" value="Salvar" onClick="fSalvar()">
+                                            <label for="usr">&nbsp;</label><br/>
+                                            <input class="btn btn-sm btn-success" type="button" value="Salvar" onClick="fSalvar()">
                                         </div>
                                     </td>
                                 </tr>
@@ -229,8 +167,8 @@
                                             <td><bean:write name="listaCadastrado" property="nomeProfessor"/></td>
                                             <td><bean:write name="listaCadastrado" property="nrBimestre"/>º Bimestre</td>
                                             <td><bean:write name="listaCadastrado" property="ano"/></td>
-                                            <td style="padding: 2px"><input style="font-size: 10px" class="btn btn-info" type="button" value="Editar" onClick="fVisualizar(<bean:write name="listaCadastrado" property="idPautaObsAluno"/>)"></td>
-                                            <td style="padding: 2px"><input style="font-size: 10px; color: white" class="btn btn-danger" type="button" value="Excluir" onClick="fExcluir(<bean:write name="listaCadastrado" property="idPautaObsAluno"/>)"></td>
+                                            <td style="padding: 2px"><input style="font-size: 10px" class="btn btn-sm btn-dark" type="button" value="Editar" onClick="fVisualizar(<bean:write name="listaCadastrado" property="idPautaObsAluno"/>)"></td>
+                                            <td style="padding: 2px"><input style="font-size: 10px; color: white" class="btn btn-sm btn-danger" type="button" value="Excluir" onClick="fExcluir(<bean:write name="listaCadastrado" property="idPautaObsAluno"/>)"></td>
                                         </tr>
                                     </logic:iterate>
                                 </logic:present>
