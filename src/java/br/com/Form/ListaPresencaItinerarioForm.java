@@ -166,8 +166,8 @@ public class ListaPresencaItinerarioForm extends FormBasico {
         return listaAlunos;
     }
 
-    public void salvarPresenca(Connection conn, String idAluno, ListaPresencaItinerarioForm listaItinerarioForm, int qtdFalta, int ano, String falta) throws SQLException {
-        String query = "INSERT INTO lista_presenca_itinerario (id_aluno, id_itinerario, nr_bimestre, id_serie, data, falta, qtd_aula, qtd_falta, ano) VALUES (?,?,?,?,?,?,?,?,?)";
+    public void salvarPresenca(Connection conn, String idAluno, ListaPresencaItinerarioForm listaItinerarioForm, int qtdFalta, int ano, String falta, int idProfessor) throws SQLException {
+        String query = "INSERT INTO lista_presenca_itinerario (id_aluno, id_itinerario, nr_bimestre, id_serie, data, falta, qtd_aula, qtd_falta, ano, id_professor) VALUES (?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setString(1, idAluno);
         prep.setInt(2, listaItinerarioForm.getIdItinerario());
@@ -178,6 +178,7 @@ public class ListaPresencaItinerarioForm extends FormBasico {
         prep.setInt(7, listaItinerarioForm.getQtdAulas());
         prep.setInt(8, qtdFalta);
         prep.setInt(9, ano);
+        prep.setInt(10, idProfessor);
         prep.execute();
         prep.close();
     }

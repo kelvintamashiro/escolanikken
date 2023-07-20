@@ -132,6 +132,12 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">
+                                        <label for="usr">Objetivo:</label>
+                                        <html:text name="PlanejamentoOficinasForm" property="objetivo" styleId="objetivo" styleClass="form-control form-control-sm"/>
+                                    </td>
+                                </tr>                                
+                                <tr>
+                                    <td colspan="2">
                                         <label for="usr">Observação:</label>
                                         <html:textarea name="PlanejamentoOficinasForm" property="observacao" styleId="observacao" styleClass="form-control form-control-sm" rows="8"/>
                                     </td>

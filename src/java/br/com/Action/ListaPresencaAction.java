@@ -135,7 +135,7 @@ public class ListaPresencaAction extends IDRAction {
                     String nrBimestrePlano = request.getParameter("nrBimestre");
                     String conteudoAula = request.getParameter("conteudoAula");
                     String metodologia = request.getParameter("metodologia");
-                    String recurso = request.getParameter("recurso");
+                    String objetivo = request.getParameter("objetivo");
                     String tarefa = request.getParameter("tarefa");
                     String avaliacao = request.getParameter("avaliacao");
                     String observacao = request.getParameter("observacao");
@@ -145,7 +145,7 @@ public class ListaPresencaAction extends IDRAction {
                     planoAulaForm.setNrBimestre(Integer.parseInt(nrBimestrePlano));
                     planoAulaForm.setConteudoAula(conteudoAula);
                     planoAulaForm.setMetodologia(metodologia);
-                    planoAulaForm.setRecurso(recurso);
+                    planoAulaForm.setObjetivo(objetivo);
                     planoAulaForm.setTarefa(tarefa);
                     planoAulaForm.setAvaliacao(avaliacao);
                     planoAulaForm.setObservacao(observacao);
@@ -163,7 +163,7 @@ public class ListaPresencaAction extends IDRAction {
 
                     if (idPlanejamento != null && idPlanejamento.equals("0")) {
                         //verificar se nao esta com os dados em branco
-                        if (!planoAulaForm.getConteudoAula().equals("") || !planoAulaForm.getMetodologia().equals("") || !planoAulaForm.getRecurso().equals("")
+                        if (!planoAulaForm.getConteudoAula().equals("") || !planoAulaForm.getMetodologia().equals("") || !planoAulaForm.getObjetivo().equals("")
                                 || !planoAulaForm.getTarefa().equals("") || !planoAulaForm.getAvaliacao().equals("") || !planoAulaForm.getObservacao().equals("")) {
                             planoAulaForm.salvarComConfirmacao(conn, planoAulaForm);
                         }
@@ -188,13 +188,13 @@ public class ListaPresencaAction extends IDRAction {
                     if (listaIdAlunos != null) {
                         for (String idAluno : listaIdAlunos) {
                             listaAlunosPresenca.add(idAluno);
-                            listaPresencaForm.salvarPresenca(conn, idAluno, idDisciplina, nrBimestre, idSerie, data, qtdAulas, 0, "N");
+                            listaPresencaForm.salvarPresenca(conn, idAluno, idDisciplina, nrBimestre, idSerie, data, qtdAulas, 0, "N", idProfessor);
                         }
                     }
 
                     listaAlunosFaltaram.removeAll(listaAlunosPresenca);
                     for (String idAlunoFalta : listaAlunosFaltaram) {
-                        listaPresencaForm.salvarPresenca(conn, idAlunoFalta, idDisciplina, nrBimestre, idSerie, data, qtdAulas, qtdAulas, "S");
+                        listaPresencaForm.salvarPresenca(conn, idAlunoFalta, idDisciplina, nrBimestre, idSerie, data, qtdAulas, qtdAulas, "S", idProfessor);
                     }
 
                     listaPresencaForm.setIdDisciplina(0);
@@ -237,7 +237,7 @@ public class ListaPresencaAction extends IDRAction {
             String tipoPerfil = (String) session.getAttribute("tipoPerfil");
             if (tipoPerfil != null && tipoPerfil.equals("professor")) {
                 Integer idPF = (Integer) session.getAttribute("idPF");
-                listaDisciplinas = disciplinasForm.obterListaDisciplinasPorCategoriaPorProfessor(conn, categoriaEnsino, idPF);
+                listaDisciplinas = disciplinasForm.obterListaDisciplinasPorCategoriaPorProfessor(conn, categoriaEnsino, idPF, idSerieAno);
             } else {
                 listaDisciplinas = disciplinasForm.obterListaDisciplinasPorCategoria(conn, categoriaEnsino);
             }
@@ -345,6 +345,10 @@ public class ListaPresencaAction extends IDRAction {
         Connection conn = null;
         try {
             conn = connectionPool.getConnection();
+            int idSerieAno = listaPresencaForm.getIdSerieAno();
+            int nrBimestre = listaPresencaForm.getNrBimestre();
+            int idDisciplina = listaPresencaForm.getIdDisciplina();
+
             //obter nome da disciplina por ID
             DisciplinasForm disciplinasForm = new DisciplinasForm();
             disciplinasForm = disciplinasForm.obterDadosDisciplinaID(conn, listaPresencaForm.getIdDisciplina());
@@ -353,9 +357,16 @@ public class ListaPresencaAction extends IDRAction {
 
             //obter nome do professor por disciplina e serie
             DisciplinaProfessorForm disciplinaProfessorForm = new DisciplinaProfessorForm();
-            String nomeProfessor = disciplinaProfessorForm.obterNomeProfessorPorDiscSerie(conn, listaPresencaForm.getIdDisciplina(), listaPresencaForm.getIdSerieAno());
-            listaPresencaForm.setNomeProfessor(nomeProfessor);
 
+            List<String> listaNomeProfessor = disciplinaProfessorForm.obterNomesProfessorPorIdSerieBimestreDisciplina(conn, idSerieAno, nrBimestre, idDisciplina);
+            listaPresencaForm.setListaNomeProfessor(listaNomeProfessor);
+
+            if (listaNomeProfessor.size() == 0) {
+                String nomeProfessor = disciplinaProfessorForm.obterNomeProfessorPorDiscSerie(conn, listaPresencaForm.getIdDisciplina(), listaPresencaForm.getIdSerieAno());
+                listaPresencaForm.getListaNomeProfessor().add(nomeProfessor);
+            }
+
+//            listaPresencaForm.setNomeProfessor(nomeProfessor);
             //obter descricaoSerie
             String descricaoSerie = Utilitario.obterDescricaoSerieAno(listaPresencaForm.getIdSerieAno());
             listaPresencaForm.setDsSerieAno(descricaoSerie);

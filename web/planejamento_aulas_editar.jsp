@@ -95,26 +95,14 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <label for="usr">Metodologia:</label>
-                            <html:text name="PlanejamentoAulasForm" property="metodologia" styleId="metodologia" styleClass="form-control form-control-sm"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <label for="usr">Recursos:</label>
-                            <html:text name="PlanejamentoAulasForm" property="recurso" styleId="recurso" styleClass="form-control form-control-sm"/>
+                            <label for="usr">Objetivo:</label>
+                            <html:text name="PlanejamentoAulasForm" property="objetivo" styleId="objetivo" styleClass="form-control form-control-sm"/>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
                             <label for="usr">Tarefas:</label>
                             <html:text name="PlanejamentoAulasForm" property="tarefa" styleId="tarefa" styleClass="form-control form-control-sm"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <label for="usr">Avaliação:</label>
-                            <html:text name="PlanejamentoAulasForm" property="avaliacao" styleId="avaliacao" styleClass="form-control form-control-sm"/>
                         </td>
                     </tr>
                     <tr>

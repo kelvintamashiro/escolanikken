@@ -29,6 +29,7 @@ public class PlanejamentoOficinasForm extends FormBasico {
     private String categoriaEnsino;
     private String data;
     private String conteudo;
+    private String objetivo;
     private String descricao;
     private String observacao;
     private int confirmar;
@@ -124,6 +125,14 @@ public class PlanejamentoOficinasForm extends FormBasico {
         this.conteudo = conteudo;
     }
 
+    public String getObjetivo() {
+        return objetivo;
+    }
+
+    public void setObjetivo(String objetivo) {
+        this.objetivo = objetivo;
+    }
+
     public String getDescricao() {
         return descricao;
     }
@@ -165,7 +174,7 @@ public class PlanejamentoOficinasForm extends FormBasico {
     }
 
     public void salvar(Connection conn, PlanejamentoOficinasForm planoOficinaForm) throws SQLException {
-        String query = "INSERT INTO planejamento_oficina (id_professor, serie_ano, nr_bimestre, nome_oficina, data, conteudo_aula, observacao) VALUES (?,?,?,?,?,?,?);";
+        String query = "INSERT INTO planejamento_oficina (id_professor, serie_ano, nr_bimestre, nome_oficina, data, conteudo_aula, objetivo, observacao) VALUES (?,?,?,?,?,?,?,?);";
         try (PreparedStatement prep = conn.prepareStatement(query)) {
             prep.setInt(1, planoOficinaForm.getIdProfessor());
             prep.setString(2, planoOficinaForm.getDsSerieAno());
@@ -173,7 +182,8 @@ public class PlanejamentoOficinasForm extends FormBasico {
             prep.setString(4, planoOficinaForm.getNomeOficina());
             prep.setString(5, planoOficinaForm.getData());
             prep.setString(6, planoOficinaForm.getConteudo());
-            prep.setString(7, planoOficinaForm.getObservacao());
+            prep.setString(7, planoOficinaForm.getObjetivo());
+            prep.setString(8, planoOficinaForm.getObservacao());
             prep.execute();
         }
     }
@@ -200,6 +210,7 @@ public class PlanejamentoOficinasForm extends FormBasico {
                     planoOficina.setNomeOficina(rs.getString("nome_oficina"));
                     planoOficina.setData(IDRDate.formatSQLDate(rs.getString("data")));
                     planoOficina.setConteudo(rs.getString("conteudo_aula"));
+                    planoOficina.setObjetivo(rs.getString("objetivo"));
                     planoOficina.setObservacao(rs.getString("observacao"));
                     String idSeries = rs.getString("serie_ano");
                     String dsSerieAno = this.obterDsSerieAno(conn, idSeries);
@@ -244,6 +255,7 @@ public class PlanejamentoOficinasForm extends FormBasico {
                     planoOficina.setNomeOficina(rs.getString("nome_oficina"));
                     planoOficina.setData(IDRDate.formatSQLDate(rs.getString("data")));
                     planoOficina.setConteudo(rs.getString("conteudo_aula"));
+                    planoOficina.setObjetivo(rs.getString("objetivo"));
                     planoOficina.setObservacao(rs.getString("observacao"));
                     String idSeries = rs.getString("serie_ano");
                     String[] listaSeries = idSeries.split(",");
@@ -264,7 +276,7 @@ public class PlanejamentoOficinasForm extends FormBasico {
     }
 
     public void atualizar(Connection conn, PlanejamentoOficinasForm planoOficinaForm) throws SQLException {
-        String query = "UPDATE planejamento_oficina SET serie_ano=?, nr_bimestre=?, nome_oficina=?, data=?, conteudo_aula=?, observacao=?"
+        String query = "UPDATE planejamento_oficina SET serie_ano=?, nr_bimestre=?, nome_oficina=?, data=?, conteudo_aula=?, objetivo=?, observacao=?"
                 + " WHERE id=?";
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setString(1, planoOficinaForm.getDsSerieAno());
@@ -272,8 +284,9 @@ public class PlanejamentoOficinasForm extends FormBasico {
         prep.setString(3, planoOficinaForm.getNomeOficina());
         prep.setString(4, IDRDate.parseDataIso(planoOficinaForm.getData()));
         prep.setString(5, planoOficinaForm.getConteudo());
-        prep.setString(6, planoOficinaForm.getObservacao());
-        prep.setInt(7, planoOficinaForm.getIdPlanejamento());
+        prep.setString(6, planoOficinaForm.getObjetivo());
+        prep.setString(7, planoOficinaForm.getObservacao());
+        prep.setInt(8, planoOficinaForm.getIdPlanejamento());
         prep.execute();
     }
 

@@ -63,7 +63,7 @@
                         <td width="50%">
                             <label for="usr">Série/Ano:</label>
                             <logic:present name="listaSerie" scope="request">
-                                <html:select name="PlanejamentoAulasForm" property="idSerieAno" styleId="idSerieAno" styleClass="form-control form-control-sm">
+                                <html:select name="PlanejamentoAulasForm" property="idSerieAno" styleId="idSerieAno" styleClass="form-control form-control-sm" onchange="fCarregarDisciplina()">
                                     <html:option value="">Selecione</html:option>
                                     <html:options collection="listaSerie" property="serieAno" labelProperty="dsSerieAno"></html:options>
                                 </html:select>
@@ -104,7 +104,7 @@
                             </logic:present>
                             <logic:notPresent name="listaDisciplinaPorProfessor" scope="request">
                                 <html:select name="PlanejamentoAulasForm" property="idDisciplina" styleId="idDisciplina" styleClass="form-control form-control-sm">
-                                    <html:option value="">Selecione a Categoria de Ensino</html:option>
+                                    <html:option value="">Selecione a Série</html:option>
                                 </html:select>
                             </logic:notPresent>
                         </td>
@@ -114,6 +114,12 @@
                         <td colspan="2">
                             <label for="usr">Conteúdo da Aula:</label>
                             <html:textarea name="PlanejamentoAulasForm" property="conteudoAula" styleId="conteudoAula" styleClass="form-control form-control-sm" rows="5"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label for="usr">Objetivo:</label>
+                            <html:text name="PlanejamentoAulasForm" property="objetivo" styleId="objetivo" styleClass="form-control form-control-sm"/>
                         </td>
                     </tr>
                     <tr>
@@ -144,6 +150,13 @@
         function fCarregarSerie() {
             var categoriaEnsino = document.PlanejamentoAulasForm.categoriaEnsino.value;
             document.PlanejamentoAulasForm.action = "PlanejamentoAulas.do?action=carregarSerie&categoriaEnsino=" + categoriaEnsino + "&idPF=<bean:write name="PlanejamentoAulasForm" property="idProfessor"/>";
+            document.PlanejamentoAulasForm.submit();
+        }
+
+        function fCarregarDisciplina() {
+            var categoriaEnsino = document.PlanejamentoAulasForm.categoriaEnsino.value;
+            var serieAno = document.PlanejamentoAulasForm.idSerieAno.value;
+            document.PlanejamentoAulasForm.action = "PlanejamentoAulas.do?action=carregarDisciplinaPorSerie&categoriaEnsino=" + categoriaEnsino + "&idSerieAno=" + serieAno + "&idPF=<bean:write name="PlanejamentoAulasForm" property="idProfessor"/>";
             document.PlanejamentoAulasForm.submit();
         }
 

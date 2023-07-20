@@ -112,7 +112,9 @@
                                     <td>
                                         <input class="btn btn-sm btn-dark" type="button" value="Visualizar" onClick="fVisualizar(<bean:write name="lista" property="idPlanejamento"/>);">
                                     </td>
-                                    <td colspan="2">&nbsp;</td>
+                                    <td>
+                                        <input class="btn btn-sm btn-danger" type="button" value="Excluir" onClick="fExcluir(<bean:write name="lista" property="idPlanejamento"/>);">
+                                    </td>
                                 </logic:equal>
                                 <logic:equal name="lista" property="confirmar" value="0">
                                     <td align="center">

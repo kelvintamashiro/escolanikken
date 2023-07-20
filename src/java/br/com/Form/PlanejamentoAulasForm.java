@@ -30,7 +30,7 @@ public class PlanejamentoAulasForm extends FormBasico {
     private String categoriaEnsino;
     private String data;
     private String metodologia;
-    private String recurso;
+    private String objetivo;
     private String tarefa;
     private String avaliacao;
     private String conteudoAula;
@@ -151,12 +151,12 @@ public class PlanejamentoAulasForm extends FormBasico {
         this.metodologia = metodologia;
     }
 
-    public String getRecurso() {
-        return recurso;
+    public String getObjetivo() {
+        return objetivo;
     }
 
-    public void setRecurso(String recurso) {
-        this.recurso = recurso;
+    public void setObjetivo(String objetivo) {
+        this.objetivo = objetivo;
     }
 
     public String getTarefa() {
@@ -216,9 +216,34 @@ public class PlanejamentoAulasForm extends FormBasico {
 
         return listaDisciplinaPorProfessor;
     }
+    public List<PlanejamentoAulasForm> obterDisciplinasPorProfessorSerie(Connection conn, String idProfessor, String serieAno) throws SQLException {
+        List<PlanejamentoAulasForm> listaDisciplinaPorProfessor = new ArrayList<>();
+        String query = "select dp.id_disciplina, dp.categoria_ensino, d.nome_disciplina"
+                + " from disciplina_professor dp, disciplina d"
+                + " where dp.id_disciplina = d.id_disciplina"
+                + " and dp.id_professor = ?"
+                + " and dp.serie_ano = ?"
+                + " group by dp.id_disciplina"
+                + " order by nome_disciplina, serie_ano";
+        PreparedStatement prep = conn.prepareStatement(query);
+        prep.setString(1, idProfessor);
+        prep.setString(2, serieAno);
+        ResultSet rs = prep.executeQuery();
+        while (rs.next()) {
+            PlanejamentoAulasForm planejamentoAula = new PlanejamentoAulasForm();
+            planejamentoAula.setIdDisciplina(rs.getInt("id_disciplina"));
+            planejamentoAula.setNomeDisciplina(rs.getString("nome_disciplina"));
+
+            listaDisciplinaPorProfessor.add(planejamentoAula);
+        }
+        rs.close();
+        prep.close();
+
+        return listaDisciplinaPorProfessor;
+    }
 
     public void salvar(Connection conn, PlanejamentoAulasForm planoAulaForm) throws SQLException {
-        String query = "INSERT INTO planejamento_aula (id_professor, id_disciplina, serie_ano, nr_bimestre, data, metodologia, recurso, "
+        String query = "INSERT INTO planejamento_aula (id_professor, id_disciplina, serie_ano, nr_bimestre, data, metodologia, objetivo, "
                 + " tarefa, avaliacao, conteudo_aula, observacao) "
                 + " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         try (PreparedStatement prep = conn.prepareStatement(query)) {
@@ -228,7 +253,7 @@ public class PlanejamentoAulasForm extends FormBasico {
             prep.setInt(4, planoAulaForm.getNrBimestre());
             prep.setString(5, planoAulaForm.getData());
             prep.setString(6, planoAulaForm.getMetodologia());
-            prep.setString(7, planoAulaForm.getRecurso());
+            prep.setString(7, planoAulaForm.getObjetivo());
             prep.setString(8, planoAulaForm.getTarefa());
             prep.setString(9, planoAulaForm.getAvaliacao());
             prep.setString(10, planoAulaForm.getConteudoAula());
@@ -239,7 +264,7 @@ public class PlanejamentoAulasForm extends FormBasico {
     }
 
     public void salvarComConfirmacao(Connection conn, PlanejamentoAulasForm planoAulaForm) throws SQLException {
-        String query = "INSERT INTO planejamento_aula (id_professor, id_disciplina, serie_ano, nr_bimestre, data, metodologia, recurso, "
+        String query = "INSERT INTO planejamento_aula (id_professor, id_disciplina, serie_ano, nr_bimestre, data, metodologia, objetivo, "
                 + " tarefa, avaliacao, conteudo_aula, observacao, confirmar) "
                 + " VALUES (?,?,?,?,?,?,?,?,?,?,?,1)";
         try (PreparedStatement prep = conn.prepareStatement(query)) {
@@ -249,7 +274,7 @@ public class PlanejamentoAulasForm extends FormBasico {
             prep.setInt(4, planoAulaForm.getNrBimestre());
             prep.setString(5, planoAulaForm.getData());
             prep.setString(6, planoAulaForm.getMetodologia());
-            prep.setString(7, planoAulaForm.getRecurso());
+            prep.setString(7, planoAulaForm.getObjetivo());
             prep.setString(8, planoAulaForm.getTarefa());
             prep.setString(9, planoAulaForm.getAvaliacao());
             prep.setString(10, planoAulaForm.getConteudoAula());
@@ -282,7 +307,7 @@ public class PlanejamentoAulasForm extends FormBasico {
                     planoAulaForm.setNrBimestre(rs.getInt("nr_bimestre"));
                     planoAulaForm.setData(IDRDate.formatSQLDate(rs.getString("data")));
                     planoAulaForm.setMetodologia(rs.getString("metodologia"));
-                    planoAulaForm.setRecurso(rs.getString("recurso"));
+                    planoAulaForm.setObjetivo(rs.getString("objetivo"));
                     planoAulaForm.setTarefa(rs.getString("tarefa"));
                     planoAulaForm.setAvaliacao(rs.getString("avaliacao"));
                     planoAulaForm.setConteudoAula(rs.getString("conteudo_aula"));
@@ -333,7 +358,7 @@ public class PlanejamentoAulasForm extends FormBasico {
                     planoAulaForm.setNrBimestre(rs.getInt("nr_bimestre"));
                     planoAulaForm.setData(IDRDate.formatSQLDate(rs.getString("data")));
                     planoAulaForm.setMetodologia(rs.getString("metodologia"));
-                    planoAulaForm.setRecurso(rs.getString("recurso"));
+                    planoAulaForm.setObjetivo(rs.getString("objetivo"));
                     planoAulaForm.setTarefa(rs.getString("tarefa"));
                     planoAulaForm.setAvaliacao(rs.getString("avaliacao"));
                     planoAulaForm.setConteudoAula(rs.getString("conteudo_aula"));
@@ -370,7 +395,7 @@ public class PlanejamentoAulasForm extends FormBasico {
                     planoAulaForm.setNrBimestre(rs.getInt("nr_bimestre"));
                     planoAulaForm.setData(IDRDate.formatSQLDate(rs.getString("data")));
                     planoAulaForm.setMetodologia(rs.getString("metodologia"));
-                    planoAulaForm.setRecurso(rs.getString("recurso"));
+                    planoAulaForm.setObjetivo(rs.getString("objetivo"));
                     planoAulaForm.setTarefa(rs.getString("tarefa"));
                     planoAulaForm.setAvaliacao(rs.getString("avaliacao"));
                     planoAulaForm.setConteudoAula(rs.getString("conteudo_aula"));
@@ -408,7 +433,7 @@ public class PlanejamentoAulasForm extends FormBasico {
                     planoAulaForm.setNrBimestre(rs.getInt("nr_bimestre"));
                     planoAulaForm.setData(IDRDate.formatSQLDate(rs.getString("data")));
                     planoAulaForm.setMetodologia(rs.getString("metodologia"));
-                    planoAulaForm.setRecurso(rs.getString("recurso"));
+                    planoAulaForm.setObjetivo(rs.getString("objetivo"));
                     planoAulaForm.setTarefa(rs.getString("tarefa"));
                     planoAulaForm.setAvaliacao(rs.getString("avaliacao"));
                     planoAulaForm.setConteudoAula(rs.getString("conteudo_aula"));
@@ -442,7 +467,7 @@ public class PlanejamentoAulasForm extends FormBasico {
                     planoAulaForm.setNrBimestre(rs.getInt("nr_bimestre"));
                     planoAulaForm.setData(rs.getString("data"));
                     planoAulaForm.setMetodologia(rs.getString("metodologia"));
-                    planoAulaForm.setRecurso(rs.getString("recurso"));
+                    planoAulaForm.setObjetivo(rs.getString("objetivo"));
                     planoAulaForm.setTarefa(rs.getString("tarefa"));
                     planoAulaForm.setAvaliacao(rs.getString("avaliacao"));
                     planoAulaForm.setConteudoAula(rs.getString("conteudo_aula"));
@@ -463,13 +488,13 @@ public class PlanejamentoAulasForm extends FormBasico {
 
     public void atualizar(Connection conn, PlanejamentoAulasForm planoAulaForm) throws SQLException {
         String query = "UPDATE planejamento_aula SET nr_bimestre=?, data=?, metodologia=?,"
-                + " recurso=?, tarefa=?, avaliacao=?, conteudo_aula=?, observacao=?"
+                + " objetivo=?, tarefa=?, avaliacao=?, conteudo_aula=?, observacao=?"
                 + " WHERE id=?";
         try (PreparedStatement prep = conn.prepareStatement(query)) {
             prep.setInt(1, planoAulaForm.getNrBimestre());
             prep.setString(2, planoAulaForm.getData());
             prep.setString(3, planoAulaForm.getMetodologia());
-            prep.setString(4, planoAulaForm.getRecurso());
+            prep.setString(4, planoAulaForm.getObjetivo());
             prep.setString(5, planoAulaForm.getTarefa());
             prep.setString(6, planoAulaForm.getAvaliacao());
             prep.setString(7, planoAulaForm.getConteudoAula());
@@ -481,13 +506,13 @@ public class PlanejamentoAulasForm extends FormBasico {
 
     public void atualizarComConfirmacao(Connection conn, PlanejamentoAulasForm planoAulaForm) throws SQLException {
         String query = "UPDATE planejamento_aula SET nr_bimestre=?, data=?, metodologia=?,"
-                + " recurso=?, tarefa=?, avaliacao=?, conteudo_aula=?, observacao=?, confirmar=1 "
+                + " objetivo=?, tarefa=?, avaliacao=?, conteudo_aula=?, observacao=?, confirmar=1 "
                 + " WHERE id=?";
         try (PreparedStatement prep = conn.prepareStatement(query)) {
             prep.setInt(1, planoAulaForm.getNrBimestre());
             prep.setString(2, planoAulaForm.getData());
             prep.setString(3, planoAulaForm.getMetodologia());
-            prep.setString(4, planoAulaForm.getRecurso());
+            prep.setString(4, planoAulaForm.getObjetivo());
             prep.setString(5, planoAulaForm.getTarefa());
             prep.setString(6, planoAulaForm.getAvaliacao());
             prep.setString(7, planoAulaForm.getConteudoAula());
@@ -562,7 +587,7 @@ public class PlanejamentoAulasForm extends FormBasico {
                     planoAulaForm.setNrBimestre(rs.getInt("nr_bimestre"));
                     planoAulaForm.setData(IDRDate.formatSQLDate(rs.getString("data")));
                     planoAulaForm.setMetodologia(rs.getString("metodologia"));
-                    planoAulaForm.setRecurso(rs.getString("recurso"));
+                    planoAulaForm.setObjetivo(rs.getString("objetivo"));
                     planoAulaForm.setTarefa(rs.getString("tarefa"));
                     planoAulaForm.setAvaliacao(rs.getString("avaliacao"));
                     planoAulaForm.setConteudoAula(rs.getString("conteudo_aula"));

@@ -293,6 +293,7 @@
                    input="/planejamento_aulas.jsp">
             <forward name="page"                                    path="/planejamento_aulas.jsp"/>
             <forward name="carregarSerie"                           path="/planejamento_aulas.jsp"/>
+            <forward name="carregarDisciplinaPorSerie"              path="/planejamento_aulas.jsp"/>
             <forward name="salvar"                                  path="/planejamento_aulas.jsp"/>
             <forward name="pesquisar"                               path="/planejamento_aulas_pesquisar.jsp"/>
             <forward name="pagePesquisarPorProfessor"               path="/planejamento_aulas_page_pesquisar_professor.jsp"/>

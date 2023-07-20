@@ -40,7 +40,7 @@
             <div class="container-fluid">
                 <div class="row p-3" style="background-color: #F4F4F4" >
                     <div class="col-12 col-sm-1" align="center">
-                        <a href="tela_interativa.jsp"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
+                        <a href="NotaBimestre.do?idPF=<%=session.getAttribute("idPF").toString()%>"><img src="imagens/bt_voltar_2.png" width="100px"/></a>
                     </div>
                     <div class="col-sm-10" align="center">
                         <h1>Lançamento de Notas por Série/Ano</h1>

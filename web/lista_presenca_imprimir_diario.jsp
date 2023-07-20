@@ -51,7 +51,12 @@
                 </td>
                 <td width="20%" align="center">
                     <b>Professor(a)</b> <br/>
-                    <bean:write name="ListaPresencaForm" property="nomeProfessor"/>
+                    <%--<bean:write name="ListaPresencaForm" property="nomeProfessor"/>--%>
+                    <logic:present name="ListaPresencaForm" property="listaNomeProfessor">
+                        <logic:iterate id="nomeProfessor" name="ListaPresencaForm" property="listaNomeProfessor">
+                            <bean:write name="nomeProfessor"/> <br/>
+                        </logic:iterate>
+                    </logic:present>
                 </td>
             </tr>
             <tr>

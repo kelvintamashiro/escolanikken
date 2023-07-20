@@ -340,7 +340,7 @@ public class DisciplinaProfessorForm extends FormBasico {
     public int obterIdProfessorPorDiscSerie(Connection conn, int idDisciplina, int idSerieAno) throws SQLException {
         int idProfessor = 0;
         String query = "select d.id_professor from disciplina_professor d where d.id_disciplina = ? and d.serie_ano = ?";
-        try (PreparedStatement prep = conn.prepareStatement(query)) {
+        try ( PreparedStatement prep = conn.prepareStatement(query)) {
             prep.setInt(1, idDisciplina);
             prep.setInt(2, idSerieAno);
             ResultSet rs = prep.executeQuery();
@@ -349,7 +349,7 @@ public class DisciplinaProfessorForm extends FormBasico {
             }
             rs.close();
         }
-        
+
         return idProfessor;
     }
 
@@ -371,6 +371,26 @@ public class DisciplinaProfessorForm extends FormBasico {
         }
 
         return nomeProfessor;
+    }
+
+    public List<String> obterNomesProfessorPorIdSerieBimestreDisciplina(Connection conn, int idSerieAno, int nrBimestre, int idDisciplina) throws SQLException {
+        List<String> listaNomeProfessor = new ArrayList<>();
+        String query = "select pf.nome"
+                + " from lista_presenca l, pessoa_fisica pf, ano_vigente av"
+                + " where l.id_professor = pf.id"
+                + " and l.ano = av.ano_vigente"
+                + " and l.id_serie = ? and l.nr_bimestre = ? and l.id_disciplina = ? group by l.id_professor";
+        try ( PreparedStatement prep = conn.prepareStatement(query)) {
+            prep.setInt(1, idSerieAno);
+            prep.setInt(2, nrBimestre);
+            prep.setInt(3, idDisciplina);
+            try ( ResultSet rs = prep.executeQuery()) {
+                while (rs.next()) {
+                    listaNomeProfessor.add(rs.getString("nome"));
+                }
+            }
+        }
+        return listaNomeProfessor;
     }
 
 }

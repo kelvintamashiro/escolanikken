@@ -125,6 +125,12 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">
+                                        <label for="usr"><b>Objetivo:</b></label>
+                                        <bean:write name="PlanejamentoOficinasForm" property="objetivo"/>
+                                    </td>
+                                </tr>                                
+                                <tr>
+                                    <td colspan="2">
                                         <label for="usr"><b>Observação:</b></label>
                                         <bean:write name="PlanejamentoOficinasForm" property="observacao"/>
                                     </td>

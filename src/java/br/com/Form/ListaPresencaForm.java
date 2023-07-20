@@ -36,7 +36,16 @@ public class ListaPresencaForm extends FormBasico {
     private int qtdFalta;
     private PlanejamentoAulasForm planejamentoAulasForm;
     private String nomeProfessor;
+    private List<String> listaNomeProfessor;
 
+    public List<String> getListaNomeProfessor() {
+        return listaNomeProfessor;
+    }
+
+    public void setListaNomeProfessor(List<String> listaNomeProfessor) {
+        this.listaNomeProfessor = listaNomeProfessor;
+    }
+    
     public String getNomeProfessor() {
         return nomeProfessor;
     }
@@ -191,8 +200,8 @@ public class ListaPresencaForm extends FormBasico {
         return listaAlunos;
     }
 
-    public void salvarPresenca(Connection conn, String idAluno, int idDisciplina, int nrBimestre, int idSerie, String data, int qtdAula, int qtdFalta, String falta) throws SQLException {
-        String query = "INSERT INTO lista_presenca (id_aluno, id_disciplina, id_serie, data, qtd_aula, qtd_falta, falta, nr_bimestre) VALUES (?,?,?,?,?,?,?,?)";
+    public void salvarPresenca(Connection conn, String idAluno, int idDisciplina, int nrBimestre, int idSerie, String data, int qtdAula, int qtdFalta, String falta, int idProfessor) throws SQLException {
+        String query = "INSERT INTO lista_presenca (id_aluno, id_disciplina, id_serie, data, qtd_aula, qtd_falta, falta, nr_bimestre, id_professor) VALUES (?,?,?,?,?,?,?,?,?)";
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setString(1, idAluno);
         prep.setInt(2, idDisciplina);
@@ -202,6 +211,7 @@ public class ListaPresencaForm extends FormBasico {
         prep.setInt(6, qtdFalta);
         prep.setString(7, falta);
         prep.setInt(8, nrBimestre);
+        prep.setInt(9, idProfessor);
         prep.execute();
         prep.close();
 
@@ -317,8 +327,8 @@ public class ListaPresencaForm extends FormBasico {
 
     public List<String> obterListaDatasPorSerieBimestreDisciplina(Connection conn, ListaPresencaForm listaPresencaForm) throws SQLException {
         String query = "select distinct l.data"
-                + " from lista_presenca l"
-                + " where l.nr_bimestre = ? and l.id_serie = ? and l.id_disciplina = ?"
+                + " from lista_presenca l, ano_vigente a"
+                + " where l.ano = a.ano_vigente and l.nr_bimestre = ? and l.id_serie = ? and l.id_disciplina = ? and l.ano = 2023"
                 + " group by l.data";
         List<String> listaDatas;
         try (PreparedStatement prep = conn.prepareStatement(query)) {
@@ -360,6 +370,29 @@ public class ListaPresencaForm extends FormBasico {
         }
         
         return listaPresencaForm;
+    }
+
+    public void excluirPresencaPorSerieDataDisciplinaBimestre(Connection conn, int idSerieAno, String data, int idDisciplina, int nrBimestre) throws SQLException {
+        String query = "select l.id from lista_presenca l where l.id_serie = ? and l.data = ? and l.id_disciplina = ? and l.nr_bimestre = ?";
+        PreparedStatement prep = conn.prepareStatement(query);
+        prep.setInt(1, idSerieAno);
+        prep.setString(2, IDRDate.parseDataIso(data));
+        prep.setInt(3, idDisciplina);
+        prep.setInt(4, nrBimestre);
+        ResultSet rs = prep.executeQuery();
+        while(rs.next()) {
+            int idPresenca = rs.getInt("id");
+            String queryExcluir = "DELETE FROM lista_presenca WHERE id = ?";
+            PreparedStatement prepExcluir = conn.prepareStatement(queryExcluir);
+            prepExcluir.setInt(1, idPresenca);
+            prepExcluir.execute();
+            prepExcluir.close();
+        }
+        rs.close();
+        prep.close();
+        
+        
+        
     }
 
 }

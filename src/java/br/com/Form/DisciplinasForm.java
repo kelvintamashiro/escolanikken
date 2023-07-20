@@ -95,7 +95,7 @@ public class DisciplinasForm extends FormBasico {
     }
 
     public List<DisciplinasForm> obterListaDisciplinasCadastradas(Connection conn) throws SQLException {
-        String query = "select * from disciplina order by categoria_ensino, nome_disciplina";
+        String query = "select * from disciplina where status = 1 order by categoria_ensino, nome_disciplina";
         PreparedStatement prep = conn.prepareStatement(query);
         ResultSet rs = prep.executeQuery();
         List<DisciplinasForm> listaDisciplinas = new ArrayList<>();
@@ -118,6 +118,7 @@ public class DisciplinasForm extends FormBasico {
     public List<DisciplinasForm> obterListaDisciplinasPorCategoria(Connection conn, String categoriaEnsino) throws SQLException {
         String query = "select * from disciplina d"
                 + " where d.categoria_ensino = ?"
+                + " and d.status = 1"
                 + " order by d.nome_disciplina";
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setString(1, categoriaEnsino);
@@ -144,9 +145,13 @@ public class DisciplinasForm extends FormBasico {
         StringBuilder sb = new StringBuilder();
         sb.append("select * from disciplina d");
         sb.append(" where d.categoria_ensino = ?");
+        sb.append(" and d.status = 1 ");
         if (idSerie == 20 || idSerie == 30) {
             sb.append(" and d.id_disciplina not in (15)");
+        } else if (idSerie == 2 || idSerie == 3 || idSerie == 4 || idSerie == 5) {
+            sb.append(" and d.id_disciplina not in (60)");
         }
+        
         if (anoVigente > 2020) {
             sb.append(" and d.id_disciplina not in (13)");
         }
@@ -172,18 +177,21 @@ public class DisciplinasForm extends FormBasico {
         return listaDisciplinas;
     }
 
-    public List<DisciplinasForm> obterListaDisciplinasPorCategoriaPorProfessor(Connection conn, String categoriaEnsino, int idPF) throws SQLException {
+    public List<DisciplinasForm> obterListaDisciplinasPorCategoriaPorProfessor(Connection conn, String categoriaEnsino, int idPF, int idSerieAno) throws SQLException {
         String query = "select d.*"
                 + " from disciplina_professor dp, disciplina d"
                 + " where dp.id_disciplina = d.id_disciplina"
                 + " and dp.id_professor = ?"
                 + " and dp.categoria_ensino = ?"
+                + " and dp.serie_ano = ?"
+                + " and d.status = 1"
                 + " group by dp.id_disciplina"
                 + " order by nome_disciplina, serie_ano";
 
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setInt(1, idPF);
         prep.setString(2, categoriaEnsino);
+        prep.setInt(3, idSerieAno);
         ResultSet rs = prep.executeQuery();
         List<DisciplinasForm> listaDisciplinas = new ArrayList<>();
         while (rs.next()) {

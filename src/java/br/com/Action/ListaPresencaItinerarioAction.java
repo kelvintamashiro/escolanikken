@@ -126,6 +126,10 @@ public class ListaPresencaItinerarioAction extends IDRAction {
                     listaAlunos = (ArrayList<ListaPresencaItinerarioForm>) session.getAttribute("listaAlunos");
                 }
 
+                //obter idProfessor pelo itinerario
+                ItinerarioForm itinerarioForm = new ItinerarioForm();
+                int idProfessor = itinerarioForm.obterIdProfessorPorItinerario(conn, listaItinerarioForm.getIdItinerario());
+                
                 ArrayList<String> listaAlunosFaltaram = new ArrayList<>();
 
                 for (ListaPresencaItinerarioForm aluno : listaAlunos) {
@@ -137,13 +141,13 @@ public class ListaPresencaItinerarioAction extends IDRAction {
                 if (listaIdAlunos != null) {
                     for (String idAluno : listaIdAlunos) {
                         listaAlunosPresenca.add(idAluno);
-                        listaItinerarioForm.salvarPresenca(conn, idAluno, listaItinerarioForm, 0, ano, "N");
+                        listaItinerarioForm.salvarPresenca(conn, idAluno, listaItinerarioForm, 0, ano, "N", idProfessor);
                     }
                 }
 
                 listaAlunosFaltaram.removeAll(listaAlunosPresenca);
                 for (String idAlunoFalta : listaAlunosFaltaram) {
-                    listaItinerarioForm.salvarPresenca(conn, idAlunoFalta, listaItinerarioForm, listaItinerarioForm.getQtdAulas(), ano, "S");
+                    listaItinerarioForm.salvarPresenca(conn, idAlunoFalta, listaItinerarioForm, listaItinerarioForm.getQtdAulas(), ano, "S", idProfessor);
                 }
 
                 listaItinerarioForm.setIdItinerario(0);

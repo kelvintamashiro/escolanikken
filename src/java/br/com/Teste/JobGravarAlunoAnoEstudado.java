@@ -18,9 +18,9 @@ import java.sql.ResultSet;
  */
 public class JobGravarAlunoAnoEstudado {
 
-    private static final String USUARIO = "criar324_user";
-    private static final String SENHA = "miguel0210";
-    private static final String URL = "jdbc:mysql://br310.hostgator.com.br:3306/criar324_nikken";
+    private static final String USUARIO = "wwmits_user";
+    private static final String SENHA = "Miguel0210!";
+    private static final String URL = "jdbc:mysql://162.214.120.203:3306/wwmits_nikken";
     private static final String DRIVER = "com.mysql.jdbc.Driver";
 
     public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
@@ -33,11 +33,11 @@ public class JobGravarAlunoAnoEstudado {
             ResultSet rs = prep.executeQuery();
             while (rs.next()) {
                 int idAluno = rs.getInt("id");
-                String insert = "INSERT INTO alunos_ano_estudado (id_aluno, ano_estudado, status) VALUES (?, 2021, 1)";
-                PreparedStatement prepInsert = conn.prepareStatement(insert);
-                prepInsert.setInt(1, idAluno);
-                prepInsert.execute();
-                prepInsert.close();
+//                String insert = "INSERT INTO alunos_ano_estudado (id_aluno, ano_estudado, status) VALUES (?, 2021, 1)";
+//                PreparedStatement prepInsert = conn.prepareStatement(insert);
+//                prepInsert.setInt(1, idAluno);
+//                prepInsert.execute();
+//                prepInsert.close();
                 
                 System.out.println("ID Aluno: " + idAluno);
             }

@@ -242,7 +242,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col">
+<!--                    <div class="col">
                         <div class="card" align="center">
                             <a href="gerenciador_professor.jsp" style="text-decoration: none" class="menu">
                                 <div class="pt-4">
@@ -253,7 +253,7 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div>-->
 
                     <div class="col">
                         <div class="card" align="center">
@@ -384,7 +384,7 @@
         <logic:equal name="tipoPerfil" scope="session" value="professor">
             <div class="container pt-5 pb-5">
                 <div class="row row-cols-1 row-cols-md-5 g-3">
-                    <div class="col">
+<!--                    <div class="col">
                         <div class="card" align="center">
                             <a href="Aluno.do?action=pageConsultar" style="text-decoration: none" class="menu">
                                 <div class="pt-4">
@@ -395,7 +395,7 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="col">
                         <div class="card" align="center">
                             <a href="NotaBimestre.do?action=pageConsulta&idPF=<%=session.getAttribute("idPF").toString()%>&tipoPerfil=professor" style="text-decoration: none" class="menu">
@@ -485,7 +485,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col">
+<!--                    <div class="col">
                         <div class="card" align="center">
                             <a href="Relatorios.do" style="text-decoration: none" class="menu">
                                 <div class="pt-4">
@@ -496,7 +496,7 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div>-->
 
                     <div class="col">
                         <div class="card" align="center">

@@ -131,6 +131,7 @@ public class ItinerarioForm extends FormBasico {
         String query = "select i.id_itinerario, i.id_serie_ano, i.categoria_ensino, i.nome_itinerario, i.id_professor, pf.nome "
                 + " from itinerario i, pessoa_fisica pf"
                 + " where i.id_professor = pf.id"
+                + " and i.status = 1"
                 + " order by i.categoria_ensino, i.nome_itinerario";
         PreparedStatement prep = conn.prepareStatement(query);
         ResultSet rs = prep.executeQuery();
@@ -238,7 +239,10 @@ public class ItinerarioForm extends FormBasico {
     }
 
     public List<ItinerarioForm> obterListaItinerarioPorSerie(Connection conn, int idSerieAno) throws SQLException {
-        String query = "select i.id_itinerario, i.nome_itinerario from itinerario i where i.id_serie_ano = ? order by i.nome_itinerario";
+        String query = "select i.id_itinerario, i.nome_itinerario from itinerario i "
+                + " where i.id_serie_ano = ? "
+                + " and i.status = 1"
+                + " order by i.nome_itinerario";
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setInt(1, idSerieAno);
         ResultSet rs = prep.executeQuery();
@@ -253,6 +257,20 @@ public class ItinerarioForm extends FormBasico {
         prep.close();
 
         return listaItinerario;
+    }
+    
+    public int obterIdProfessorPorItinerario(Connection conn, int idItinerario) throws SQLException {
+        String query = "select i.id_professor from itinerario i where i.id_itinerario = ?";
+        PreparedStatement prep = conn.prepareStatement(query);
+        prep.setInt(1, idItinerario);
+        ResultSet rs = prep.executeQuery();
+        if(rs.next()) {
+            return rs.getInt("id_professor");
+        }
+        rs.close();
+        prep.close();
+        
+        return 0;
     }
 
 }

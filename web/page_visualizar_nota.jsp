@@ -292,22 +292,22 @@
                         </logic:iterate>
                     </table>
                 </logic:present>
-                <table border="0" align="center" width="200px" style="margin-top: 10px">
-                    <tr>
-                        <td>
-                            <img src="imagens/assinatura-diretor.jpg" width="100%"/>
-                        </td>
-                    </tr>
+                <table border="0" align="center" width="300px" style="margin-top: 20px">
                     <!--                    <tr>
-                                            <td align="center" style="border-bottom: 1px solid black">
-                                                &nbsp;
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="center">
-                                                Diretor da Escola
+                                            <td>
+                                                <img src="imagens/assinatura-diretor.jpg" width="100%"/>
                                             </td>
                                         </tr>-->
+                    <tr>
+                        <td align="center" style="border-bottom: 1px solid black">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            Diretora Lourdes Mitsue Akagi
+                        </td>
+                    </tr>
                 </table>
 
             </div>

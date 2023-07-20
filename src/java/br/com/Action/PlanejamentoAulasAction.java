@@ -5,6 +5,7 @@
  */
 package br.com.Action;
 
+import br.com.Form.ListaPresencaForm;
 import br.com.Form.PessoaFisicaForm;
 import br.com.Form.PlanejamentoAulasForm;
 import br.com.Form.SerieAnoForm;
@@ -31,6 +32,8 @@ public class PlanejamentoAulasAction extends IDRAction {
             this.page(form, request, errors);
         } else if (action.equals("carregarSerie")) {
             this.carregarSerie(form, request, errors);
+        } else if (action.equals("carregarDisciplinaPorSerie")) {
+            this.carregarDisciplinaPorSerie(form, request, errors);
         } else if (action.equals("salvar")) {
             this.salvar(form, request, errors);
         } else if (action.equals("pesquisar")) {
@@ -86,7 +89,38 @@ public class PlanejamentoAulasAction extends IDRAction {
             }
 
             //carregar lista disciplinas por idProfessor e categoria
-            List<PlanejamentoAulasForm> listaDisciplinaPorProfessor = planejamentoAulasForm.obterDisciplinasPorProfessor(conn, idProfessor, categoriaEnsino);
+//            List<PlanejamentoAulasForm> listaDisciplinaPorProfessor = planejamentoAulasForm.obterDisciplinasPorProfessor(conn, idProfessor, categoriaEnsino);
+//            if (listaDisciplinaPorProfessor.size() > 0) {
+//                request.setAttribute("listaDisciplinaPorProfessor", listaDisciplinaPorProfessor);
+//            }
+
+            request.setAttribute("PlanejamentoAulasForm", planejamentoAulasForm);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.free(conn);
+        }
+
+    }
+
+    private void carregarDisciplinaPorSerie(ActionForm form, HttpServletRequest request, Errors errors) {
+        PlanejamentoAulasForm planejamentoAulasForm = (PlanejamentoAulasForm) form;
+        Connection conn = null;
+        try {
+            conn = connectionPool.getConnection();
+            String idProfessor = request.getParameter("idPF");
+            String categoriaEnsino = request.getParameter("categoriaEnsino");
+            String idSerieAno = request.getParameter("idSerieAno");
+
+//            //carregar serie por Categoria Ensino
+            SerieAnoForm serieAnoForm = new SerieAnoForm();
+            ArrayList<SerieAnoForm> listaSerie = serieAnoForm.obterSerieAnoPorCategoria(categoriaEnsino);
+            if (listaSerie.size() > 0) {
+                request.setAttribute("listaSerie", listaSerie);
+            }
+
+            //carregar lista disciplinas por idProfessor e categoria
+            List<PlanejamentoAulasForm> listaDisciplinaPorProfessor = planejamentoAulasForm.obterDisciplinasPorProfessorSerie(conn, idProfessor, idSerieAno);
             if (listaDisciplinaPorProfessor.size() > 0) {
                 request.setAttribute("listaDisciplinaPorProfessor", listaDisciplinaPorProfessor);
             }
@@ -187,7 +221,14 @@ public class PlanejamentoAulasAction extends IDRAction {
         Connection conn = null;
         try {
             conn = connectionPool.getConnection();
+            
+            //obter dados planejamento_aula por ID
+            PlanejamentoAulasForm planoAula = planejamentoAulasForm.obterPlanoAulaPorID(conn, planejamentoAulasForm.getIdPlanejamento());
 
+            //excluir lista de presenca por serie, data, disciplina e bimestre
+            ListaPresencaForm listaPresencaForm = new ListaPresencaForm();
+            listaPresencaForm.excluirPresencaPorSerieDataDisciplinaBimestre(conn, planoAula.getIdSerieAno(), planoAula.getData(), planoAula.getIdDisciplina(), planoAula.getNrBimestre());
+            
             //excluir plano de aula por idPlanejamento
             planejamentoAulasForm.excluir(conn, planejamentoAulasForm.getIdPlanejamento());
 
@@ -205,7 +246,7 @@ public class PlanejamentoAulasAction extends IDRAction {
         Connection conn = null;
         try {
             conn = connectionPool.getConnection();
-            
+
             String dataFormatada = IDRDate.parseDataIso(planejamentoAulasForm.getData());
             planejamentoAulasForm.setData(dataFormatada);
 

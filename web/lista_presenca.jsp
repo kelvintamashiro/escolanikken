@@ -216,6 +216,14 @@
                         <tr>
                             <td>&nbsp;</td>
                             <td>
+                                <label for="usr">Objetivo:</label>
+                                <html:text name="PlanejamentoAulasForm" property="objetivo" styleId="objetivo" styleClass="form-control form-control-sm"/>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
                                 <label for="usr">Tarefas:</label>
                                 <html:text name="PlanejamentoAulasForm" property="tarefa" styleId="tarefa" styleClass="form-control form-control-sm"/>
                             </td>

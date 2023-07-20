@@ -89,26 +89,14 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <label for="usr"><b>Metodologia:</b></label>
-                            <bean:write name="PlanejamentoAulasForm" property="metodologia"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <label for="usr"><b>Recursos:</b></label>
-                            <bean:write name="PlanejamentoAulasForm" property="recurso"/>
+                            <label for="usr"><b>Objetivo:</b></label>
+                            <bean:write name="PlanejamentoAulasForm" property="objetivo"/>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
                             <label for="usr"><b>Tarefas:</b></label>
                             <bean:write name="PlanejamentoAulasForm" property="tarefa"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <label for="usr"><b>Avaliação:</b></label>
-                            <bean:write name="PlanejamentoAulasForm" property="avaliacao"/>
                         </td>
                     </tr>
                     <tr>

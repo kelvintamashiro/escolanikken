@@ -59,7 +59,6 @@
                         </th>
                         <th width="20%" colspan="4">
                             &nbsp;
-                            <!--<b>Professor</b>-->
                         </th>
                         <th width="15%">&nbsp;</th>
                     </tr>
@@ -67,7 +66,18 @@
                         <logic:iterate id="lista" name="listaDisciplinaPorProfessor" scope="request">
                             <bean:define id="disciplina" name="lista" property="disciplinasForm"/>
                             <bean:define id="serieAno" name="lista" property="serieAnoForm"/>
-                            <tr>
+                            <logic:equal name="disciplina" property="categoriaEnsino" value="INF">
+                                <tr style="background-color: #F5DEB3">
+                                </logic:equal>
+                                <logic:equal name="disciplina" property="categoriaEnsino" value="EF1">
+                                <tr style="background-color: #E0FFFF">
+                                </logic:equal>
+                                <logic:equal name="disciplina" property="categoriaEnsino" value="EF2">
+                                <tr style="background-color: #EEE8AA">
+                                </logic:equal>
+                                <logic:equal name="disciplina" property="categoriaEnsino" value="EM">
+                                <tr style="background-color: #FFC0CB">
+                                </logic:equal>
                                 <td width="10%">&nbsp;</td>
                                 <td>
                                     <logic:equal name="disciplina" property="categoriaEnsino" value="INF">
