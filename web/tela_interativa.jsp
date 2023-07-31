@@ -383,7 +383,7 @@
 
         <logic:equal name="tipoPerfil" scope="session" value="professor">
             <div class="container pt-5 pb-5">
-                <div class="row row-cols-1 row-cols-md-5 g-3">
+                <div class="row row-cols-1 row-cols-md-4 g-3">
 <!--                    <div class="col">
                         <div class="card" align="center">
                             <a href="Aluno.do?action=pageConsultar" style="text-decoration: none" class="menu">

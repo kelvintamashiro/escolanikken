@@ -41,6 +41,24 @@ public class PessoaFisicaForm extends FormBasico {
     private String password;
     private String passwordMD5;
     private String sexo;
+    private String dtInicio;
+    private String dtDesligamento;
+
+    public String getDtInicio() {
+        return dtInicio;
+    }
+
+    public void setDtInicio(String dtInicio) {
+        this.dtInicio = dtInicio;
+    }
+
+    public String getDtDesligamento() {
+        return dtDesligamento;
+    }
+
+    public void setDtDesligamento(String dtDesligamento) {
+        this.dtDesligamento = dtDesligamento;
+    }
 
     public int getIdPF() {
         return idPF;
@@ -232,8 +250,8 @@ public class PessoaFisicaForm extends FormBasico {
     public int inserirPessoaFisica(Connection conn, PessoaFisicaForm pessoaFisica, int idWpUser) throws SQLException {
         int idPessoaFisica = 0;
         String query = "INSERT INTO pessoa_fisica (id_nk_users, nome, data_nascimento, naturalidade, sexo, nacionalidade, endereco, provincia, cidade,"
-                + " telefone_contato, contato_emergencia, status, tipo, telefone_professor, password, email, data_cadastro) "
-                + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,now())";
+                + " telefone_contato, contato_emergencia, status, tipo, telefone_professor, password, email, data_cadastro, data_inicio, data_desligamento) "
+                + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,now(),?,?)";
 
         PreparedStatement prep = conn.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
         prep.setInt(1, idWpUser);
@@ -256,6 +274,16 @@ public class PessoaFisicaForm extends FormBasico {
         prep.setString(14, pessoaFisica.getTelefoneProfessor());
         prep.setString(15, pessoaFisica.getPassword());
         prep.setString(16, pessoaFisica.getEmail());
+        if (pessoaFisica.getDtInicio() != null) {
+            prep.setString(17, IDRDate.parseDataIso(pessoaFisica.getDtInicio()));
+        } else {
+            prep.setString(17, null);
+        }
+        if (pessoaFisica.getDtDesligamento()!= null) {
+            prep.setString(18, IDRDate.parseDataIso(pessoaFisica.getDtDesligamento()));
+        } else {
+            prep.setString(18, null);
+        }
         prep.execute();
         ResultSet rs = prep.getGeneratedKeys();
         if (rs.next()) {
@@ -529,10 +557,10 @@ public class PessoaFisicaForm extends FormBasico {
         String query = "select * from pessoa_fisica pf where"
                 + " pf.email = ?"
                 + " and pf.data_nascimento = ?";
-        try (PreparedStatement prep = conn.prepareStatement(query)) {
+        try ( PreparedStatement prep = conn.prepareStatement(query)) {
             prep.setString(1, loginForm.getLogin());
             prep.setString(2, IDRDate.parseDataIso(loginForm.getDtNascimento()));
-            try (ResultSet rs = prep.executeQuery()) {
+            try ( ResultSet rs = prep.executeQuery()) {
                 if (rs.next()) {
                     pessoaFisicaForm.setIdPF(rs.getInt("id"));
                     pessoaFisicaForm.setIdNkUser(rs.getInt("id_nk_users"));
@@ -547,7 +575,7 @@ public class PessoaFisicaForm extends FormBasico {
 
     public void atualizarSenhaPessoaFisica(Connection conn, String senha, int idPF) throws SQLException {
         String query = "UPDATE pessoa_fisica SET password=? WHERE id=?";
-        try (PreparedStatement prep = conn.prepareStatement(query)) {
+        try ( PreparedStatement prep = conn.prepareStatement(query)) {
             prep.setString(1, senha);
             prep.setInt(2, idPF);
             prep.execute();
@@ -556,7 +584,7 @@ public class PessoaFisicaForm extends FormBasico {
 
     public void atualizarSenhaNkUsers(Connection conn, String senha, int idNkUser) throws SQLException {
         String query = "UPDATE nk_users SET user_pass=? WHERE ID=?";
-        try (PreparedStatement prep = conn.prepareStatement(query)) {
+        try ( PreparedStatement prep = conn.prepareStatement(query)) {
             prep.setString(1, EncryptMD5.md5(senha));
             prep.setInt(2, idNkUser);
             prep.execute();

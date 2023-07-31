@@ -159,8 +159,9 @@ public class NotaItinerarioDao {
     public List<NotaItinerarioForm> obterItinerariosAluno(Connection conn, int idAluno) throws SQLException {
         List<NotaItinerarioForm> listaItinerarios = new ArrayList<>();
         String query = "select i.id_itinerario, i.nome_itinerario"
-                + " from nota_itinerario n, itinerario i"
+                + " from nota_itinerario n, itinerario i, ano_vigente av"
                 + " where n.id_itinerario = i.id_itinerario"
+                + " and n.ano = av.ano_vigente"
                 + " and n.id_aluno = ?"
                 + " group by i.id_itinerario"
                 + " order by i.nome_itinerario";

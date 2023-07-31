@@ -146,15 +146,14 @@ public class DisciplinasForm extends FormBasico {
         sb.append("select * from disciplina d");
         sb.append(" where d.categoria_ensino = ?");
         sb.append(" and d.status = 1 ");
-        if (idSerie == 20 || idSerie == 30) {
+        if (idSerie == 20) {
+            sb.append(" and d.id_disciplina not in (14, 15)");
+        } else if (idSerie == 30) {
             sb.append(" and d.id_disciplina not in (15)");
         } else if (idSerie == 2 || idSerie == 3 || idSerie == 4 || idSerie == 5) {
             sb.append(" and d.id_disciplina not in (60)");
         }
         
-        if (anoVigente > 2020) {
-            sb.append(" and d.id_disciplina not in (13)");
-        }
         sb.append(" order by d.nome_disciplina");
         PreparedStatement prep = conn.prepareStatement(sb.toString());
         prep.setString(1, categoriaEnsino);

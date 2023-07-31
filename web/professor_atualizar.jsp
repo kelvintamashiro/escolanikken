@@ -14,6 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Escola Nikken - Painel</title>
         <link rel="shortcut icon" href="imagens/favico.png" />
+        <script language="javascript1.2" src="js/mizanscene.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <style>
@@ -193,6 +194,30 @@
                 </table>
             </div>
 
+            <div class="form-group">
+                <table border="0" align="center" width="80%">
+                    <tr style="background-color: #F4F4F4; color: #000080">
+                        <td colspan="3">
+                            <b>Informações de Início e Fim</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%">
+                            <div class="col-lg-10">
+                                <label for="usr">Data de Início:</label>
+                                <html:text name="PessoaFisicaForm" property="dtInicio" styleId="dtInicio" styleClass="form-control form-control-sm" size="15" maxlength="10" onkeyup="formatarData(this);" onkeypress="return(validarConteudo(event, 'numero'))"/>
+                            </div>
+                        </td>
+                        <td width="50%">
+                            <div class="col-lg-10">
+                                <label for="usr">Data de Desligamento:</label>
+                                <html:text name="PessoaFisicaForm" property="dtDesligamento" styleId="dtDesligamento" styleClass="form-control form-control-sm" size="15" maxlength="10" onkeyup="formatarData(this);" onkeypress="return(validarConteudo(event, 'numero'))"/>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
             <div align="center">
                 <br/>
                 <br/>
@@ -224,6 +249,9 @@
         var sexo = document.PessoaFisicaForm.sexo.value;
         var dataNascimento = document.PessoaFisicaForm.dataNascimento.value;
         var email = document.PessoaFisicaForm.email.value;
+        var status = document.PessoaFisicaForm.status.value;
+        var dtInicio = document.PessoaFisicaForm.dtInicio.value;
+        var dtDesligamento = document.PessoaFisicaForm.dtDesligamento.value;
         if (nome.length < 2) {
             alert("Deve ser informado o nome do professor corretamente!");
             document.getElementById('nome').focus();
@@ -236,6 +264,12 @@
         } else if (email.length < 2) {
             alert("Deve ser informado o E-mail de Acesso corretamente!");
             document.getElementById('email').focus();
+        } else if (dtInicio.length < 1) {
+            alert("Deve ser informado a Data de Início do professor(a)!");
+            document.getElementById('dtInicio').focus();
+        } else if (status == 2 && dtDesligamento.length < 1) {
+            alert("Deve ser informado a Data de desligamento do professor(a)!");
+            document.getElementById('dtDesligamento').focus();
         } else {
             document.PessoaFisicaForm.action = "Professor.do?action=atualizar";
             document.PessoaFisicaForm.submit();

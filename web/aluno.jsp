@@ -14,6 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Escola Nikken - Painel</title>
         <link rel="shortcut icon" href="imagens/favico.png" />
+        <script language="javascript1.2" src="js/mizanscene.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <style>
@@ -346,12 +347,12 @@
             <div class="form-group">
                 <table border="0" align="center" width="80%">
                     <tr style="background-color: #F4F4F4; color: #000080">
-                        <td colspan="3">
+                        <td colspan="4">
                             <b>Ensalamento</b>
                         </td>
                     </tr>
                     <tr>
-                        <td width="50%">
+                        <td width="25%">
                             <div class="col-lg-10">
                                 <label for="usr">Série/Ano:</label>
                                 <html:select name="AlunoForm" property="serieAno" styleId="serieAno" styleClass="form-control form-control-sm">
@@ -371,6 +372,34 @@
                                     <html:option value="10">1ª série E.M.</html:option>
                                     <html:option value="20">2ª série E.M.</html:option>
                                     <html:option value="30">3ª série E.M.</html:option>
+                                </html:select>
+                            </div>
+                        </td>
+                        <td width="25%">
+                            <div class="col-lg-10">
+                                <label for="usr">Posição na chamada:</label>
+                                <html:select name="AlunoForm" property="posicaoChamada" styleId="posicaoChamada" styleClass="form-control form-control-sm">
+                                    <html:option value="">Selecione</html:option>
+                                    <html:option value="1">1</html:option>
+                                    <html:option value="2">2</html:option>
+                                    <html:option value="3">3</html:option>
+                                    <html:option value="4">4</html:option>
+                                    <html:option value="5">5</html:option>
+                                    <html:option value="6">6</html:option>
+                                    <html:option value="7">7</html:option>
+                                    <html:option value="8">8</html:option>
+                                    <html:option value="9">9</html:option>
+                                    <html:option value="10">10</html:option>
+                                    <html:option value="11">11</html:option>
+                                    <html:option value="12">12</html:option>
+                                    <html:option value="13">13</html:option>
+                                    <html:option value="14">14</html:option>
+                                    <html:option value="15">15</html:option>
+                                    <html:option value="16">16</html:option>
+                                    <html:option value="17">17</html:option>
+                                    <html:option value="18">18</html:option>
+                                    <html:option value="19">19</html:option>
+                                    <html:option value="20">20</html:option>
                                 </html:select>
                             </div>
                         </td>
@@ -446,6 +475,7 @@
         var serieAno = document.AlunoForm.serieAno.value;
         var email = document.AlunoForm.email.value;
         var dataMatricula = document.AlunoForm.dataMatricula.value;
+        var posicaoChamada = document.AlunoForm.posicaoChamada.value;
 
         if (nome.length < 2) {
             alert("Deve ser informado o nome do aluno corretamente!");
@@ -471,6 +501,9 @@
         } else if (dataMatricula.length < 2) {
             alert("Deve ser informado a data de matricula corretamente!");
             document.getElementById('dataMatricula').focus();
+        } else if (posicaoChamada == "") {
+            alert("Deve ser informado a Posição na chamada corretamente!");
+            document.getElementById('posicaoChamada').focus();
         } else {
             document.AlunoForm.action = "Aluno.do?action=cadastrar";
             document.AlunoForm.submit();

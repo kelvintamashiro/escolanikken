@@ -54,7 +54,16 @@ public class AlunoForm extends PessoaFisicaForm {
     private int ano;
     private int idItinerarioAluno;
     private String periodo;
+    private int posicaoChamada;
 
+    public int getPosicaoChamada() {
+        return posicaoChamada;
+    }
+
+    public void setPosicaoChamada(int posicaoChamada) {
+        this.posicaoChamada = posicaoChamada;
+    }
+    
     public String getPeriodo() {
         return periodo;
     }
@@ -330,8 +339,8 @@ public class AlunoForm extends PessoaFisicaForm {
     public void inserirAluno(Connection conn, AlunoForm alunoForm, int idPessoaFisica) throws SQLException {
         String query = "INSERT INTO alunos (id_pessoa_fisica, numero_id_aluno, serie_ano, celular_aluno, nome_pai, alimentacao, celular_pai, email_pai, escolaridade_pai,"
                 + " nome_mae, celular_mae, email_mae, escolaridade_mae, linha_transporte, horario_transporte, restricao_alimentar, observacao_saude, ds_observacao,"
-                + " data_matricula, autorizacao_imagem, periodo) "
-                + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                + " data_matricula, autorizacao_imagem, periodo, ordem_chamada) "
+                + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setInt(1, idPessoaFisica);
@@ -359,6 +368,7 @@ public class AlunoForm extends PessoaFisicaForm {
         }
         prep.setString(20, alunoForm.getAutorizacaoImagem());
         prep.setString(21, alunoForm.getPeriodo());
+        prep.setInt(22, alunoForm.getPosicaoChamada());
         prep.execute();
         prep.close();
     }
@@ -379,7 +389,7 @@ public class AlunoForm extends PessoaFisicaForm {
             sb.append(" and a.serie_ano = ").append(alunoForm.getSerieAno());
         }
         sb.append(" and pf.status = ").append(alunoForm.getStatus());
-        sb.append(" order by pf.nome");
+        sb.append(" order by a.ordem_chamada, pf.nome");
 
         PreparedStatement prep = conn.prepareStatement(sb.toString());
         ResultSet rs = prep.executeQuery();
@@ -483,6 +493,7 @@ public class AlunoForm extends PessoaFisicaForm {
             alunoForm.setObservacao(rs.getString("ds_observacao"));
             alunoForm.setAutorizacaoImagem(rs.getString("autorizacao_imagem"));
             alunoForm.setPeriodo(rs.getString("periodo"));
+            alunoForm.setPosicaoChamada(rs.getInt("ordem_chamada"));
         }
         rs.close();
         prep.close();
@@ -493,7 +504,7 @@ public class AlunoForm extends PessoaFisicaForm {
     public void atualizarDadosAluno(Connection conn, AlunoForm alunoForm) throws SQLException {
         String query = "UPDATE alunos SET serie_ano=?, celular_aluno=?, nome_pai=?, alimentacao=?, celular_pai=?, email_pai=?, "
                 + " nome_mae=?, celular_mae=?, email_mae=?, linha_transporte=?, horario_transporte=?, restricao_alimentar=?, observacao_saude=?, "
-                + " ds_observacao=?, data_saida=?, numero_id_aluno=?, autorizacao_imagem=?, periodo=?"
+                + " ds_observacao=?, data_saida=?, numero_id_aluno=?, autorizacao_imagem=?, periodo=?, ordem_chamada=?"
                 + " WHERE id_pessoa_fisica=?";
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setInt(1, alunoForm.getSerieAno());
@@ -518,7 +529,8 @@ public class AlunoForm extends PessoaFisicaForm {
         prep.setString(16, alunoForm.getNumeroIDAluno());
         prep.setString(17, alunoForm.getAutorizacaoImagem());
         prep.setString(18, alunoForm.getPeriodo());
-        prep.setInt(19, alunoForm.getIdPF());
+        prep.setInt(19, alunoForm.getPosicaoChamada());
+        prep.setInt(20, alunoForm.getIdPF());
         prep.execute();
         prep.close();
     }
