@@ -76,7 +76,7 @@
                         </td>
                         <td width="22%">
                             <div class="col-lg-10">
-                                <label for="usr">Data de Matrícula: <b><bean:write name="AlunoForm" property="dataMatricula"/></b></label>
+                                <label for="usr">Data de Início: <b><bean:write name="AlunoForm" property="dataMatricula"/></b></label>
 
                             </div>
                         </td>
@@ -474,7 +474,7 @@
                         </td>
                         <td width="25%">
                             <div class="col-lg-10">
-                                <label for="usr">Data da Matrícula:</label>
+                                <label for="usr">Data de Início:</label>
                                 <html:text name="AlunoForm" property="dataMatricula" styleClass="form-control form-control-sm" size="15" maxlength="10" onkeyup="formatarData(this);" onkeypress="return(validarConteudo(event, 'numero'))" onfocus="show('dataMatricula')" onblur="hide('dataMatricula')"/>
                             </div>
                         </td>

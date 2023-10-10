@@ -106,7 +106,7 @@
                     </td>
                     <td>&nbsp;</td>
                     <td align="center">
-                        Fujimi Hanazono Kataoka <br/>
+                        Lourdes Mitsue Akagi <br/>
                         Diretora da Escola
                     </td>
                 </tr>

@@ -274,12 +274,12 @@ public class PessoaFisicaForm extends FormBasico {
         prep.setString(14, pessoaFisica.getTelefoneProfessor());
         prep.setString(15, pessoaFisica.getPassword());
         prep.setString(16, pessoaFisica.getEmail());
-        if (pessoaFisica.getDtInicio() != null) {
+        if (pessoaFisica.getDtInicio() != null && !pessoaFisica.getDtInicio().equals("")) {
             prep.setString(17, IDRDate.parseDataIso(pessoaFisica.getDtInicio()));
         } else {
             prep.setString(17, null);
         }
-        if (pessoaFisica.getDtDesligamento()!= null) {
+        if (pessoaFisica.getDtDesligamento() != null && !pessoaFisica.getDtDesligamento().equals("")) {
             prep.setString(18, IDRDate.parseDataIso(pessoaFisica.getDtDesligamento()));
         } else {
             prep.setString(18, null);
@@ -405,7 +405,7 @@ public class PessoaFisicaForm extends FormBasico {
 
     public void atualizarPessoaFisica(Connection conn, PessoaFisicaForm pessoaFisicaForm) throws SQLException {
         String query = "UPDATE pessoa_fisica SET nome=?, data_nascimento=?, naturalidade=?, sexo=?, nacionalidade=?, endereco=?, provincia=?,"
-                + " cidade=?, telefone_contato=?, contato_emergencia=?, status=?, tipo=?, telefone_professor=?"
+                + " cidade=?, telefone_contato=?, contato_emergencia=?, status=?, tipo=?, telefone_professor=?, data_inicio=?, data_desligamento=?"
                 + " WHERE id=?";
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setString(1, pessoaFisicaForm.getNome());
@@ -425,7 +425,17 @@ public class PessoaFisicaForm extends FormBasico {
         prep.setInt(11, pessoaFisicaForm.getStatus());
         prep.setString(12, pessoaFisicaForm.getTipoPerfil());
         prep.setString(13, pessoaFisicaForm.getTelefoneProfessor());
-        prep.setInt(14, pessoaFisicaForm.getIdPF());
+        if (pessoaFisicaForm.getDtInicio() != null && !pessoaFisicaForm.getDtInicio().equals("")) {
+            prep.setString(14, IDRDate.parseDataIso(pessoaFisicaForm.getDtInicio()));
+        } else {
+            prep.setString(14, null);
+        }
+        if (pessoaFisicaForm.getDtDesligamento() != null && !pessoaFisicaForm.getDtDesligamento().equals("")) {
+            prep.setString(15, IDRDate.parseDataIso(pessoaFisicaForm.getDtDesligamento()));
+        } else {
+            prep.setString(15, null);
+        }
+        prep.setInt(16, pessoaFisicaForm.getIdPF());
         prep.execute();
         prep.close();
     }
@@ -529,6 +539,13 @@ public class PessoaFisicaForm extends FormBasico {
             pfForm.setStatus(rs.getInt("status"));
             pfForm.setTipoPerfil(rs.getString("tipo"));
             pfForm.setEmail(rs.getString("email"));
+            if (rs.getString("data_inicio") != null) {
+                pfForm.setDtInicio(IDRDate.parseDataBra(rs.getString("data_inicio")));
+            }
+            if (rs.getString("data_desligamento") != null) {
+                pfForm.setDtDesligamento(IDRDate.parseDataBra(rs.getString("data_desligamento")));
+            }
+
         }
         rs.close();
         prep.close();

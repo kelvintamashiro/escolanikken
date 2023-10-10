@@ -63,7 +63,7 @@ public class AlunoForm extends PessoaFisicaForm {
     public void setPosicaoChamada(int posicaoChamada) {
         this.posicaoChamada = posicaoChamada;
     }
-    
+
     public String getPeriodo() {
         return periodo;
     }
@@ -71,7 +71,7 @@ public class AlunoForm extends PessoaFisicaForm {
     public void setPeriodo(String periodo) {
         this.periodo = periodo;
     }
-    
+
     public int getIdItinerarioAluno() {
         return idItinerarioAluno;
     }
@@ -79,7 +79,7 @@ public class AlunoForm extends PessoaFisicaForm {
     public void setIdItinerarioAluno(int idItinerarioAluno) {
         this.idItinerarioAluno = idItinerarioAluno;
     }
-    
+
     public int getAno() {
         return ano;
     }
@@ -494,6 +494,9 @@ public class AlunoForm extends PessoaFisicaForm {
             alunoForm.setAutorizacaoImagem(rs.getString("autorizacao_imagem"));
             alunoForm.setPeriodo(rs.getString("periodo"));
             alunoForm.setPosicaoChamada(rs.getInt("ordem_chamada"));
+            if (rs.getString("data_saida") != null) {
+                alunoForm.setDataSaida(IDRDate.formatSQLDate(rs.getString("data_saida")));
+            }
         }
         rs.close();
         prep.close();
@@ -504,7 +507,7 @@ public class AlunoForm extends PessoaFisicaForm {
     public void atualizarDadosAluno(Connection conn, AlunoForm alunoForm) throws SQLException {
         String query = "UPDATE alunos SET serie_ano=?, celular_aluno=?, nome_pai=?, alimentacao=?, celular_pai=?, email_pai=?, "
                 + " nome_mae=?, celular_mae=?, email_mae=?, linha_transporte=?, horario_transporte=?, restricao_alimentar=?, observacao_saude=?, "
-                + " ds_observacao=?, data_saida=?, numero_id_aluno=?, autorizacao_imagem=?, periodo=?, ordem_chamada=?"
+                + " ds_observacao=?, data_saida=?, data_matricula = ?, numero_id_aluno=?, autorizacao_imagem=?, periodo=?, ordem_chamada=?"
                 + " WHERE id_pessoa_fisica=?";
         PreparedStatement prep = conn.prepareStatement(query);
         prep.setInt(1, alunoForm.getSerieAno());
@@ -526,11 +529,16 @@ public class AlunoForm extends PessoaFisicaForm {
         } else {
             prep.setString(15, null);
         }
-        prep.setString(16, alunoForm.getNumeroIDAluno());
-        prep.setString(17, alunoForm.getAutorizacaoImagem());
-        prep.setString(18, alunoForm.getPeriodo());
-        prep.setInt(19, alunoForm.getPosicaoChamada());
-        prep.setInt(20, alunoForm.getIdPF());
+        if (alunoForm.getDataMatricula() != null && !alunoForm.getDataMatricula().equals("")) {
+            prep.setString(16, IDRDate.parseDataIso(alunoForm.getDataMatricula()));
+        } else {
+            prep.setString(16, null);
+        }
+        prep.setString(17, alunoForm.getNumeroIDAluno());
+        prep.setString(18, alunoForm.getAutorizacaoImagem());
+        prep.setString(19, alunoForm.getPeriodo());
+        prep.setInt(20, alunoForm.getPosicaoChamada());
+        prep.setInt(21, alunoForm.getIdPF());
         prep.execute();
         prep.close();
     }
@@ -768,6 +776,7 @@ public class AlunoForm extends PessoaFisicaForm {
 
         return listaAlunos;
     }
+
     public List<AlunoForm> obterAlunosPorSerieComVinculoItinerario(Connection conn, String idSerieAno, int idItinerario) throws SQLException {
         List<AlunoForm> listaAlunos = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
